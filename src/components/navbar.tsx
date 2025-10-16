@@ -44,7 +44,7 @@ export function Navbar() {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50"
+      className="fixed bottom-10 left-0 right-0 z-50 flex justify-center items-center"
     >
       <div className="relative">
         <motion.div 

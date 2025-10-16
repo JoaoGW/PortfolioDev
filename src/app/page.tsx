@@ -1,10 +1,35 @@
 'use client';
-
-import { Navbar } from '@/components/navbar';
 import { useEffect, useState } from 'react';
+
+import * as motion from "motion/react-client"
+
+import { TypewriterWordsEffect } from '@/components/ui/typewriter-effect';
+import { Navbar } from '@/components/navbar';
+import { HeaderTop } from '@/components/headerTop';
+
+type typingWordsTypes = {
+  text: string
+}
 
 export default function Home() {
   const [AnimatedBackground, setAnimatedBackground] = useState<any>(null);
+  const typingWords: typingWordsTypes[] = [
+    {
+      text: "Desenvolvedor"
+    },
+    {
+      text: "Full-Stack"
+    },
+    {
+      text: "&"
+    },
+    {
+      text: "Mobile"
+    },
+    {
+      text: "Full-Stack"
+    }
+  ]
 
   useEffect(() => {
     const loadAnimatedBackground = async () => {
@@ -12,7 +37,7 @@ export default function Home() {
         const { AnimatedBackground: AB } = await import('animated-backgrounds');
         setAnimatedBackground(AB);
       } catch (error) {
-        console.error('Failed to load AnimatedBackground:', error);
+        console.error(error);
       }
     };
 
@@ -38,6 +63,7 @@ export default function Home() {
       <AnimatedBackground
         animationName="neuralNetwork"
         theme="landingPage"
+        particles={300}
         interactive={true}
         interactionConfig={{
           effect: 'attract',
@@ -47,6 +73,21 @@ export default function Home() {
           multiTouch: true
         }}
       />
+      <HeaderTop />
+      <section className="fixed inset-0 flex flex-col justify-center items-center z-10">
+        <motion.h1
+          className="text-white playwrite text-5xl mb-6"
+          initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 3.0,
+                scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+            }}
+        >
+          João Pedro do Carmo Ribeiro
+        </motion.h1>
+        <TypewriterWordsEffect words={ typingWords }/>
+      </section>
       <Navbar />
     </div>
   );
