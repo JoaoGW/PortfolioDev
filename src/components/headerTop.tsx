@@ -8,8 +8,12 @@ export function HeaderTop(){
         <span className="playwrite text-center">Ribeiro</span>
       </div>
       <div className="flex flex-row items-center">
-        <button className="mr-8" onClick={ () => {} }><Linkedin /></button>
-        <button className="mr-8" onClick={ () => {} }><Github /></button>
+        <a href='https://www.linkedin.com/in/jo%C3%A3o-pedro-do-carmo-ribeiro/' target='_blank' rel='noreferrer'>
+          <button className="mr-8" onClick={ () => {} }><Linkedin /></button>
+        </a>
+        <a href='https://github.com/JoaoGW' target='_blank' rel='noreferrer'>
+          <button className="mr-8" onClick={ () => {} }><Github /></button>
+        </a>
         <LanguageSelector />
       </div>
     </div>

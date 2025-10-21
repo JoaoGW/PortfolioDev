@@ -7,7 +7,8 @@ import * as motion from "motion/react-client"
 import { TypewriterWordsEffect } from '@/components/ui/typewriter-effect';
 import { Navbar } from '@/components/navbar';
 import { HeaderTop } from '@/components/headerTop';
-import { PresentationModal } from '@/components/presentationModal';
+import { Button } from "@/components/ui/moving-border";
+import { Brain, FileDown } from 'lucide-react';
 
 type typingWordsTypes = {
   text: string
@@ -92,6 +93,24 @@ export default function Home() {
           João Pedro do Carmo Ribeiro
         </motion.h1>
         <TypewriterWordsEffect words={ typingWords }/>
+        <div className='flex flex-row mt-10 gap-10'>
+          <Button
+            className="bg-white dark:bg-slate-700 text-black dark:text-white border-neutral-200 dark:border-slate-800 gap-3"
+            borderRadius="1.75rem"
+            onClick={ () => router.push("/sobre") }
+          >
+            <Brain color='#FFF' />
+            Conhecer Perfil
+          </Button>
+          <Button
+            className="bg-white dark:bg-slate-700 text-black dark:text-white border-neutral-200 dark:border-slate-800 gap-2"
+            borderRadius="1.75rem"
+            onClick={ () => {} }
+          >
+            <FileDown color='#FFF' />
+            Baixar Currículo
+          </Button>
+        </div>
       </section>
       <Navbar />
     </div>
