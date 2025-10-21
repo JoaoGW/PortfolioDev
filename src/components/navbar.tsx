@@ -63,14 +63,14 @@ export function Navbar() {
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 via-teal-600 to-emerald-600 opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-300" />
           
           <ul className="flex items-center gap-2">
-            {navItems.map((item, index) => {
+            { navItems.map((item, index) => {
               const Icon = item.icon;
               const isActive = activeIndex === index;
               const isHovered = hoveredIndex === index;
               
               return (
                 <motion.li 
-                  key={item.label}
+                  key={ item.label }
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
                   transition={{ 
@@ -80,10 +80,10 @@ export function Navbar() {
                   }}
                 >
                   <motion.a
-                    href={item.href}
-                    onClick={() => setActiveIndex(index)}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
+                    href={ item.href }
+                    onClick={ () => setActiveIndex(index) }
+                    onMouseEnter={ () => setHoveredIndex(index) }
+                    onMouseLeave={ () => setHoveredIndex(null) }
                     className="relative block"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -92,8 +92,8 @@ export function Navbar() {
                     <AnimatePresence mode="wait">
                       {(isActive || isHovered) && (
                         <motion.div
-                          layoutId={isActive ? 'active-pill' : 'hover-pill'}
-                          className={`absolute inset-0 rounded-full ${
+                          layoutId={ isActive ? 'active-pill' : 'hover-pill' }
+                          className={ `absolute inset-0 rounded-full ${
                             isActive
                               ? 'bg-gradient-to-r from-blue-600 via-teal-600 to-emerald-600 shadow-[0_0_20px_rgba(20,184,166,0.5)]'
                               : 'bg-slate-700/50'
@@ -151,7 +151,7 @@ export function Navbar() {
                                 : 'text-teal-300'
                             }`}
                           >
-                            {item.label}
+                            { item.label }
                           </motion.span>
                         )}
                       </AnimatePresence>
@@ -177,7 +177,6 @@ export function Navbar() {
             })}
           </ul>
         </motion.div>
-        
         <div className="absolute top-full left-0 right-0 h-20 bg-gradient-to-b from-teal-600/10 to-transparent blur-xl rounded-full transition-all duration-300" />
       </div>
     </motion.nav>

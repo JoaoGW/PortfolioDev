@@ -1,17 +1,22 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import * as motion from "motion/react-client"
 
 import { TypewriterWordsEffect } from '@/components/ui/typewriter-effect';
 import { Navbar } from '@/components/navbar';
 import { HeaderTop } from '@/components/headerTop';
+import { PresentationModal } from '@/components/presentationModal';
 
 type typingWordsTypes = {
   text: string
 }
 
 export default function Home() {
+  const router = useRouter();
+
+  const [showPresentationModal, setShowPresentationModal] = useState<boolean>(false);
   const [AnimatedBackground, setAnimatedBackground] = useState<any>(null);
   const typingWords: typingWordsTypes[] = [
     {

@@ -1,4 +1,4 @@
-import { Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { LanguageSelector } from "./languageSelector";
 
 export function HeaderTop(){
@@ -8,7 +8,8 @@ export function HeaderTop(){
         <span className="playwrite text-center">Ribeiro</span>
       </div>
       <div className="flex flex-row items-center">
-        <button className="mr-8"><Linkedin /></button>
+        <button className="mr-8" onClick={ () => {} }><Linkedin /></button>
+        <button className="mr-8" onClick={ () => {} }><Github /></button>
         <LanguageSelector />
       </div>
     </div>
