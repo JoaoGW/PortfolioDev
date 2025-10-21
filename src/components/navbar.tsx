@@ -5,11 +5,11 @@ import { useState, useEffect } from 'react';
 import { Home, User, Mail, Code, FileBadge } from 'lucide-react';
 
 const navItems = [
-  { icon: Home, label: 'Início', href: '' },
-  { icon: User, label: 'Sobre', href: 'sobre' },
-  { icon: Code, label: 'Projetos', href: 'projetos' },
-  { icon: FileBadge, label: 'Certificações', href: 'certificacoes' },
-  { icon: Mail, label: 'Contato', href: 'contato' },
+  { icon: Home, label: 'Início', href: '/', path: '/' },
+  { icon: User, label: 'Sobre', href: '/sobre', path: '/sobre' },
+  { icon: Code, label: 'Projetos', href: '/projetos', path: '/projetos' },
+  { icon: FileBadge, label: 'Certificações', href: '/certificacoes', path: '/certificacoes' },
+  { icon: Mail, label: 'Contato', href: '/contato', path: '/contato' },
 ];
 
 export function Navbar() {
@@ -19,22 +19,23 @@ export function Navbar() {
 
   useEffect(() => {
     const updateActiveIndex = () => {
-      const hash = window.location.hash;
-      const index = navItems.findIndex(item => item.href === hash);
+      const currentPath = window.location.pathname;
+      const index = navItems.findIndex(item => item.path === currentPath);
       if (index !== -1) {
         setActiveIndex(index);
-      } else if (!hash) {
+      } else {
         setActiveIndex(0);
       }
     };
 
     updateActiveIndex();
-    window.addEventListener('hashchange', updateActiveIndex);
+    
+    window.addEventListener('popstate', updateActiveIndex);
     
     const timer = setTimeout(() => setIsLoaded(true), 100);
     
     return () => {
-      window.removeEventListener('hashchange', updateActiveIndex);
+      window.removeEventListener('popstate', updateActiveIndex);
       clearTimeout(timer);
     };
   }, []);
@@ -157,7 +158,7 @@ export function Navbar() {
                       </AnimatePresence>
                     </motion.div>
                     
-                    {isActive && (
+                    { isActive && (
                       <motion.div
                         className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 via-teal-600 to-emerald-600 opacity-30 blur-md"
                         animate={{
