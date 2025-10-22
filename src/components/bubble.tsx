@@ -1,14 +1,15 @@
 import Image, { StaticImageData } from 'next/image';
 
 interface BubbleProps {
-  image: StaticImageData;
-  alt: string;
-  size?: number;
+  image: StaticImageData,
+  alt: string,
+  size?: number,
+  imgSize?: number
 }
 
-export function Bubble({ image, alt, size = 140 }: BubbleProps){
+export function Bubble({ image, alt, size = 140, imgSize }: BubbleProps){
   return(
-    <div className="relative inline-block animate-float">
+    <div className="relative inline-block animate-float hover:cursor-pointer">
       <div 
         className="relative rounded-full backdrop-blur-md bg-white/10 border border-white/20 overflow-hidden"
         style={{
@@ -24,10 +25,10 @@ export function Bubble({ image, alt, size = 140 }: BubbleProps){
         
         <div className="relative w-full h-full flex items-center justify-center p-4">
           <Image
-            src={image}
-            alt={alt}
-            width={size * 0.6}
-            height={size * 0.6}
+            src={ image }
+            alt={ alt }
+            width={ imgSize != undefined ? imgSize: size  * 0.6 }
+            height={ imgSize != undefined ? imgSize : size * 0.6 }
             className="object-contain"
           />
         </div>

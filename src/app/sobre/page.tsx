@@ -27,6 +27,7 @@ import GitLogo from "../../assets/Logos/Git-logo.png";
 import JestLogo from "../../assets/Logos/jest-logo.png";
 import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.png";
 import VueLogo from "../../assets/Logos/vue-js-512.png";
+import { CircleAlert } from 'lucide-react';
 
 export default function Sobre(){
   return(
@@ -202,10 +203,10 @@ export default function Sobre(){
         </div>
       </section>
       <section>
-        <LampContainer className='pt-10'>
+        <LampContainer className='pt-44'>
           <motion.h3
             initial={{ opacity: 0.5, y: 100 }}
-            whileInView={{ opacity: 1, y: -15 }}
+            whileInView={{ opacity: 1, y: -100 }}
             transition={{
               delay: 0.3,
               duration: 0.8,
@@ -219,8 +220,7 @@ export default function Sobre(){
           >
             TECH STACK
           </motion.h3>
-          <div className='mb-8' />
-          <div className='flex flex-row justify-evenly gap-6'>
+          <div className='flex flex-row justify-evenly gap-6 mt-2'>
             <>
               <a data-tooltip-id="typescript-tip" data-tooltip-content="Linguagem de Programação - TypeScript">
                 <Bubble image={ TypeScriptLogo } alt='TypeScript' />
@@ -229,7 +229,7 @@ export default function Sobre(){
             </>
             <>
               <a data-tooltip-id="kotlin-tip" data-tooltip-content="Linguagem de Programação - Kotlin">
-                <Bubble image={ KotlinLogo } alt='Kotlin' />
+                <Bubble image={ KotlinLogo } imgSize={ 200 } alt='Kotlin' />
               </a>
               <Tooltip id="kotlin-tip" />
             </>
@@ -241,7 +241,7 @@ export default function Sobre(){
             </>
             <>
               <a data-tooltip-id="nodejs-tip" data-tooltip-content="Ambiente de Execução - Node.js">
-                <Bubble image={ NodeLogo } alt='Node.js' />
+                <Bubble image={ NodeLogo } imgSize={ 180 } alt='Node.js' />
               </a>
               <Tooltip id="nodejs-tip" />
             </>
@@ -259,7 +259,7 @@ export default function Sobre(){
             </>
             <>
               <a data-tooltip-id="nextjs-tip" data-tooltip-content="Framework - Next.js">
-                <Bubble image={ NextjsLogo } alt='Next.js' />
+                <Bubble image={ NextjsLogo } imgSize={ 175 } alt='Next.js' />
               </a>
               <Tooltip id="nextjs-tip" />
             </>
@@ -267,7 +267,7 @@ export default function Sobre(){
           <div className='flex flex-row justify-evenly gap-6 mt-3'>
             <>
               <a data-tooltip-id="docker-tip" data-tooltip-content="Ferramenta de DevOps - Docker">
-                <Bubble image={ DockerLogo } alt='Docker' />
+                <Bubble image={ DockerLogo } imgSize={ 200 } alt='Docker' />
               </a>
               <Tooltip id="docker-tip" />
             </>
@@ -295,6 +295,10 @@ export default function Sobre(){
               </a>
               <Tooltip id="vue-tip" />
             </>
+          </div>
+          <div className='flex flex-row justify-center items-center gap-2 mt-16'>
+            <CircleAlert color='#FFF' size={35} />
+            <span className='text-white font-bold'>Passe o mouse por cima das bolhas para conferir os nomes das tecnologias, se necessário.</span>
           </div>
         </LampContainer>
       </section>
