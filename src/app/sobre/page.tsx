@@ -8,11 +8,13 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 
 import DottedGlowBackground from "@/components/ui/dotted-glow-background";
+import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { LampContainer } from "@/components/ui/lamp";
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
 import { Bubble } from '@/components/bubble';
+import { SparklesCore } from "@/components/ui/sparkles";
 
 import ProfilePicture from "../../assets/profile.jpg";
 import DockerLogo from "../../assets/Logos/docker-512.png";
@@ -27,7 +29,12 @@ import GitLogo from "../../assets/Logos/Git-logo.png";
 import JestLogo from "../../assets/Logos/jest-logo.png";
 import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.png";
 import VueLogo from "../../assets/Logos/vue-js-512.png";
+import PUCLogo from "../../assets/Instituicoes/pucsp-logo.png";
+import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
+import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.png";
+
 import { CircleAlert } from 'lucide-react';
+import { InstitutionCard } from '@/components/institutionCard';
 
 export default function Sobre(){
   return(
@@ -60,13 +67,45 @@ export default function Sobre(){
             <span className='text-[#72BF6A] font-bold text-2xl'>{"</span>"}</span>
           </div>
           <div className='flex flex-col'>
-            <span className='font-semibold text-3xl'>Desenvolvedor <span className='text-[#0096C7] font-bold text-4xl'>{'{ Full-Stack }'}</span> &</span>
-            <span className='font-semibold text-3xl'>Desenvolvedor <span className='text-[#0096C7] font-bold text-4xl'>{"{ Mobile }"}</span> Full-Stack</span>
+            <motion.span 
+              className='font-semibold text-3xl'
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: [20, -5, 0],
+              }}
+              transition={{
+                duration: 0.5,
+                ease: [0.4, 0.0, 0.2, 1],
+              }}
+            >
+              Desenvolvedor <Highlight className='text-white font-bold text-4xl'>{'{ Full-Stack }'}</Highlight> &
+            </motion.span>
+            <motion.span 
+              className='font-semibold text-3xl'
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: [20, -5, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                ease: [0.4, 0.0, 0.2, 1],
+              }}
+            >
+              Desenvolvedor <Highlight className='text-white font-bold text-4xl'>{"{ Mobile Full-Stack }"}</Highlight>
+            </motion.span>
           </div>
           <div className='flex flex-row mt-6'>
             <p className='font-semibold text-xl'>
               <span className='text-[#72BF6A] font-bold text-2xl mr-2'>{"<p>"}</span>
-              Graduado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP). Tenho experiência relevante com Frameworks Web <span className='underline text-[#0096C7]'>(Next.js e React)</span>, Desenvolvimento de Apps Híbridos <span className='underline text-[#0096C7]'>(Android e iOS)</span>, além de conhecimento em práticas e ferramentas de DevOps <span className='underline text-[#0096C7]'>(Git, AWS, entre outros)</span>.
+              Graduado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP). Tenho experiência relevante com Frameworks Web <Highlight className='text-white'>(Next.js e React)</Highlight>, Desenvolvimento de Apps Híbridos <Highlight className='text-white'>(Android e iOS)</Highlight>, além de conhecimento em práticas e ferramentas de DevOps <Highlight className='text-white'>(Git, AWS, entre outros)</Highlight>.
               <span className='text-[#72BF6A] font-bold text-2xl ml-2'>{"</p>"}</span>
             </p>
           </div>
@@ -203,9 +242,9 @@ export default function Sobre(){
         </div>
       </section>
       <section>
-        <LampContainer className='pt-44'>
+        <LampContainer className='pt-44 pb-16'>
           <motion.h3
-            initial={{ opacity: 0.5, y: 100 }}
+            initial={{ opacity: 0.5, y: 20 }}
             whileInView={{ opacity: 1, y: -100 }}
             transition={{
               delay: 0.3,
@@ -301,6 +340,67 @@ export default function Sobre(){
             <span className='text-white font-bold'>Passe o mouse por cima das bolhas para conferir os nomes das tecnologias, se necessário.</span>
           </div>
         </LampContainer>
+      </section>
+      <section className='bg-slate-900'>
+        <div className="h-[28rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
+          <motion.h4
+            initial={{ opacity: 0.5, y: -100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
+            style={{
+              WebkitTextStroke: '2px rgba(114, 191, 106, 0.3)',
+              textShadow: '0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)'
+            }}
+          >
+            ACADÊMICO
+          </motion.h4>
+          <div className="w-[40rem] h-40 relative">
+            <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#72BF6A] to-transparent h-[2px] w-3/4 blur-sm" />
+            <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#72BF6A] to-transparent h-px w-3/4" />
+            <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#0096C7] to-transparent h-[5px] w-1/4 blur-sm" />
+            <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#0096C7] to-transparent h-px w-1/4" />
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1}
+              particleDensity={1200}
+              className="w-full h-full"
+              particleColor="#FFFFFF"
+            />
+            <div className="absolute inset-0 w-full h-full bg-slate-900 [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+          </div>
+        </div>
+        <div className='flex flex-row justify-center gap-12 mx-24 pb-20'>
+          <InstitutionCard 
+            institutionLogo={ PUCLogo } 
+            institutionAltImage='Logo Instituição PUC-SP' 
+            institurionName='PUC-SP' 
+            institutionCourse='Ciência da Computação'
+            institutionCourseLevel='Graduação / Bacharelado'
+            institurionOpenDetails={ () => {} }
+          />
+          <InstitutionCard 
+            institutionLogo={ FIAPLogo } 
+            institutionAltImage='Logo Instituição FIAP' 
+            institurionName='FIAP' 
+            institutionCourse='Arquitetura de Software'
+            institutionCourseLevel='Pós-Graduação'
+            institurionOpenDetails={ () => {} }
+          />
+          <InstitutionCard 
+            institutionLogo={ HarvardLogo } 
+            institutionAltImage='Logo Instituição Harvard' 
+            institurionName='Harvard' 
+            institutionCourse='CS50'
+            institutionCourseLevel='Cursos Complementares'
+            institurionOpenDetails={ () => {} }
+          />
+        </div>
       </section>
       <Navbar />
     </div>
