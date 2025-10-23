@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { motion } from "motion/react";
 
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 
-import DottedGlowBackground from "@/components/ui/dotted-glow-background";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { LampContainer } from "@/components/ui/lamp";
@@ -18,6 +18,8 @@ import { Bubble } from '@/components/bubble';
 import { SparklesCore } from "@/components/ui/sparkles";
 import { InstitutionCard } from '@/components/institutionCard';
 import { InstitutionModal } from '@/components/institutionModal';
+import { SocialMediaIcons } from '@/components/socialMediaIcons';
+import { PresentationTopics } from '@/components/presentationTopics';
 
 import ProfilePicture from "../../assets/profile.jpg";
 import DockerLogo from "../../assets/Logos/docker-512.png";
@@ -36,149 +38,138 @@ import PUCLogo from "../../assets/Instituicoes/pucsp-logo.png";
 import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.png";
 
-import { CircleAlert } from 'lucide-react';
+import { CircleAlert, FileDown, StepForward } from 'lucide-react';
 
 export default function Sobre(){
   const [openModal, setOpenModal] = useState<'puc' | 'fiap' | 'harvard' | null>(null);
+  const route = useRouter();
 
   return(
     <div className="relative min-h-screen">
-      <DottedGlowBackground
-        className="absolute inset-0 pointer-events-none mask-radial-to-90% mask-radial-at-center opacity-20 dark:opacity-100"
-        opacity={.35}
-        gap={10}
-        radius={1.6}
-        colorLightVar="--color-neutral-500"
-        glowColorLightVar="--color-neutral-600"
-        colorDarkVar="--color-neutral-500"
-        glowColorDarkVar="--color-sky-800"
-        backgroundOpacity={0}
-        speedMin={0.3}
-        speedMax={1.6}
-        speedScale={1}
-      />
       <HeaderTop />
-      <section className='flex flex-row items-center pt-32 mx-20'>
-        <Image
-          src={ ProfilePicture }
-          alt='Minha Foto de Perfil'
-          style={{ clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)', width: 500, height: 500, objectFit: "cover" }}
-        />
-        <div className='flex flex-col ml-24'>
-          <div className='flex flex-row mb-6 items-center gap-2'>
-            <span className='text-[#72BF6A] font-bold text-2xl'>{"<span>"}</span>
-            <span className='font-semibold text-xl'>Olá, meu nome é João Pedro</span>
-            <span className='text-[#72BF6A] font-bold text-2xl'>{"</span>"}</span>
-          </div>
-          <div className='flex flex-col'>
-            <motion.span 
-              className='font-semibold text-3xl'
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={{
-                opacity: 1,
-                y: [20, -5, 0],
-              }}
-              transition={{
-                duration: 0.5,
-                ease: [0.4, 0.0, 0.2, 1],
-              }}
-            >
-              Desenvolvedor <Highlight className='text-white font-bold text-4xl'>{'{ Full-Stack }'}</Highlight> &
-            </motion.span>
-            <motion.span 
-              className='font-semibold text-3xl'
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={{
-                opacity: 1,
-                y: [20, -5, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                ease: [0.4, 0.0, 0.2, 1],
-              }}
-            >
-              Desenvolvedor <Highlight className='text-white font-bold text-4xl'>{"{ Mobile Full-Stack }"}</Highlight>
-            </motion.span>
-          </div>
-          <div className='flex flex-row mt-6'>
-            <p className='font-semibold text-xl'>
-              <span className='text-[#72BF6A] font-bold text-2xl mr-2'>{"<p>"}</span>
-              Graduado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP). Tenho experiência relevante com Frameworks Web <Highlight className='text-white'>(Next.js e React)</Highlight>, Desenvolvimento de Apps Híbridos <Highlight className='text-white'>(Android e iOS)</Highlight>, além de conhecimento em práticas e ferramentas de DevOps <Highlight className='text-white'>(Git, AWS, entre outros)</Highlight>.
-              <span className='text-[#72BF6A] font-bold text-2xl ml-2'>{"</p>"}</span>
-            </p>
-          </div>
-          <div className='flex flex-row gap-4 mt-6 items-center'>
-            <div className='group relative cursor-pointer'>
-              <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
-              <Image
-                src={ NodeLogo }
-                width={70}
-                height={70}
-                alt='Logo Node.js'
-                className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
-              />
+      <HeroHighlight>
+        <section className='flex flex-row items-center pt-32 pt-16 mx-20'>
+          <Image
+            src={ ProfilePicture }
+            alt='Minha Foto de Perfil'
+            style={{ clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)', width: 500, height: 500, objectFit: "cover" }}
+          />
+          <div className='flex flex-col ml-24'>
+            <div className='flex flex-row mb-6 items-center gap-2'>
+              <span className='text-[#72BF6A] font-bold text-2xl'>{"<span>"}</span>
+              <span className='font-semibold text-xl'>Olá, meu nome é João Pedro</span>
+              <span className='text-[#72BF6A] font-bold text-2xl'>{"</span>"}</span>
             </div>
-            <div className='group relative cursor-pointer'>
-              <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
-              <Image
-                src={ ReactLogo }
-                width={70}
-                height={70}
-                alt='Logo React'
-                className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
-              />
+            <div className='flex flex-col'>
+              <motion.span
+                className='font-semibold text-3xl'
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: [20, -5, 0],
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.4, 0.0, 0.2, 1],
+                }}
+              >
+                Desenvolvedor <Highlight className='text-white font-bold text-4xl'>{'{ Full-Stack }'}</Highlight> &
+              </motion.span>
+              <motion.span
+                className='font-semibold text-3xl'
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: [20, -5, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  ease: [0.4, 0.0, 0.2, 1],
+                }}
+              >
+                Desenvolvedor <Highlight className='text-white font-bold text-4xl'>{"{ Mobile Full-Stack }"}</Highlight>
+              </motion.span>
             </div>
-            <div className='group relative cursor-pointer'>
-              <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
-              <Image
-                src={ NextjsLogo }
-                width={70}
-                height={70}
-                alt='Logo Next.js'
-                className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
-              />
+            <div className='flex flex-row mt-6'>
+              <p className='font-semibold text-xl'>
+                <span className='text-[#72BF6A] font-bold text-2xl mr-2'>{"<p>"}</span>
+                Graduado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP). Tenho experiência relevante com Frameworks Web <Highlight className='text-white'>(Next.js e React)</Highlight>, Desenvolvimento de Apps Híbridos <Highlight className='text-white'>(Android e iOS)</Highlight>, além de conhecimento em práticas e ferramentas de DevOps <Highlight className='text-white'>(Git, AWS, entre outros)</Highlight>.
+                <span className='text-[#72BF6A] font-bold text-2xl ml-2'>{"</p>"}</span>
+              </p>
             </div>
-            <div className='group relative cursor-pointer'>
-              <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
-              <Image
-                src={ DockerLogo }
-                width={70}
-                height={70}
-                alt='Logo Docker'
-                className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
-              />
-            </div>
-            <div className='group relative cursor-pointer'>
-              <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
-              <Image
-                src={ MongodbLogo }
-                width={70}
-                height={70}
-                alt='Logo MongoDB'
-                className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
-              />
-            </div>
-            <div className='group relative cursor-pointer'>
-              <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
-              <Image
-                src={ TypeScriptLogo }
-                width={70}
-                height={70}
-                alt='Logo TypeScript'
-                className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
-              />
-            </div>
+            <div className='flex flex-row gap-4 mt-6 items-center'>
+              <div className='group relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+                <Image
+                  src={ NodeLogo }
+                  width={70}
+                  height={70}
+                  alt='Logo Node.js'
+                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                />
+              </div>
+              <div className='group relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+                <Image
+                  src={ ReactLogo }
+                  width={70}
+                  height={70}
+                  alt='Logo React'
+                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                />
+              </div>
+              <div className='group relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+                <Image
+                  src={ NextjsLogo }
+                  width={70}
+                  height={70}
+                  alt='Logo Next.js'
+                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                />
+              </div>
+              <div className='group relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+                <Image
+                  src={ DockerLogo }
+                  width={70}
+                  height={70}
+                  alt='Logo Docker'
+                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                />
+              </div>
+              <div className='group relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+                <Image
+                  src={ MongodbLogo }
+                  width={70}
+                  height={70}
+                  alt='Logo MongoDB'
+                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                />
+              </div>
+              <div className='group relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+                <Image
+                  src={ TypeScriptLogo }
+                  width={70}
+                  height={70}
+                  alt='Logo TypeScript'
+                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                />
+              </div>
             <span className='text-white text-xl font-semibold'>... dentre muitos outros</span>
           </div>
         </div>
       </section>
-      <section className='bg-slate-900 mt-14'>
+      </HeroHighlight>
+      <section className='bg-slate-900'>
         <TextHoverEffect text='SOBRE'/>
         <div className='mx-20 mt-[-80] pb-16 text-center'>
           <span className='text-center text-3xl font-bold'>Desenvolvedor de Software | Desenvolvedor Mobile | Cientista da Computação</span>
@@ -579,6 +570,35 @@ export default function Sobre(){
             }
           ]}
         />
+      </section>
+      <section className='pb-28'>
+        <h5
+          className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
+          style={{
+            WebkitTextStroke: '2px rgba(114, 191, 106, 0.3)',
+            textShadow: '0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)'
+          }}
+        >
+          INTERESSADO?
+        </h5>
+        <p className='text-center text-2xl font-semibold mt-3'>Veja o que mais você pode encontrar sobre mim</p>
+          <div className='flex flex-col items-center justify-center my-8 mx-auto w-[75%]'>
+            <SocialMediaIcons />
+            <div className='flex flex-row my-10 gap-5 w-full'>
+              <PresentationTopics 
+                icon={ StepForward } 
+                title='Continuar visitando Portfólio'
+                description='Conheça os meus melhores projetos nesta seção'
+                actionRoute={ () => route.push("/projetos") }
+              />
+              <PresentationTopics 
+                icon={ FileDown } 
+                title='Baixar meu Currículo'
+                description='Gostaria de baixar o meu currículo no formato clássico?'
+                actionRoute={ () => route.push("/projetos") }
+              />
+            </div>
+          </div>
       </section>
       {
         openModal != null ? null : <Navbar />
