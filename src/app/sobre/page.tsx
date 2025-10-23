@@ -34,6 +34,7 @@ import GitLogo from "../../assets/Logos/Git-logo.png";
 import JestLogo from "../../assets/Logos/jest-logo.png";
 import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.png";
 import VueLogo from "../../assets/Logos/vue-js-512.png";
+import AwsLogo from "../../assets/Logos/aws_logo.png";
 import PUCLogo from "../../assets/Instituicoes/pucsp-logo.png";
 import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.png";
@@ -328,6 +329,12 @@ export default function Sobre(){
                 <Bubble image={ VueLogo } alt='Vue.js' />
               </a>
               <Tooltip id="vue-tip" />
+            </>
+            <>
+              <a data-tooltip-id="aws-tip" data-tooltip-content="Ferramenta de DevOps - AWS">
+                <Bubble image={ AwsLogo } alt='Amazon Web Services' />
+              </a>
+              <Tooltip id="aws-tip" />
             </>
           </div>
           <div className='flex flex-row justify-center items-center gap-2 mt-16'>

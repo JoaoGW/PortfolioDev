@@ -11,13 +11,13 @@ export function Bubble({ image, alt, size = 140, imgSize }: BubbleProps){
   return(
     <div className="relative inline-block animate-float hover:cursor-pointer">
       <div 
-        className="relative rounded-full backdrop-blur-md bg-white/10 border border-white/20 overflow-hidden"
+        className="relative rounded-full backdrop-blur-md bg-white/5 border border-white/10 overflow-hidden"
         style={{
           width: `${size}px`,
           height: `${size}px`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-transparent to-transparent" />
         
         <div className="absolute top-[10%] left-[25%] w-[35%] h-[35%] bg-white/40 rounded-full blur-2xl" />
         
