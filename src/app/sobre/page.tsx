@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from 'react';
 import Image from 'next/image';
 
 import { motion } from "motion/react";
@@ -15,6 +16,8 @@ import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
 import { Bubble } from '@/components/bubble';
 import { SparklesCore } from "@/components/ui/sparkles";
+import { InstitutionCard } from '@/components/institutionCard';
+import { InstitutionModal } from '@/components/institutionModal';
 
 import ProfilePicture from "../../assets/profile.jpg";
 import DockerLogo from "../../assets/Logos/docker-512.png";
@@ -34,9 +37,10 @@ import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.png";
 
 import { CircleAlert } from 'lucide-react';
-import { InstitutionCard } from '@/components/institutionCard';
 
 export default function Sobre(){
+  const [openModal, setOpenModal] = useState<'puc' | 'fiap' | 'harvard' | null>(null);
+
   return(
     <div className="relative min-h-screen">
       <DottedGlowBackground
@@ -54,7 +58,7 @@ export default function Sobre(){
         speedScale={1}
       />
       <HeaderTop />
-      <section className='flex flex-row items-center mt-32 mx-20'>
+      <section className='flex flex-row items-center pt-32 mx-20'>
         <Image
           src={ ProfilePicture }
           alt='Minha Foto de Perfil'
@@ -376,13 +380,13 @@ export default function Sobre(){
           </div>
         </div>
         <div className='flex flex-row justify-center gap-12 mx-24 pb-20'>
-          <InstitutionCard 
+          <InstitutionCard
             institutionLogo={ PUCLogo } 
             institutionAltImage='Logo Instituição PUC-SP' 
             institurionName='PUC-SP' 
             institutionCourse='Ciência da Computação'
             institutionCourseLevel='Graduação / Bacharelado'
-            institurionOpenDetails={ () => {} }
+            institurionOpenDetails={ () => setOpenModal('puc') }
           />
           <InstitutionCard 
             institutionLogo={ FIAPLogo } 
@@ -390,7 +394,7 @@ export default function Sobre(){
             institurionName='FIAP' 
             institutionCourse='Arquitetura de Software'
             institutionCourseLevel='Pós-Graduação'
-            institurionOpenDetails={ () => {} }
+            institurionOpenDetails={ () => setOpenModal('fiap') }
           />
           <InstitutionCard 
             institutionLogo={ HarvardLogo } 
@@ -398,11 +402,187 @@ export default function Sobre(){
             institurionName='Harvard' 
             institutionCourse='CS50'
             institutionCourseLevel='Cursos Complementares'
-            institurionOpenDetails={ () => {} }
+            institurionOpenDetails={ () => setOpenModal('harvard') }
           />
         </div>
+
+        <InstitutionModal
+          isOpen={ openModal === 'puc' }
+          onClose={ () => setOpenModal(null) }
+          institutionLogo={ PUCLogo }
+          institutionName="Pontifícia Universidade Católica de São Paulo (PUC-SP)"
+          courseType="Graduação / Bacharelado"
+          courseName="Ciência da Computação"
+          modality="Presencial"
+          startDate="Fevereiro 2022"
+          endDate="Dezembro 2025"
+          status="Concluído"
+          location="São Paulo, SP"
+          description="Bacharelado em Ciência da Computação com formação sólida em fundamentos teóricos e práticos da computação. O curso teve como foco as áreas de algoritmos, estruturas de dados, engenharia de software, banco de dados, redes de computadores, inteligência artificial e desenvolvimento de sistemas em geral."
+          skills={[
+            'Algoritmos e Estruturas de Dados',
+            'Programação Orientada a Objetos',
+            'Engenharia de Software',
+            'Banco de Dados',
+            'Desenvolvimento Mobile',
+            'Arquitetura de Software',
+            'Sistemas Operacionais',
+            'Redes de Computadores',
+            'Inteligência Artificial',
+            'Metodologias Ágeis'
+          ]}
+          certificates={[
+            {
+              name: 'Diploma de Bacharel em Ciência da Computação',
+              issuedDate: 'Dezembro de 2025',
+              link: ''
+            },
+            {
+              name: 'Instrutor na Oficina de DevOps - FCET2025',
+              issuedDate: 'Outubro de 2025',
+              link: ''
+            },
+            {
+              name: 'Instrutor na Oficina de Desenvolvimento Mobile - FCET2025',
+              issuedDate: 'Outubro de 2025',
+              link: ''
+            },
+            {
+              name: 'Monitor na disciplina de Laboratório de Estruturas Dinâmicas',
+              issuedDate: 'Junho de 2025',
+              link: ''
+            },
+            {
+              name: 'Instrutor na Oficina de Desenvolvimento Web + GitHub - FCET2023',
+              issuedDate: 'Outubro de 2023',
+              link: ''
+            }
+          ]}
+          activities={[
+            {
+              title: 'EZTripAI -  Trabalho de Conclusão de Curso (TCC)',
+              description: 'Projeto voltado a ajudar turistas de todas as partes do mundo a gerarem seu roteiro de viagem e pedirem sugestões em tempo real para a Inteligência Artifical. O modelo de LLM de Inteligência Artifical adotado neste projeto é o GPT3.5-Turbo, utilizamos como base informações do usuário sobre localização, gostos pessoais, horários de abertura dos estabelecimentos e/ou pontos turísticos e informações do clima em tempo real para gerar nossas recomendações automatizadas.',
+              period: '2025'
+            },
+            {
+              title: 'Evolução dos Processadores',
+              description: 'Projeto para a disciplina de Arquitetura de Computadores sobre a Evolução dos Processadores reconhecido e solicitado pela Doutora docente Edith Ranzini como material para as turmas seguintes/futuras',
+              period: '2023'
+            }
+          ]}
+        />
+
+        <InstitutionModal
+          isOpen={ openModal === 'fiap' }
+          onClose={ () => setOpenModal(null) }
+          institutionLogo={ FIAPLogo }
+          institutionName="Faculdade de Informática e Administração Paulistana (FIAP)"
+          courseType="Pós-Graduação"
+          courseName="Software Architecture"
+          modality="EAD"
+          startDate="Fevereiro 2025"
+          status="Em andamento"
+          location="São Paulo, SP"
+          description="Pós-graduação focada em dominar na prática os conhecimentos de desenvolvimento e arquitetura de software para atuar em projetos com altos níveis de complexidade. O curso abrange microsserviços, containers, aplicações serverless, desenvolvimento seguro e muito mais, preparando para criar soluções escaláveis e resolver desafios reais do mercado."
+          skills={[
+            'Domain-Driven Design (DDD)',
+            'Arquitetura de Software',
+            'Qualidade de Software',
+            'Desenvolvimento Seguro',
+            'Docker e Containerização',
+            'Clean Architecture',
+            'DevOps (CI/CD)',
+            'Terraform',
+            'Kubernetes',
+            'OpenTelemetry',
+            'API Gateway',
+            'Serverless Architecture',
+            'Neo4j e Grafos',
+            'Arquitetura de Microsserviços',
+            'SAGA Pattern',
+            'Resiliência em Microsserviços',
+            'Service Mesh'
+          ]}
+          certificates={[
+            {
+              name: 'Nenhum Certificado foi Emitido até o momento',
+              issuedDate: '',
+              link: ''
+            }
+          ]}
+          activities={[
+            {
+              title: 'Nenhuma Atividade',
+              description: 'Por enquanto ainda estou na fase teórica. Não tive atividades até o dado momento.',
+              period: ''
+            }
+          ]}
+        />
+
+        <InstitutionModal
+          isOpen={ openModal === 'harvard' }
+          onClose={ () => setOpenModal(null) }
+          institutionLogo={ HarvardLogo }
+          institutionName="Harvard University"
+          courseType="Cursos Complementares"
+          courseName="CS50 - Introduction to Computer Science"
+          modality="EAD"
+          startDate="2025"
+          endDate="2026"
+          status="Concluído"
+          location="Online"
+          description="Curso introdutório de Ciência da Computação de Harvard. Serve como um complemento e revisão geral ao meu bacharelado principal realizado na PUC-SP. Introdução às áreas intelectuais da ciência da computação e à programação. Ensina a pensar algoritmicamente e resolver problemas de forma eficiente."
+          skills={[
+            'Pensamento Algorítmico',
+            'Resolução de Problemas',
+            'C Programming',
+            'Python',
+            'SQL',
+            'JavaScript',
+            'HTML & CSS',
+            'Estruturas de Dados',
+            'Algoritmos',
+            'Abstração',
+            'Encapsulamento',
+            'Gerenciamento de Recursos',
+            'Segurança de Software',
+            'Engenharia de Software',
+            'Desenvolvimento Web'
+          ]}
+          certificates={[
+            {
+              name: 'CS50x Verified Certificate',
+              issuedDate: '2026',
+              link: ''
+            }
+          ]}
+          activities={[
+            {
+              title: 'Final Project',
+              description: 'Desenvolvimento e apresentação de projeto final próprio, aplicando todos os conhecimentos adquiridos ao longo do curso para resolver um problema real.',
+              period: '2026'
+            },
+            {
+              title: 'Domínios do Mundo Real',
+              description: 'Trabalho com problem sets inspirados em domínios reais como biologia, criptografia, finanças, forense e jogos.',
+              period: '2026'
+            },
+            {
+              title: 'Problem Sets - Programação em C',
+              description: 'Resolução de conjuntos de problemas abordando conceitos fundamentais de programação em C, incluindo algoritmos, memória e estruturas de dados.',
+              period: '2025'
+            },
+            {
+              title: 'Problem Sets - Python, SQL e JavaScript',
+              description: 'Desenvolvimento de soluções em múltiplas linguagens, trabalhando com bancos de dados, desenvolvimento web e aplicações práticas.',
+              period: '2025'
+            }
+          ]}
+        />
       </section>
-      <Navbar />
+      {
+        openModal != null ? null : <Navbar />
+      }
     </div>
   )
 }
