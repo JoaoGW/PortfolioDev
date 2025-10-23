@@ -104,64 +104,64 @@ export default function Sobre(){
               </p>
             </div>
             <div className='flex flex-row gap-4 mt-6 items-center'>
-              <div className='group relative cursor-pointer'>
-                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+              <div className='group/icon relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl' />
                 <Image
                   src={ NodeLogo }
                   width={70}
                   height={70}
                   alt='Logo Node.js'
-                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                  className='relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10'
                 />
               </div>
-              <div className='group relative cursor-pointer'>
-                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+              <div className='group/icon relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl' />
                 <Image
                   src={ ReactLogo }
                   width={70}
                   height={70}
                   alt='Logo React'
-                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                  className='relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10'
                 />
               </div>
-              <div className='group relative cursor-pointer'>
-                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+              <div className='group/icon relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl' />
                 <Image
                   src={ NextjsLogo }
                   width={70}
                   height={70}
                   alt='Logo Next.js'
-                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                  className='relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10'
                 />
               </div>
-              <div className='group relative cursor-pointer'>
-                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+              <div className='group/icon relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl' />
                 <Image
                   src={ DockerLogo }
                   width={70}
                   height={70}
                   alt='Logo Docker'
-                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                  className='relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10'
                 />
               </div>
-              <div className='group relative cursor-pointer'>
-                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+              <div className='group/icon relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl' />
                 <Image
                   src={ MongodbLogo }
                   width={70}
                   height={70}
                   alt='Logo MongoDB'
-                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                  className='relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10'
                 />
               </div>
-              <div className='group relative cursor-pointer'>
-                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl' />
+              <div className='group/icon relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl' />
                 <Image
                   src={ TypeScriptLogo }
                   width={70}
                   height={70}
                   alt='Logo TypeScript'
-                  className='relative transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover:bg-white/10'
+                  className='relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10'
                 />
               </div>
             <span className='text-white text-xl font-semibold'>... dentre muitos outros</span>
@@ -595,7 +595,7 @@ export default function Sobre(){
                 icon={ FileDown } 
                 title='Baixar meu Currículo'
                 description='Gostaria de baixar o meu currículo no formato clássico?'
-                actionRoute={ () => route.push("/projetos") }
+                actionRoute={ () => {} }
               />
             </div>
           </div>
