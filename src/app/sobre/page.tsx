@@ -12,10 +12,12 @@ import { Tooltip } from 'react-tooltip';
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { LampContainer } from "@/components/ui/lamp";
+import { PointerHighlight } from "@/components/ui/pointer-highlight";
+import { GlareCard } from "@/components/ui/glare-card";
+import { SparklesCore } from "@/components/ui/sparkles";
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
 import { Bubble } from '@/components/bubble';
-import { SparklesCore } from "@/components/ui/sparkles";
 import { InstitutionCard } from '@/components/institutionCard';
 import { InstitutionModal } from '@/components/institutionModal';
 import { SocialMediaIcons } from '@/components/socialMediaIcons';
@@ -25,7 +27,7 @@ import ProfilePicture from "../../assets/profile.jpg";
 import DockerLogo from "../../assets/Logos/docker-512.png";
 import NodeLogo from "../../assets/Logos/logo-node-js-512.png";
 import ReactLogo from "../../assets/Logos/logo-react-512.png";
-import NextjsLogo from "../../assets/Logos/next-js-logo.png";
+import NextjsLogo from "../../assets/Logos/next-js-logo.webp";
 import TypeScriptLogo from "../../assets/Logos/typescript-512.png";
 import MongodbLogo from "../../assets/Logos/mongodb-512.png";
 import KotlinLogo from "../../assets/Logos/kotlin_logo.png";
@@ -38,18 +40,21 @@ import AwsLogo from "../../assets/Logos/aws_logo.png";
 import PUCLogo from "../../assets/Instituicoes/pucsp-logo.png";
 import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.png";
+import CultiLogo from "../../assets/Empresas/cultivare_logo.jpg";
 
 import { CircleAlert, FileDown, StepForward } from 'lucide-react';
+import { EnterpriseModal } from '@/components/enterpriseModal';
 
 export default function Sobre(){
   const [openModal, setOpenModal] = useState<'puc' | 'fiap' | 'harvard' | null>(null);
+  const [experienceCard, setExperienceCard] = useState<'culti' | null>(null);
   const route = useRouter();
 
   return(
     <div className="relative min-h-screen">
       <HeaderTop />
       <HeroHighlight>
-        <section className='flex flex-row items-center pt-32 pt-16 mx-20'>
+        <section className='flex flex-row items-center pt-32 pb-16 mx-20'>
           <Image
             src={ ProfilePicture }
             alt='Minha Foto de Perfil'
@@ -294,7 +299,7 @@ export default function Sobre(){
             </>
             <>
               <a data-tooltip-id="nextjs-tip" data-tooltip-content="Framework - Next.js">
-                <Bubble image={ NextjsLogo } imgSize={ 175 } alt='Next.js' />
+                <Bubble image={ NextjsLogo }  alt='Next.js' />
               </a>
               <Tooltip id="nextjs-tip" />
             </>
@@ -339,7 +344,12 @@ export default function Sobre(){
           </div>
           <div className='flex flex-row justify-center items-center gap-2 mt-16'>
             <CircleAlert color='#FFF' size={35} />
-            <span className='text-white font-bold'>Passe o mouse por cima das bolhas para conferir os nomes das tecnologias, se necessário.</span>
+            <PointerHighlight 
+              rectangleClassName="bg-neutral-200 dark:bg-neutral-700 border-neutral-300 dark:border-neutral-600"
+              pointerClassName="text-yellow-500"
+            >
+              <span className='text-white font-bold relative z-10'>Passe o mouse por cima das bolhas para conferir os nomes das tecnologias, se necessário.</span>
+            </PointerHighlight>
           </div>
         </LampContainer>
       </section>
@@ -578,8 +588,104 @@ export default function Sobre(){
           ]}
         />
       </section>
-      <section className='pb-28'>
-        <h5
+      <section className='pt-16 pb-16'>
+        <motion.h5
+          initial={{ opacity: 0.5, x: -200 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "circInOut",
+          }}
+          className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
+          style={{
+            WebkitTextStroke: '2px rgba(114, 191, 106, 0.3)',
+            textShadow: '0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)'
+          }}
+        >
+          EXPERIÊNCIA
+        </motion.h5>
+        <div className='flex flex-row justify-center gap-4 items-center mt-8'>
+          <GlareCard className="flex flex-col items-center justify-center" expandCard={ () => setExperienceCard('culti') }>
+            <Image
+              src={ CultiLogo }
+              width={200}
+              height={200}
+              alt='Logo da Cultivare: Prevenção e Promoção de Saúde'
+            />
+          </GlareCard>
+
+          <EnterpriseModal
+            isOpen={ experienceCard === 'culti' }
+            onClose={ () => setExperienceCard(null) }
+            companyLogo={ CultiLogo }
+            companyName="Cultivare Prevenção e Promoção da Saúde"
+            role="Engenheiro de Software"
+            employmentType="Estágio"
+            remuneration="Não Remunerado"
+            startDate="Julho de 2024"
+            endDate="Dezembro de 2025"
+            duration="1 ano e 7 meses"
+            location="São Paulo, São Paulo, Brasil · Híbrido"
+            description="Engenheiro responsável pela implementação do Docker com Contêineres ao sistema interno. Desenvolvedor do Sistema de Apoio à Decisão Médica. Utilizei ferramentas de desenvolvimento front-end (NextJS e Tailwind CSS), manipulação, criação e armazenamento de dados (SQL) e validação de informações (Zod)."
+            responsibilities={[
+              {
+                title: 'Sistema de Apoio à Decisão Médica',
+                description: 'Desenvolvedor do Sistema de Apoio à Decisão Médica. Utilizei ferramentas de desenvolvimento front-end (NextJS e Tailwind CSS), manipulação, criação e armazenamento de dados (SQL) e validação de informações (Zod).',
+                achievements: []
+              },
+              {
+                title: 'Implementação de Docker com Contêineres',
+                description: 'Engenheiro responsável pela implementação do Docker com Contêineres ao sistema interno, otimizando o ambiente de desenvolvimento e deploy.',
+                achievements: []
+              },
+              {
+                title: 'Redefinição de Processos',
+                description: 'Trabalhei no desenvolvimento de processos de Redefinição de Senha, Criptografia, Cadastro de Usuários e Organizações Médicas.',
+                achievements: [
+                  'Melhorei a eficiência em 90%, dado que estes três processos eram feitos de forma manual anteriormente',
+                  'Implementei Layout UI/UX e Loading System da aplicação'
+                ]
+              },
+              {
+                title: 'Dashboard de Mapas Interativos',
+                description: 'Arquiteto do Dashboard dos Mapas Interativos das Doenças Tropicais Negligenciadas.',
+                achievements: [
+                  'Coloquei todos os requisitos em mapas, tirando assim um projeto que estava no papel há quase 1 ano'
+                ]
+              },
+              {
+                title: 'Gerenciamento de Dados',
+                description: 'Gerenciamento e manipulação de bibliotecas indexadas, tabelas, bases de dados e banco de conhecimento.',
+                achievements: []
+              },
+              {
+                title: 'Otimização de Processos',
+                description: 'Desenvolvimento de estruturas, processos e rotinas que otimizem a alimentação, consulta e sistematização das informações disponibilizadas.',
+                achievements: []
+              }
+            ]}
+            technologies={[
+              { name: 'Next.js', category: 'frontend' },
+              { name: 'React', category: 'frontend' },
+              { name: 'TypeScript', category: 'frontend' },
+              { name: 'Tailwind CSS', category: 'frontend' },
+              { name: 'Docker', category: 'tools' },
+              { name: 'SQL', category: 'database' },
+              { name: 'Zod', category: 'backend' },
+              { name: 'Git', category: 'tools' }
+            ]}
+            achievements={[
+              'Melhoria de 90% na eficiência de processos que anteriormente eram manuais',
+              'Implementação completa de sistema de autenticação e criptografia',
+              'Desenvolvimento de Dashboard de Mapa Interativo das Doenças Tropicais Negligenciadas que estava parado há quase 1 ano',
+              'Containerização do sistema interno com Docker'
+            ]}
+          />
+        </div>
+      </section>
+      <section className='pb-28 pt-14 bg-slate-900'>
+        <h6
           className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
           style={{
             WebkitTextStroke: '2px rgba(114, 191, 106, 0.3)',
@@ -587,7 +693,7 @@ export default function Sobre(){
           }}
         >
           INTERESSADO?
-        </h5>
+        </h6>
         <p className='text-center text-2xl font-semibold mt-3'>Veja o que mais você pode encontrar sobre mim</p>
           <div className='flex flex-col items-center justify-center my-8 mx-auto w-[75%]'>
             <SocialMediaIcons />
@@ -608,7 +714,11 @@ export default function Sobre(){
           </div>
       </section>
       {
-        openModal != null ? null : <Navbar />
+        openModal != null 
+          ? null 
+          : experienceCard != null 
+            ? null 
+            : <Navbar />
       }
     </div>
   )
