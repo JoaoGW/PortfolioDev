@@ -484,7 +484,7 @@ export default function Sobre(){
           isOpen={ openModal === 'fiap' }
           onClose={ () => setOpenModal(null) }
           institutionLogo={ FIAPLogo }
-          institutionName="Faculdade de Informática e Administração Paulistana (FIAP)"
+          institutionName="Faculdade de Informática e Administração Paulista (FIAP)"
           courseType="Pós-Graduação"
           courseName="Software Architecture"
           modality="EAD"

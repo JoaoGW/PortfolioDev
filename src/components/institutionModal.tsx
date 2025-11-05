@@ -84,7 +84,7 @@ export function InstitutionModal({
 
   const statusColors = {
     Concluído: 'bg-green-500/20 text-green-400 border-green-500/30',
-    'Em andamento': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    'Em andamento': 'bg-blue-500/20 text-white border-blue-500/30',
     Trancado: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
   };
 
