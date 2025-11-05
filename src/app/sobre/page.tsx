@@ -700,14 +700,14 @@ export default function Sobre(){
             <div className='flex flex-row my-10 gap-5 w-full'>
               <PresentationTopics 
                 icon={ StepForward } 
-                title='Continuar visitando Portfólio'
-                description='Conheça os meus melhores projetos nesta seção'
+                title='Continuar a visita ao meu Portfólio'
+                description='Conheça os meus melhores projetos práticos nesta próxima seção'
                 actionRoute={ () => route.push("/projetos") }
               />
               <PresentationTopics 
                 icon={ FileDown } 
                 title='Baixar meu Currículo'
-                description='Gostaria de baixar o meu currículo no formato clássico?'
+                description='Gostaria de baixar o meu currículo no formato clássico? (PDF)'
                 actionRoute={ () => {} }
               />
             </div>
