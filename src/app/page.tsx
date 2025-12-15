@@ -14,10 +14,14 @@ type typingWordsTypes = {
   text: string
 }
 
+type curriculumFileTypes = {
+  fileUrl: string,
+  fileName: string
+}
+
 export default function Home() {
   const router = useRouter();
 
-  const [showPresentationModal, setShowPresentationModal] = useState<boolean>(false);
   const [AnimatedBackground, setAnimatedBackground] = useState<any>(null);
   const typingWords: typingWordsTypes[] = [
     {
@@ -35,7 +39,32 @@ export default function Home() {
     {
       text: "Full-Stack"
     }
-  ]
+  ];
+
+  const handleDownload = async ({ fileUrl, fileName }: curriculumFileTypes) => {
+    try {
+      const response = await fetch(fileUrl);
+      if(!response.ok) {
+        throw new Error("Erro na resposta da requisição");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", fileName);
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      window.URL.revokeObjectURL(url);
+    }catch(error){
+      console.error("Erro no Download: ", error);
+      alert("Ocorreu um erro ao baixar o currículo PDF");
+    }
+  }
 
   useEffect(() => {
     const loadAnimatedBackground = async () => {
@@ -105,7 +134,12 @@ export default function Home() {
           <Button
             className="bg-white dark:bg-slate-700 text-black dark:text-white border-neutral-200 dark:border-slate-800 gap-2"
             borderRadius="1.75rem"
-            onClick={ () => {} }
+            onClick={() => 
+              handleDownload({ 
+                fileName: "Desenvolvedor Full-Stack  João Pedro do Carmo Ribeiro",
+                fileUrl: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf"
+              }) 
+            }
           >
             <FileDown color='#FFF' />
             Baixar Currículo
