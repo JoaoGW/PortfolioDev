@@ -30,13 +30,14 @@ import ReactLogo from "../../assets/Logos/logo-react-512.png";
 import NextjsLogo from "../../assets/Logos/next-js-logo.webp";
 import TypeScriptLogo from "../../assets/Logos/typescript-512.png";
 import MongodbLogo from "../../assets/Logos/mongodb-512.png";
-import KotlinLogo from "../../assets/Logos/kotlin_logo.png";
+import PythonLogo from "../../assets/Logos/python_logo.png";
 import FirebaseLogo from "../../assets/Logos/firebase-logo.png";
 import GitLogo from "../../assets/Logos/Git-logo.png";
 import JestLogo from "../../assets/Logos/jest-logo.png";
 import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.png";
 import VueLogo from "../../assets/Logos/vue-js-512.png";
 import AwsLogo from "../../assets/Logos/aws_logo.png";
+import GoogleCloudLogo from "../../assets/Logos/googlecloud_logo.png";
 import PUCLogo from "../../assets/Instituicoes/pucsp-logo.png";
 import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.png";
@@ -268,16 +269,16 @@ export default function Sobre(){
               <Tooltip id="typescript-tip" />
             </>
             <>
-              <a data-tooltip-id="kotlin-tip" data-tooltip-content="Linguagem de Programação - Kotlin">
-                <Bubble image={ KotlinLogo } imgSize={ 200 } alt='Kotlin' />
-              </a>
-              <Tooltip id="kotlin-tip" />
-            </>
-            <>
               <a data-tooltip-id="javascript-tip" data-tooltip-content="Linguagem de Programação - JavaScript">
                 <Bubble image={ JavaScriptLogo } alt='JavaScript' />
               </a>
               <Tooltip id="javascript-tip" />
+            </>
+            <>
+              <a data-tooltip-id="python-tip" data-tooltip-content="Linguagem de Programação - Python">
+                <Bubble image={ PythonLogo } imgSize={ 80 } alt='Python' />
+              </a>
+              <Tooltip id="python-tip" />
             </>
             <>
               <a data-tooltip-id="nodejs-tip" data-tooltip-content="Ambiente de Execução - Node.js">
@@ -336,10 +337,16 @@ export default function Sobre(){
               <Tooltip id="vue-tip" />
             </>
             <>
-              <a data-tooltip-id="aws-tip" data-tooltip-content="Ferramenta de DevOps - AWS">
+              <a data-tooltip-id="aws-tip" data-tooltip-content="Ferramenta de DevOps - Amazon Web Services">
                 <Bubble image={ AwsLogo } alt='Amazon Web Services' />
               </a>
               <Tooltip id="aws-tip" />
+            </>
+            <>
+              <a data-tooltip-id="googlecloud-tip" data-tooltip-content="Ferramenta de DevOps - Google Cloud Platform">
+                <Bubble image={ GoogleCloudLogo } alt='Google Cloud Platform' />
+              </a>
+              <Tooltip id="googlecloud-tip" />
             </>
           </div>
           <div className='flex flex-row justify-center items-center gap-2 mt-16'>
