@@ -217,7 +217,7 @@ export default function Sobre(){
       </section>
       </HeroHighlight>
       <section className='bg-slate-900'>
-        <TextHoverEffect text='SOBRE'/>
+        <TextHoverEffect text='SOBRE' size="xtralarge"/>
         <div className='mx-20 mt-[-80] pb-16 text-center'>
           <span className='text-center text-3xl font-bold'>Desenvolvedor de Software | Desenvolvedor Mobile | Cientista da Computação</span>
           <p className='mt-5 text-lg'>
