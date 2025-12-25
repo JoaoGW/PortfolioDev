@@ -1,9 +1,10 @@
 'use client';
-
 import { useEffect } from 'react';
+
 import Image, { StaticImageData } from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Briefcase, MapPin, Calendar, Code, Users, Award, ChevronRight } from 'lucide-react';
+
+import { X, Briefcase, MapPin, Calendar, Code, Users, ChevronRight } from 'lucide-react';
 
 type Responsibility = {
   title: string;
@@ -95,7 +96,7 @@ export function EnterpriseModal({
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      { isOpen && (
         <>
           <motion.div
             initial={{ opacity: 0 }}
@@ -103,7 +104,7 @@ export function EnterpriseModal({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
-            onClick={onClose}
+            onClick={ onClose }
           />
 
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
@@ -113,16 +114,15 @@ export function EnterpriseModal({
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: 'spring', duration: 0.5 }}
               className="relative w-full max-w-5xl max-h-[90vh] bg-slate-950 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto border border-slate-800"
-              onClick={(e) => e.stopPropagation()}
+              onClick={ (e) => e.stopPropagation() }
             >
-              {/* Header com gradiente profissional */}
               <div className="relative h-52 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 p-8 border-b border-slate-800">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#72BF6A]/10 to-[#0096C7]/10" />
                 
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
-                  onClick={onClose}
+                  onClick={ onClose }
                   className="absolute top-4 right-4 p-2 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors border border-white/10"
                 >
                   <X className="w-6 h-6 text-white" />
@@ -136,8 +136,8 @@ export function EnterpriseModal({
                     className="w-28 h-28 bg-white rounded-xl shadow-2xl p-3 flex items-center justify-center border border-slate-200"
                   >
                     <Image
-                      src={companyLogo}
-                      alt={companyName}
+                      src={ companyLogo }
+                      alt={ companyName }
                       className="object-contain max-w-full max-h-full"
                     />
                   </motion.div>
@@ -149,7 +149,7 @@ export function EnterpriseModal({
                       transition={{ delay: 0.3 }}
                       className="text-3xl font-bold text-white mb-2"
                     >
-                      {companyName}
+                      { companyName }
                     </motion.h2>
                     <motion.p
                       initial={{ opacity: 0, x: -20 }}
@@ -157,7 +157,7 @@ export function EnterpriseModal({
                       transition={{ delay: 0.35 }}
                       className="text-xl text-slate-300 font-semibold mb-3"
                     >
-                      {role}
+                      { role }
                     </motion.p>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -166,19 +166,17 @@ export function EnterpriseModal({
                       className="flex flex-wrap gap-2"
                     >
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${employmentTypeColors[employmentType]} border backdrop-blur-sm`}>
-                        {employmentType}
+                        { employmentType }
                       </span>
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${remunerationColors[remuneration]}`}>
-                        {remuneration}
+                        { remuneration }
                       </span>
                     </motion.div>
                   </div>
                 </div>
               </div>
 
-              {/* Conteúdo scrollável */}
               <div className="overflow-y-auto max-h-[calc(90vh-13rem)] p-8 space-y-6">
-                {/* Informações básicas */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -211,8 +209,7 @@ export function EnterpriseModal({
                   </div>
                 </motion.div>
 
-                {/* Descrição */}
-                {description && (
+                { description && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -223,52 +220,7 @@ export function EnterpriseModal({
                   </motion.div>
                 )}
 
-                {/* Responsabilidades e Conquistas */}
-                {responsibilities.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 }}
-                    className="space-y-4"
-                  >
-                    <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                      <Users className="w-5 h-5 text-[#72BF6A]" />
-                      Responsabilidades e Realizações
-                    </h3>
-                    <div className="space-y-4">
-                      {responsibilities.map((resp, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.8 + index * 0.1 }}
-                          className="p-5 bg-slate-900/50 rounded-lg border border-slate-800 hover:border-[#72BF6A]/30 transition-all group"
-                        >
-                          <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
-                            <ChevronRight className="w-4 h-4 text-[#72BF6A] group-hover:translate-x-1 transition-transform" />
-                            {resp.title}
-                          </h4>
-                          <p className="text-sm text-slate-400 leading-relaxed mb-3 ml-6">
-                            {resp.description}
-                          </p>
-                          {resp.achievements && resp.achievements.length > 0 && (
-                            <ul className="space-y-1.5 ml-6">
-                              {resp.achievements.map((achievement, idx) => (
-                                <li key={idx} className="text-sm text-slate-400 flex items-start gap-2">
-                                  <span className="text-[#0096C7] mt-1.5 text-xs">▪</span>
-                                  <span>{achievement}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Tecnologias e Ferramentas */}
-                {technologies.length > 0 && (
+                { technologies.length > 0 && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -280,44 +232,58 @@ export function EnterpriseModal({
                       Tecnologias e Ferramentas
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      {technologies.map((tech, index) => (
+                      { technologies.map((tech, index) => (
                         <motion.span
                           key={index}
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 1.0 + index * 0.03 }}
-                          className={`px-3 py-2 rounded-lg text-sm font-medium border ${techCategoryColors[tech.category]} hover:scale-105 transition-transform`}
+                          className={`px-3 py-2 rounded-lg text-sm font-medium border ${ techCategoryColors[tech.category] } hover:scale-105 transition-transform`}
                         >
-                          {tech.name}
+                          { tech.name }
                         </motion.span>
                       ))}
                     </div>
                   </motion.div>
                 )}
 
-                {/* Conquistas gerais */}
-                {achievements.length > 0 && (
+                { responsibilities.length > 0 && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.0 }}
-                    className="space-y-3"
+                    transition={{ delay: 0.7 }}
+                    className="space-y-4"
                   >
                     <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                      <Award className="w-5 h-5 text-amber-400" />
-                      Principais Conquistas
+                      <Users className="w-5 h-5 text-[#72BF6A]" />
+                      Responsabilidades e Realizações
                     </h3>
-                    <div className="space-y-2">
-                      {achievements.map((achievement, index) => (
+                    <div className="space-y-4">
+                      { responsibilities.map((resp, index) => (
                         <motion.div
                           key={index}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 1.1 + index * 0.1 }}
-                          className="flex items-start gap-3 p-4 bg-gradient-to-r from-amber-500/5 to-transparent rounded-lg border border-amber-500/20"
+                          transition={{ delay: 0.8 + index * 0.1 }}
+                          className="p-5 bg-slate-900/50 rounded-lg border border-slate-800 hover:border-[#72BF6A]/30 transition-all group"
                         >
-                          <span className="text-amber-400 mt-0.5">✦</span>
-                          <p className="text-sm text-slate-300 leading-relaxed">{achievement}</p>
+                          <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
+                            <ChevronRight className="w-4 h-4 text-[#72BF6A] group-hover:translate-x-1 transition-transform" />
+                            { resp.title }
+                          </h4>
+                          <p className="text-sm text-slate-400 leading-relaxed mb-3 ml-6">
+                            { resp.description }
+                          </p>
+                          {resp.achievements && resp.achievements.length > 0 && (
+                            <ul className="space-y-1.5 ml-6">
+                              {resp.achievements.map((achievement, idx) => (
+                                <li key={idx} className="text-sm text-slate-400 flex items-start gap-2">
+                                  <span className="text-[#0096C7] mt-1.5 text-xs">▪</span>
+                                  <span>{achievement}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </motion.div>
                       ))}
                     </div>

@@ -94,7 +94,7 @@ export default function Sobre(){
           <div className='flex flex-col ml-24'>
             <div className='flex flex-row mb-6 items-center gap-2'>
               <span className='text-[#72BF6A] font-bold text-2xl'>{"<span>"}</span>
-              <span className='font-semibold text-xl'>Olá, meu nome é João Pedro</span>
+              <span className='font-semibold text-xl'>Olá, meu nome é João Pedro Ribeiro</span>
               <span className='text-[#72BF6A] font-bold text-2xl'>{"</span>"}</span>
             </div>
             <div className='flex flex-col'>
@@ -378,12 +378,14 @@ export default function Sobre(){
               </a>
               <Tooltip id="vue-tip" />
             </>
-            <>
-              <a data-tooltip-id="aws-tip" data-tooltip-content="Ferramenta de DevOps - Amazon Web Services">
-                <Bubble image={ AwsLogo } alt='Amazon Web Services' />
-              </a>
-              <Tooltip id="aws-tip" />
-            </>
+            { /* 
+              <>
+                <a data-tooltip-id="aws-tip" data-tooltip-content="Ferramenta de DevOps - Amazon Web Services">
+                  <Bubble image={ AwsLogo } alt='Amazon Web Services' />
+                </a>
+                <Tooltip id="aws-tip" />
+              </>
+            */ }
             <>
               <a data-tooltip-id="googlecloud-tip" data-tooltip-content="Ferramenta de DevOps - Google Cloud Platform">
                 <Bubble image={ GoogleCloudLogo } alt='Google Cloud Platform' />
