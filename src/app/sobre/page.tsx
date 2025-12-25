@@ -46,10 +46,40 @@ import CultiLogo from "../../assets/Empresas/cultivare_logo.jpg";
 import { CircleAlert, FileDown, StepForward } from 'lucide-react';
 import { EnterpriseModal } from '@/components/enterpriseModal';
 
+type curriculumFileTypes = {
+  fileUrl: string,
+  fileName: string
+}
+
 export default function Sobre(){
   const [openModal, setOpenModal] = useState<'puc' | 'fiap' | 'harvard' | null>(null);
   const [experienceCard, setExperienceCard] = useState<'culti' | null>(null);
   const route = useRouter();
+
+  const handleDownload = async ({ fileUrl, fileName }: curriculumFileTypes) => {
+    try {
+      const response = await fetch(fileUrl);
+      if(!response.ok) {
+        throw new Error("Erro na resposta da requisição");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", fileName);
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      window.URL.revokeObjectURL(url);
+    }catch(error){
+      console.error("Erro no Download: ", error);
+      alert("Ocorreu um erro ao baixar o currículo PDF");
+    }
+  }
 
   return(
     <div className="relative min-h-screen">
@@ -106,7 +136,7 @@ export default function Sobre(){
             <div className='flex flex-row mt-6'>
               <p className='font-semibold text-xl'>
                 <span className='text-[#72BF6A] font-bold text-2xl mr-2'>{"<p>"}</span>
-                Graduado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP). Tenho experiência relevante com Frameworks Web <Highlight className='text-white'>(Next.js e React)</Highlight>, Desenvolvimento de Apps Híbridos <Highlight className='text-white'>(Android e iOS)</Highlight>, além de conhecimento em práticas e ferramentas de DevOps <Highlight className='text-white'>(Git, AWS, entre outros)</Highlight>.
+                Graduado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP). Tenho experiência profissional com Frameworks Web <Highlight className='text-white'>(Next.js e React)</Highlight>, Desenvolvimento de Apps Híbridos <Highlight className='text-white'>(Android e iOS)</Highlight>, além de conhecimento em práticas e ferramentas de DevOps <Highlight className='text-white'>(Git, AWS, GCP, entre outros)</Highlight>.
                 <span className='text-[#72BF6A] font-bold text-2xl ml-2'>{"</p>"}</span>
               </p>
             </div>
@@ -171,6 +201,16 @@ export default function Sobre(){
                   className='relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10'
                 />
               </div>
+              <div className='group/icon relative cursor-pointer'>
+                <div className='absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl' />
+                <Image
+                  src={ PythonLogo }
+                  width={70}
+                  height={70}
+                  alt='Logo Python'
+                  className='relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10'
+                />
+              </div>
             <span className='text-white text-xl font-semibold'>... dentre muitos outros</span>
           </div>
         </div>
@@ -181,7 +221,7 @@ export default function Sobre(){
         <div className='mx-20 mt-[-80] pb-16 text-center'>
           <span className='text-center text-3xl font-bold'>Desenvolvedor de Software | Desenvolvedor Mobile | Cientista da Computação</span>
           <p className='mt-5 text-lg'>
-            Profissional formado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP) e atualmente 
+            Profissional formado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP) e em breve 
             cursando pós-graduação em Arquitetura de Software na FIAP. Apaixonado por tecnologia, inovação e resolução de problemas 
             complexos, tenho como foco o desenvolvimento de soluções escaláveis, intuitivas e de alto desempenho. 
             Meu perfil é proativo e analítico, com forte capacidade de adaptação, aprendizado contínuo e sempre com trabalho em equipe.
@@ -191,42 +231,42 @@ export default function Sobre(){
               Principais Competências
             </h3>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-5xl mx-auto'>
-              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#72BF6A]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,191,106,0.15)]'>
+              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#72BF6A]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,191,106,0.15)] hover:cursor-pointer'>
                 <div className='absolute inset-0 bg-gradient-to-br from-[#72BF6A]/5 to-[#0096C7]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                 <div className='flex items-center gap-3 relative z-10'>
                   <div className='w-2 h-2 rounded-full bg-gradient-to-r from-[#72BF6A] to-[#0096C7] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse' />
                   <span className='text-slate-200 font-medium leading-relaxed'>Desenvolvimento de software e arquitetura de sistemas</span>
                 </div>
               </div>
-              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#0096C7]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)]'>
+              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#0096C7]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)] hover:cursor-pointer'>
                 <div className='absolute inset-0 bg-gradient-to-br from-[#0096C7]/5 to-[#72BF6A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                 <div className='flex items-center gap-3 relative z-10'>
                   <div className='w-2 h-2 rounded-full bg-gradient-to-r from-[#0096C7] to-[#72BF6A] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse' />
                   <span className='text-slate-200 font-medium leading-relaxed'>Integração de sistemas e otimização de processos</span>
                 </div>
               </div>
-              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#72BF6A]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,191,106,0.15)]'>
+              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#72BF6A]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,191,106,0.15)] hover:cursor-pointer'>
                 <div className='absolute inset-0 bg-gradient-to-br from-[#72BF6A]/5 to-[#0096C7]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                 <div className='flex items-center gap-3 relative z-10'>
                   <div className='w-2 h-2 rounded-full bg-gradient-to-r from-[#72BF6A] to-[#0096C7] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse' />
                   <span className='text-slate-200 font-medium leading-relaxed'>Experiência em suporte e resolução de problemas técnicos</span>
                 </div>
               </div>
-              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#0096C7]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)]'>
+              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#0096C7]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)] hover:cursor-pointer'>
                 <div className='absolute inset-0 bg-gradient-to-br from-[#0096C7]/5 to-[#72BF6A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                 <div className='flex items-center gap-3 relative z-10'>
                   <div className='w-2 h-2 rounded-full bg-gradient-to-r from-[#0096C7] to-[#72BF6A] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse' />
                   <span className='text-slate-200 font-medium leading-relaxed'>Análise e melhoria da experiência do usuário</span>
                 </div>
               </div>
-              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#72BF6A]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,191,106,0.15)]'>
+              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#72BF6A]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,191,106,0.15)] hover:cursor-pointer'>
                 <div className='absolute inset-0 bg-gradient-to-br from-[#72BF6A]/5 to-[#0096C7]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                 <div className='flex items-center gap-3 relative z-10'>
                   <div className='w-2 h-2 rounded-full bg-gradient-to-r from-[#72BF6A] to-[#0096C7] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse' />
                   <span className='text-slate-200 font-medium leading-relaxed'>Colaboração interdisciplinar e metodologias ágeis (Scrum)</span>
                 </div>
               </div>
-              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#0096C7]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)]'>
+              <div className='group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#0096C7]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)] hover:cursor-pointer'>
                 <div className='absolute inset-0 bg-gradient-to-br from-[#0096C7]/5 to-[#72BF6A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                 <div className='flex items-center gap-3 relative z-10'>
                   <div className='w-2 h-2 rounded-full bg-gradient-to-r from-[#0096C7] to-[#72BF6A] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse' />
@@ -235,12 +275,14 @@ export default function Sobre(){
               </div>
             </div>
           </div>
-          <p className='text-lg'>
-            Complementarmente, realizei cursos de Ciência da Computação e Desenvolvimento de Software pela Universidade de Harvard, 
-            reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem 
-            a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação, eficiência e excelência 
-            técnica, contribuindo para projetos que unem propósito, impacto e evolução contínua.
-          </p>
+          <div className="flex items-center justify-center">
+            <p className="text-lg max-w-[75%] text-center">
+              Complementarmente, realizo cursos de Ciência da Computação e Desenvolvimento de Software pela Universidade de Harvard, 
+              reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem 
+              a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação e eficiência 
+              contribuindo para projetos que unem propósito, impacto e evolução contínua.
+            </p>
+          </div>
         </div>
       </section>
       <section>
@@ -403,6 +445,7 @@ export default function Sobre(){
             institutionCourseLevel='Graduação / Bacharelado'
             institurionOpenDetails={ () => setOpenModal('puc') }
           />
+          { /*
           <InstitutionCard 
             institutionLogo={ FIAPLogo } 
             institutionAltImage='Logo Instituição FIAP' 
@@ -411,6 +454,7 @@ export default function Sobre(){
             institutionCourseLevel='Pós-Graduação'
             institurionOpenDetails={ () => setOpenModal('fiap') }
           />
+          */ }
           <InstitutionCard 
             institutionLogo={ HarvardLogo } 
             institutionAltImage='Logo Instituição Harvard' 
@@ -485,8 +529,10 @@ export default function Sobre(){
               period: '2023'
             }
           ]}
+          headerBgColor="#284fc4"
         />
 
+        { /* 
         <InstitutionModal
           isOpen={ openModal === 'fiap' }
           onClose={ () => setOpenModal(null) }
@@ -496,7 +542,7 @@ export default function Sobre(){
           courseName="Software Architecture"
           modality="EAD"
           startDate="Fevereiro 2025"
-          status="Em andamento"
+          status="Andamento"
           location="São Paulo, SP"
           description="Pós-graduação focada em dominar na prática os conhecimentos de desenvolvimento e arquitetura de software para atuar em projetos com altos níveis de complexidade. O curso abrange microsserviços, containers, aplicações serverless, desenvolvimento seguro e muito mais, preparando para criar soluções escaláveis e resolver desafios reais do mercado."
           skills={[
@@ -533,6 +579,7 @@ export default function Sobre(){
             }
           ]}
         />
+        */ }
 
         <InstitutionModal
           isOpen={ openModal === 'harvard' }
@@ -544,7 +591,7 @@ export default function Sobre(){
           modality="EAD"
           startDate="2025"
           endDate="2026"
-          status="Concluído"
+          status="Cursando"
           location="Online"
           description="Curso introdutório de Ciência da Computação de Harvard. Serve como um complemento e revisão geral ao meu bacharelado principal realizado na PUC-SP. Introdução às áreas intelectuais da ciência da computação e à programação. Ensina a pensar algoritmicamente e resolver problemas de forma eficiente."
           skills={[
@@ -554,7 +601,7 @@ export default function Sobre(){
             'Python',
             'SQL',
             'JavaScript',
-            'HTML & CSS',
+            'HTML e CSS',
             'Estruturas de Dados',
             'Algoritmos',
             'Abstração',
@@ -564,35 +611,9 @@ export default function Sobre(){
             'Engenharia de Software',
             'Desenvolvimento Web'
           ]}
-          certificates={[
-            {
-              name: 'CS50x Verified Certificate',
-              issuedDate: '2026',
-              link: ''
-            }
-          ]}
-          activities={[
-            {
-              title: 'Final Project',
-              description: 'Desenvolvimento e apresentação de projeto final próprio, aplicando todos os conhecimentos adquiridos ao longo do curso para resolver um problema real.',
-              period: '2026'
-            },
-            {
-              title: 'Domínios do Mundo Real',
-              description: 'Trabalho com problem sets inspirados em domínios reais como biologia, criptografia, finanças, forense e jogos.',
-              period: '2026'
-            },
-            {
-              title: 'Problem Sets - Programação em C',
-              description: 'Resolução de conjuntos de problemas abordando conceitos fundamentais de programação em C, incluindo algoritmos, memória e estruturas de dados.',
-              period: '2025'
-            },
-            {
-              title: 'Problem Sets - Python, SQL e JavaScript',
-              description: 'Desenvolvimento de soluções em múltiplas linguagens, trabalhando com bancos de dados, desenvolvimento web e aplicações práticas.',
-              period: '2025'
-            }
-          ]}
+          certificates={[]}
+          activities={[]}
+          headerBgColor="#af8f25"
         />
       </section>
       <section className='pt-16 pb-16'>
@@ -632,61 +653,63 @@ export default function Sobre(){
             remuneration="Não Remunerado"
             startDate="Julho de 2024"
             endDate="Dezembro de 2025"
-            duration="1 ano e 7 meses"
+            duration="1 ano e 6 meses"
             location="São Paulo, São Paulo, Brasil · Híbrido"
-            description="Engenheiro responsável pela implementação do Docker com Contêineres ao sistema interno. Desenvolvedor do Sistema de Apoio à Decisão Médica. Utilizei ferramentas de desenvolvimento front-end (NextJS e Tailwind CSS), manipulação, criação e armazenamento de dados (SQL) e validação de informações (Zod)."
+            description="Desenvolvedor integrante do time de uma aplicação Web SaaS para a área da saúde, com público-alvo voltado a profissionais e instituições de saúde. Utilizei tecnologias como Next.js, React, TypeScript, JavaScript, HTML, CSS, Node.js, MySQL e práticas DevOps."
             responsibilities={[
               {
-                title: 'Sistema de Apoio à Decisão Médica',
-                description: 'Desenvolvedor do Sistema de Apoio à Decisão Médica. Utilizei ferramentas de desenvolvimento front-end (NextJS e Tailwind CSS), manipulação, criação e armazenamento de dados (SQL) e validação de informações (Zod).',
+                title: 'Desenvolvimento de Aplicação Web SaaS',
+                description: 'Integrando o time de desenvolvimento de uma aplicação Web SaaS para a área da saúde utilizando tecnologias como Next.js, React, TypeScript, JavaScript, HTML e CSS, sendo o público alvo profissionais da saúde e instituições de saúde.',
                 achievements: []
               },
               {
-                title: 'Implementação de Docker com Contêineres',
-                description: 'Engenheiro responsável pela implementação do Docker com Contêineres ao sistema interno, otimizando o ambiente de desenvolvimento e deploy.',
+                title: 'Implementação e Manutenção de APIs REST',
+                description: 'Participação na implementação e manutenção de APIs REST com Node.js, integrando o Front End e o Back-End em uma arquitetura orientada a serviços.',
                 achievements: []
               },
               {
-                title: 'Redefinição de Processos',
-                description: 'Trabalhei no desenvolvimento de processos de Redefinição de Senha, Criptografia, Cadastro de Usuários e Organizações Médicas.',
+                title: 'Modelagem e Persistência de Dados',
+                description: 'Modelagem, criação e persistência de dados em MySQL utilizando SQL.',
+                achievements: []
+              },
+              {
+                title: 'Desenvolvimento de Funcionalidades Críticas',
+                description: 'Auxílio no desenvolvimento de funcionalidades importantes como o cadastro de usuários, organizações médicas, redefinição de senha e a criptografia de dados sensíveis.',
+                achievements: []
+              },
+              {
+                title: 'Validação de Dados',
+                description: 'Validação de dados no Front-End e Back-End utilizando Zod, reduzindo as inconsistências e possíveis erros de entrada.',
+                achievements: []
+              },
+              {
+                title: 'Práticas DevOps',
+                description: 'Implementação, sob supervisão do time, de práticas DevOps com Docker e automações de CI/CD do GitHub Workflows, otimizando o fluxo de desenvolvimento e deploy.',
                 achievements: [
-                  'Melhorei a eficiência em 90%, dado que estes três processos eram feitos de forma manual anteriormente',
-                  'Implementei Layout UI/UX e Loading System da aplicação'
+                  'Redução de até 50% do tempo gasto dos desenvolvedores com debugs desnecessários'
                 ]
-              },
-              {
-                title: 'Dashboard de Mapas Interativos',
-                description: 'Arquiteto do Dashboard dos Mapas Interativos das Doenças Tropicais Negligenciadas.',
-                achievements: [
-                  'Coloquei todos os requisitos em mapas, tirando assim um projeto que estava no papel há quase 1 ano'
-                ]
-              },
-              {
-                title: 'Gerenciamento de Dados',
-                description: 'Gerenciamento e manipulação de bibliotecas indexadas, tabelas, bases de dados e banco de conhecimento.',
-                achievements: []
-              },
-              {
-                title: 'Otimização de Processos',
-                description: 'Desenvolvimento de estruturas, processos e rotinas que otimizem a alimentação, consulta e sistematização das informações disponibilizadas.',
-                achievements: []
               }
             ]}
             technologies={[
               { name: 'Next.js', category: 'frontend' },
               { name: 'React', category: 'frontend' },
               { name: 'TypeScript', category: 'frontend' },
-              { name: 'Tailwind CSS', category: 'frontend' },
-              { name: 'Docker', category: 'tools' },
-              { name: 'SQL', category: 'database' },
+              { name: 'JavaScript', category: 'frontend' },
+              { name: 'HTML', category: 'frontend' },
+              { name: 'CSS', category: 'frontend' },
+              { name: 'Node.js', category: 'backend' },
+              { name: 'MySQL', category: 'database' },
               { name: 'Zod', category: 'backend' },
+              { name: 'Docker', category: 'tools' },
+              { name: 'GitHub Workflows (CI/CD)', category: 'tools' },
               { name: 'Git', category: 'tools' }
             ]}
             achievements={[
-              'Melhoria de 90% na eficiência de processos que anteriormente eram manuais',
-              'Implementação completa de sistema de autenticação e criptografia',
-              'Desenvolvimento de Dashboard de Mapa Interativo das Doenças Tropicais Negligenciadas que estava parado há quase 1 ano',
-              'Containerização do sistema interno com Docker'
+              'Integração do Front-End e Back-End em arquitetura orientada a serviços',
+              'Desenvolvimento de funcionalidades críticas como cadastro de usuários, organizações médicas e redefinição de senha',
+              'Implementação da criptografia de dados sensíveis',
+              'Redução de inconsistências através de validação de dados com Zod',
+              'Otimização do fluxo de desenvolvimento com práticas DevOps, reduzindo em até 50% o tempo gasto com debugs desnecessários'
             ]}
           />
         </div>
@@ -715,7 +738,12 @@ export default function Sobre(){
                 icon={ FileDown } 
                 title='Baixar meu Currículo'
                 description='Gostaria de baixar o meu currículo no formato clássico? (PDF)'
-                actionRoute={ () => {} }
+                actionRoute={ () => 
+                  handleDownload({ 
+                    fileName: "Desenvolvedor Full-Stack  João Pedro do Carmo Ribeiro",
+                    fileUrl: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf"
+                  }) 
+                }
               />
             </div>
           </div>

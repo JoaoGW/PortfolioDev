@@ -9,33 +9,34 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, GraduationCap, MapPin, Calendar, Award, BookOpen, ExternalLink } from 'lucide-react';
 
 type Certificate = {
-  name: string;
-  issuedDate: string;
-  link?: string;
+  name: string,
+  issuedDate: string,
+  link?: string
 };
 
 type Activity = {
-  title: string;
-  description: string;
-  period?: string;
+  title: string,
+  description: string,
+  period?: string
 };
 
 type InstitutionModalProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  institutionLogo: StaticImageData;
-  institutionName: string;
-  courseType: string;
-  courseName: string;
-  modality: 'Presencial' | 'EAD' | 'Híbrido';
-  startDate: string;
-  endDate?: string;
-  status: 'Concluído' | 'Em andamento' | 'Trancado';
-  location?: string;
-  description?: string;
-  certificates?: Certificate[];
-  activities?: Activity[];
-  skills?: string[];
+  isOpen: boolean,
+  onClose: () => void,
+  institutionLogo: StaticImageData,
+  institutionName: string,
+  courseType: string,
+  courseName: string,
+  modality: 'Presencial' | 'EAD' | 'Híbrido',
+  startDate: string,
+  endDate?: string,
+  status: 'Concluído' | 'Andamento' | 'Cursando',
+  location?: string,
+  description?: string,
+  certificates?: Certificate[],
+  activities?: Activity[],
+  skills?: string[]
+  headerBgColor?: string
 };
 
 export function InstitutionModal({
@@ -54,6 +55,7 @@ export function InstitutionModal({
   certificates = [],
   activities = [],
   skills = [],
+  headerBgColor
 }: InstitutionModalProps) {
   useEffect(() => {
     if (isOpen) {
@@ -84,8 +86,8 @@ export function InstitutionModal({
 
   const statusColors = {
     Concluído: 'bg-green-500/20 text-green-400 border-green-500/30',
-    'Em andamento': 'bg-blue-500/20 text-white border-blue-500/30',
-    Trancado: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
+    Andamento: 'bg-blue-500/20 text-white border-blue-500/30',
+    Cursando: 'bg-transparent text-white border-white'
   };
 
   return (
@@ -100,7 +102,6 @@ export function InstitutionModal({
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
             onClick={ onClose }
           />
-
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -110,7 +111,7 @@ export function InstitutionModal({
               className="relative w-full max-w-4xl max-h-[90vh] bg-slate-950 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto border border-slate-800"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative h-48 bg-gradient-to-br from-[#72BF6A] to-[#0096C7] p-8">
+              <div className="relative h-48 p-8" style={{ backgroundColor: headerBgColor }}>
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
@@ -153,7 +154,7 @@ export function InstitutionModal({
                         {modality}
                       </span>
                       <span className={`px-3 py-1 rounded-full text-sm font-semibold border ${statusColors[status]}`}>
-                        {status}
+                        { status === 'Andamento' ? "Em andamento" : status }
                       </span>
                     </motion.div>
                   </div>
