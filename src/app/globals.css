@@ -31,3 +31,25 @@ body {
 .playwrite {
   font-family: 'Playwrite DE SAS', cursive;
 }
+
+@layer utilities {
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 15px;
+  }
+
+  *::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #4a4949;
+    border-radius: 100vh;
+    border: 2px solid #081138;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgb(28, 28, 28);
+  }
+}
