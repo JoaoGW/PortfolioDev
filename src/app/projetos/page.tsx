@@ -5,6 +5,7 @@ import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { TechFilterButton } from "@/components/techFilterButton";
+import { ProjectCard } from "@/components/projectCard";
 
 import ReactLogo from "../../assets/Logos/logo-react-512.png";
 import ReactNativeLogo from "../../assets/Logos/react-native_logo.png";
@@ -17,9 +18,10 @@ import ExpoLogo from "../../assets/Logos/expo_logo.png";
 import NodeJSLogo from "../../assets/Logos/logo-node-js-512.png";
 import GCPLogo from "../../assets/Logos/googlecloud_logo.png";
 import MongoDBLogo from "../../assets/Logos/mongodb-512.png";
+import EZTripBG from "../../assets/Projetos/tourist-8183867.svg"
 
 export default function Projetos(){
-  const [activeFilter, setActiveFilter] = useState<string>();
+  const [activeFilter, setActiveFilter] = useState<string>("");
 
   return(
     <div>
@@ -43,7 +45,16 @@ export default function Projetos(){
           <TechFilterButton techLogo={ GCPLogo } techName="GCP" filterAction={ () => setActiveFilter("") } />
           <TechFilterButton techLogo={ MongoDBLogo } techName="MongoDB" filterAction={ () => setActiveFilter("") } />
         </div>
-        <div></div>
+        <div>
+          <ProjectCard 
+            cardTitlte="Guia Turístico com IA"
+            cardDescription="Aplicativo mobile para ajudar viajantes a explorarem o mundo de forma inteligente e personalizada.
+            Integra tecnologias modernas como Inteligência Artificial na API da OpenAI e Firebase."
+            bgImageUrl={ EZTripBG }
+            hoverImageurl={ ReactNativeLogo }
+            imageCredits="Image by Igor Podobriy from Pixabay"
+          />
+        </div>
       </section>
 
       <Navbar />
