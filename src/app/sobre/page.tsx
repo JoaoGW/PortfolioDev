@@ -22,6 +22,9 @@ import { InstitutionCard } from '@/components/institutionCard';
 import { InstitutionModal } from '@/components/institutionModal';
 import { SocialMediaIcons } from '@/components/socialMediaIcons';
 import { PresentationTopics } from '@/components/presentationTopics';
+import { EnterpriseModal } from '@/components/enterpriseModal';
+import { TracingBeam } from '@/components/ui/tracing-beam';
+import WorldMap from "@/components/ui/world-map";
 
 import ProfilePicture from "../../assets/profile.jpg";
 import DockerLogo from "../../assets/Logos/docker-512.png";
@@ -44,8 +47,6 @@ import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.png";
 import CultiLogo from "../../assets/Empresas/cultivare_logo.jpg";
 
 import { CircleAlert, FileDown, StepForward } from 'lucide-react';
-import { EnterpriseModal } from '@/components/enterpriseModal';
-import { TracingBeam } from '@/components/ui/tracing-beam';
 
 type curriculumFileTypes = {
   fileUrl: string,
@@ -223,7 +224,7 @@ export default function Sobre(){
           <div className='mx-20 mt-[-80] pb-16 text-center'>
             <span className='text-center text-3xl font-bold'>Desenvolvedor de Software | Desenvolvedor Mobile | Cientista da Computação</span>
             <p className='mt-5 text-lg'>
-              Profissional formado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP) e em breve 
+              Profissional formado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP) e
               cursando pós-graduação em Arquitetura de Software na FIAP. Apaixonado por tecnologia, inovação e resolução de problemas 
               complexos, tenho como foco o desenvolvimento de soluções escaláveis, intuitivas e de alto desempenho. 
               Meu perfil é proativo e analítico, com forte capacidade de adaptação, aprendizado contínuo e sempre com trabalho em equipe.
@@ -449,7 +450,6 @@ export default function Sobre(){
               institutionCourseLevel='Graduação / Bacharelado'
               institurionOpenDetails={ () => setOpenModal('puc') }
             />
-            { /*
             <InstitutionCard 
               institutionLogo={ FIAPLogo } 
               institutionAltImage='Logo Instituição FIAP' 
@@ -458,7 +458,6 @@ export default function Sobre(){
               institutionCourseLevel='Pós-Graduação'
               institurionOpenDetails={ () => setOpenModal('fiap') }
             />
-            */ }
             <InstitutionCard 
               institutionLogo={ HarvardLogo } 
               institutionAltImage='Logo Instituição Harvard' 
@@ -536,7 +535,6 @@ export default function Sobre(){
             headerBgColor="#284fc4"
           />
 
-          { /* 
           <InstitutionModal
             isOpen={ openModal === 'fiap' }
             onClose={ () => setOpenModal(null) }
@@ -582,8 +580,8 @@ export default function Sobre(){
                 period: ''
               }
             ]}
+            headerBgColor="#e51859"
           />
-          */ }
 
           <InstitutionModal
             isOpen={ openModal === 'harvard' }
@@ -645,6 +643,7 @@ export default function Sobre(){
                 height={200}
                 alt='Logo da Cultivare: Prevenção e Promoção de Saúde'
               />
+              <span className='text-center mt-5 uppercase font-bold text-2xl'>Estagiário</span>
             </GlareCard>
 
             <EnterpriseModal
@@ -718,7 +717,75 @@ export default function Sobre(){
             />
           </div>
         </section>
-        <section className='pt-14 pb-8 bg-slate-900'>
+        <section className='bg-slate-900'>
+          <div className=" py-16">
+            <div className="max-w-7xl mx-auto text-center">
+              <motion.h5
+                initial={{ opacity: 0.5, x: 200 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.8,
+                  ease: "circInOut",
+                }}
+                className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
+                style={{
+                  WebkitTextStroke: '2px rgba(114, 191, 106, 0.3)',
+                  textShadow: '0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)'
+                }}
+              >
+                BRASIL & EUROPA
+              </motion.h5>
+              <p className="text-sm md:text-lg text-neutral-500 max-w-3xl mx-auto py-4">
+                Graças a minha dupla nacionalidade, estou disponível para trabalhar livremente e sem necessidade de documentações
+                extras tanto no Brasil quanto no Continente Europeu
+              </p>
+              <WorldMap
+                dots={[
+                  {
+                    start: {
+                      lat: -39.5505,
+                      lng: -46.6333,
+                    }, // São Paulo
+                    end: {
+                      lat: -38.9068,
+                      lng: -43.1729,
+                    }, // Rio de Janeiro
+                  },
+                  {
+                    start: { lat: -39.5505, lng: -46.6333 }, // São Paulo
+                    end: { lat: 32.8566, lng: 2.3522 }, // Paris
+                  },
+                  {
+                    start: { lat: -38.9068, lng: -43.1729 }, // Rio de Janeiro
+                    end: { lat: 35.5074, lng: -0.1278 }, // London
+                  },
+                  {
+                    start: { lat: 32.8566, lng: 2.3522 }, // Paris
+                    end: { lat: 36.52, lng: 13.405 }, // Berlin
+                  },
+                  {
+                    start: { lat: 35.5074, lng: -0.1278 }, // London
+                    end: { lat: 36.3676, lng: 4.9041 }, // Amsterdam
+                  },
+                  {
+                    start: { lat: 36.3676, lng: 4.9041 }, // Amsterdam
+                    end: { lat: 34.8503, lng: 4.3517 }, // Brussels
+                  },
+                  {
+                    start: { lat: 34.8503, lng: 4.3517 }, // Brussels
+                    end: { lat: 22.7223, lng: -9.1393 }, // Lisbon
+                  },
+                  {
+                    start: { lat: 22.7223, lng: -9.1393 }, // Lisbon
+                    end: { lat: 25.1579, lng: -8.6291 }, // Porto
+                  },
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+        <section className='pt-14 pb-8'>
           <h6
             className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
             style={{
