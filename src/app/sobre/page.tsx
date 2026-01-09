@@ -779,7 +779,7 @@ export default function Sobre(){
                   {
                     start: { lat: 22.7223, lng: -9.1393 }, // Lisbon
                     end: { lat: 25.1579, lng: -8.6291 }, // Porto
-                  },
+                  }
                 ]}
               />
             </div>
