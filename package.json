@@ -27,7 +27,7 @@
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.23.26",
     "nativewind": "^4.1.23",
-    "next": "15.5.5",
+    "next": "^16.1.6",
     "react": "19.1.0",
     "react-aria": "^3.33.0",
     "react-dom": "19.1.0",
