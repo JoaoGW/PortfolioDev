@@ -124,7 +124,7 @@ export default function Home() {
         <TypewriterWordsEffect words={ typingWords }/>
         <div className='flex flex-row mt-10 gap-10'>
           <Button
-            className="bg-white dark:bg-slate-700 text-black dark:text-white border-neutral-200 dark:border-slate-800 gap-3"
+            className="bg-[#171717f0] gap-3"
             borderRadius="1.75rem"
             onClick={ () => router.push("/sobre") }
           >
@@ -132,7 +132,7 @@ export default function Home() {
             Conhecer Perfil
           </Button>
           <Button
-            className="bg-white dark:bg-slate-700 text-black dark:text-white border-neutral-200 dark:border-slate-800 gap-2"
+            className="bg-[#171717f0] gap-2"
             borderRadius="1.75rem"
             onClick={() => 
               handleDownload({ 
