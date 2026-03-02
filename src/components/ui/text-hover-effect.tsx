@@ -5,11 +5,19 @@ import { motion } from "motion/react";
 export const TextHoverEffect = ({
   text,
   duration,
+  size = "large",
 }: {
   text: string;
   duration?: number;
   automatic?: boolean;
+  size?: "small" | "medium" | "large" | "xtralarge";
 }) => {
+  const textSizeClasses = {
+    small: "text-4xl",
+    medium: "text-5xl",
+    large: "text-5.5xl",
+    xtralarge: "text-7xl",
+  };
   const svgRef = useRef<SVGSVGElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
@@ -93,7 +101,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
+        className={`fill-transparent stroke-neutral-200 font-[helvetica] ${textSizeClasses[size]} font-bold dark:stroke-neutral-800`}
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {text}
@@ -104,7 +112,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
+        className={`fill-transparent stroke-neutral-200 font-[helvetica] ${textSizeClasses[size]} font-bold dark:stroke-neutral-800`}
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{
           strokeDashoffset: 0,
@@ -125,7 +133,7 @@ export const TextHoverEffect = ({
         stroke="url(#textGradient)"
         strokeWidth="0.3"
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-7xl font-bold"
+        className={`fill-transparent font-[helvetica] ${textSizeClasses[size]} font-bold`}
       >
         {text}
       </text>

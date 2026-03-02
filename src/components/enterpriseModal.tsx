@@ -116,8 +116,8 @@ export function EnterpriseModal({
               className="relative w-full max-w-5xl max-h-[90vh] bg-slate-950 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto border border-slate-800"
               onClick={ (e) => e.stopPropagation() }
             >
-              <div className="relative h-52 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 p-8 border-b border-slate-800">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#72BF6A]/10 to-[#0096C7]/10" />
+              <div className="relative h-52 bg-slate-950 px-8 pb-8 pt-12">
+                <div className="absolute inset-0 bg-gray-900" />
                 
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 90 }}
