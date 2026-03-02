@@ -1,63 +1,96 @@
 "use client";
+import Link from "next/link";
+import { StaticImageData } from "next/image";
+
+import { ArrowUpRight } from "lucide-react";
+
 import { cn } from "@/lib/utils";
-import { StaticImageData } from 'next/image';
 
 type ProjectCardTypes = {
-  cardTitlte: string,
-  cardDescription: string,
-  bgImageUrl: StaticImageData | string,
-  hoverImageurl: StaticImageData | string,
-  imageCredits: string,
-  technologies?: string[]
-}
+  cardTitlte: string;
+  cardDescription: string;
+  bgImageUrl: StaticImageData | string;
+  hoverImageurl?: StaticImageData | string;
+  imageCredits: string;
+  technologies?: string[];
+  projectUrl: string;
+};
 
-export function ProjectCard({ cardTitlte, cardDescription, bgImageUrl, hoverImageurl, imageCredits, technologies = [] }: ProjectCardTypes) {
-  const bgImage = typeof bgImageUrl === 'string' ? bgImageUrl : bgImageUrl.src;
-  const hoverImage = typeof hoverImageurl === 'string' ? hoverImageurl : hoverImageurl.src;
+export function ProjectCard({
+  cardTitlte,
+  cardDescription,
+  bgImageUrl,
+  imageCredits,
+  technologies = [],
+  projectUrl,
+}: ProjectCardTypes) {
+  const bgImage = typeof bgImageUrl === "string" ? bgImageUrl : bgImageUrl.src;
 
   return (
-    <div className="max-w-xs w-full">
+    <Link
+      href={projectUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block w-[320px] h-[420px] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-2xl shrink-0"
+    >
       <div
         className={cn(
-          "group w-full cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl mx-auto flex flex-col justify-end p-4 border border-transparent dark:border-neutral-800",
-          "bg-cover bg-center",
-          "transition-all duration-500"
+          "relative w-full h-full rounded-2xl overflow-hidden flex flex-col",
+          "border border-neutral-800 bg-neutral-950",
+          "shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_8px_40px_rgba(0,0,0,0.6)]",
         )}
-        style={{
-          backgroundImage: `url(${bgImage})`
-        }}
       >
-        {/* Overlay escuro permanente para melhorar a legibilidade */}
-        <div className="absolute inset-0 bg-black opacity-60 z-0" />
-        
-        {/* Overlay escuro adicional no hover para não perder o efeito original da biblioteca */}
-        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
-        
-        <div 
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${hoverImage})`
-          }}
-        />
+        {/* Imagem com gradiente na parte inferior */}
+        <div className="relative w-full h-48 overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${bgImage})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
 
-        <div className="text relative z-50">
-          <h1 className="font-bold text-xl md:text-3xl text-gray-50 relative">{ cardTitlte }</h1>
-          <p className="font-normal text-base text-gray-50 relative my-4">{ cardDescription }</p>
-          { technologies.length > 0 && (
-            <div className="flex flex-wrap gap-2 my-3">
-              { technologies.map((tech, index) => (
-                <span 
-                  key={ index }
-                  className="px-3 py-1 text-xs font-semibold text-white bg-slate-800 border border-slate-600 rounded-full"
-                >
-                  { tech }
-                </span>
-              ))}
+          {/* Badge de crédito da imagem */}
+          <span className="absolute bottom-2 right-3 text-[10px] text-neutral-500 z-10">
+            {imageCredits}
+          </span>
+        </div>
+
+        {/* Conteúdo */}
+        <div className="px-5 pb-5 pt-1 flex flex-col flex-1 gap-3">
+          {/* Cabeçalho: título + ícone de link */}
+          <div className="flex items-start justify-between gap-2">
+            <h2 className="text-lg font-bold text-white leading-snug tracking-tight">
+              {cardTitlte}
+            </h2>
+            <span className="mt-0.5 shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-neutral-800 border border-neutral-700 text-neutral-300">
+              <ArrowUpRight size={14} />
+            </span>
+          </div>
+
+          {/* Descrição */}
+          <p className="text-sm text-neutral-400 leading-relaxed line-clamp-4 flex-1">
+            {cardDescription}
+          </p>
+
+          {/* Separador */}
+          {technologies.length > 0 && (
+            <div className="pt-1 border-t border-neutral-800">
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {technologies.map((tech, index) => (
+                  <span
+                    key={index}
+                    className={cn(
+                      "px-2.5 py-0.5 text-[11px] font-medium rounded-full",
+                      "bg-neutral-900 border border-neutral-700 text-neutral-300",
+                    )}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           )}
-          <span className="text-xs text-gray-400">{ imageCredits }</span>
         </div>
       </div>
-    </div>
-  )
+    </Link>
+  );
 }
