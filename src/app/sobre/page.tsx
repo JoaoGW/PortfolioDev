@@ -45,6 +45,7 @@ import PUCLogo from "../../assets/Instituicoes/pucsp-logo.png";
 import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.png";
 import CultiLogo from "../../assets/Empresas/cultivare_logo.jpg";
+import FiverrLogo from "../../assets/Empresas/fiverr_logo.jpg";
 
 import { CircleAlert, FileDown, StepForward } from "lucide-react";
 
@@ -57,7 +58,9 @@ export default function Sobre() {
   const [openModal, setOpenModal] = useState<"puc" | "fiap" | "harvard" | null>(
     null,
   );
-  const [experienceCard, setExperienceCard] = useState<"culti" | null>(null);
+  const [experienceCard, setExperienceCard] = useState<
+    "culti" | "fiverr" | null
+  >(null);
   const route = useRouter();
 
   const handleDownload = async ({ fileUrl, fileName }: curriculumFileTypes) => {
@@ -746,6 +749,20 @@ export default function Sobre() {
           <div className="flex flex-row justify-center gap-4 items-center mt-8">
             <GlareCard
               className="flex flex-col items-center justify-center"
+              expandCard={() => setExperienceCard("fiverr")}
+            >
+              <Image
+                src={FiverrLogo}
+                width={200}
+                height={200}
+                alt="Logo da Fiverr: Plataforma de Freelancing"
+              />
+              <span className="text-center mt-5 uppercase font-bold text-2xl">
+                Desenvolvedor Web
+              </span>
+            </GlareCard>
+            <GlareCard
+              className="flex flex-col items-center justify-center"
               expandCard={() => setExperienceCard("culti")}
             >
               <Image
@@ -759,6 +776,56 @@ export default function Sobre() {
               </span>
             </GlareCard>
 
+            <EnterpriseModal
+              isOpen={experienceCard === "fiverr"}
+              onClose={() => setExperienceCard(null)}
+              companyLogo={FiverrLogo}
+              companyName="Fiverr"
+              role="Desenvolvedor Web"
+              employmentType="Freelance"
+              remuneration="Remunerado"
+              startDate="Abril de 2021"
+              endDate="Janeiro de 2024"
+              duration="2 anos e 10 meses"
+              location="Remoto"
+              description="Atuação no desenvolvimento de aplicações Web, com foco estratégico na criação de landing pages performáticas e orientadas a resultados para usuários em diferentes mercados ao redor do mundo."
+              responsibilities={[
+                {
+                  title: "Desenvolvimento de Aplicações Web",
+                  description:
+                    "Integrando o time de desenvolvimento de uma aplicação Web SaaS para a área da saúde utilizando tecnologias como Next.js, React, TypeScript, JavaScript, HTML e CSS, sendo o público alvo profissionais da saúde e instituições de saúde.",
+                  achievements: [],
+                },
+                {
+                  title: "Criação de Landing Pages",
+                  description:
+                    "Landing Pages performáticas e orientadas a resultados para usuários em diferentes mercados ao redor do mundo.",
+                  achievements: [],
+                },
+                {
+                  title: "Práticas DevOps",
+                  description:
+                    "Versionamento de código extremamente organizado e seguindo os padrões da indústria",
+                  achievements: [],
+                },
+                {
+                  title: "Publicação e Deploy de Apps Mobile",
+                  description:
+                    "Publicação e gerenciamento de aplicativos na Google Play Store, atuando em processos de build, versionamento, configuração de ambientes, análise de métricas e melhoria contínua da experiência do usuário final (UX/UI)",
+                  achievements: [],
+                },
+              ]}
+              technologies={[
+                { name: "React", category: "frontend" },
+                { name: "React Native", category: "frontend" },
+                { name: "TypeScript", category: "frontend" },
+                { name: "JavaScript", category: "frontend" },
+                { name: "HTML", category: "frontend" },
+                { name: "CSS", category: "frontend" },
+                { name: "Git", category: "tools" },
+              ]}
+              achievements={[]}
+            />
             <EnterpriseModal
               isOpen={experienceCard === "culti"}
               onClose={() => setExperienceCard(null)}
