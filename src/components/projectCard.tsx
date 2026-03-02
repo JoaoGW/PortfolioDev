@@ -1,14 +1,16 @@
 "use client";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
+
 import { ArrowUpRight } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 
 type ProjectCardTypes = {
   cardTitlte: string;
   cardDescription: string;
   bgImageUrl: StaticImageData | string;
-  hoverImageurl: StaticImageData | string;
+  hoverImageurl?: StaticImageData | string;
   imageCredits: string;
   technologies?: string[];
   projectUrl: string;
@@ -18,7 +20,6 @@ export function ProjectCard({
   cardTitlte,
   cardDescription,
   bgImageUrl,
-  hoverImageurl,
   imageCredits,
   technologies = [],
   projectUrl,
