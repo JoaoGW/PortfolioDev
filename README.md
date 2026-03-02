@@ -61,49 +61,6 @@ Deploy oficial:
 
 ---
 
-## ⚙ Instalação
-
-### 1. Clonar o repositório
-
-No bash:
-
-git clone https://github.com/JoaoGW/PortfolioDev.git
-
-### 2. Acessar o diretório
-
-No bash:
-
-cd PortfolioDev
-
-### 3. Instalar dependências
-
-No bash:
-
-npm install
-
-### 4. Executar em ambiente de desenvolvimento
-
-No bash:
-
-npm run dev
-
-A aplicação estará disponível em:
-
-http://localhost:3000
-
----
-
-## Testes
-
-Atualmente o projeto não possui testes automatizados implementados.  
-Futuras melhorias podem incluir:
-
-- Testes unitários com Jest
-- Testes de componentes com Testing Library
-- Testes E2E com Playwright
-
----
-
 ## Contato
 
 Caso queira entrar em contato:
