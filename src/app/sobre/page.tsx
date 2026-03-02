@@ -793,7 +793,7 @@ export default function Sobre(){
               textShadow: '0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)'
             }}
           >
-            INTERESSADO?
+            INTERESSADO(A)?
           </h6>
           <p className='text-center text-2xl font-semibold mt-3'>Veja o que mais você pode encontrar sobre mim</p>
             <div className='flex flex-col items-center justify-center my-8 mx-auto w-[75%]'>
