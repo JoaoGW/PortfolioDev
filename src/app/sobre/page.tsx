@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
 
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
