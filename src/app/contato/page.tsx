@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef, useEffect, KeyboardEvent } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import * as motion from "motion/react-client";
+import { AnimatePresence } from "motion/react";
 
 import Image from "next/image";
 
