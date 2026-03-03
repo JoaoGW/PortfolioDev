@@ -11,21 +11,21 @@ import { ProjectCard } from "@/components/projectCard";
 
 import { useLanguage } from "@/contexts/language-context";
 
-import ReactLogo from "../../assets/Logos/logo-react-512.png";
-import ReactNativeLogo from "../../assets/Logos/react-native_logo.png";
-import PythonLogo from "../../assets/Logos/python_logo.png";
-import TypeScriptLogo from "../../assets/Logos/typescript-512.png";
-import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.png";
+import ReactLogo from "../../assets/Logos/logo-react-512.webp";
+import ReactNativeLogo from "../../assets/Logos/react-native_logo.webp";
+import PythonLogo from "../../assets/Logos/python_logo.webp";
+import TypeScriptLogo from "../../assets/Logos/typescript-512.webp";
+import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.webp";
 import NextJSLogo from "../../assets/Logos/next-js-logo.webp";
-import VueJSLogo from "../../assets/Logos/vue-js-512.png";
-import ExpoLogo from "../../assets/Logos/expo_logo.png";
-import NodeJSLogo from "../../assets/Logos/logo-node-js-512.png";
-import GCPLogo from "../../assets/Logos/googlecloud_logo.png";
-import MongoDBLogo from "../../assets/Logos/mongodb-512.png";
-import EZTripBG from "../../assets/Projetos/plane-6511878_1920.jpg";
-import SrGeeBG from "../../assets/Projetos/WB_description.png";
-import ZapZap2 from "../../assets/Projetos/whatsapp-2.jpg";
-import CarSalesman from "../../assets/Projetos//carseller.jpg";
+import VueJSLogo from "../../assets/Logos/vue-js-512.webp";
+import ExpoLogo from "../../assets/Logos/expo_logo.webp";
+import NodeJSLogo from "../../assets/Logos/logo-node-js-512.webp";
+import GCPLogo from "../../assets/Logos/googlecloud_logo.webp";
+import MongoDBLogo from "../../assets/Logos/mongodb-512.webp";
+import EZTripBG from "../../assets/Projetos/plane-6511878_1920.webp";
+import SrGeeBG from "../../assets/Projetos/WB_description.webp";
+import ZapZap2 from "../../assets/Projetos/whatsapp-2.webp";
+import CarSalesman from "../../assets/Projetos//carseller.webp";
 
 type TechFilter = {
   logo: StaticImageData;

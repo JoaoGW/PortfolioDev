@@ -12,14 +12,14 @@ export const metadata: Metadata = {
     description:
       "Perfil profissional, formação acadêmica, stack técnica e experiências de João Pedro Ribeiro.",
     url: "/sobre",
-    images: ["/profile.jpg"],
+    images: ["/profile.webp"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sobre | João Pedro Ribeiro",
     description:
       "Perfil profissional, formação acadêmica, stack técnica e experiências de João Pedro Ribeiro.",
-    images: ["/profile.jpg"],
+    images: ["/profile.webp"],
   },
 };
 

@@ -1,55 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-
-import * as motion from "motion/react-client";
-
-import "react-tooltip/dist/react-tooltip.css";
-import { Tooltip } from "react-tooltip";
 
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
-import { LampContainer } from "@/components/ui/lamp";
-import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import { GlareCard } from "@/components/ui/glare-card";
-import { SparklesCore } from "@/components/ui/sparkles";
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
-import { Bubble } from "@/components/bubble";
 import { InstitutionCard } from "@/components/institutionCard";
-import { InstitutionModal } from "@/components/institutionModal";
 import { SocialMediaIcons } from "@/components/socialMediaIcons";
 import { PresentationTopics } from "@/components/presentationTopics";
-import { EnterpriseModal } from "@/components/enterpriseModal";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-import WorldMap from "@/components/ui/world-map";
 
 import { useLanguage } from "@/contexts/language-context";
 
-import ProfilePicture from "../../assets/profile.jpg";
-import DockerLogo from "../../assets/Logos/docker-512.png";
-import NodeLogo from "../../assets/Logos/logo-node-js-512.png";
-import ReactLogo from "../../assets/Logos/logo-react-512.png";
+import ProfilePicture from "../../assets/profile.webp";
+import DockerLogo from "../../assets/Logos/docker-512.webp";
+import NodeLogo from "../../assets/Logos/logo-node-js-512.webp";
+import ReactLogo from "../../assets/Logos/logo-react-512.webp";
 import NextjsLogo from "../../assets/Logos/next-js-logo.webp";
-import TypeScriptLogo from "../../assets/Logos/typescript-512.png";
-import MongodbLogo from "../../assets/Logos/mongodb-512.png";
-import PythonLogo from "../../assets/Logos/python_logo.png";
-import FirebaseLogo from "../../assets/Logos/firebase-logo.png";
-import GitLogo from "../../assets/Logos/Git-logo.png";
-import JestLogo from "../../assets/Logos/jest-logo.png";
-import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.png";
-import VueLogo from "../../assets/Logos/vue-js-512.png";
-import AwsLogo from "../../assets/Logos/aws_logo.png";
-import GoogleCloudLogo from "../../assets/Logos/googlecloud_logo.png";
-import PUCLogo from "../../assets/Instituicoes/pucsp-logo.png";
+import TypeScriptLogo from "../../assets/Logos/typescript-512.webp";
+import MongodbLogo from "../../assets/Logos/mongodb-512.webp";
+import PythonLogo from "../../assets/Logos/python_logo.webp";
+import PUCLogo from "../../assets/Instituicoes/pucsp-logo.webp";
 import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
-import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.png";
-import CultiLogo from "../../assets/Empresas/cultivare_logo.jpg";
-import FiverrLogo from "../../assets/Empresas/fiverr_logo.jpg";
+import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.webp";
+import CultiLogo from "../../assets/Empresas/cultivare_logo.webp";
+import FiverrLogo from "../../assets/Empresas/fiverr_logo.webp";
 
-import { CircleAlert, FileDown, StepForward } from "lucide-react";
+import { FileDown, StepForward } from "lucide-react";
+
+const InstitutionModal = dynamic(
+  () =>
+    import("@/components/institutionModal").then((mod) => mod.InstitutionModal),
+  { ssr: false },
+);
+
+const EnterpriseModal = dynamic(
+  () =>
+    import("@/components/enterpriseModal").then((mod) => mod.EnterpriseModal),
+  { ssr: false },
+);
+
+const DeferredTechStackSection = dynamic(
+  () => import("./_components/deferred-tech-stack-section"),
+  {
+    ssr: false,
+  },
+);
+
+const DeferredAvailabilitySection = dynamic(
+  () => import("./_components/deferred-availability-section"),
+  {
+    ssr: false,
+  },
+);
 
 type curriculumFileTypes = {
   fileUrl: string;
@@ -64,7 +72,24 @@ export default function Sobre() {
   const [experienceCard, setExperienceCard] = useState<
     "culti" | "fiverr" | null
   >(null);
+  const [showTechStackSection, setShowTechStackSection] = useState(false);
+  const [showAvailabilitySection, setShowAvailabilitySection] = useState(false);
   const route = useRouter();
+
+  useEffect(() => {
+    const techStackTimer = window.setTimeout(() => {
+      setShowTechStackSection(true);
+    }, 600);
+
+    const availabilityTimer = window.setTimeout(() => {
+      setShowAvailabilitySection(true);
+    }, 1200);
+
+    return () => {
+      window.clearTimeout(techStackTimer);
+      window.clearTimeout(availabilityTimer);
+    };
+  }, []);
 
   const localizedSobre = {
     pt: {
@@ -805,10 +830,12 @@ export default function Sobre() {
           <Image
             src={ProfilePicture}
             alt="Minha Foto de Perfil"
+            priority
+            sizes="(max-width: 768px) 80vw, 500px"
+            width={500}
+            height={500}
             style={{
               clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
-              width: 500,
-              height: 500,
               objectFit: "cover",
             }}
           />
@@ -825,47 +852,19 @@ export default function Sobre() {
               </span>
             </div>
             <div className="flex flex-col">
-              <motion.span
-                className="font-semibold text-3xl"
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: [20, -5, 0],
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.4, 0.0, 0.2, 1],
-                }}
-              >
+              <span className="font-semibold text-3xl">
                 {messages.about.roleLine1Prefix}{" "}
                 <Highlight className="text-white font-bold text-4xl">
                   {"{ Full-Stack }"}
                 </Highlight>{" "}
                 &
-              </motion.span>
-              <motion.span
-                className="font-semibold text-3xl"
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: [20, -5, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  ease: [0.4, 0.0, 0.2, 1],
-                }}
-              >
+              </span>
+              <span className="font-semibold text-3xl">
                 {messages.about.roleLine2Prefix}{" "}
                 <Highlight className="text-white font-bold text-4xl">
                   {"{ Mobile Full-Stack }"}
                 </Highlight>
-              </motion.span>
+              </span>
             </div>
             <div className="flex flex-row mt-6">
               <p className="font-semibold text-xl">
@@ -1047,178 +1046,15 @@ export default function Sobre() {
             </div>
           </div>
         </section>
-        <section>
-          <LampContainer className="pt-44 pb-16">
-            <motion.h3
-              initial={{ opacity: 0.5, y: 20 }}
-              whileInView={{ opacity: 1, y: -100 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
-              className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
-              style={{
-                WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
-                textShadow:
-                  "0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)",
-              }}
-            >
-              TECH STACK
-            </motion.h3>
-            <div className="flex flex-row justify-evenly gap-6 mt-2">
-              <>
-                <a
-                  data-tooltip-id="typescript-tip"
-                  data-tooltip-content={sobreText.tooltips.typescript}
-                >
-                  <Bubble image={TypeScriptLogo} alt="TypeScript" />
-                </a>
-                <Tooltip id="typescript-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="javascript-tip"
-                  data-tooltip-content={sobreText.tooltips.javascript}
-                >
-                  <Bubble image={JavaScriptLogo} alt="JavaScript" />
-                </a>
-                <Tooltip id="javascript-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="python-tip"
-                  data-tooltip-content={sobreText.tooltips.python}
-                >
-                  <Bubble image={PythonLogo} imgSize={80} alt="Python" />
-                </a>
-                <Tooltip id="python-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="nodejs-tip"
-                  data-tooltip-content={sobreText.tooltips.nodejs}
-                >
-                  <Bubble image={NodeLogo} imgSize={180} alt="Node.js" />
-                </a>
-                <Tooltip id="nodejs-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="react-tip"
-                  data-tooltip-content={sobreText.tooltips.react}
-                >
-                  <Bubble image={ReactLogo} alt="React" />
-                </a>
-                <Tooltip id="react-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="mongodb-tip"
-                  data-tooltip-content={sobreText.tooltips.mongodb}
-                >
-                  <Bubble image={MongodbLogo} alt="MongoDB" />
-                </a>
-                <Tooltip id="mongodb-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="nextjs-tip"
-                  data-tooltip-content={sobreText.tooltips.nextjs}
-                >
-                  <Bubble image={NextjsLogo} alt="Next.js" />
-                </a>
-                <Tooltip id="nextjs-tip" />
-              </>
-            </div>
-            <div className="flex flex-row justify-evenly gap-6 mt-3">
-              <>
-                <a
-                  data-tooltip-id="docker-tip"
-                  data-tooltip-content={sobreText.tooltips.docker}
-                >
-                  <Bubble image={DockerLogo} imgSize={200} alt="Docker" />
-                </a>
-                <Tooltip id="docker-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="firebase-tip"
-                  data-tooltip-content={sobreText.tooltips.firebase}
-                >
-                  <Bubble image={FirebaseLogo} alt="Firebase" />
-                </a>
-                <Tooltip id="firebase-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="git-tip"
-                  data-tooltip-content={sobreText.tooltips.git}
-                >
-                  <Bubble image={GitLogo} alt="Git" />
-                </a>
-                <Tooltip id="git-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="jest-tip"
-                  data-tooltip-content={sobreText.tooltips.jest}
-                >
-                  <Bubble image={JestLogo} alt="Jest" />
-                </a>
-                <Tooltip id="jest-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="vue-tip"
-                  data-tooltip-content={sobreText.tooltips.vue}
-                >
-                  <Bubble image={VueLogo} alt="Vue.js" />
-                </a>
-                <Tooltip id="vue-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="aws-tip"
-                  data-tooltip-content={sobreText.tooltips.aws}
-                >
-                  <Bubble image={AwsLogo} alt="Amazon Web Services" />
-                </a>
-                <Tooltip id="aws-tip" />
-              </>
-              <>
-                <a
-                  data-tooltip-id="googlecloud-tip"
-                  data-tooltip-content={sobreText.tooltips.googlecloud}
-                >
-                  <Bubble image={GoogleCloudLogo} alt="Google Cloud Platform" />
-                </a>
-                <Tooltip id="googlecloud-tip" />
-              </>
-            </div>
-            <div className="flex flex-row justify-center items-center gap-2 mt-16">
-              <CircleAlert color="#FFF" size={35} />
-              <PointerHighlight
-                rectangleClassName="bg-neutral-200 dark:bg-neutral-700 border-neutral-300 dark:border-neutral-600"
-                pointerClassName="text-yellow-500"
-              >
-                <span className="text-white font-bold relative z-10">
-                  {messages.about.techStackHint}
-                </span>
-              </PointerHighlight>
-            </div>
-          </LampContainer>
-        </section>
+        {showTechStackSection ? (
+          <DeferredTechStackSection
+            tooltips={sobreText.tooltips}
+            hint={messages.about.techStackHint}
+          />
+        ) : null}
         <section className="bg-slate-900">
           <div className="h-[28rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
-            <motion.h4
-              initial={{ opacity: 0.5, y: -100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
+            <h4
               className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
               style={{
                 WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
@@ -1227,20 +1063,12 @@ export default function Sobre() {
               }}
             >
               {messages.about.academicTitle}
-            </motion.h4>
+            </h4>
             <div className="w-[40rem] h-40 relative">
               <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#72BF6A] to-transparent h-[2px] w-3/4 blur-sm" />
               <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#72BF6A] to-transparent h-px w-3/4" />
               <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#0096C7] to-transparent h-[5px] w-1/4 blur-sm" />
               <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#0096C7] to-transparent h-px w-1/4" />
-              <SparklesCore
-                background="transparent"
-                minSize={0.4}
-                maxSize={1}
-                particleDensity={1200}
-                className="w-full h-full"
-                particleColor="#FFFFFF"
-              />
               <div className="absolute inset-0 w-full h-full bg-slate-900 [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
             </div>
           </div>
@@ -1328,14 +1156,7 @@ export default function Sobre() {
           />
         </section>
         <section className="pt-16 pb-16">
-          <motion.h5
-            initial={{ opacity: 0.5, x: -200 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{
-              delay: 0.3,
-              duration: 0.8,
-              ease: "circInOut",
-            }}
+          <h5
             className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
             style={{
               WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
@@ -1344,7 +1165,7 @@ export default function Sobre() {
             }}
           >
             {messages.about.experienceTitle}
-          </motion.h5>
+          </h5>
           <div className="flex flex-row justify-center gap-4 items-center mt-8">
             <GlareCard
               className="flex flex-col items-center justify-center"
@@ -1432,74 +1253,12 @@ export default function Sobre() {
             />
           </div>
         </section>
-        <section className="bg-slate-900">
-          <div className=" py-16">
-            <div className="max-w-7xl mx-auto text-center">
-              <motion.h5
-                initial={{ opacity: 0.5, x: 200 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{
-                  delay: 0.3,
-                  duration: 0.8,
-                  ease: "circInOut",
-                }}
-                className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
-                style={{
-                  WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
-                  textShadow:
-                    "0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)",
-                }}
-              >
-                {messages.about.availabilityTitle}
-              </motion.h5>
-              <p className="text-sm md:text-lg text-neutral-500 max-w-3xl mx-auto py-4">
-                {messages.about.availabilityDescription}
-              </p>
-              <WorldMap
-                dots={[
-                  {
-                    start: {
-                      lat: -39.5505,
-                      lng: -46.6333,
-                    }, // São Paulo
-                    end: {
-                      lat: -38.9068,
-                      lng: -43.1729,
-                    }, // Rio de Janeiro
-                  },
-                  {
-                    start: { lat: -39.5505, lng: -46.6333 }, // São Paulo
-                    end: { lat: 32.8566, lng: 2.3522 }, // Paris
-                  },
-                  {
-                    start: { lat: -38.9068, lng: -43.1729 }, // Rio de Janeiro
-                    end: { lat: 35.5074, lng: -0.1278 }, // London
-                  },
-                  {
-                    start: { lat: 32.8566, lng: 2.3522 }, // Paris
-                    end: { lat: 36.52, lng: 13.405 }, // Berlin
-                  },
-                  {
-                    start: { lat: 35.5074, lng: -0.1278 }, // London
-                    end: { lat: 36.3676, lng: 4.9041 }, // Amsterdam
-                  },
-                  {
-                    start: { lat: 36.3676, lng: 4.9041 }, // Amsterdam
-                    end: { lat: 34.8503, lng: 4.3517 }, // Brussels
-                  },
-                  {
-                    start: { lat: 34.8503, lng: 4.3517 }, // Brussels
-                    end: { lat: 22.7223, lng: -9.1393 }, // Lisbon
-                  },
-                  {
-                    start: { lat: 22.7223, lng: -9.1393 }, // Lisbon
-                    end: { lat: 25.1579, lng: -8.6291 }, // Porto
-                  },
-                ]}
-              />
-            </div>
-          </div>
-        </section>
+        {showAvailabilitySection ? (
+          <DeferredAvailabilitySection
+            title={messages.about.availabilityTitle}
+            description={messages.about.availabilityDescription}
+          />
+        ) : null}
         <section className="pt-14 pb-8">
           <h6
             className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"

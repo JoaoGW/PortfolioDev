@@ -26,15 +26,21 @@ export function HeaderTop() {
           href="https://www.linkedin.com/in/jo%C3%A3o-pedro-do-carmo-ribeiro/"
           target="_blank"
           rel="noreferrer"
+          aria-label="LinkedIn de João Pedro Ribeiro"
+          title="LinkedIn"
+          className="mr-8 inline-flex"
         >
-          <button className="mr-8" onClick={() => {}}>
-            <Linkedin />
-          </button>
+          <Linkedin aria-hidden="true" focusable="false" />
         </a>
-        <a href="https://github.com/JoaoGW" target="_blank" rel="noreferrer">
-          <button className="mr-8" onClick={() => {}}>
-            <Github />
-          </button>
+        <a
+          href="https://github.com/JoaoGW"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub de João Pedro Ribeiro"
+          title="GitHub"
+          className="mr-8 inline-flex"
+        >
+          <Github aria-hidden="true" focusable="false" />
         </a>
         <LanguageSelector />
       </div>
