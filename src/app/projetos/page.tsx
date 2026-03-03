@@ -1,12 +1,15 @@
 "use client";
 import { useState } from "react";
 
+import { StaticImageData } from "next/image";
+
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { TechFilterButton } from "@/components/techFilterButton";
 import { ProjectCard } from "@/components/projectCard";
-import { StaticImageData } from "next/image";
+
+import { useLanguage } from "@/contexts/language-context";
 
 import ReactLogo from "../../assets/Logos/logo-react-512.png";
 import ReactNativeLogo from "../../assets/Logos/react-native_logo.png";
@@ -54,9 +57,8 @@ const techFilters: TechFilter[] = [
 
 const projects: Project[] = [
   {
-    cardTitlte: "Guia Turístico com IA",
-    cardDescription:
-      "Aplicativo mobile para ajudar viajantes a explorarem o mundo de forma inteligente e personalizada. Integra tecnologias modernas como Inteligência Artificial na API da OpenAI e Firebase.",
+    cardTitlte: "guideAI",
+    cardDescription: "guideAI",
     bgImageUrl: EZTripBG,
     imageCredits: "Image by Stuart Bailey from Pixabay",
     technologies: [
@@ -71,9 +73,8 @@ const projects: Project[] = [
     projectUrl: "https://github.com/JoaoGW/GuiaTuristico",
   },
   {
-    cardTitlte: "Sr. Gee - Assistente Dev",
-    cardDescription:
-      'Aplicação Web para ajudar Devs a melhoraram seu código com recomendações um tanto quanto "agressivas". Integra as tecnologias da Inteligência Artificial na API da OpenAI e REST API do GitHub.',
+    cardTitlte: "srGee",
+    cardDescription: "srGee",
     bgImageUrl: SrGeeBG,
     imageCredits: "Image by Stuart Bailey from Pixabay",
     technologies: [
@@ -88,18 +89,16 @@ const projects: Project[] = [
     projectUrl: "https://github.com/JoaoGW/SrGee_VirtualAssistant",
   },
   {
-    cardTitlte: "Novo WhatsApp",
-    cardDescription:
-      "Clone melhorado do WhatsApp, utilizando tecnologias como Python, Flask, RabbitMQ, bcrypt, SQL Alchemy e SocketIO.",
+    cardTitlte: "newWhatsapp",
+    cardDescription: "newWhatsapp",
     bgImageUrl: ZapZap2,
     imageCredits: "Image by Portal G1",
     technologies: ["Flask", "Python", "SQL Alchemy", "SQLite", "HTML", "CSS"],
     projectUrl: "https://github.com/JoaoGW/NovoWhatsApp",
   },
   {
-    cardTitlte: "Car Seller",
-    cardDescription:
-      "Um dos meus primeiros projetos de uma webpage para vendas de automoveis de todos os tipos e custos. Feito em VueJS 3",
+    cardTitlte: "carSeller",
+    cardDescription: "carSeller",
     bgImageUrl: CarSalesman,
     imageCredits: "Image by Auto | HowStuffWorks",
     technologies: [
@@ -115,6 +114,7 @@ const projects: Project[] = [
 ];
 
 export default function Projetos() {
+  const { messages } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<string>("");
 
   const filteredProjects = activeFilter
@@ -129,16 +129,15 @@ export default function Projetos() {
     <div>
       <HeaderTop />
       <main>
-        <h1 className="sr-only">Projetos de João Pedro Ribeiro</h1>
+        <h1 className="sr-only">{messages.projects.pageTitle}</h1>
         <section className="mt-[-5] mb-[-160]" aria-hidden="true">
-          <TextHoverEffect text="PROJETOS" size="large" />
+          <TextHoverEffect text={messages.projects.hoverText} size="large" />
         </section>
         <section className="flex flex-col bg-slate-900 p-16 pb-36">
           <h2 className="sr-only">Filtrar projetos por tecnologia</h2>
           <div className="flex justify-center">
             <span className="font-bold text-3xl">
-              Selecione uma Tecnologia que você gostaria de ver presente no
-              projeto...
+              {messages.projects.filterTitle}
             </span>
           </div>
           <div className="flex flex-row justify-center flex-wrap gap-8 w-[70%] mt-8 mx-auto">
@@ -158,8 +157,16 @@ export default function Projetos() {
               filteredProjects.map((project) => (
                 <ProjectCard
                   key={project.cardTitlte}
-                  cardTitlte={project.cardTitlte}
-                  cardDescription={project.cardDescription}
+                  cardTitlte={
+                    messages.projects.cards[
+                      project.cardTitlte as keyof typeof messages.projects.cards
+                    ].title
+                  }
+                  cardDescription={
+                    messages.projects.cards[
+                      project.cardDescription as keyof typeof messages.projects.cards
+                    ].description
+                  }
                   bgImageUrl={project.bgImageUrl}
                   hoverImageurl=""
                   imageCredits={project.imageCredits}
@@ -169,7 +176,7 @@ export default function Projetos() {
               ))
             ) : (
               <p className="text-neutral-400 text-lg mt-8">
-                Nenhum projeto encontrado com a tecnologia{" "}
+                {messages.projects.emptyTextPrefix}{" "}
                 <span className="text-white font-semibold">{activeFilter}</span>
                 .
               </p>

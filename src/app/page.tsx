@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+
 import { useRouter } from "next/navigation";
 
 import * as motion from "motion/react-client";
@@ -8,6 +9,9 @@ import { TypewriterWordsEffect } from "@/components/ui/typewriter-effect";
 import { Navbar } from "@/components/navbar";
 import { HeaderTop } from "@/components/headerTop";
 import { Button } from "@/components/ui/moving-border";
+
+import { useLanguage } from "@/contexts/language-context";
+
 import { Brain, FileDown } from "lucide-react";
 
 type typingWordsTypes = {
@@ -21,25 +25,12 @@ type curriculumFileTypes = {
 
 export default function Home() {
   const router = useRouter();
+  const { messages } = useLanguage();
 
   const [AnimatedBackground, setAnimatedBackground] = useState<any>(null);
-  const typingWords: typingWordsTypes[] = [
-    {
-      text: "Desenvolvedor",
-    },
-    {
-      text: "Full-Stack",
-    },
-    {
-      text: "&",
-    },
-    {
-      text: "Mobile",
-    },
-    {
-      text: "Full-Stack",
-    },
-  ];
+  const typingWords: typingWordsTypes[] = messages.home.typewriter.map(
+    (text) => ({ text }),
+  );
 
   const handleDownload = async ({ fileUrl, fileName }: curriculumFileTypes) => {
     try {
@@ -62,7 +53,7 @@ export default function Home() {
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Erro no Download: ", error);
-      alert("Ocorreu um erro ao baixar o currículo PDF");
+      alert(messages.home.downloadError);
     }
   };
 
@@ -132,7 +123,7 @@ export default function Home() {
               onClick={() => router.push("/sobre")}
             >
               <Brain color="#FFF" />
-              Conhecer Perfil
+              {messages.home.knowProfile}
             </Button>
             <Button
               className="bg-[#171717f0] gap-2"
@@ -147,7 +138,7 @@ export default function Home() {
               }
             >
               <FileDown color="#FFF" />
-              Baixar Currículo
+              {messages.home.downloadResume}
             </Button>
           </div>
         </section>

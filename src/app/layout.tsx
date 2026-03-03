@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
+import "./globals.css";
 import "@/src/app/globals.css";
-import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import StyledJsxRegistry from "./registry";
+
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+
+import { LanguageProvider } from "@/contexts/language-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,9 +106,11 @@ export default function RootLayout({
           Pular para o conteúdo principal
         </a>
         <StyledJsxRegistry>
-          <GluestackUIProvider mode="dark">
-            <div id="main-content">{children}</div>
-          </GluestackUIProvider>
+          <LanguageProvider>
+            <GluestackUIProvider mode="dark">
+              <div id="main-content">{children}</div>
+            </GluestackUIProvider>
+          </LanguageProvider>
         </StyledJsxRegistry>
       </body>
     </html>

@@ -7,6 +7,8 @@ import Image from "next/image";
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
 
+import { useLanguage } from "@/contexts/language-context";
+
 import ProfilePicture from "../../assets/profile.jpg";
 
 import {
@@ -21,24 +23,21 @@ import {
   Phone,
 } from "lucide-react";
 
-type Subject =
-  | "Oportunidade de trabalho"
-  | "Projeto em conjunto"
-  | "Dúvidas"
-  | "Outro";
+type SubjectKey = "jobOpportunity" | "collaboration" | "questions" | "other";
 
-const SUBJECTS: Subject[] = [
-  "Oportunidade de trabalho",
-  "Projeto em conjunto",
-  "Dúvidas",
-  "Outro",
+const SUBJECTS: SubjectKey[] = [
+  "jobOpportunity",
+  "collaboration",
+  "questions",
+  "other",
 ];
 
 export default function Contato() {
+  const { messages } = useLanguage();
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState<string>("");
-  const [subject, setSubject] = useState<Subject | "">("");
+  const [subject, setSubject] = useState<SubjectKey | "">("");
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -61,25 +60,25 @@ export default function Contato() {
     setError("");
     if (step === 0) {
       if (!name.trim()) {
-        setError("Por favor, insira seu nome.");
+        setError(messages.contact.errors.missingName);
         return;
       }
       setStep(1);
     } else if (step === 1) {
       if (!validateEmail(email)) {
-        setError("E-mail inválido.");
+        setError(messages.contact.errors.invalidEmail);
         return;
       }
       setStep(2);
     } else if (step === 2) {
       if (!subject) {
-        setError("Selecione um assunto.");
+        setError(messages.contact.errors.missingSubject);
         return;
       }
       setStep(3);
     } else if (step === 3) {
       if (!message.trim()) {
-        setError("Escreva uma mensagem.");
+        setError(messages.contact.errors.missingMessage);
         return;
       }
       handleSend();
@@ -106,13 +105,13 @@ export default function Contato() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Ocorreu um erro. Tente novamente.");
+        setError(data.error || messages.contact.errors.requestError);
         return;
       }
 
       setSent(true);
     } catch {
-      setError("Erro de rede. Tente novamente.");
+      setError(messages.contact.errors.networkError);
     } finally {
       setSending(false);
     }
@@ -129,16 +128,21 @@ export default function Contato() {
   };
 
   const steps = [
-    { question: "Olá! Qual é o seu nome?" },
-    { question: `Prazer, ${name || "..."}! Qual é o seu e-mail?` },
-    { question: "Sobre o que você gostaria de falar?" },
-    { question: "Me conte mais detalhes..." },
+    { question: messages.contact.steps.questionName },
+    {
+      question: `${messages.contact.steps.questionEmailPrefix}, ${name || "..."}! ${messages.contact.steps.questionEmailSuffix}`,
+    },
+    { question: messages.contact.steps.questionSubject },
+    { question: messages.contact.steps.questionMessage },
   ];
 
   const completedAnswers = [
-    { q: "Nome", a: name },
-    { q: "E-mail", a: email },
-    { q: "Assunto", a: subject },
+    { q: messages.contact.labels.name, a: name },
+    { q: messages.contact.labels.email, a: email },
+    {
+      q: messages.contact.labels.subject,
+      a: subject ? messages.contact.subjects[subject] : "",
+    },
   ];
 
   return (
@@ -147,7 +151,7 @@ export default function Contato() {
 
       <main className="flex-1 flex flex-col lg:flex-row justify-center gap-28 px-6 md:px-20 pt-32 pb-32 max-w-7xl mx-auto w-full">
         <div className="flex-1 flex flex-col justify-center">
-          <h1 className="sr-only">Contato com João Pedro Ribeiro</h1>
+          <h1 className="sr-only">{messages.contact.pageTitle}</h1>
           {/* Respostas já dadas */}
           <div className="mb-10 flex flex-col gap-3">
             <AnimatePresence>
@@ -195,8 +199,8 @@ export default function Contato() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     onKeyDown={handleKey}
-                    placeholder="Seu nome..."
-                    aria-label="Seu nome"
+                    placeholder={`${messages.contact.labels.name}...`}
+                    aria-label={messages.contact.labels.name}
                     aria-required="true"
                     aria-invalid={Boolean(error && step === 0)}
                     aria-describedby={
@@ -216,7 +220,7 @@ export default function Contato() {
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyDown={handleKey}
                     placeholder="seu@email.com"
-                    aria-label="Seu e-mail"
+                    aria-label={messages.contact.labels.email}
                     aria-required="true"
                     aria-invalid={Boolean(error && step === 1)}
                     aria-describedby={
@@ -231,7 +235,7 @@ export default function Contato() {
                   <div
                     className="flex flex-wrap gap-3 mt-2"
                     role="group"
-                    aria-label="Assunto da mensagem"
+                    aria-label={messages.contact.labels.subject}
                   >
                     {SUBJECTS.map((s) => (
                       <button
@@ -248,7 +252,7 @@ export default function Contato() {
                             : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-400 hover:text-white"
                         }`}
                       >
-                        {s}
+                        {messages.contact.subjects[s]}
                       </button>
                     ))}
                   </div>
@@ -262,9 +266,9 @@ export default function Contato() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={handleKey}
-                    placeholder="Escreva aqui..."
+                    placeholder={`${messages.contact.labels.message}...`}
                     rows={4}
-                    aria-label="Mensagem"
+                    aria-label={messages.contact.labels.message}
                     aria-required="true"
                     aria-invalid={Boolean(error && step === 3)}
                     aria-describedby={
@@ -306,7 +310,7 @@ export default function Contato() {
                   >
                     {step < 3 ? (
                       <>
-                        Próximo
+                        {messages.contact.actions.next}
                         <ArrowRight
                           size={16}
                           className="group-hover:translate-x-0.5 transition-transform"
@@ -314,13 +318,15 @@ export default function Contato() {
                       </>
                     ) : (
                       <>
-                        {sending ? "Enviando..." : "Enviar mensagem"}
+                        {sending
+                          ? messages.contact.actions.sending
+                          : messages.contact.actions.sendMessage}
                         <Send size={16} />
                       </>
                     )}
                   </button>
                   <span className="text-neutral-700 text-xs">
-                    ou pressione{" "}
+                    {messages.contact.actions.enterHintPrefix}{" "}
                     <kbd className="px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-400 font-mono text-xs">
                       Enter ↵
                     </kbd>
@@ -340,9 +346,9 @@ export default function Contato() {
                   <Check size={26} className="text-[#72BF6A]" />
                 </div>
                 <h2 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight">
-                  Mensagem enviada, {name}!<br />
+                  {messages.contact.actions.sentTitlePrefix}, {name}!<br />
                   <span className="text-neutral-500">
-                    Responderei em breve.
+                    {messages.contact.actions.sentTitleSuffix}
                   </span>
                 </h2>
                 <button
@@ -352,7 +358,7 @@ export default function Contato() {
                   className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors duration-200 w-fit"
                 >
                   <RotateCcw size={14} />
-                  Enviar outra mensagem
+                  {messages.contact.actions.sendAnother}
                 </button>
               </motion.div>
             )}
@@ -398,7 +404,7 @@ export default function Contato() {
               João Pedro Ribeiro
             </span>
             <span className="text-neutral-500 text-sm">
-              Desenvolvedor Full-Stack &amp; Mobile
+              {messages.contact.roleTitle}
             </span>
           </div>
 

@@ -1,4 +1,7 @@
+"use client";
+
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/contexts/language-context";
 
 import { LanguageSelector } from "./languageSelector";
 
@@ -6,6 +9,7 @@ import { Github, Linkedin } from "lucide-react";
 
 export function HeaderTop() {
   const route = useRouter();
+  const { messages } = useLanguage();
 
   return (
     <div className="fixed top-0 left-0 right-0 bg-[#171717f0] w-full h-auto p-5 flex flex-row justify-between z-50">
@@ -15,7 +19,7 @@ export function HeaderTop() {
           route.push("/");
         }}
       >
-        <span className="playwrite text-center">Ribeiro</span>
+        <span className="playwrite text-center">{messages.header.brand}</span>
       </button>
       <div className="flex flex-row items-center">
         <a
