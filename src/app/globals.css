@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS:wght@100..400&family=Playwrite+DK+Loopet:wght@100..400&display=swap');
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
 
 :root {
   --background: #0a0a0a;
@@ -22,7 +21,7 @@ body {
 }
 
 .playwrite {
-  font-family: 'Playwrite DE SAS', cursive;
+  font-family: var(--font-playwrite-de-sas), cursive;
 }
 
 @layer utilities {
