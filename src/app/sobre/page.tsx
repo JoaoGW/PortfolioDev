@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+import { motion } from "motion/react";
 
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
@@ -159,12 +160,14 @@ export default function Sobre() {
       <HeroHighlight>
         <section className="flex flex-row items-center pt-32 pb-16 mx-20">
           <Image
+            key="sobre-profile-image"
             src={ProfilePicture}
             alt="Minha Foto de Perfil"
             priority
             sizes="(max-width: 768px) 80vw, 500px"
             width={500}
             height={500}
+            className="w-[500px] h-[500px] max-w-none shrink-0"
             style={{
               clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
               objectFit: "cover",
@@ -385,7 +388,11 @@ export default function Sobre() {
         ) : null}
         <section className="bg-slate-900">
           <div className="h-[28rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
-            <h4
+            <motion.h4
+              initial={{ opacity: 0.5, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
+              viewport={{ once: true, amount: 0.2 }}
               className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
               style={{
                 WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
@@ -394,7 +401,7 @@ export default function Sobre() {
               }}
             >
               {messages.about.academicTitle}
-            </h4>
+            </motion.h4>
             <div className="w-[40rem] h-40 relative">
               <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#72BF6A] to-transparent h-[2px] w-3/4 blur-sm" />
               <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#72BF6A] to-transparent h-px w-3/4" />
@@ -487,7 +494,11 @@ export default function Sobre() {
           />
         </section>
         <section className="pt-16 pb-16">
-          <h5
+          <motion.h5
+            initial={{ opacity: 0.5, x: -160 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
+            viewport={{ once: true, amount: 0.2 }}
             className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
             style={{
               WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
@@ -496,10 +507,10 @@ export default function Sobre() {
             }}
           >
             {messages.about.experienceTitle}
-          </h5>
+          </motion.h5>
           <div className="flex flex-row justify-center gap-4 items-center mt-8">
             <GlareCard
-              className="flex flex-col items-center justify-center"
+              className="w-80 min-h-[32.8125rem] flex flex-col items-center justify-center gap-5"
               expandCard={() => setExperienceCard("fiverr")}
             >
               <Image
@@ -508,12 +519,12 @@ export default function Sobre() {
                 height={200}
                 alt="Logo da Fiverr: Plataforma de Freelancing"
               />
-              <span className="text-center mt-5 uppercase font-bold text-2xl">
+              <span className="text-center uppercase font-bold text-2xl min-h-[4rem] flex items-center justify-center">
                 {messages.about.fiverrRole}
               </span>
             </GlareCard>
             <GlareCard
-              className="flex flex-col items-center justify-center"
+              className="w-80 min-h-[32.8125rem] flex flex-col items-center justify-center gap-5"
               expandCard={() => setExperienceCard("culti")}
             >
               <Image
@@ -522,7 +533,7 @@ export default function Sobre() {
                 height={200}
                 alt="Logo da Cultivare: Prevenção e Promoção de Saúde"
               />
-              <span className="text-center mt-5 uppercase font-bold text-2xl">
+              <span className="text-center uppercase font-bold text-2xl min-h-[4rem] flex items-center justify-center">
                 {messages.about.cultiRole}
               </span>
             </GlareCard>
@@ -591,7 +602,11 @@ export default function Sobre() {
           />
         ) : null}
         <section className="pt-14 pb-8">
-          <h6
+          <motion.h6
+            initial={{ opacity: 0.5, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
+            viewport={{ once: true, amount: 0.2 }}
             className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
             style={{
               WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
@@ -600,7 +615,7 @@ export default function Sobre() {
             }}
           >
             {messages.about.interestedTitle}
-          </h6>
+          </motion.h6>
           <p className="text-center text-2xl font-semibold mt-3">
             {messages.about.interestedSubtitle}
           </p>

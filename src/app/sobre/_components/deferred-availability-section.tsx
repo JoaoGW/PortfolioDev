@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { motion } from "motion/react";
 
 const WorldMap = dynamic(() => import("@/components/ui/world-map"), {
   ssr: false,
@@ -19,7 +20,11 @@ export default function DeferredAvailabilitySection({
     <section className="bg-slate-900">
       <div className=" py-16">
         <div className="max-w-7xl mx-auto text-center">
-          <h5
+          <motion.h5
+            initial={{ opacity: 0.5, x: 160 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
+            viewport={{ once: true, amount: 0.2 }}
             className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
             style={{
               WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
@@ -28,7 +33,7 @@ export default function DeferredAvailabilitySection({
             }}
           >
             {title}
-          </h5>
+          </motion.h5>
           <p className="text-sm md:text-lg text-neutral-500 max-w-3xl mx-auto py-4">
             {description}
           </p>

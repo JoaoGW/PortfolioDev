@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "motion/react";
+
 import { LampContainer } from "@/components/ui/lamp";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import { Bubble } from "@/components/bubble";
@@ -50,7 +52,10 @@ export default function DeferredTechStackSection({
   return (
     <section>
       <LampContainer className="pt-44 pb-16">
-        <h3
+        <motion.h3
+          initial={{ opacity: 0.5, y: 20 }}
+          whileInView={{ opacity: 1, y: -100 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
           className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
           style={{
             WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
@@ -59,7 +64,7 @@ export default function DeferredTechStackSection({
           }}
         >
           TECH STACK
-        </h3>
+        </motion.h3>
         <div className="flex flex-row justify-evenly gap-6 mt-2">
           <>
             <a title={tooltips.typescript} aria-label={tooltips.typescript}>
