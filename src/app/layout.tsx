@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playwrite_DE_SAS } from "next/font/google";
 
 import "./globals.css";
-import "@/src/app/globals.css";
 import StyledJsxRegistry from "./registry";
 
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
@@ -17,6 +16,10 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const playwriteDeSas = Playwrite_DE_SAS({
+  variable: "--font-playwrite-de-sas",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
@@ -68,7 +71,7 @@ export const metadata: Metadata = {
     siteName: "Portfólio João Pedro Ribeiro",
     images: [
       {
-        url: "/profile.jpg",
+        url: "/profile.webp",
         width: 768,
         height: 1024,
         alt: "Foto de perfil de João Pedro Ribeiro",
@@ -80,12 +83,12 @@ export const metadata: Metadata = {
     title: "Portfólio | João Pedro Ribeiro",
     description:
       "Conheça projetos, experiência e trajetória de João Pedro Ribeiro em desenvolvimento Full-Stack e Mobile.",
-    images: ["/profile.jpg"],
+    images: ["/profile.webp"],
   },
   icons: {
-    icon: "/icon.jpg?v=2",
-    shortcut: "/icon.jpg?v=2",
-    apple: "/icon.jpg?v=2",
+    icon: "/icon.webp?v=2",
+    shortcut: "/icon.webp?v=2",
+    apple: "/icon.webp?v=2",
   },
 };
 
@@ -97,14 +100,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playwriteDeSas.variable} antialiased`}
       >
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black"
-        >
-          Pular para o conteúdo principal
-        </a>
         <StyledJsxRegistry>
           <LanguageProvider>
             <GluestackUIProvider mode="dark">

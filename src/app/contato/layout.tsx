@@ -12,14 +12,14 @@ export const metadata: Metadata = {
     description:
       "Canal de contato para oportunidades, parcerias e projetos de software com João Pedro Ribeiro.",
     url: "/contato",
-    images: ["/profile.jpg"],
+    images: ["/profile.webp"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contato | João Pedro Ribeiro",
     description:
       "Canal de contato para oportunidades, parcerias e projetos de software com João Pedro Ribeiro.",
-    images: ["/profile.jpg"],
+    images: ["/profile.webp"],
   },
 };
 

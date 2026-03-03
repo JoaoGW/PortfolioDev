@@ -24,8 +24,16 @@ export const FloatingDock = ({
 }) => {
   return (
     <>
-      <FloatingDockDesktop items={items} className={desktopClassName} currentPath={currentPath} />
-      <FloatingDockMobile items={items} className={mobileClassName} currentPath={currentPath} />
+      <FloatingDockDesktop
+        items={items}
+        className={desktopClassName}
+        currentPath={currentPath}
+      />
+      <FloatingDockMobile
+        items={items}
+        className={mobileClassName}
+        currentPath={currentPath}
+      />
     </>
   );
 };
@@ -68,17 +76,23 @@ const FloatingDockMobile = ({
                 <a
                   href={item.href}
                   key={item.title}
+                  aria-label={item.title}
+                  title={item.title}
                   className={cn(
                     "flex h-10 w-10 items-center justify-center rounded-full",
                     currentPath === item.href
                       ? "bg-gradient-to-br from-[#72BF6A] to-[#0096C7] shadow-[0_0_15px_rgba(114,191,106,0.6)]"
-                      : "bg-gray-50 dark:bg-neutral-900"
+                      : "bg-gray-50 dark:bg-neutral-900",
                   )}
                 >
-                  <div className={cn(
-                    "h-4 w-4",
-                    currentPath === item.href && "[&_svg]:text-white"
-                  )}>{item.icon}</div>
+                  <div
+                    className={cn(
+                      "h-4 w-4",
+                      currentPath === item.href && "[&_svg]:text-white",
+                    )}
+                  >
+                    {item.icon}
+                  </div>
                 </a>
               </motion.div>
             ))}
@@ -87,6 +101,10 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
+        aria-label={
+          open ? "Fechar menu de navegação" : "Abrir menu de navegação"
+        }
+        title={open ? "Fechar menu" : "Abrir menu"}
         className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800"
       >
         <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
@@ -115,7 +133,13 @@ const FloatingDockDesktop = ({
       )}
     >
       {items.map((item, idx) => (
-        <IconContainer mouseX={mouseX} key={item.title} index={idx} isActive={currentPath === item.href} {...item} />
+        <IconContainer
+          mouseX={mouseX}
+          key={item.title}
+          index={idx}
+          isActive={currentPath === item.href}
+          {...item}
+        />
       ))}
     </motion.div>
   );
@@ -178,8 +202,16 @@ function IconContainer({
 
   const [hovered, setHovered] = useState(false);
 
+  const isExternalLink = href.startsWith("http");
+
   return (
-    <a href={href}>
+    <a
+      href={href}
+      aria-label={title}
+      title={title}
+      target={isExternalLink ? "_blank" : undefined}
+      rel={isExternalLink ? "noreferrer" : undefined}
+    >
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -195,9 +227,9 @@ function IconContainer({
         }}
         className={cn(
           "relative flex aspect-square items-center justify-center rounded-full",
-          isActive 
-            ? "bg-gradient-to-br from-[#72BF6A] to-[#0096C7] shadow-[0_0_20px_rgba(114,191,106,0.6)]" 
-            : "bg-gray-200 dark:bg-neutral-800"
+          isActive
+            ? "bg-gradient-to-br from-[#72BF6A] to-[#0096C7] shadow-[0_0_20px_rgba(114,191,106,0.6)]"
+            : "bg-gray-200 dark:bg-neutral-800",
         )}
       >
         {isActive && (
@@ -223,7 +255,7 @@ function IconContainer({
           style={{ width: widthIcon, height: heightIcon }}
           className={cn(
             "flex items-center justify-center",
-            isActive && "[&_svg]:text-white"
+            isActive && "[&_svg]:text-white",
           )}
         >
           {icon}

@@ -10,7 +10,7 @@ import { Navbar } from "@/components/navbar";
 
 import { useLanguage } from "@/contexts/language-context";
 
-import ProfilePicture from "../../assets/profile.jpg";
+import ProfilePicture from "../../assets/profile.webp";
 
 import {
   ArrowRight,
