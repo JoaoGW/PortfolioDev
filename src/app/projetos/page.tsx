@@ -1,12 +1,15 @@
 "use client";
 import { useState } from "react";
 
+import { StaticImageData } from "next/image";
+
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { TechFilterButton } from "@/components/techFilterButton";
 import { ProjectCard } from "@/components/projectCard";
-import { StaticImageData } from "next/image";
+
+import { useLanguage } from "@/contexts/language-context";
 
 import ReactLogo from "../../assets/Logos/logo-react-512.png";
 import ReactNativeLogo from "../../assets/Logos/react-native_logo.png";
@@ -54,9 +57,8 @@ const techFilters: TechFilter[] = [
 
 const projects: Project[] = [
   {
-    cardTitlte: "Guia Turístico com IA",
-    cardDescription:
-      "Aplicativo mobile para ajudar viajantes a explorarem o mundo de forma inteligente e personalizada. Integra tecnologias modernas como Inteligência Artificial na API da OpenAI e Firebase.",
+    cardTitlte: "guideAI",
+    cardDescription: "guideAI",
     bgImageUrl: EZTripBG,
     imageCredits: "Image by Stuart Bailey from Pixabay",
     technologies: [
@@ -66,13 +68,13 @@ const projects: Project[] = [
       "OpenAI",
       "Firebase",
       "GCP",
+      "Node.js",
     ],
     projectUrl: "https://github.com/JoaoGW/GuiaTuristico",
   },
   {
-    cardTitlte: "Sr. Gee - Assistente Dev",
-    cardDescription:
-      'Aplicação Web para ajudar Devs a melhoraram seu código com recomendações um tanto quanto "agressivas". Integra as tecnologias da Inteligência Artificial na API da OpenAI e REST API do GitHub.',
+    cardTitlte: "srGee",
+    cardDescription: "srGee",
     bgImageUrl: SrGeeBG,
     imageCredits: "Image by Stuart Bailey from Pixabay",
     technologies: [
@@ -82,30 +84,37 @@ const projects: Project[] = [
       "OpenAI",
       "GraphQL",
       "GitHub API",
+      "Node.js",
     ],
     projectUrl: "https://github.com/JoaoGW/SrGee_VirtualAssistant",
   },
   {
-    cardTitlte: "Novo WhatsApp",
-    cardDescription:
-      "Clone melhorado do WhatsApp, utilizando tecnologias como Python, Flask, RabbitMQ, bcrypt, SQL Alchemy e SocketIO.",
+    cardTitlte: "newWhatsapp",
+    cardDescription: "newWhatsapp",
     bgImageUrl: ZapZap2,
     imageCredits: "Image by Portal G1",
     technologies: ["Flask", "Python", "SQL Alchemy", "SQLite", "HTML", "CSS"],
     projectUrl: "https://github.com/JoaoGW/NovoWhatsApp",
   },
   {
-    cardTitlte: "Car Seller",
-    cardDescription:
-      "Um dos meus primeiros projetos de uma webpage para vendas de automoveis de todos os tipos e custos. Feito em VueJS 3",
+    cardTitlte: "carSeller",
+    cardDescription: "carSeller",
     bgImageUrl: CarSalesman,
     imageCredits: "Image by Auto | HowStuffWorks",
-    technologies: ["Vue.js", "JavaScript", "TypeScript", "HTML", "CSS"],
+    technologies: [
+      "Vue.js",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Node.js",
+    ],
     projectUrl: "https://github.com/JoaoGW/CarSellerVue",
   },
 ];
 
 export default function Projetos() {
+  const { messages } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<string>("");
 
   const filteredProjects = activeFilter
@@ -119,51 +128,62 @@ export default function Projetos() {
   return (
     <div>
       <HeaderTop />
-
-      <section className="mt-[-5] mb-[-160]">
-        <TextHoverEffect text="PROJETOS" size="large" />
-      </section>
-      <section className="flex flex-col bg-slate-900 p-16 pb-36">
-        <div className="flex justify-center">
-          <span className="font-bold text-3xl">
-            Selecione uma Tecnologia que você gostaria de ver presente no
-            projeto...
-          </span>
-        </div>
-        <div className="flex flex-row justify-center flex-wrap gap-8 w-[70%] mt-8 mx-auto">
-          {techFilters.map((tech) => (
-            <TechFilterButton
-              key={tech.name}
-              techLogo={tech.logo}
-              techName={tech.name}
-              isActive={activeFilter === tech.name}
-              filterAction={() => handleFilter(tech.name)}
-            />
-          ))}
-        </div>
-
-        <div className="mt-12 flex flex-row justify-center gap-8 flex-wrap">
-          {filteredProjects.length > 0 ? (
-            filteredProjects.map((project) => (
-              <ProjectCard
-                key={project.cardTitlte}
-                cardTitlte={project.cardTitlte}
-                cardDescription={project.cardDescription}
-                bgImageUrl={project.bgImageUrl}
-                hoverImageurl=""
-                imageCredits={project.imageCredits}
-                technologies={project.technologies}
-                projectUrl={project.projectUrl}
+      <main>
+        <h1 className="sr-only">{messages.projects.pageTitle}</h1>
+        <section className="mt-[-5] mb-[-160]" aria-hidden="true">
+          <TextHoverEffect text={messages.projects.hoverText} size="large" />
+        </section>
+        <section className="flex flex-col bg-slate-900 p-16 pb-36">
+          <h2 className="sr-only">Filtrar projetos por tecnologia</h2>
+          <div className="flex justify-center">
+            <span className="font-bold text-3xl">
+              {messages.projects.filterTitle}
+            </span>
+          </div>
+          <div className="flex flex-row justify-center flex-wrap gap-8 w-[70%] mt-8 mx-auto">
+            {techFilters.map((tech) => (
+              <TechFilterButton
+                key={tech.name}
+                techLogo={tech.logo}
+                techName={tech.name}
+                isActive={activeFilter === tech.name}
+                filterAction={() => handleFilter(tech.name)}
               />
-            ))
-          ) : (
-            <p className="text-neutral-400 text-lg mt-8">
-              Nenhum projeto encontrado com a tecnologia{" "}
-              <span className="text-white font-semibold">{activeFilter}</span>.
-            </p>
-          )}
-        </div>
-      </section>
+            ))}
+          </div>
+
+          <div className="mt-12 flex flex-row justify-center gap-8 flex-wrap">
+            {filteredProjects.length > 0 ? (
+              filteredProjects.map((project) => (
+                <ProjectCard
+                  key={project.cardTitlte}
+                  cardTitlte={
+                    messages.projects.cards[
+                      project.cardTitlte as keyof typeof messages.projects.cards
+                    ].title
+                  }
+                  cardDescription={
+                    messages.projects.cards[
+                      project.cardDescription as keyof typeof messages.projects.cards
+                    ].description
+                  }
+                  bgImageUrl={project.bgImageUrl}
+                  hoverImageurl=""
+                  imageCredits={project.imageCredits}
+                  technologies={project.technologies}
+                  projectUrl={project.projectUrl}
+                />
+              ))
+            ) : (
+              <p className="text-neutral-400 text-lg mt-8">
+                {messages.projects.emptyTextPrefix}{" "}
+                <span className="text-white font-semibold">{activeFilter}</span>
+                .
+              </p>
+            )}
+          </div>
+        </section>
+      </main>
 
       <Navbar />
     </div>

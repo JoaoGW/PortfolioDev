@@ -1,11 +1,14 @@
 "use client";
 import { useState, useRef, useEffect, KeyboardEvent } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import * as motion from "motion/react-client";
+import { AnimatePresence } from "motion/react";
 
 import Image from "next/image";
 
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
+
+import { useLanguage } from "@/contexts/language-context";
 
 import ProfilePicture from "../../assets/profile.jpg";
 
@@ -21,24 +24,21 @@ import {
   Phone,
 } from "lucide-react";
 
-type Subject =
-  | "Oportunidade de trabalho"
-  | "Projeto em conjunto"
-  | "Dúvidas"
-  | "Outro";
+type SubjectKey = "jobOpportunity" | "collaboration" | "questions" | "other";
 
-const SUBJECTS: Subject[] = [
-  "Oportunidade de trabalho",
-  "Projeto em conjunto",
-  "Dúvidas",
-  "Outro",
+const SUBJECTS: SubjectKey[] = [
+  "jobOpportunity",
+  "collaboration",
+  "questions",
+  "other",
 ];
 
 export default function Contato() {
+  const { messages } = useLanguage();
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState<string>("");
-  const [subject, setSubject] = useState<Subject | "">("");
+  const [subject, setSubject] = useState<SubjectKey | "">("");
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -61,25 +61,25 @@ export default function Contato() {
     setError("");
     if (step === 0) {
       if (!name.trim()) {
-        setError("Por favor, insira seu nome.");
+        setError(messages.contact.errors.missingName);
         return;
       }
       setStep(1);
     } else if (step === 1) {
       if (!validateEmail(email)) {
-        setError("E-mail inválido.");
+        setError(messages.contact.errors.invalidEmail);
         return;
       }
       setStep(2);
     } else if (step === 2) {
       if (!subject) {
-        setError("Selecione um assunto.");
+        setError(messages.contact.errors.missingSubject);
         return;
       }
       setStep(3);
     } else if (step === 3) {
       if (!message.trim()) {
-        setError("Escreva uma mensagem.");
+        setError(messages.contact.errors.missingMessage);
         return;
       }
       handleSend();
@@ -106,13 +106,13 @@ export default function Contato() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Ocorreu um erro. Tente novamente.");
+        setError(data.error || messages.contact.errors.requestError);
         return;
       }
 
       setSent(true);
     } catch {
-      setError("Erro de rede. Tente novamente.");
+      setError(messages.contact.errors.networkError);
     } finally {
       setSending(false);
     }
@@ -129,16 +129,21 @@ export default function Contato() {
   };
 
   const steps = [
-    { question: "Olá! Qual é o seu nome?" },
-    { question: `Prazer, ${name || "..."}! Qual é o seu e-mail?` },
-    { question: "Sobre o que você gostaria de falar?" },
-    { question: "Me conte mais detalhes..." },
+    { question: messages.contact.steps.questionName },
+    {
+      question: `${messages.contact.steps.questionEmailPrefix}, ${name || "..."}! ${messages.contact.steps.questionEmailSuffix}`,
+    },
+    { question: messages.contact.steps.questionSubject },
+    { question: messages.contact.steps.questionMessage },
   ];
 
   const completedAnswers = [
-    { q: "Nome", a: name },
-    { q: "E-mail", a: email },
-    { q: "Assunto", a: subject },
+    { q: messages.contact.labels.name, a: name },
+    { q: messages.contact.labels.email, a: email },
+    {
+      q: messages.contact.labels.subject,
+      a: subject ? messages.contact.subjects[subject] : "",
+    },
   ];
 
   return (
@@ -147,6 +152,7 @@ export default function Contato() {
 
       <main className="flex-1 flex flex-col lg:flex-row justify-center gap-28 px-6 md:px-20 pt-32 pb-32 max-w-7xl mx-auto w-full">
         <div className="flex-1 flex flex-col justify-center">
+          <h1 className="sr-only">{messages.contact.pageTitle}</h1>
           {/* Respostas já dadas */}
           <div className="mb-10 flex flex-col gap-3">
             <AnimatePresence>
@@ -189,12 +195,19 @@ export default function Contato() {
                 {step === 0 && (
                   <input
                     ref={inputRef}
+                    id="contact-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     onKeyDown={handleKey}
-                    placeholder="Seu nome..."
-                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-2xl md:text-3xl font-semibold text-white placeholder:text-neutral-700 py-2 transition-colors duration-200 w-full md:w-[480px]"
+                    placeholder={`${messages.contact.labels.name}...`}
+                    aria-label={messages.contact.labels.name}
+                    aria-required="true"
+                    aria-invalid={Boolean(error && step === 0)}
+                    aria-describedby={
+                      error && step === 0 ? "contact-error" : undefined
+                    }
+                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-2xl md:text-3xl font-semibold text-white py-2 transition-colors duration-200 w-full md:w-[480px]"
                   />
                 )}
 
@@ -202,32 +215,45 @@ export default function Contato() {
                 {step === 1 && (
                   <input
                     ref={inputRef}
+                    id="contact-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyDown={handleKey}
                     placeholder="seu@email.com"
-                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-2xl md:text-3xl font-semibold text-white placeholder:text-neutral-700 py-2 transition-colors duration-200 w-full md:w-[480px]"
+                    aria-label={messages.contact.labels.email}
+                    aria-required="true"
+                    aria-invalid={Boolean(error && step === 1)}
+                    aria-describedby={
+                      error && step === 1 ? "contact-error" : undefined
+                    }
+                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-2xl md:text-3xl font-semibold text-white py-2 transition-colors duration-200 w-full md:w-[480px]"
                   />
                 )}
 
                 {/* Select: Assunto */}
                 {step === 2 && (
-                  <div className="flex flex-wrap gap-3 mt-2">
+                  <div
+                    className="flex flex-wrap gap-3 mt-2"
+                    role="group"
+                    aria-label={messages.contact.labels.subject}
+                  >
                     {SUBJECTS.map((s) => (
                       <button
                         key={s}
+                        type="button"
                         onClick={() => {
                           setSubject(s);
                           setError("");
                         }}
+                        aria-pressed={subject === s}
                         className={`px-5 py-2.5 rounded-full border text-sm font-semibold transition-all duration-200 ${
                           subject === s
                             ? "bg-white text-neutral-950 border-white"
                             : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-400 hover:text-white"
                         }`}
                       >
-                        {s}
+                        {messages.contact.subjects[s]}
                       </button>
                     ))}
                   </div>
@@ -237,12 +263,19 @@ export default function Contato() {
                 {step === 3 && (
                   <textarea
                     ref={textareaRef}
+                    id="contact-message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={handleKey}
-                    placeholder="Escreva aqui..."
+                    placeholder={`${messages.contact.labels.message}...`}
                     rows={4}
-                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-lg md:text-xl font-medium text-white placeholder:text-neutral-700 py-2 transition-colors duration-200 w-full resize-none"
+                    aria-label={messages.contact.labels.message}
+                    aria-required="true"
+                    aria-invalid={Boolean(error && step === 3)}
+                    aria-describedby={
+                      error && step === 3 ? "contact-error" : undefined
+                    }
+                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-lg md:text-xl font-medium text-white py-2 transition-colors duration-200 w-full resize-none"
                   />
                 )}
 
@@ -250,10 +283,13 @@ export default function Contato() {
                 <AnimatePresence>
                   {error && (
                     <motion.p
+                      id="contact-error"
                       initial={{ opacity: 0, y: -4 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
                       className="text-sm text-red-400"
+                      role="alert"
+                      aria-live="assertive"
                     >
                       {error}
                     </motion.p>
@@ -263,13 +299,19 @@ export default function Contato() {
                 {/* Botão avançar */}
                 <div className="flex items-center gap-4 mt-2">
                   <button
+                    type="button"
                     onClick={advance}
                     disabled={sending}
+                    aria-label={
+                      step < 3
+                        ? "Avançar para próxima etapa"
+                        : "Enviar mensagem de contato"
+                    }
                     className="group flex items-center gap-2 bg-white text-neutral-950 font-bold text-sm px-6 py-3 rounded-full transition-all duration-200 hover:bg-neutral-200 disabled:opacity-50"
                   >
                     {step < 3 ? (
                       <>
-                        Próximo
+                        {messages.contact.actions.next}
                         <ArrowRight
                           size={16}
                           className="group-hover:translate-x-0.5 transition-transform"
@@ -277,13 +319,15 @@ export default function Contato() {
                       </>
                     ) : (
                       <>
-                        {sending ? "Enviando..." : "Enviar mensagem"}
+                        {sending
+                          ? messages.contact.actions.sending
+                          : messages.contact.actions.sendMessage}
                         <Send size={16} />
                       </>
                     )}
                   </button>
                   <span className="text-neutral-700 text-xs">
-                    ou pressione{" "}
+                    {messages.contact.actions.enterHintPrefix}{" "}
                     <kbd className="px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-400 font-mono text-xs">
                       Enter ↵
                     </kbd>
@@ -303,17 +347,19 @@ export default function Contato() {
                   <Check size={26} className="text-[#72BF6A]" />
                 </div>
                 <h2 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight">
-                  Mensagem enviada, {name}!<br />
+                  {messages.contact.actions.sentTitlePrefix}, {name}!<br />
                   <span className="text-neutral-500">
-                    Responderei em breve.
+                    {messages.contact.actions.sentTitleSuffix}
                   </span>
                 </h2>
                 <button
+                  type="button"
                   onClick={reset}
+                  aria-label="Enviar outra mensagem"
                   className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors duration-200 w-fit"
                 >
                   <RotateCcw size={14} />
-                  Enviar outra mensagem
+                  {messages.contact.actions.sendAnother}
                 </button>
               </motion.div>
             )}
@@ -321,7 +367,10 @@ export default function Contato() {
 
           {/* Indicador de progresso */}
           {!sent && (
-            <div className="fixed bottom-28 left-1/2 -translate-x-1/2 flex gap-2">
+            <div
+              className="fixed bottom-28 left-1/2 -translate-x-1/2 flex gap-2"
+              aria-hidden="true"
+            >
               {steps.map((_, i) => (
                 <div
                   key={i}
@@ -356,7 +405,7 @@ export default function Contato() {
               João Pedro Ribeiro
             </span>
             <span className="text-neutral-500 text-sm">
-              Desenvolvedor Full-Stack &amp; Mobile
+              {messages.contact.roleTitle}
             </span>
           </div>
 
@@ -367,6 +416,7 @@ export default function Contato() {
           <div className="flex flex-col gap-4">
             <a
               href="mailto:profissional.jpribeiro@gmail.com"
+              aria-label="Enviar e-mail para profissional.jpribeiro@gmail.com"
               className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors duration-200 group"
             >
               <span className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-neutral-600 transition-colors">
@@ -379,6 +429,7 @@ export default function Contato() {
               href="https://github.com/JoaoGW"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Abrir GitHub de João Pedro Ribeiro em nova aba"
               className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors duration-200 group"
             >
               <span className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-neutral-600 transition-colors">
@@ -391,6 +442,7 @@ export default function Contato() {
               href="https://www.linkedin.com/in/jo%C3%A3o-pedro-do-carmo-ribeiro/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Abrir LinkedIn de João Pedro Ribeiro em nova aba"
               className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors duration-200 group"
             >
               <span className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-neutral-600 transition-colors">

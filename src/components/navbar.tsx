@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
 import { usePathname } from "next/navigation";
 import { FloatingDock } from "@/components/ui/floating-dock";
+import { useLanguage } from "@/contexts/language-context";
 import {
   Home,
   User,
@@ -11,34 +12,35 @@ import {
   Linkedin,
   FileText,
 } from "lucide-react";
- 
+
 export function Navbar() {
   const pathname = usePathname();
-  
+  const { messages } = useLanguage();
+
   const links = [
     {
-      title: "Sobre",
+      title: messages.navbar.about,
       icon: (
         <User className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "/sobre",
     },
     {
-      title: "Projetos",
+      title: messages.navbar.projects,
       icon: (
         <Briefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "/projetos",
     },
     {
-      title: "Contato",
+      title: messages.navbar.contact,
       icon: (
         <Mail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "/contato",
     },
     {
-      title: "Home",
+      title: messages.navbar.home,
       icon: (
         <Home className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
@@ -59,7 +61,7 @@ export function Navbar() {
       href: "https://www.linkedin.com/in/jo%C3%A3o-pedro-do-carmo-ribeiro/",
     },
     {
-      title: "Currículo",
+      title: messages.navbar.resume,
       icon: (
         <FileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
@@ -69,10 +71,7 @@ export function Navbar() {
 
   return (
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 scale-125">
-      <FloatingDock
-        items={links}
-        currentPath={pathname}
-      />
+      <FloatingDock items={links} currentPath={pathname} />
     </div>
   );
 }
