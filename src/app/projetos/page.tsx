@@ -128,51 +128,55 @@ export default function Projetos() {
   return (
     <div>
       <HeaderTop />
-
-      <section className="mt-[-5] mb-[-160]">
-        <TextHoverEffect text="PROJETOS" size="large" />
-      </section>
-      <section className="flex flex-col bg-slate-900 p-16 pb-36">
-        <div className="flex justify-center">
-          <span className="font-bold text-3xl">
-            Selecione uma Tecnologia que você gostaria de ver presente no
-            projeto...
-          </span>
-        </div>
-        <div className="flex flex-row justify-center flex-wrap gap-8 w-[70%] mt-8 mx-auto">
-          {techFilters.map((tech) => (
-            <TechFilterButton
-              key={tech.name}
-              techLogo={tech.logo}
-              techName={tech.name}
-              isActive={activeFilter === tech.name}
-              filterAction={() => handleFilter(tech.name)}
-            />
-          ))}
-        </div>
-
-        <div className="mt-12 flex flex-row justify-center gap-8 flex-wrap">
-          {filteredProjects.length > 0 ? (
-            filteredProjects.map((project) => (
-              <ProjectCard
-                key={project.cardTitlte}
-                cardTitlte={project.cardTitlte}
-                cardDescription={project.cardDescription}
-                bgImageUrl={project.bgImageUrl}
-                hoverImageurl=""
-                imageCredits={project.imageCredits}
-                technologies={project.technologies}
-                projectUrl={project.projectUrl}
+      <main>
+        <h1 className="sr-only">Projetos de João Pedro Ribeiro</h1>
+        <section className="mt-[-5] mb-[-160]" aria-hidden="true">
+          <TextHoverEffect text="PROJETOS" size="large" />
+        </section>
+        <section className="flex flex-col bg-slate-900 p-16 pb-36">
+          <h2 className="sr-only">Filtrar projetos por tecnologia</h2>
+          <div className="flex justify-center">
+            <span className="font-bold text-3xl">
+              Selecione uma Tecnologia que você gostaria de ver presente no
+              projeto...
+            </span>
+          </div>
+          <div className="flex flex-row justify-center flex-wrap gap-8 w-[70%] mt-8 mx-auto">
+            {techFilters.map((tech) => (
+              <TechFilterButton
+                key={tech.name}
+                techLogo={tech.logo}
+                techName={tech.name}
+                isActive={activeFilter === tech.name}
+                filterAction={() => handleFilter(tech.name)}
               />
-            ))
-          ) : (
-            <p className="text-neutral-400 text-lg mt-8">
-              Nenhum projeto encontrado com a tecnologia{" "}
-              <span className="text-white font-semibold">{activeFilter}</span>.
-            </p>
-          )}
-        </div>
-      </section>
+            ))}
+          </div>
+
+          <div className="mt-12 flex flex-row justify-center gap-8 flex-wrap">
+            {filteredProjects.length > 0 ? (
+              filteredProjects.map((project) => (
+                <ProjectCard
+                  key={project.cardTitlte}
+                  cardTitlte={project.cardTitlte}
+                  cardDescription={project.cardDescription}
+                  bgImageUrl={project.bgImageUrl}
+                  hoverImageurl=""
+                  imageCredits={project.imageCredits}
+                  technologies={project.technologies}
+                  projectUrl={project.projectUrl}
+                />
+              ))
+            ) : (
+              <p className="text-neutral-400 text-lg mt-8">
+                Nenhum projeto encontrado com a tecnologia{" "}
+                <span className="text-white font-semibold">{activeFilter}</span>
+                .
+              </p>
+            )}
+          </div>
+        </section>
+      </main>
 
       <Navbar />
     </div>

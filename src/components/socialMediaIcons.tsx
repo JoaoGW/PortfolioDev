@@ -8,6 +8,7 @@ type SocialLink = {
   href: string;
   color: string;
   label: string;
+  external: boolean;
 };
 
 export function SocialMediaIcons() {
@@ -17,23 +18,29 @@ export function SocialMediaIcons() {
       href: "https://github.com/JoaoGW",
       color: "#484848",
       label: "GitHub",
+      external: true,
     },
     {
       icon: <Linkedin className="w-6 h-6" />,
       href: "https://www.linkedin.com/in/jo%C3%A3o-pedro-do-carmo-ribeiro/",
       color: "#0077b5",
       label: "LinkedIn",
+      external: true,
     },
     {
       icon: <Mail className="w-6 h-6" />,
       href: "/contato",
       color: "#ea4335",
-      label: "Email",
+      label: "Contato por Email",
+      external: false,
     },
   ];
 
   return (
-    <ul className="flex gap-4 items-center self-center">
+    <ul
+      className="flex gap-4 items-center self-center"
+      aria-label="Links de redes sociais"
+    >
       {socialLinks.map((social, index) => (
         <motion.li
           key={index}
@@ -44,12 +51,13 @@ export function SocialMediaIcons() {
         >
           <motion.a
             href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={social.external ? "_blank" : undefined}
+            rel={social.external ? "noopener noreferrer" : undefined}
             className="relative flex items-center justify-center w-20 h-20 bg-white text-gray-700 border-2 border-white rounded-full overflow-hidden group"
             whileHover="hover"
             initial="initial"
             aria-label={social.label}
+            title={social.label}
           >
             <motion.span
               className="absolute inset-0 z-0"
@@ -71,6 +79,7 @@ export function SocialMediaIcons() {
             >
               {social.icon}
             </motion.span>
+            <span className="sr-only">{social.label}</span>
           </motion.a>
         </motion.li>
       ))}

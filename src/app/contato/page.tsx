@@ -147,6 +147,7 @@ export default function Contato() {
 
       <main className="flex-1 flex flex-col lg:flex-row justify-center gap-28 px-6 md:px-20 pt-32 pb-32 max-w-7xl mx-auto w-full">
         <div className="flex-1 flex flex-col justify-center">
+          <h1 className="sr-only">Contato com João Pedro Ribeiro</h1>
           {/* Respostas já dadas */}
           <div className="mb-10 flex flex-col gap-3">
             <AnimatePresence>
@@ -189,12 +190,19 @@ export default function Contato() {
                 {step === 0 && (
                   <input
                     ref={inputRef}
+                    id="contact-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     onKeyDown={handleKey}
                     placeholder="Seu nome..."
-                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-2xl md:text-3xl font-semibold text-white placeholder:text-neutral-700 py-2 transition-colors duration-200 w-full md:w-[480px]"
+                    aria-label="Seu nome"
+                    aria-required="true"
+                    aria-invalid={Boolean(error && step === 0)}
+                    aria-describedby={
+                      error && step === 0 ? "contact-error" : undefined
+                    }
+                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-2xl md:text-3xl font-semibold text-white py-2 transition-colors duration-200 w-full md:w-[480px]"
                   />
                 )}
 
@@ -202,25 +210,38 @@ export default function Contato() {
                 {step === 1 && (
                   <input
                     ref={inputRef}
+                    id="contact-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyDown={handleKey}
                     placeholder="seu@email.com"
-                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-2xl md:text-3xl font-semibold text-white placeholder:text-neutral-700 py-2 transition-colors duration-200 w-full md:w-[480px]"
+                    aria-label="Seu e-mail"
+                    aria-required="true"
+                    aria-invalid={Boolean(error && step === 1)}
+                    aria-describedby={
+                      error && step === 1 ? "contact-error" : undefined
+                    }
+                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-2xl md:text-3xl font-semibold text-white py-2 transition-colors duration-200 w-full md:w-[480px]"
                   />
                 )}
 
                 {/* Select: Assunto */}
                 {step === 2 && (
-                  <div className="flex flex-wrap gap-3 mt-2">
+                  <div
+                    className="flex flex-wrap gap-3 mt-2"
+                    role="group"
+                    aria-label="Assunto da mensagem"
+                  >
                     {SUBJECTS.map((s) => (
                       <button
                         key={s}
+                        type="button"
                         onClick={() => {
                           setSubject(s);
                           setError("");
                         }}
+                        aria-pressed={subject === s}
                         className={`px-5 py-2.5 rounded-full border text-sm font-semibold transition-all duration-200 ${
                           subject === s
                             ? "bg-white text-neutral-950 border-white"
@@ -237,12 +258,19 @@ export default function Contato() {
                 {step === 3 && (
                   <textarea
                     ref={textareaRef}
+                    id="contact-message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={handleKey}
                     placeholder="Escreva aqui..."
                     rows={4}
-                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-lg md:text-xl font-medium text-white placeholder:text-neutral-700 py-2 transition-colors duration-200 w-full resize-none"
+                    aria-label="Mensagem"
+                    aria-required="true"
+                    aria-invalid={Boolean(error && step === 3)}
+                    aria-describedby={
+                      error && step === 3 ? "contact-error" : undefined
+                    }
+                    className="bg-transparent border-b-2 border-neutral-700 focus:border-white outline-none text-lg md:text-xl font-medium text-white py-2 transition-colors duration-200 w-full resize-none"
                   />
                 )}
 
@@ -250,10 +278,13 @@ export default function Contato() {
                 <AnimatePresence>
                   {error && (
                     <motion.p
+                      id="contact-error"
                       initial={{ opacity: 0, y: -4 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
                       className="text-sm text-red-400"
+                      role="alert"
+                      aria-live="assertive"
                     >
                       {error}
                     </motion.p>
@@ -263,8 +294,14 @@ export default function Contato() {
                 {/* Botão avançar */}
                 <div className="flex items-center gap-4 mt-2">
                   <button
+                    type="button"
                     onClick={advance}
                     disabled={sending}
+                    aria-label={
+                      step < 3
+                        ? "Avançar para próxima etapa"
+                        : "Enviar mensagem de contato"
+                    }
                     className="group flex items-center gap-2 bg-white text-neutral-950 font-bold text-sm px-6 py-3 rounded-full transition-all duration-200 hover:bg-neutral-200 disabled:opacity-50"
                   >
                     {step < 3 ? (
@@ -309,7 +346,9 @@ export default function Contato() {
                   </span>
                 </h2>
                 <button
+                  type="button"
                   onClick={reset}
+                  aria-label="Enviar outra mensagem"
                   className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors duration-200 w-fit"
                 >
                   <RotateCcw size={14} />
@@ -321,7 +360,10 @@ export default function Contato() {
 
           {/* Indicador de progresso */}
           {!sent && (
-            <div className="fixed bottom-28 left-1/2 -translate-x-1/2 flex gap-2">
+            <div
+              className="fixed bottom-28 left-1/2 -translate-x-1/2 flex gap-2"
+              aria-hidden="true"
+            >
               {steps.map((_, i) => (
                 <div
                   key={i}
@@ -367,6 +409,7 @@ export default function Contato() {
           <div className="flex flex-col gap-4">
             <a
               href="mailto:profissional.jpribeiro@gmail.com"
+              aria-label="Enviar e-mail para profissional.jpribeiro@gmail.com"
               className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors duration-200 group"
             >
               <span className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-neutral-600 transition-colors">
@@ -379,6 +422,7 @@ export default function Contato() {
               href="https://github.com/JoaoGW"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Abrir GitHub de João Pedro Ribeiro em nova aba"
               className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors duration-200 group"
             >
               <span className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-neutral-600 transition-colors">
@@ -391,6 +435,7 @@ export default function Contato() {
               href="https://www.linkedin.com/in/jo%C3%A3o-pedro-do-carmo-ribeiro/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Abrir LinkedIn de João Pedro Ribeiro em nova aba"
               className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors duration-200 group"
             >
               <span className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-neutral-600 transition-colors">
