@@ -53,10 +53,15 @@ Deploy oficial:
 ## Estrutura do Projeto
 
 ├── app/
+
 ├── components/
+
 ├── public/
+
 ├── styles/
+
 ├── utils/
+
 ├── package.json
 
 ---
