@@ -74,6 +74,7 @@ type LanguageMessages = {
     downloadResumeDescription: string;
     fiverrRole: string;
     cultiRole: string;
+    multscanRole: string;
   };
   contact: {
     pageTitle: string;
@@ -216,6 +217,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Gostaria de baixar o meu currículo no formato clássico? (PDF)",
       fiverrRole: "Desenvolvedor Web",
       cultiRole: "Estagiário",
+      multscanRole: "Engenheiro de Software Júnior",
     },
     contact: {
       pageTitle: "Contato com João Pedro Ribeiro",
@@ -355,6 +357,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Would you like to download my resume in classic format? (PDF)",
       fiverrRole: "Web Developer",
       cultiRole: "Intern",
+      multscanRole: "Junior Software Engineer",
     },
     contact: {
       pageTitle: "Contact João Pedro Ribeiro",
@@ -495,6 +498,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Souhaitez-vous télécharger mon CV au format classique ? (PDF)",
       fiverrRole: "Développeur Web",
       cultiRole: "Stagiaire",
+      multscanRole: "Ingénieur logiciel junior"
     },
     contact: {
       pageTitle: "Contact João Pedro Ribeiro",

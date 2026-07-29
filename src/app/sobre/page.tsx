@@ -32,6 +32,7 @@ import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import USPLogo from "../../assets/Instituicoes/USP_Logo.png";
 import CultiLogo from "../../assets/Empresas/cultivare_logo.webp";
 import FiverrLogo from "../../assets/Empresas/fiverr_logo.webp";
+import MultscanLogo from "../../assets/Empresas/MultscanLogo.png"
 
 import { FileDown, StepForward } from "lucide-react";
 
@@ -72,7 +73,7 @@ export default function Sobre() {
     null,
   );
   const [experienceCard, setExperienceCard] = useState<
-    "culti" | "fiverr" | null
+    "culti" | "fiverr" | "multscan" | null
   >(null);
   const [showTechStackSection, setShowTechStackSection] = useState(false);
   const [showAvailabilitySection, setShowAvailabilitySection] = useState(false);
@@ -535,6 +536,20 @@ export default function Sobre() {
               />
               <span className="text-center uppercase font-bold text-2xl min-h-[4rem] flex items-center justify-center">
                 {messages.about.cultiRole}
+              </span>
+            </GlareCard>
+            <GlareCard
+              className="w-80 min-h-[32.8125rem] flex flex-col items-center justify-center gap-5"
+              expandCard={() => setExperienceCard("multscan")}
+            >
+              <Image
+                src={MultscanLogo}
+                width={200}
+                height={200}
+                alt="Logo da Multscan Inteligência Tecnológica"
+              />
+              <span className="text-center uppercase font-bold text-2xl min-h-[4rem] flex items-center justify-center">
+                {messages.about.multscanRole}
               </span>
             </GlareCard>
 
