@@ -96,25 +96,22 @@ export const enAcademic: SobreAcademic = {
     ]
   },
   "usp": {
-    "courseType": "Complementary Courses",
-    "courseName": "Engenharia de Software",
-    "description": "USP's introductory CS course, complementing my undergraduate degree and reinforcing algorithmic thinking and efficient problem solving.",
+    "courseType": "MBA / Lato Sensu Postgraduate Program",
+    "courseName": "MBA in Software Engineering",
+    "description": "USP/Esalq's MBA in Software Engineering, a lato sensu postgraduate program with live classes focused on deepening software engineering, quality and management practices.",
     "skills": [
-      "Algorithmic Thinking",
-      "Problem Solving",
-      "C Programming",
-      "Python",
-      "SQL",
-      "JavaScript",
-      "HTML and CSS",
-      "Data Structures",
-      "Algorithms",
-      "Abstraction",
-      "Encapsulation",
-      "Resource Management",
-      "Software Security",
-      "Software Engineering",
-      "Web Development"
+      "Requirements Engineering",
+      "Software Quality",
+      "Agile Project Management",
+      "DevOps",
+      "Continuous Integration / Continuous Delivery (CI/CD)",
+      "Infrastructure as Code",
+      "Software Testing",
+      "Test-Driven Development (TDD)",
+      "Behavior-Driven Development (BDD)",
+      "Test Automation",
+      "Development Team Management",
+      "Scrum, Kanban and XP"
     ]
   }
 };

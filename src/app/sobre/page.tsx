@@ -32,7 +32,8 @@ import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import USPLogo from "../../assets/Instituicoes/USP_Logo.png";
 import CultiLogo from "../../assets/Empresas/cultivare_logo.webp";
 import FiverrLogo from "../../assets/Empresas/fiverr_logo.webp";
-import MultscanLogo from "../../assets/Empresas/MultscanLogo.png"
+import MultscanLogo from "../../assets/Empresas/MultscanLogo.png";
+import MultscanLogoDark from "../../assets/Empresas/MultscanLogoDark.png";
 
 import { FileDown, StepForward } from "lucide-react";
 
@@ -483,8 +484,8 @@ export default function Sobre() {
             courseType={sobreText.academic.usp.courseType}
             courseName={sobreText.academic.usp.courseName}
             modality="EAD"
-            startDate="2025"
-            endDate="2026"
+            startDate="Maio de 2026"
+            endDate="Dezembro de 2027"
             status="Cursando"
             location="Online"
             description={sobreText.academic.usp.description}
@@ -553,6 +554,38 @@ export default function Sobre() {
               </span>
             </GlareCard>
 
+            <EnterpriseModal
+              isOpen={experienceCard === "multscan"}
+              onClose={() => setExperienceCard(null)}
+              companyLogo={MultscanLogoDark}
+              companyName="Multscan - Inteligência Tecnológica"
+              role={sobreText.experience.multscan.role}
+              employmentType="Tempo integral"
+              startDate="Março de 2026"
+              location="Santo André, SP - Brasil"
+              description={sobreText.experience.multscan.description}
+              responsibilities={sobreText.experience.multscan.responsibilities}
+              technologies={[
+                { name: "Next.js", category: "frontend" },
+                { name: "React Native", category: "frontend" },
+                { name: "Expo", category: "frontend" },
+                { name: "TypeScript", category: "frontend" },
+                { name: "Node.js", category: "backend" },
+                { name: "Tailwind CSS", category: "frontend" },
+                { name: "Prisma", category: "backend" },
+                { name: "PostgreSQL", category: "database" },
+                { name: "Redis", category: "database" },
+                { name: "Stripe", category: "other" },
+                { name: "GitHub Actions", category: "tools" },
+                { name: "Jenkins", category: "tools" },
+                { name: "Docker", category: "tools" },
+                { name: "AWS", category: "tools" },
+                { name: "Google Play Store", category: "other" },
+                { name: "Apple App Store", category: "other" },
+                { name: "Scrum", category: "other" },
+                { name: "Jira", category: "tools" },
+              ]}
+            />
             <EnterpriseModal
               isOpen={experienceCard === "fiverr"}
               onClose={() => setExperienceCard(null)}

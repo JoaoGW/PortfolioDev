@@ -96,25 +96,22 @@ export const ptAcademic: SobreAcademic = {
     ]
   },
   "usp": {
-    "courseType": "Cursos Complementares",
-    "courseName": "Engenharia de Software",
-    "description": "Curso introdutório de Ciência da Computação de USP. Serve como um complemento e revisão geral ao meu bacharelado principal realizado na PUC-SP. Introdução às áreas intelectuais da ciência da computação e à programação. Ensina a pensar algoritmicamente e resolver problemas de forma eficiente.",
+    "courseType": "MBA / Pós-graduação Lato Sensu",
+    "courseName": "MBA em Engenharia de Software",
+    "description": "MBA em Engenharia de Software da USP/Esalq, uma pós-graduação lato sensu com aulas ao vivo, voltada ao aprofundamento de práticas de engenharia, qualidade e gestão de software.",
     "skills": [
-      "Pensamento Algorítmico",
-      "Resolução de Problemas",
-      "C Programming",
-      "Python",
-      "SQL",
-      "JavaScript",
-      "HTML e CSS",
-      "Estruturas de Dados",
-      "Algoritmos",
-      "Abstração",
-      "Encapsulamento",
-      "Gerenciamento de Recursos",
-      "Segurança de Software",
-      "Engenharia de Software",
-      "Desenvolvimento Web"
+      "Engenharia de Requisitos",
+      "Qualidade de Software",
+      "Gestão de Projetos Ágeis",
+      "DevOps",
+      "Continuous Integration / Continuous Delivery (CI/CD)",
+      "Infrastructure as Code",
+      "Testes de Software",
+      "Test-Driven Development (TDD)",
+      "Behavior-Driven Development (BDD)",
+      "Automação de Testes",
+      "Gestão de Equipes de Desenvolvimento",
+      "Scrum, Kanban e XP"
     ]
   }
 };

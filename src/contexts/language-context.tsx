@@ -215,8 +215,8 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       downloadResumeTitle: "Baixar meu Currículo",
       downloadResumeDescription:
         "Gostaria de baixar o meu currículo no formato clássico? (PDF)",
-      fiverrRole: "Desenvolvedor Web",
-      cultiRole: "Estagiário",
+      fiverrRole: "Desenvolvedor Web - Freelancer",
+      cultiRole: "Estagiário - Desenvolvimento Full Stack",
       multscanRole: "Engenheiro de Software Júnior",
     },
     contact: {

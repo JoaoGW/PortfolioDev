@@ -40,42 +40,24 @@ export default function DeferredAvailabilitySection({
           <WorldMap
             dots={[
               {
-                start: {
-                  lat: -39.5505,
-                  lng: -46.6333,
-                },
-                end: {
-                  lat: -38.9068,
-                  lng: -43.1729,
-                },
+                start: { lat: -19.9167, lng: -43.9345, label: "Belo Horizonte" },
+                end: { lat: -12.9777, lng: -38.5016, label: "Salvador" },
               },
               {
-                start: { lat: -39.5505, lng: -46.6333 },
-                end: { lat: 32.8566, lng: 2.3522 },
+                start: { lat: -12.9777, lng: -38.5016, label: "Salvador" },
+                end: { lat: -15.7939, lng: -47.8828, label: "Brasília" },
               },
               {
-                start: { lat: -38.9068, lng: -43.1729 },
-                end: { lat: 35.5074, lng: -0.1278 },
+                start: { lat: -15.7939, lng: -47.8828, label: "Brasília" },
+                end: { lat: 41.9028, lng: 12.4964, label: "Roma" },
               },
               {
-                start: { lat: 32.8566, lng: 2.3522 },
-                end: { lat: 36.52, lng: 13.405 },
+                start: { lat: 41.9028, lng: 12.4964, label: "Roma" },
+                end: { lat: 51.5074, lng: -0.1278, label: "Londres" },
               },
               {
-                start: { lat: 35.5074, lng: -0.1278 },
-                end: { lat: 36.3676, lng: 4.9041 },
-              },
-              {
-                start: { lat: 36.3676, lng: 4.9041 },
-                end: { lat: 34.8503, lng: 4.3517 },
-              },
-              {
-                start: { lat: 34.8503, lng: 4.3517 },
-                end: { lat: 22.7223, lng: -9.1393 },
-              },
-              {
-                start: { lat: 22.7223, lng: -9.1393 },
-                end: { lat: 25.1579, lng: -8.6291 },
+                start: { lat: 51.5074, lng: -0.1278, label: "Londres" },
+                end: { lat: 60.1699, lng: 24.9384, label: "Helsinki" },
               },
             ]}
           />

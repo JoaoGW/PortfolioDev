@@ -23,11 +23,11 @@ type EnterpriseModalProps = {
   companyLogo: StaticImageData;
   companyName: string;
   role: string;
-  employmentType: 'Tempo integral' | 'Meio período' | 'Freelance' | 'Estágio' | 'Contrato';
-  remuneration: 'Remunerado' | 'Não Remunerado';
+  employmentType?: 'Tempo integral' | 'Meio período' | 'Freelance' | 'Estágio' | 'Contrato';
+  remuneration?: 'Remunerado' | 'Não Remunerado';
   startDate: string;
   endDate?: string;
-  duration: string;
+  duration?: string;
   location: string;
   description?: string;
   responsibilities?: Responsibility[];
@@ -159,19 +159,19 @@ export function EnterpriseModal({
                     >
                       { role }
                     </motion.p>
-                    <motion.div
+                    {(employmentType || remuneration) && <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 }}
                       className="flex flex-wrap gap-2"
                     >
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${employmentTypeColors[employmentType]} border backdrop-blur-sm`}>
+                      {employmentType && <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${employmentTypeColors[employmentType]} border backdrop-blur-sm`}>
                         { employmentType }
-                      </span>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${remunerationColors[remuneration]}`}>
+                      </span>}
+                      {remuneration && <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${remunerationColors[remuneration]}`}>
                         { remuneration }
-                      </span>
-                    </motion.div>
+                      </span>}
+                    </motion.div>}
                   </div>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export function EnterpriseModal({
                     <div>
                       <p className="text-xs text-slate-500 mb-1 uppercase tracking-wide">Período</p>
                       <p className="font-semibold text-white text-sm">{startDate} - {endDate || 'Atual'}</p>
-                      <p className="text-xs text-slate-400 mt-1">{duration}</p>
+                      {duration && <p className="text-xs text-slate-400 mt-1">{duration}</p>}
                     </div>
                   </div>
 
@@ -200,13 +200,13 @@ export function EnterpriseModal({
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 p-4 bg-slate-900/50 rounded-lg border border-slate-800">
+                  {employmentType && <div className="flex items-start gap-3 p-4 bg-slate-900/50 rounded-lg border border-slate-800">
                     <Briefcase className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-xs text-slate-500 mb-1 uppercase tracking-wide">Modalidade</p>
                       <p className="font-semibold text-white text-sm">{employmentType}</p>
                     </div>
-                  </div>
+                  </div>}
                 </motion.div>
 
                 { description && (

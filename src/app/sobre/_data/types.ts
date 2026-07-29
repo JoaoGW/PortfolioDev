@@ -50,6 +50,15 @@ export type SobreAcademic = {
 };
 
 export type SobreExperience = {
+  multscan: {
+    role: string;
+    description: string;
+    responsibilities: {
+      title: string;
+      description: string;
+      achievements: string[];
+    }[];
+  };
   fiverr: {
     description: string;
     responsibilities: {
