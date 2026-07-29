@@ -198,7 +198,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Foco em qualidade, manutenibilidade e escalabilidade",
       ],
       summaryParagraph2:
-        "Complementarmente, realizo cursos de Ciência da Computação e Desenvolvimento de Software pela Universidade de Harvard, reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação e eficiência contribuindo para projetos que unem propósito, impacto e evolução contínua.",
+        "Complementarmente, realizo cursos de Ciência da Computação e Desenvolvimento de Software pela Universidade de USP, reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação e eficiência contribuindo para projetos que unem propósito, impacto e evolução contínua.",
       techStackHint:
         "Passe o mouse por cima das bolhas para conferir os nomes das tecnologias, se necessário.",
       academicTitle: "ACADÊMICO",
@@ -337,7 +337,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Focus on quality, maintainability and scalability",
       ],
       summaryParagraph2:
-        "Additionally, I take Computer Science and Software Development courses at Harvard University, strengthening my technical foundation and global perspective. I am enthusiastic about understanding, designing and improving software that makes people's lives easier, delivering sustainable long-term products. I constantly seek innovation and efficiency, contributing to projects that combine purpose, impact and continuous evolution.",
+        "Additionally, I take Computer Science and Software Development courses at USP University, strengthening my technical foundation and global perspective. I am enthusiastic about understanding, designing and improving software that makes people's lives easier, delivering sustainable long-term products. I constantly seek innovation and efficiency, contributing to projects that combine purpose, impact and continuous evolution.",
       techStackHint:
         "Hover over the bubbles to check the technology names, if needed.",
       academicTitle: "ACADEMIC",
@@ -477,7 +477,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Accent sur la qualité, la maintenabilité et la scalabilité",
       ],
       summaryParagraph2:
-        "En complément, je suis des cours d'informatique et de développement logiciel à l'Université Harvard, renforçant ma base technique et ma vision globale du domaine. Je suis passionné par la compréhension, la conception et l'amélioration de logiciels qui facilitent la vie des gens, en livrant des produits durables à long terme. Je recherche constamment l'innovation et l'efficacité, en contribuant à des projets alliant sens, impact et évolution continue.",
+        "En complément, je suis des cours d'informatique et de développement logiciel à l'Université USP, renforçant ma base technique et ma vision globale du domaine. Je suis passionné par la compréhension, la conception et l'amélioration de logiciels qui facilitent la vie des gens, en livrant des produits durables à long terme. Je recherche constamment l'innovation et l'efficacité, en contribuant à des projets alliant sens, impact et évolution continue.",
       techStackHint:
         "Survolez les bulles pour voir les noms des technologies, si nécessaire.",
       academicTitle: "ACADÉMIQUE",

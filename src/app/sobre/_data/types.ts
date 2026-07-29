@@ -20,8 +20,8 @@ export type SobreAcademicCards = {
   pucLevel: string;
   fiapCourse: string;
   fiapLevel: string;
-  harvardCourse: string;
-  harvardLevel: string;
+  uspCourse: string;
+  uspLevel: string;
 };
 
 export type SobreAcademic = {
@@ -41,7 +41,7 @@ export type SobreAcademic = {
     certificates: { name: string; issuedDate: string; link: string }[];
     activities: { title: string; description: string; period: string }[];
   };
-  harvard: {
+  usp: {
     courseType: string;
     courseName: string;
     description: string;

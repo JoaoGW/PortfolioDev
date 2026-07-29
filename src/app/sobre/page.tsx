@@ -29,7 +29,7 @@ import MongodbLogo from "../../assets/Logos/mongodb-512.webp";
 import PythonLogo from "../../assets/Logos/python_logo.webp";
 import PUCLogo from "../../assets/Instituicoes/pucsp-logo.webp";
 import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
-import HarvardLogo from "../../assets/Instituicoes/Harvard_logo.webp";
+import USPLogo from "../../assets/Instituicoes/USP_Logo.png";
 import CultiLogo from "../../assets/Empresas/cultivare_logo.webp";
 import FiverrLogo from "../../assets/Empresas/fiverr_logo.webp";
 
@@ -68,7 +68,7 @@ type curriculumFileTypes = {
 
 export default function Sobre() {
   const { messages, language } = useLanguage();
-  const [openModal, setOpenModal] = useState<"puc" | "fiap" | "harvard" | null>(
+  const [openModal, setOpenModal] = useState<"puc" | "fiap" | "usp" | null>(
     null,
   );
   const [experienceCard, setExperienceCard] = useState<
@@ -428,12 +428,12 @@ export default function Sobre() {
               institurionOpenDetails={() => setOpenModal("fiap")}
             />
             <InstitutionCard
-              institutionLogo={HarvardLogo}
-              institutionAltImage="Logo Instituição Harvard"
-              institurionName="Harvard"
-              institutionCourse={sobreText.academicCards.harvardCourse}
-              institutionCourseLevel={sobreText.academicCards.harvardLevel}
-              institurionOpenDetails={() => setOpenModal("harvard")}
+              institutionLogo={USPLogo}
+              institutionAltImage="Logo Instituição USP"
+              institurionName="USP"
+              institutionCourse={sobreText.academicCards.uspCourse}
+              institutionCourseLevel={sobreText.academicCards.uspLevel}
+              institurionOpenDetails={() => setOpenModal("usp")}
             />
           </div>
 
@@ -475,22 +475,22 @@ export default function Sobre() {
           />
 
           <InstitutionModal
-            isOpen={openModal === "harvard"}
+            isOpen={openModal === "usp"}
             onClose={() => setOpenModal(null)}
-            institutionLogo={HarvardLogo}
-            institutionName="Harvard University"
-            courseType={sobreText.academic.harvard.courseType}
-            courseName={sobreText.academic.harvard.courseName}
+            institutionLogo={USPLogo}
+            institutionName="USP - Universidade de São Paulo"
+            courseType={sobreText.academic.usp.courseType}
+            courseName={sobreText.academic.usp.courseName}
             modality="EAD"
             startDate="2025"
             endDate="2026"
             status="Cursando"
             location="Online"
-            description={sobreText.academic.harvard.description}
-            skills={sobreText.academic.harvard.skills}
+            description={sobreText.academic.usp.description}
+            skills={sobreText.academic.usp.skills}
             certificates={[]}
             activities={[]}
-            headerBgColor="#af8f25"
+            headerBgColor="#7e7e7b"
           />
         </section>
         <section className="pt-16 pb-16">

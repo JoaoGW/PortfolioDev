@@ -95,10 +95,10 @@ export const enAcademic: SobreAcademic = {
       }
     ]
   },
-  "harvard": {
+  "usp": {
     "courseType": "Complementary Courses",
-    "courseName": "CS50 - Introduction to Computer Science",
-    "description": "Harvard's introductory CS course, complementing my undergraduate degree and reinforcing algorithmic thinking and efficient problem solving.",
+    "courseName": "Engenharia de Software",
+    "description": "USP's introductory CS course, complementing my undergraduate degree and reinforcing algorithmic thinking and efficient problem solving.",
     "skills": [
       "Algorithmic Thinking",
       "Problem Solving",

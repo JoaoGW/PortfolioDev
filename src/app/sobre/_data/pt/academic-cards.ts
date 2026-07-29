@@ -5,6 +5,6 @@ export const ptAcademicCards: SobreAcademicCards = {
   "pucLevel": "Graduação / Bacharelado",
   "fiapCourse": "Arquitetura de Software",
   "fiapLevel": "Pós-Graduação",
-  "harvardCourse": "CS50",
-  "harvardLevel": "Cursos Complementares"
+  "uspCourse": "Engenharia de Software",
+  "uspLevel": "MBA"
 };

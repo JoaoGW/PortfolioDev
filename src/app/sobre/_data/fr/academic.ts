@@ -95,10 +95,10 @@ export const frAcademic: SobreAcademic = {
       }
     ]
   },
-  "harvard": {
+  "usp": {
     "courseType": "Cours Complémentaires",
-    "courseName": "CS50 - Introduction to Computer Science",
-    "description": "Cours introductif en informatique de Harvard, complémentaire à mon parcours principal, avec accent sur la pensée algorithmique et la résolution efficace de problèmes.",
+    "courseName": "Engenharia de Software",
+    "description": "Cours introductif en informatique de USP, complémentaire à mon parcours principal, avec accent sur la pensée algorithmique et la résolution efficace de problèmes.",
     "skills": [
       "Pensée Algorithmique",
       "Résolution de Problèmes",

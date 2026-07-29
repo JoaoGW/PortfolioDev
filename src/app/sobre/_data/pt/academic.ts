@@ -95,10 +95,10 @@ export const ptAcademic: SobreAcademic = {
       }
     ]
   },
-  "harvard": {
+  "usp": {
     "courseType": "Cursos Complementares",
-    "courseName": "CS50 - Introduction to Computer Science",
-    "description": "Curso introdutório de Ciência da Computação de Harvard. Serve como um complemento e revisão geral ao meu bacharelado principal realizado na PUC-SP. Introdução às áreas intelectuais da ciência da computação e à programação. Ensina a pensar algoritmicamente e resolver problemas de forma eficiente.",
+    "courseName": "Engenharia de Software",
+    "description": "Curso introdutório de Ciência da Computação de USP. Serve como um complemento e revisão geral ao meu bacharelado principal realizado na PUC-SP. Introdução às áreas intelectuais da ciência da computação e à programação. Ensina a pensar algoritmicamente e resolver problemas de forma eficiente.",
     "skills": [
       "Pensamento Algorítmico",
       "Resolução de Problemas",
