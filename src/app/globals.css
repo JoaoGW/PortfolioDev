@@ -5,6 +5,7 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --color-accent-orange: 255 107 0;
 }
 
 @theme inline {

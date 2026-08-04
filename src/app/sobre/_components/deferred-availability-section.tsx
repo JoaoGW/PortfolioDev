@@ -25,11 +25,10 @@ export default function DeferredAvailabilitySection({
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
+            className="mt-12 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
             style={{
-              WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
-              textShadow:
-                "0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)",
+              WebkitTextStroke: "2px rgb(var(--color-accent-orange) / 0.3)",
+              textShadow: "0 0 40px rgb(var(--color-accent-orange) / 0.5)",
             }}
           >
             {title}

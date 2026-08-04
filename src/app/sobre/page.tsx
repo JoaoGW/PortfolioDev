@@ -177,13 +177,13 @@ export default function Sobre() {
           />
           <div className="flex flex-col ml-24">
             <div className="flex flex-row mb-6 items-center gap-2">
-              <span className="text-[#72BF6A] font-bold text-2xl">
+              <span className="text-accent-orange font-bold text-2xl">
                 {"<span>"}
               </span>
               <span className="font-semibold text-xl">
                 {messages.about.greeting}
               </span>
-              <span className="text-[#72BF6A] font-bold text-2xl">
+              <span className="text-accent-orange font-bold text-2xl">
                 {"</span>"}
               </span>
             </div>
@@ -204,7 +204,7 @@ export default function Sobre() {
             </div>
             <div className="flex flex-row mt-6">
               <p className="font-semibold text-xl">
-                <span className="text-[#72BF6A] font-bold text-2xl mr-2">
+                <span className="text-accent-orange font-bold text-2xl mr-2">
                   {"<p>"}
                 </span>
                 {messages.about.introParagraph.beforeWeb}{" "}
@@ -220,14 +220,14 @@ export default function Sobre() {
                   {messages.about.introParagraph.devOps}
                 </Highlight>
                 {messages.about.introParagraph.after}
-                <span className="text-[#72BF6A] font-bold text-2xl ml-2">
+                <span className="text-accent-orange font-bold text-2xl ml-2">
                   {"</p>"}
                 </span>
               </p>
             </div>
             <div className="flex flex-row gap-4 mt-6 items-center">
               <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
+                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
                 <Image
                   src={NodeLogo}
                   width={70}
@@ -237,7 +237,7 @@ export default function Sobre() {
                 />
               </div>
               <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
+                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
                 <Image
                   src={ReactLogo}
                   width={70}
@@ -247,7 +247,7 @@ export default function Sobre() {
                 />
               </div>
               <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
+                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
                 <Image
                   src={NextjsLogo}
                   width={70}
@@ -257,7 +257,7 @@ export default function Sobre() {
                 />
               </div>
               <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
+                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
                 <Image
                   src={DockerLogo}
                   width={70}
@@ -267,7 +267,7 @@ export default function Sobre() {
                 />
               </div>
               <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
+                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
                 <Image
                   src={MongodbLogo}
                   width={70}
@@ -277,7 +277,7 @@ export default function Sobre() {
                 />
               </div>
               <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
+                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
                 <Image
                   src={TypeScriptLogo}
                   width={70}
@@ -287,7 +287,7 @@ export default function Sobre() {
                 />
               </div>
               <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
+                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
                 <Image
                   src={PythonLogo}
                   width={70}
@@ -315,59 +315,59 @@ export default function Sobre() {
             </span>
             <p className="mt-5 text-lg">{messages.about.summaryParagraph1}</p>
             <div className="mt-8 mb-8">
-              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#72BF6A] to-[#0096C7] bg-clip-text text-transparent">
+              <h3 className="text-2xl font-bold mb-4 text-accent-orange">
                 {messages.about.skillsTitle}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-5xl mx-auto">
-                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#72BF6A]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,191,106,0.15)] hover:cursor-pointer">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#72BF6A]/5 to-[#0096C7]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-accent-orange/50 transition-all duration-300 hover:shadow-[0_0_30px_rgb(255_107_0_/_0.15)] hover:cursor-pointer">
+                  <div className="absolute inset-0 bg-accent-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-center gap-3 relative z-10">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#72BF6A] to-[#0096C7] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-accent-orange flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
                     <span className="text-slate-200 font-medium leading-relaxed">
                       {messages.about.skills[0]}
                     </span>
                   </div>
                 </div>
-                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#0096C7]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)] hover:cursor-pointer">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0096C7]/5 to-[#72BF6A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-accent-orange/50 transition-all duration-300 hover:shadow-[0_0_30px_rgb(255_107_0_/_0.15)] hover:cursor-pointer">
+                  <div className="absolute inset-0 bg-accent-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-center gap-3 relative z-10">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#0096C7] to-[#72BF6A] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-accent-orange flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
                     <span className="text-slate-200 font-medium leading-relaxed">
                       {messages.about.skills[1]}
                     </span>
                   </div>
                 </div>
-                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#72BF6A]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,191,106,0.15)] hover:cursor-pointer">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#72BF6A]/5 to-[#0096C7]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-accent-orange/50 transition-all duration-300 hover:shadow-[0_0_30px_rgb(255_107_0_/_0.15)] hover:cursor-pointer">
+                  <div className="absolute inset-0 bg-accent-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-center gap-3 relative z-10">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#72BF6A] to-[#0096C7] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-accent-orange flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
                     <span className="text-slate-200 font-medium leading-relaxed">
                       {messages.about.skills[2]}
                     </span>
                   </div>
                 </div>
-                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#0096C7]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)] hover:cursor-pointer">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0096C7]/5 to-[#72BF6A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-accent-orange/50 transition-all duration-300 hover:shadow-[0_0_30px_rgb(255_107_0_/_0.15)] hover:cursor-pointer">
+                  <div className="absolute inset-0 bg-accent-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-center gap-3 relative z-10">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#0096C7] to-[#72BF6A] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-accent-orange flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
                     <span className="text-slate-200 font-medium leading-relaxed">
                       {messages.about.skills[3]}
                     </span>
                   </div>
                 </div>
-                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#72BF6A]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,191,106,0.15)] hover:cursor-pointer">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#72BF6A]/5 to-[#0096C7]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-accent-orange/50 transition-all duration-300 hover:shadow-[0_0_30px_rgb(255_107_0_/_0.15)] hover:cursor-pointer">
+                  <div className="absolute inset-0 bg-accent-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-center gap-3 relative z-10">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#72BF6A] to-[#0096C7] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-accent-orange flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
                     <span className="text-slate-200 font-medium leading-relaxed">
                       {messages.about.skills[4]}
                     </span>
                   </div>
                 </div>
-                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-[#0096C7]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)] hover:cursor-pointer">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0096C7]/5 to-[#72BF6A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="group relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-accent-orange/50 transition-all duration-300 hover:shadow-[0_0_30px_rgb(255_107_0_/_0.15)] hover:cursor-pointer">
+                  <div className="absolute inset-0 bg-accent-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-center gap-3 relative z-10">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#0096C7] to-[#72BF6A] flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-accent-orange flex-shrink-0 group-hover:scale-150 transition-transform duration-300 animate-pulse" />
                     <span className="text-slate-200 font-medium leading-relaxed">
                       {messages.about.skills[5]}
                     </span>
@@ -395,20 +395,19 @@ export default function Sobre() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
               viewport={{ once: true, amount: 0.2 }}
-              className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
+              className="mt-12 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
               style={{
-                WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
-                textShadow:
-                  "0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)",
+                WebkitTextStroke: "2px rgb(var(--color-accent-orange) / 0.3)",
+                textShadow: "0 0 40px rgb(var(--color-accent-orange) / 0.5)",
               }}
             >
               {messages.about.academicTitle}
             </motion.h4>
             <div className="w-[40rem] h-40 relative">
-              <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#72BF6A] to-transparent h-[2px] w-3/4 blur-sm" />
-              <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#72BF6A] to-transparent h-px w-3/4" />
-              <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#0096C7] to-transparent h-[5px] w-1/4 blur-sm" />
-              <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#0096C7] to-transparent h-px w-1/4" />
+              <div className="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-accent-orange blur-sm" />
+              <div className="absolute inset-x-20 top-0 h-px w-3/4 bg-accent-orange" />
+              <div className="absolute inset-x-60 top-0 h-[5px] w-1/4 bg-accent-orange blur-sm" />
+              <div className="absolute inset-x-60 top-0 h-px w-1/4 bg-accent-orange" />
               <div className="absolute inset-0 w-full h-full bg-slate-900 [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
             </div>
           </div>
@@ -501,11 +500,10 @@ export default function Sobre() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
+            className="mt-12 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
             style={{
-              WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
-              textShadow:
-                "0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)",
+              WebkitTextStroke: "2px rgb(var(--color-accent-orange) / 0.3)",
+              textShadow: "0 0 40px rgb(var(--color-accent-orange) / 0.5)",
             }}
           >
             {messages.about.experienceTitle}
@@ -655,11 +653,10 @@ export default function Sobre() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
+            className="mt-12 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
             style={{
-              WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
-              textShadow:
-                "0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)",
+              WebkitTextStroke: "2px rgb(var(--color-accent-orange) / 0.3)",
+              textShadow: "0 0 40px rgb(var(--color-accent-orange) / 0.5)",
             }}
           >
             {messages.about.interestedTitle}
