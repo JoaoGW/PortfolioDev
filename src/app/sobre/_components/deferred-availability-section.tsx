@@ -39,24 +39,36 @@ export default function DeferredAvailabilitySection({
           <WorldMap
             dots={[
               {
-                start: { lat: -19.9167, lng: -43.9345, label: "Belo Horizonte" },
-                end: { lat: -12.9777, lng: -38.5016, label: "Salvador" },
+                start: { lat: -43.5505, lng: -46.6333, label: "São Paulo" },
+                end: { lat: -39.9167, lng: -43.9345, label: "Belo Horizonte" },
               },
               {
-                start: { lat: -12.9777, lng: -38.5016, label: "Salvador" },
-                end: { lat: -15.7939, lng: -47.8828, label: "Brasília" },
+                start: { lat: -39.9167, lng: -43.9345, label: "Belo Horizonte" },
+                end: { lat: -32.9777, lng: -38.5016, label: "Salvador" },
               },
               {
-                start: { lat: -15.7939, lng: -47.8828, label: "Brasília" },
-                end: { lat: 41.9028, lng: 12.4964, label: "Roma" },
+                start: { lat: -32.9777, lng: -38.5016, label: "Salvador" },
+                end: { lat: -35.7939, lng: -47.8828, label: "Brasília" },
               },
               {
-                start: { lat: 41.9028, lng: 12.4964, label: "Roma" },
-                end: { lat: 51.5074, lng: -0.1278, label: "Londres" },
+                start: { lat: -35.7939, lng: -47.8828, label: "Brasília" },
+                end: { lat: 28.7223, lng: -9.1393, label: "Lisboa" },
               },
               {
-                start: { lat: 51.5074, lng: -0.1278, label: "Londres" },
-                end: { lat: 60.1699, lng: 24.9384, label: "Helsinki" },
+                start: { lat: 28.7223, lng: -9.1393, label: "Lisboa" },
+                end: { lat: 31.1579, lng: -8.6291, label: "Porto" },
+              },
+              {
+                start: { lat: 31.1579, lng: -8.6291, label: "Porto" },
+                end: { lat: 31.9028, lng: 12.4964, label: "Roma" },
+              },
+              {
+                start: { lat: 31.9028, lng: 12.4964, label: "Roma" },
+                end: { lat: 41.5074, lng: -0.1278, label: "Londres" },
+              },
+              {
+                start: { lat: 41.5074, lng: -0.1278, label: "Londres" },
+                end: { lat: 50.1699, lng: 14.9384, label: "Helsinki" },
               },
             ]}
           />
