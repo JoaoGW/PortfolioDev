@@ -169,7 +169,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       },
     },
     about: {
-      greeting: "Olá, meu nome é João Pedro Ribeiro",
+      greeting: "Olá, meu nome é João Pedro do Carmo Ribeiro",
       roleLine1Prefix: "Desenvolvedor",
       roleLine2Prefix: "Desenvolvedor",
       introParagraph: {
@@ -199,7 +199,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Foco em qualidade, manutenibilidade e escalabilidade",
       ],
       summaryParagraph2:
-        "Complementarmente, realizo cursos de Ciência da Computação e Desenvolvimento de Software pela Universidade de USP, reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação e eficiência contribuindo para projetos que unem propósito, impacto e evolução contínua.",
+        "Complementarmente, realizo uma  pós-graduação MBA em Engenharia de Software pela Universidade de São Paulo (USP), reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação e eficiência contribuindo para projetos que unem propósito, impacto e evolução contínua.",
       techStackHint:
         "Passe o mouse por cima das bolhas para conferir os nomes das tecnologias, se necessário.",
       academicTitle: "ACADÊMICO",
