@@ -266,7 +266,6 @@ const companySpecialties = [
   "Playwright",
   "RabbitMQ",
   "OpenAI",
-  "SQLAlchemy",
   "SQLite",
   "Stripe",
 ];
@@ -385,7 +384,6 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           { title: "Playwright" },
           { title: "RabbitMQ" },
           { title: "OpenAI" },
-          { title: "SQLAlchemy" },
           { title: "SQLite" },
           { title: "Stripe" },
         ],
@@ -581,7 +579,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       },
     },
     projects: {
-      pageTitle: "Projetos pessoais",
+      pageTitle: "Projetos com participação",
       hoverText: "PROJETOS",
       filterTitle:
         "Selecione uma Tecnologia que você gostaria de ver presente no projeto...",
@@ -815,7 +813,6 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           { title: "Playwright" },
           { title: "RabbitMQ" },
           { title: "OpenAI" },
-          { title: "SQLAlchemy" },
           { title: "SQLite" },
           { title: "Stripe" },
         ],
@@ -1223,7 +1220,6 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           { title: "Playwright" },
           { title: "RabbitMQ" },
           { title: "OpenAI" },
-          { title: "SQLAlchemy" },
           { title: "SQLite" },
           { title: "Stripe" },
         ],
