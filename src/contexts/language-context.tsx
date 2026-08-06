@@ -559,7 +559,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         title: "Implementação de IA que entra no produto sem quebrar o que já funciona.",
         description:
           "Integro modelos de IA a aplicações Web e Mobile, novas ou legadas, com APIs, fluxos e dados preparados para uso real.",
-        items: ["Sistemas novos", "Sistemas legados", "Web e Mobile"],
+        items: ["Sistemas modernos", "Sistemas legados", "Web e Mobile"],
       },
       specialties: {
         eyebrow: "TECNOLOGIAS ESPECIALIZADAS",
