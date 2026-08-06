@@ -25,6 +25,20 @@ body {
   font-family: var(--font-playwrite-de-sas), cursive;
 }
 
+@keyframes home-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.home-marquee {
+  animation: home-marquee 28s linear infinite;
+}
+
 @layer utilities {
   *::-webkit-scrollbar {
     width: 10px;

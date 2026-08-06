@@ -28,6 +28,86 @@ type LanguageMessages = {
     knowProfile: string;
     downloadResume: string;
     downloadError: string;
+    hero: {
+      index: string;
+      title: string;
+      highlight: string;
+      description: string;
+      viewProjects: string;
+      scrollHint: string;
+    };
+    sections: {
+      about: string;
+      projects: string;
+      software: string;
+      experience: string;
+      education: string;
+      trajectory: string;
+      explore: string;
+      faq: string;
+    };
+    about: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      availabilityLabel: string;
+      availabilityValue: string;
+      focusLabel: string;
+      focusValue: string;
+      exploreProfile: string;
+    };
+    projects: {
+      description: string;
+      previous: string;
+      next: string;
+      allProjects: string;
+      repository: string;
+    };
+    software: {
+      description: string;
+      viewAll: string;
+      areas: Array<{
+        title: string;
+        subtitle: string;
+        description: string;
+        technologies: string[];
+      }>;
+    };
+    experience: {
+      description: string;
+      cards: Array<{
+        company: string;
+        role: string;
+        period: string;
+        description: string;
+      }>;
+    };
+    education: {
+      description: string;
+      cards: Array<{
+        institution: string;
+        program: string;
+        status: string;
+      }>;
+    };
+    trajectory: {
+      description: string;
+      items: Array<{ year: string; title: string; description: string }>;
+    };
+    explore: {
+      description: string;
+      items: Array<{ index: string; title: string; description: string; href: string }>;
+    };
+    faq: Array<{ question: string; answer: string }>;
+    finalCta: {
+      title: string;
+      emailLabel: string;
+      contact: string;
+    };
+    footer: {
+      copyright: string;
+      location: string;
+    };
   };
   projects: {
     pageTitle: string;
@@ -138,6 +218,182 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       knowProfile: "Conhecer Perfil",
       downloadResume: "Baixar Currículo",
       downloadError: "Ocorreu um erro ao baixar o currículo PDF",
+      hero: {
+        index: "01 / PORTFÓLIO",
+        title: "Soluções digitais com",
+        highlight: "intenção e engenharia.",
+        description:
+          "João Pedro Ribeiro desenvolve produtos Web e Mobile que unem arquitetura de software, experiência de uso e entrega contínua.",
+        viewProjects: "Ver projetos",
+        scrollHint: "Role para explorar",
+      },
+      sections: {
+        about: "SOBRE",
+        projects: "PROJETOS",
+        software: "SOFTWARE",
+        experience: "EXPERIÊNCIA",
+        education: "FORMAÇÃO",
+        trajectory: "TRAJETÓRIA",
+        explore: "EXPLORAR",
+        faq: "PERGUNTAS FREQUENTES",
+      },
+      about: {
+        eyebrow: "(Sobre mim)",
+        title: "Tecnologia clara, útil e feita para durar.",
+        description:
+          "Formado em Ciência da Computação e especializado em arquitetura de software, construo aplicações com foco em clareza, qualidade e evolução sustentável.",
+        availabilityLabel: "Disponibilidade",
+        availabilityValue: "Brasil e Europa",
+        focusLabel: "Atuação",
+        focusValue: "Web, Mobile e Cloud",
+        exploreProfile: "Conhecer perfil",
+      },
+      projects: {
+        description:
+          "Uma seleção de aplicações que combina produtos digitais, integrações e experiências centradas em pessoas.",
+        previous: "Projeto anterior",
+        next: "Próximo projeto",
+        allProjects: "Ver todos os projetos",
+        repository: "Abrir repositório",
+      },
+      software: {
+        description:
+          "Tecnologias escolhidas pelo problema que resolvem, com atenção a manutenção, desempenho e experiência de uso.",
+        viewAll: "Ver stack completo",
+        areas: [
+          {
+            title: "Web",
+            subtitle: "Interfaces e produtos digitais",
+            description:
+              "Aplicações responsivas, acessíveis e orientadas a uma navegação clara.",
+            technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+          },
+          {
+            title: "Mobile",
+            subtitle: "Experiências para Android e iOS",
+            description:
+              "Aplicativos híbridos com interfaces consistentes e distribuição multiplataforma.",
+            technologies: ["React Native", "Expo", "TypeScript", "Firebase"],
+          },
+          {
+            title: "Cloud & APIs",
+            subtitle: "Sistemas escaláveis",
+            description:
+              "Serviços integrados, dados estruturados e práticas de entrega contínua.",
+            technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
+          },
+        ],
+      },
+      experience: {
+        description:
+          "Experiências profissionais voltadas ao desenvolvimento de produtos, integrações e operações de software.",
+        cards: [
+          {
+            company: "Multscan",
+            role: "Engenheiro de Software Júnior",
+            period: "2026 — atual",
+            description:
+              "Desenvolvimento e manutenção de aplicações Web e Mobile, com entregas contínuas e arquitetura headless.",
+          },
+          {
+            company: "Cultivare",
+            role: "Desenvolvedor Full Stack",
+            period: "2024 — 2025",
+            description:
+              "Construção de funcionalidades para uma aplicação SaaS na área da saúde, incluindo APIs e persistência de dados.",
+          },
+          {
+            company: "Fiverr",
+            role: "Desenvolvedor Web Freelancer",
+            period: "2021 — 2024",
+            description:
+              "Desenvolvimento de aplicações e landing pages para diferentes mercados e necessidades de produto.",
+          },
+        ],
+      },
+      education: {
+        description:
+          "Formação contínua em computação, engenharia e arquitetura de software.",
+        cards: [
+          {
+            institution: "PUC-SP",
+            program: "Bacharelado em Ciência da Computação",
+            status: "Concluído em 2025",
+          },
+          {
+            institution: "FIAP",
+            program: "Pós-graduação em Arquitetura de Software",
+            status: "Em andamento",
+          },
+          {
+            institution: "USP/Esalq",
+            program: "MBA em Engenharia de Software",
+            status: "Em andamento",
+          },
+        ],
+      },
+      trajectory: {
+        description:
+          "Uma trajetória construída entre estudo, projetos práticos e evolução profissional.",
+        items: [
+          {
+            year: "2021",
+            title: "Projetos Web sob demanda",
+            description: "Início da atuação freelance e de entregas para diferentes mercados.",
+          },
+          {
+            year: "2024",
+            title: "Desenvolvimento Full Stack",
+            description: "Experiência em produto SaaS, APIs e banco de dados para saúde.",
+          },
+          {
+            year: "2025",
+            title: "Ciência da Computação",
+            description: "Conclusão da graduação e aprofundamento em arquitetura de software.",
+          },
+          {
+            year: "2026",
+            title: "Engenharia de Software",
+            description: "Atuação com produtos Web e Mobile, cloud e práticas de entrega contínua.",
+          },
+        ],
+      },
+      explore: {
+        description: "Escolha por onde continuar a conhecer meu trabalho.",
+        items: [
+          { index: "001", title: "Projetos", description: "Aplicações e repositórios", href: "/projetos" },
+          { index: "002", title: "Sobre", description: "Trajetória e competências", href: "/sobre" },
+          { index: "003", title: "Contato", description: "Vamos conversar", href: "/contato" },
+          { index: "004", title: "Currículo", description: "Versão em PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
+        ],
+      },
+      faq: [
+        {
+          question: "Em quais áreas você desenvolve?",
+          answer: "Atuo com aplicações Web, Mobile, APIs, arquitetura de software e práticas de cloud e DevOps.",
+        },
+        {
+          question: "Quais tecnologias você utiliza?",
+          answer: "O portfólio reúne experiências com Next.js, React, React Native, TypeScript, Node.js, bancos de dados, Docker, AWS e outras ferramentas.",
+        },
+        {
+          question: "Você está disponível para oportunidades internacionais?",
+          answer: "Sim. Tenho disponibilidade para trabalhar no Brasil e na Europa.",
+        },
+        {
+          question: "Onde posso ver os projetos e repositórios?",
+          answer: "A seção de projetos reúne uma seleção de trabalhos e links para os respectivos repositórios.",
+        },
+      ],
+      finalCta: {
+        title: "Vamos construir algo relevante?",
+        emailLabel: "E-mail profissional",
+        contact: "Entrar em contato",
+      },
+      footer: {
+        copyright: "© João Pedro Ribeiro",
+        location: "São Paulo, Brasil · Disponível para Brasil e Europa",
+      },
     },
     projects: {
       pageTitle: "Projetos de João Pedro Ribeiro",
@@ -279,6 +535,182 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       knowProfile: "View Profile",
       downloadResume: "Download Resume",
       downloadError: "An error occurred while downloading the PDF resume",
+      hero: {
+        index: "01 / PORTFOLIO",
+        title: "Digital solutions with",
+        highlight: "intention and engineering.",
+        description:
+          "João Pedro Ribeiro builds Web and Mobile products that bring together software architecture, user experience and continuous delivery.",
+        viewProjects: "View projects",
+        scrollHint: "Scroll to explore",
+      },
+      sections: {
+        about: "ABOUT",
+        projects: "PROJECTS",
+        software: "SOFTWARE",
+        experience: "EXPERIENCE",
+        education: "EDUCATION",
+        trajectory: "TRAJECTORY",
+        explore: "EXPLORE",
+        faq: "FREQUENTLY ASKED QUESTIONS",
+      },
+      about: {
+        eyebrow: "(About me)",
+        title: "Clear, useful technology made to last.",
+        description:
+          "With a Computer Science degree and a focus on software architecture, I build applications around clarity, quality and sustainable evolution.",
+        availabilityLabel: "Availability",
+        availabilityValue: "Brazil and Europe",
+        focusLabel: "Focus",
+        focusValue: "Web, Mobile and Cloud",
+        exploreProfile: "View profile",
+      },
+      projects: {
+        description:
+          "A selection of applications combining digital products, integrations and people-centered experiences.",
+        previous: "Previous project",
+        next: "Next project",
+        allProjects: "View all projects",
+        repository: "Open repository",
+      },
+      software: {
+        description:
+          "Technologies selected for the problems they solve, with attention to maintainability, performance and user experience.",
+        viewAll: "View full stack",
+        areas: [
+          {
+            title: "Web",
+            subtitle: "Interfaces and digital products",
+            description:
+              "Responsive, accessible applications built around clear navigation.",
+            technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+          },
+          {
+            title: "Mobile",
+            subtitle: "Experiences for Android and iOS",
+            description:
+              "Hybrid apps with consistent interfaces and cross-platform distribution.",
+            technologies: ["React Native", "Expo", "TypeScript", "Firebase"],
+          },
+          {
+            title: "Cloud & APIs",
+            subtitle: "Scalable systems",
+            description:
+              "Integrated services, structured data and continuous delivery practices.",
+            technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
+          },
+        ],
+      },
+      experience: {
+        description:
+          "Professional experiences focused on product development, integrations and software operations.",
+        cards: [
+          {
+            company: "Multscan",
+            role: "Junior Software Engineer",
+            period: "2026 — present",
+            description:
+              "Web and Mobile application development and maintenance, with continuous delivery and headless architecture.",
+          },
+          {
+            company: "Cultivare",
+            role: "Full Stack Developer",
+            period: "2024 — 2025",
+            description:
+              "Feature delivery for a healthcare SaaS application, including APIs and data persistence.",
+          },
+          {
+            company: "Fiverr",
+            role: "Freelance Web Developer",
+            period: "2021 — 2024",
+            description:
+              "Web applications and landing pages for different markets and product needs.",
+          },
+        ],
+      },
+      education: {
+        description:
+          "Continuous education in computing, engineering and software architecture.",
+        cards: [
+          {
+            institution: "PUC-SP",
+            program: "Bachelor's degree in Computer Science",
+            status: "Completed in 2025",
+          },
+          {
+            institution: "FIAP",
+            program: "Postgraduate degree in Software Architecture",
+            status: "In progress",
+          },
+          {
+            institution: "USP/Esalq",
+            program: "MBA in Software Engineering",
+            status: "In progress",
+          },
+        ],
+      },
+      trajectory: {
+        description:
+          "A path built through study, practical projects and professional growth.",
+        items: [
+          {
+            year: "2021",
+            title: "On-demand Web projects",
+            description: "Started freelance work and deliveries for different markets.",
+          },
+          {
+            year: "2024",
+            title: "Full Stack Development",
+            description: "SaaS product, API and database experience in healthcare.",
+          },
+          {
+            year: "2025",
+            title: "Computer Science",
+            description: "Completed the degree and deepened software architecture studies.",
+          },
+          {
+            year: "2026",
+            title: "Software Engineering",
+            description: "Working with Web and Mobile products, cloud and continuous delivery.",
+          },
+        ],
+      },
+      explore: {
+        description: "Choose where to continue exploring my work.",
+        items: [
+          { index: "001", title: "Projects", description: "Applications and repositories", href: "/projetos" },
+          { index: "002", title: "About", description: "Path and skills", href: "/sobre" },
+          { index: "003", title: "Contact", description: "Let's talk", href: "/contato" },
+          { index: "004", title: "Resume", description: "PDF version", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
+        ],
+      },
+      faq: [
+        {
+          question: "Which areas do you work in?",
+          answer: "I work with Web and Mobile applications, APIs, software architecture, cloud and DevOps practices.",
+        },
+        {
+          question: "Which technologies do you use?",
+          answer: "The portfolio includes experience with Next.js, React, React Native, TypeScript, Node.js, databases, Docker, AWS and other tools.",
+        },
+        {
+          question: "Are you available for international opportunities?",
+          answer: "Yes. I am available to work in Brazil and Europe.",
+        },
+        {
+          question: "Where can I see projects and repositories?",
+          answer: "The projects section includes a selected set of work and links to their repositories.",
+        },
+      ],
+      finalCta: {
+        title: "Shall we build something meaningful?",
+        emailLabel: "Professional e-mail",
+        contact: "Get in touch",
+      },
+      footer: {
+        copyright: "© João Pedro Ribeiro",
+        location: "São Paulo, Brazil · Available for Brazil and Europe",
+      },
     },
     projects: {
       pageTitle: "João Pedro Ribeiro Projects",
@@ -419,6 +851,182 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       knowProfile: "Voir Profil",
       downloadResume: "Télécharger CV",
       downloadError: "Une erreur est survenue lors du téléchargement du CV PDF",
+      hero: {
+        index: "01 / PORTFOLIO",
+        title: "Des solutions numériques avec",
+        highlight: "intention et ingénierie.",
+        description:
+          "João Pedro Ribeiro développe des produits Web et Mobile qui réunissent architecture logicielle, expérience utilisateur et livraison continue.",
+        viewProjects: "Voir les projets",
+        scrollHint: "Faites défiler pour explorer",
+      },
+      sections: {
+        about: "À PROPOS",
+        projects: "PROJETS",
+        software: "LOGICIEL",
+        experience: "EXPÉRIENCE",
+        education: "FORMATION",
+        trajectory: "PARCOURS",
+        explore: "EXPLORER",
+        faq: "QUESTIONS FRÉQUENTES",
+      },
+      about: {
+        eyebrow: "(À propos de moi)",
+        title: "Une technologie claire, utile et conçue pour durer.",
+        description:
+          "Diplômé en informatique et spécialisé en architecture logicielle, je développe des applications axées sur la clarté, la qualité et une évolution durable.",
+        availabilityLabel: "Disponibilité",
+        availabilityValue: "Brésil et Europe",
+        focusLabel: "Spécialités",
+        focusValue: "Web, Mobile et Cloud",
+        exploreProfile: "Voir le profil",
+      },
+      projects: {
+        description:
+          "Une sélection d'applications qui associent produits numériques, intégrations et expériences centrées sur les personnes.",
+        previous: "Projet précédent",
+        next: "Projet suivant",
+        allProjects: "Voir tous les projets",
+        repository: "Ouvrir le dépôt",
+      },
+      software: {
+        description:
+          "Des technologies choisies pour les problèmes qu'elles résolvent, avec attention à la maintenance, aux performances et à l'expérience utilisateur.",
+        viewAll: "Voir le stack complet",
+        areas: [
+          {
+            title: "Web",
+            subtitle: "Interfaces et produits numériques",
+            description:
+              "Des applications responsives et accessibles, conçues autour d'une navigation claire.",
+            technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+          },
+          {
+            title: "Mobile",
+            subtitle: "Expériences pour Android et iOS",
+            description:
+              "Des applications hybrides aux interfaces cohérentes et à la distribution multiplateforme.",
+            technologies: ["React Native", "Expo", "TypeScript", "Firebase"],
+          },
+          {
+            title: "Cloud et APIs",
+            subtitle: "Systèmes évolutifs",
+            description:
+              "Services intégrés, données structurées et pratiques de livraison continue.",
+            technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
+          },
+        ],
+      },
+      experience: {
+        description:
+          "Expériences professionnelles dédiées au développement de produits, aux intégrations et aux opérations logicielles.",
+        cards: [
+          {
+            company: "Multscan",
+            role: "Ingénieur logiciel junior",
+            period: "2026 — aujourd'hui",
+            description:
+              "Développement et maintenance d'applications Web et Mobile, avec livraison continue et architecture headless.",
+          },
+          {
+            company: "Cultivare",
+            role: "Développeur Full Stack",
+            period: "2024 — 2025",
+            description:
+              "Développement de fonctionnalités pour une application SaaS de santé, incluant APIs et persistance des données.",
+          },
+          {
+            company: "Fiverr",
+            role: "Développeur Web freelance",
+            period: "2021 — 2024",
+            description:
+              "Applications Web et landing pages pour différents marchés et besoins produits.",
+          },
+        ],
+      },
+      education: {
+        description:
+          "Formation continue en informatique, ingénierie et architecture logicielle.",
+        cards: [
+          {
+            institution: "PUC-SP",
+            program: "Licence en informatique",
+            status: "Terminée en 2025",
+          },
+          {
+            institution: "FIAP",
+            program: "Postgraduate en architecture logicielle",
+            status: "En cours",
+          },
+          {
+            institution: "USP/Esalq",
+            program: "MBA en ingénierie logicielle",
+            status: "En cours",
+          },
+        ],
+      },
+      trajectory: {
+        description:
+          "Un parcours construit entre étude, projets pratiques et évolution professionnelle.",
+        items: [
+          {
+            year: "2021",
+            title: "Projets Web à la demande",
+            description: "Début du travail freelance et de livraisons pour différents marchés.",
+          },
+          {
+            year: "2024",
+            title: "Développement Full Stack",
+            description: "Expérience de produit SaaS, APIs et base de données dans la santé.",
+          },
+          {
+            year: "2025",
+            title: "Informatique",
+            description: "Obtention du diplôme et approfondissement de l'architecture logicielle.",
+          },
+          {
+            year: "2026",
+            title: "Ingénierie logicielle",
+            description: "Produits Web et Mobile, cloud et livraison continue.",
+          },
+        ],
+      },
+      explore: {
+        description: "Choisissez comment poursuivre la découverte de mon travail.",
+        items: [
+          { index: "001", title: "Projets", description: "Applications et dépôts", href: "/projetos" },
+          { index: "002", title: "À propos", description: "Parcours et compétences", href: "/sobre" },
+          { index: "003", title: "Contact", description: "Parlons-en", href: "/contato" },
+          { index: "004", title: "CV", description: "Version PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
+        ],
+      },
+      faq: [
+        {
+          question: "Dans quels domaines travaillez-vous ?",
+          answer: "Je travaille avec des applications Web et Mobile, des APIs, l'architecture logicielle, le cloud et les pratiques DevOps.",
+        },
+        {
+          question: "Quelles technologies utilisez-vous ?",
+          answer: "Le portfolio réunit des expériences avec Next.js, React, React Native, TypeScript, Node.js, les bases de données, Docker, AWS et d'autres outils.",
+        },
+        {
+          question: "Êtes-vous disponible pour des opportunités internationales ?",
+          answer: "Oui. Je suis disponible pour travailler au Brésil et en Europe.",
+        },
+        {
+          question: "Où puis-je voir les projets et les dépôts ?",
+          answer: "La section projets rassemble une sélection de réalisations et des liens vers leurs dépôts.",
+        },
+      ],
+      finalCta: {
+        title: "Construisons quelque chose d'important ?",
+        emailLabel: "E-mail professionnel",
+        contact: "Me contacter",
+      },
+      footer: {
+        copyright: "© João Pedro Ribeiro",
+        location: "São Paulo, Brésil · Disponible pour le Brésil et l'Europe",
+      },
     },
     projects: {
       pageTitle: "Projets de João Pedro Ribeiro",

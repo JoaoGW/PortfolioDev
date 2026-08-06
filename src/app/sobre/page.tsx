@@ -50,14 +50,14 @@ const EnterpriseModal = dynamic(
 );
 
 const DeferredTechStackSection = dynamic(
-  () => import("./_components/deferred-tech-stack-section"),
+  () => import("../../components/deferred-tech-stack-section"),
   {
     ssr: false,
   },
 );
 
 const DeferredAvailabilitySection = dynamic(
-  () => import("./_components/deferred-availability-section"),
+  () => import("../../components/deferred-availability-section"),
   {
     ssr: false,
   },
