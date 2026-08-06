@@ -4,7 +4,6 @@ import {
   motion,
   useTransform,
   useScroll,
-  useVelocity,
   useSpring,
 } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -26,33 +25,40 @@ export const TracingBeam = ({
   const [svgHeight, setSvgHeight] = useState(0);
 
   useEffect(() => {
-    if (contentRef.current) {
-      setSvgHeight(contentRef.current.offsetHeight);
+    const content = contentRef.current;
+
+    if (!content) {
+      return;
     }
+
+    const updateSvgHeight = () => setSvgHeight(content.offsetHeight);
+
+    updateSvgHeight();
+    const resizeObserver = new ResizeObserver(updateSvgHeight);
+    resizeObserver.observe(content);
+
+    return () => resizeObserver.disconnect();
   }, []);
 
   const y1 = useSpring(
-    useTransform(scrollYProgress, [0, 0.8], [50, svgHeight]),
+    useTransform(scrollYProgress, [0, 1], [0, Math.max(svgHeight - 180, 0)]),
     {
       stiffness: 500,
       damping: 90,
     },
   );
   const y2 = useSpring(
-    useTransform(scrollYProgress, [0, 1], [50, svgHeight - 200]),
+    useTransform(scrollYProgress, [0, 1], [180, Math.max(svgHeight, 180)]),
     {
       stiffness: 500,
       damping: 90,
     },
   );
 
-  const containerHeight = svgHeight || undefined;
-
   return (
     <motion.div
       ref={ref}
-      className={cn("relative h-full w-full", className)}
-      style={{ height: containerHeight ? `${containerHeight}px` : "fit-content" }}
+      className={cn("relative w-full", className)}
     >
       <div className="absolute top-3 left-6 z-10 hidden lg:block">
         <motion.div

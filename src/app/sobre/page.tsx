@@ -20,12 +20,21 @@ import { loadSobreLocale, type SobreLocaleData } from "./_data";
 
 import ProfilePicture from "../../assets/profile.webp";
 import DockerLogo from "../../assets/Logos/docker-512.webp";
+import ExpoLogo from "../../assets/Logos/expo_logo.webp";
+import FirebaseLogo from "../../assets/Logos/firebase-logo.webp";
+import GitLogo from "../../assets/Logos/Git-logo.webp";
+import AwsLogo from "../../assets/Logos/aws_logo.webp";
+import GoogleCloudLogo from "../../assets/Logos/googlecloud_logo.webp";
+import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.webp";
+import JestLogo from "../../assets/Logos/jest-logo.webp";
 import NodeLogo from "../../assets/Logos/logo-node-js-512.webp";
 import ReactLogo from "../../assets/Logos/logo-react-512.webp";
+import ReactNativeLogo from "../../assets/Logos/react-native_logo.webp";
 import NextjsLogo from "../../assets/Logos/next-js-logo.webp";
 import TypeScriptLogo from "../../assets/Logos/typescript-512.webp";
 import MongodbLogo from "../../assets/Logos/mongodb-512.webp";
 import PythonLogo from "../../assets/Logos/python_logo.webp";
+import VueLogo from "../../assets/Logos/vue-js-512.webp";
 import PUCLogo from "../../assets/Instituicoes/pucsp-logo.webp";
 import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import USPLogo from "../../assets/Instituicoes/USP_Logo.png";
@@ -101,10 +110,27 @@ const sectionMotion = {
 };
 
 const tickerTechnologyLogos: Record<string, StaticImageData | undefined> = {
+  "Web (React)": ReactLogo,
+  "Mobile (React Native & Expo)": ReactNativeLogo,
+  Cloud: AwsLogo,
+  APIs: NodeLogo,
+  React: ReactLogo,
+  "React Native": ReactNativeLogo,
+  Expo: ExpoLogo,
+  TypeScript: TypeScriptLogo,
+  JavaScript: JavaScriptLogo,
+  Python: PythonLogo,
   "Node.js": NodeLogo,
   "Next.js": NextjsLogo,
   Docker: DockerLogo,
+  AWS: AwsLogo,
+  "Google Cloud Platform": GoogleCloudLogo,
+  Git: GitLogo,
+  "GitHub Actions": GitLogo,
+  Firebase: FirebaseLogo,
   MongoDB: MongodbLogo,
+  "Vue.js": VueLogo,
+  Jest: JestLogo,
 };
 
 function SectionLead({ index, label, title, description }: SectionLeadProps) {
@@ -395,13 +421,13 @@ export default function Sobre() {
         </section>
       </HeroHighlight>
       <div className="overflow-hidden border-y border-white/10 bg-[#121212] py-4">
-        <div className="home-marquee flex min-w-max gap-10 text-sm font-semibold tracking-[0.18em] text-neutral-400 motion-reduce:transform-none">
+        <div className="home-marquee home-marquee--technologies flex min-w-max gap-10 text-sm font-semibold tracking-[0.18em] text-neutral-400 motion-reduce:transform-none">
           {[...home.software.techs, ...home.software.techs].map((tech, index) => {
             const technologyLogo = tickerTechnologyLogos[tech.title];
 
             return (
               <span key={`${tech.title}-${index}`} className="inline-flex items-center gap-10">
-                <span className="flex h-5 w-5 shrink-0 items-center justify-center border border-white/15 bg-white/5 p-0.5">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/15 bg-white/5 p-1">
                   {technologyLogo ? (
                     <Image
                       src={technologyLogo}
@@ -836,7 +862,7 @@ export default function Sobre() {
             <div className="grid gap-px bg-white/10 md:grid-cols-2">
               {home.trajectory.items.map((item, index) => (
                 <motion.article
-                  key={item.year}
+                  key={`${item.year}-${item.title}`}
                   {...sectionMotion}
                   transition={{ duration: 0.55, delay: index * 0.08, ease: "easeOut" }}
                   className="bg-[#0A0A0A] p-6 md:p-8"

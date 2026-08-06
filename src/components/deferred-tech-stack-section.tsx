@@ -51,15 +51,15 @@ export default function DeferredTechStackSection({
 }: DeferredTechStackSectionProps) {
   return (
     <section>
-      <LampContainer className="pt-[5.5rem] pb-8">
+      <LampContainer className="pt-36 pb-8" tone="soft-yellow">
         <motion.h3
           initial={{ opacity: 0.5, y: 20 }}
           whileInView={{ opacity: 1, y: -100 }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
           className="mt-6 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
           style={{
-            WebkitTextStroke: "2px rgb(var(--color-accent-orange) / 0.3)",
-            textShadow: "0 0 40px rgb(var(--color-accent-orange) / 0.5)",
+            WebkitTextStroke: "1px rgb(var(--color-accent-orange) / 0.2)",
+            textShadow: "0 0 18px rgb(var(--color-accent-orange) / 0.2)",
           }}
         >
           TECH STACK

@@ -128,6 +128,12 @@ type LanguageMessages = {
       description: string;
       items: Array<{ title: string; description: string }>;
     };
+    aiIntegration: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      items: string[];
+    };
     specialties: {
       eyebrow: string;
       title: string;
@@ -233,6 +239,38 @@ type LanguageMessages = {
   };
 };
 
+const companySpecialties = [
+  "Next.js",
+  "React",
+  "React Native",
+  "Expo",
+  "TypeScript",
+  "JavaScript",
+  "Python",
+  "Node.js",
+  "Vue.js",
+  "HTML",
+  "CSS",
+  "Tailwind CSS",
+  "Firebase",
+  "MongoDB",
+  "PostgreSQL",
+  "MySQL",
+  "Redis",
+  "Docker",
+  "AWS",
+  "Google Cloud Platform",
+  "Git",
+  "Jenkins",
+  "Jest",
+  "Playwright",
+  "RabbitMQ",
+  "OpenAI",
+  "SQLAlchemy",
+  "SQLite",
+  "Stripe",
+];
+
 export const languageMessages: Record<LanguageCode, LanguageMessages> = {
   pt: {
     languageName: "Português",
@@ -317,49 +355,40 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           },
         ],
         techs: [
-          {
-            title: "Web (React)"
-          },
-          {
-            title: "Mobile (React Native & Expo)"
-          },
-          {
-            title: "Cloud"
-          },
-          {
-            title: "API"
-          },
-          {
-            title: "Node.js"
-          },
-          {
-            title: "Next.js"
-          },
-          {
-            title: "Git"
-          },
-          {
-            title: "Docker"
-          },
-          {
-            title: "AWS"
-          },
-          {
-            title: "Google Cloud Platform"
-          },
-          {
-            title: "MongoDB"
-          },
-          {
-            title: "Jenkins"
-          },
-          {
-            title: "Playwright"
-          },
-          {
-            title: "Jest"
-          }
-        ]
+          { title: "Web (React)" },
+          { title: "Mobile (React Native & Expo)" },
+          { title: "Cloud" },
+          { title: "APIs" },
+          { title: "Next.js" },
+          { title: "React" },
+          { title: "React Native" },
+          { title: "Expo" },
+          { title: "TypeScript" },
+          { title: "JavaScript" },
+          { title: "Python" },
+          { title: "Node.js" },
+          { title: "Vue.js" },
+          { title: "HTML" },
+          { title: "CSS" },
+          { title: "Tailwind CSS" },
+          { title: "Firebase" },
+          { title: "MongoDB" },
+          { title: "PostgreSQL" },
+          { title: "MySQL" },
+          { title: "Redis" },
+          { title: "Docker" },
+          { title: "AWS" },
+          { title: "Google Cloud Platform" },
+          { title: "Git" },
+          { title: "Jenkins" },
+          { title: "Jest" },
+          { title: "Playwright" },
+          { title: "RabbitMQ" },
+          { title: "OpenAI" },
+          { title: "SQLAlchemy" },
+          { title: "SQLite" },
+          { title: "Stripe" },
+        ],
       },
       experience: {
         description:
@@ -415,23 +444,43 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         items: [
           {
             year: "2021",
-            title: "Projetos Web sob demanda",
-            description: "Início da atuação freelance e de entregas para diferentes mercados.",
+            title: "Início de tudo com Projetos Web sob demanda (Freelance)",
+            description: "Início da atuação freelance e de entregas para diferentes contextos de mercado e clientes nacionais e internacionais.",
+          },
+          {
+            year: "2022",
+            title: "Início da graduação",
+            description: "Graduação em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP)",
           },
           {
             year: "2024",
             title: "Desenvolvimento Full Stack",
-            description: "Experiência em produto SaaS, APIs e banco de dados para saúde.",
+            description: "Primeira experiência de estágio, com foco em produto SaaS, APIs e banco de dados para a área da saúde.",
           },
           {
             year: "2025",
-            title: "Ciência da Computação",
-            description: "Conclusão da graduação e aprofundamento em arquitetura de software.",
+            title: "Bacharel em Ciência da Computação",
+            description: "Conclusão da graduação na mesma instituição que iniciei, cumprindo o prazo de 4 anos previstos.",
+          },
+          {
+            year: "2026",
+            title: "Início da primeira Pós-Graduação",
+            description: "Iníciados os estudos em Arquitetura de Software na Faculdade de Informática e Administração Paulista (FIAP). Formato pós-graduação.",
+          },
+          {
+            year: "2026",
+            title: "Início do primeiro MBA",
+            description: "Iníciados os estudos para o MBA em Engenharia de Software na Universidade de São Paulo (USP).",
           },
           {
             year: "2026",
             title: "Engenharia de Software",
-            description: "Atuação com produtos Web e Mobile, cloud e práticas de entrega contínua.",
+            description: "Entrada na empresa Multscan formato CLT em tempo integral. Atuação com produtos Web e principalmente desenvolvimento Mobile. Há também aplicações Cloud, Databases e práticas de entrega contínua em grandes plataformas.",
+          },
+          {
+            year: "2028",
+            title: "Mestrado ou PhD?",
+            description: "Pretendo fazer um Mestrado ou um Pós-Doutorado em uma faculdade internacional de renome a partir de 2028. Os planos para cursar são no formato EAD.",
           },
         ],
       },
@@ -440,8 +489,9 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         items: [
           { index: "001", title: "Projetos", description: "Aplicações e repositórios", href: "/projetos" },
           { index: "002", title: "GWBR Technologies", description: "Serviços e opção PJ para contratos", href: "/" },
-          { index: "003", title: "Contato", description: "Vamos conversar ?", href: "/contato" },
+          { index: "003", title: "Contato", description: "Vamos conversar?", href: "/contato" },
           { index: "004", title: "Currículo", description: "Versão para visualização em PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
+          { index: "005", title: "GitHub", description: "Veja minha atividade, contribuições, snippets e organizações", href: "https://github.com/JoaoGW" },
         ],
       },
       faq: [
@@ -463,7 +513,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         },
       ],
       finalCta: {
-        eyebrow: "10 / CONTATO",
+        eyebrow: "CONTATO",
         title: "Vamos construir algo relevante juntos?",
         emailLabel: "E-mail profissional",
         contact: "Entrar em contato",
@@ -506,21 +556,19 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           },
         ],
       },
+      aiIntegration: {
+        eyebrow: "INTEGRAÇÃO DE IA",
+        title: "Implementação de IA que entra no produto sem quebrar o que já funciona.",
+        description:
+          "Integro modelos de IA a aplicações Web e Mobile, novas ou legadas, com APIs, fluxos e dados preparados para uso real.",
+        items: ["Sistemas novos", "Sistemas legados", "Web e Mobile"],
+      },
       specialties: {
         eyebrow: "TECNOLOGIAS ESPECIALIZADAS",
         title: "Uma stack escolhida para cada camada do produto.",
         description:
           "Ferramentas modernas e em tendência usadas de forma complementar para criar interfaces, serviços, integrações e fluxos de entrega confiáveis.",
-        items: [
-          "Next.js",
-          "React",
-          "React Native",
-          "TypeScript",
-          "Node.js",
-          "Docker",
-          "AWS",
-          "GitHub Actions",
-        ],
+        items: [...companySpecialties],
       },
       closing: {
         title: "Tecnologia construída a partir do contexto.",
@@ -562,7 +610,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       },
     },
     about: {
-      greeting: "Olá, meu nome é João Pedro do Carmo Ribeiro",
+      greeting: "Olá, meu nome é João Pedro Ribeiro",
       roleLine1Prefix: "Desenvolvedor",
       roleLine2Prefix: "Desenvolvedor",
       introParagraph: {
@@ -737,17 +785,39 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           },
         ],
         techs: [
-          { title: "Web" },
-          { title: "Mobile" },
+          { title: "Web (React)" },
+          { title: "Mobile (React Native & Expo)" },
           { title: "Cloud" },
           { title: "APIs" },
-          { title: "Node.js" },
           { title: "Next.js" },
-          { title: "Git" },
+          { title: "React" },
+          { title: "React Native" },
+          { title: "Expo" },
+          { title: "TypeScript" },
+          { title: "JavaScript" },
+          { title: "Python" },
+          { title: "Node.js" },
+          { title: "Vue.js" },
+          { title: "HTML" },
+          { title: "CSS" },
+          { title: "Tailwind CSS" },
+          { title: "Firebase" },
+          { title: "MongoDB" },
+          { title: "PostgreSQL" },
+          { title: "MySQL" },
+          { title: "Redis" },
           { title: "Docker" },
           { title: "AWS" },
           { title: "Google Cloud Platform" },
-          { title: "MongoDB" },
+          { title: "Git" },
+          { title: "Jenkins" },
+          { title: "Jest" },
+          { title: "Playwright" },
+          { title: "RabbitMQ" },
+          { title: "OpenAI" },
+          { title: "SQLAlchemy" },
+          { title: "SQLite" },
+          { title: "Stripe" },
         ],
       },
       experience: {
@@ -895,21 +965,19 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           },
         ],
       },
+      aiIntegration: {
+        eyebrow: "AI INTEGRATION",
+        title: "AI added to the product without breaking what already works.",
+        description:
+          "I integrate AI models into Web and Mobile applications—new or legacy—with APIs, flows and data prepared for real use.",
+        items: ["New systems", "Legacy systems", "Web and Mobile"],
+      },
       specialties: {
         eyebrow: "SPECIALIZED TECHNOLOGIES",
         title: "A stack selected for every product layer.",
         description:
           "Tools used together to build interfaces, services, integrations and dependable delivery flows.",
-        items: [
-          "Next.js",
-          "React",
-          "React Native",
-          "TypeScript",
-          "Node.js",
-          "Docker",
-          "AWS",
-          "GitHub Actions",
-        ],
+        items: [...companySpecialties],
       },
       closing: {
         title: "Technology built from context.",
@@ -1125,17 +1193,39 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           },
         ],
         techs: [
-          { title: "Web" },
-          { title: "Mobile" },
+          { title: "Web (React)" },
+          { title: "Mobile (React Native & Expo)" },
           { title: "Cloud" },
           { title: "APIs" },
-          { title: "Node.js" },
           { title: "Next.js" },
-          { title: "Git" },
+          { title: "React" },
+          { title: "React Native" },
+          { title: "Expo" },
+          { title: "TypeScript" },
+          { title: "JavaScript" },
+          { title: "Python" },
+          { title: "Node.js" },
+          { title: "Vue.js" },
+          { title: "HTML" },
+          { title: "CSS" },
+          { title: "Tailwind CSS" },
+          { title: "Firebase" },
+          { title: "MongoDB" },
+          { title: "PostgreSQL" },
+          { title: "MySQL" },
+          { title: "Redis" },
           { title: "Docker" },
           { title: "AWS" },
           { title: "Google Cloud Platform" },
-          { title: "MongoDB" },
+          { title: "Git" },
+          { title: "Jenkins" },
+          { title: "Jest" },
+          { title: "Playwright" },
+          { title: "RabbitMQ" },
+          { title: "OpenAI" },
+          { title: "SQLAlchemy" },
+          { title: "SQLite" },
+          { title: "Stripe" },
         ],
       },
       experience: {
@@ -1283,21 +1373,19 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           },
         ],
       },
+      aiIntegration: {
+        eyebrow: "INTÉGRATION IA",
+        title: "L’IA intégrée au produit sans casser ce qui fonctionne déjà.",
+        description:
+          "J’intègre des modèles d’IA aux applications Web et Mobile, nouvelles ou existantes, avec des APIs, flux et données prêts pour un usage réel.",
+        items: ["Nouveaux systèmes", "Systèmes existants", "Web et Mobile"],
+      },
       specialties: {
         eyebrow: "TECHNOLOGIES SPÉCIALISÉES",
         title: "Une stack choisie pour chaque couche du produit.",
         description:
           "Des outils complémentaires pour concevoir des interfaces, services, intégrations et flux de livraison fiables.",
-        items: [
-          "Next.js",
-          "React",
-          "React Native",
-          "TypeScript",
-          "Node.js",
-          "Docker",
-          "AWS",
-          "GitHub Actions",
-        ],
+        items: [...companySpecialties],
       },
       closing: {
         title: "Une technologie conçue à partir du contexte.",

@@ -39,6 +39,10 @@ body {
   animation: home-marquee 28s linear infinite;
 }
 
+.home-marquee--technologies {
+  animation-duration: 100s;
+}
+
 @layer utilities {
   *::-webkit-scrollbar {
     width: 10px;

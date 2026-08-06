@@ -2,8 +2,8 @@
 
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
-import { ArrowDown, ArrowUpRight, Github, Mail } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
+import { ArrowUpRight, Github, Mail } from "lucide-react";
 
 import { LogoWaterEffect } from "@/app/_components/logo-water-effect";
 import { HeaderTop } from "@/components/headerTop";
@@ -13,11 +13,20 @@ import { useLanguage } from "@/contexts/language-context";
 import GWBRLogo from "@/assets/Logos/GWBR_Logotipo.png";
 import AwsLogo from "@/assets/Logos/aws_logo.webp";
 import DockerLogo from "@/assets/Logos/docker-512.webp";
+import ExpoLogo from "@/assets/Logos/expo_logo.webp";
+import FirebaseLogo from "@/assets/Logos/firebase-logo.webp";
+import GitLogo from "@/assets/Logos/Git-logo.webp";
+import GoogleCloudLogo from "@/assets/Logos/googlecloud_logo.webp";
+import JavaScriptLogo from "@/assets/Logos/logo-javascript-512.webp";
+import JestLogo from "@/assets/Logos/jest-logo.webp";
 import NodeLogo from "@/assets/Logos/logo-node-js-512.webp";
+import MongodbLogo from "@/assets/Logos/mongodb-512.webp";
 import ReactLogo from "@/assets/Logos/logo-react-512.webp";
 import ReactNativeLogo from "@/assets/Logos/react-native_logo.webp";
 import NextjsLogo from "@/assets/Logos/next-js-logo.webp";
+import PythonLogo from "@/assets/Logos/python_logo.webp";
 import TypeScriptLogo from "@/assets/Logos/typescript-512.webp";
+import VueLogo from "@/assets/Logos/vue-js-512.webp";
 
 type SectionLeadProps = {
   index: string;
@@ -33,14 +42,29 @@ const sectionMotion = {
   transition: { duration: 0.6, ease: "easeOut" as const },
 };
 
-const technologyLogos: Record<string, StaticImageData> = {
-  "Next.js": NextjsLogo,
-  React: ReactLogo,
-  "React Native": ReactNativeLogo,
-  TypeScript: TypeScriptLogo,
-  "Node.js": NodeLogo,
-  Docker: DockerLogo,
-  AWS: AwsLogo,
+type TechnologyLogo = {
+  source?: StaticImageData;
+  useGradientMask: boolean;
+};
+
+const technologyLogos: Record<string, TechnologyLogo> = {
+  "Next.js": { source: NextjsLogo, useGradientMask: false },
+  React: { source: ReactLogo, useGradientMask: true },
+  "React Native": { source: ReactNativeLogo, useGradientMask: false },
+  Expo: { source: ExpoLogo, useGradientMask: false },
+  TypeScript: { source: TypeScriptLogo, useGradientMask: true },
+  JavaScript: { source: JavaScriptLogo, useGradientMask: true },
+  Python: { source: PythonLogo, useGradientMask: true },
+  "Node.js": { source: NodeLogo, useGradientMask: true },
+  "Vue.js": { source: VueLogo, useGradientMask: true },
+  Docker: { source: DockerLogo, useGradientMask: true },
+  AWS: { source: AwsLogo, useGradientMask: true },
+  "Google Cloud Platform": { source: GoogleCloudLogo, useGradientMask: true },
+  Git: { source: GitLogo, useGradientMask: false },
+  "GitHub Actions": { source: GitLogo, useGradientMask: false },
+  Firebase: { source: FirebaseLogo, useGradientMask: true },
+  MongoDB: { source: MongodbLogo, useGradientMask: true },
+  Jest: { source: JestLogo, useGradientMask: true },
 };
 
 const logoFadeStyle = {
@@ -72,6 +96,7 @@ function SectionLead({ index, label, title, description }: SectionLeadProps) {
 
 export default function Home() {
   const { messages } = useLanguage();
+  const shouldReduceMotion = useReducedMotion();
   const company = messages.company;
   const home = messages.home;
 
@@ -81,19 +106,18 @@ export default function Home() {
       <main>
         <section
           id="inicio"
-          className="relative flex min-h-screen items-end overflow-hidden px-5 pb-20 pt-32 sm:px-8 lg:px-12 lg:pb-16"
+          className="relative flex min-h-screen items-center overflow-hidden px-5 py-32 sm:px-12 lg:px-16"
         >
           <div className="pointer-events-none absolute inset-x-5 bottom-6 top-24 border border-white/10 sm:inset-x-8 lg:inset-x-12" />
           <div className="pointer-events-none absolute bottom-0 left-0 h-[52%] w-1/2 bg-white/[0.02]" />
-          <div className="pointer-events-none absolute right-5 top-28 h-40 w-40 border border-accent-orange/20 sm:right-8 lg:right-12" />
 
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, ease: "easeOut" }}
-            className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(17rem,0.75fr)] lg:items-end"
+            className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(17rem,0.75fr)] lg:items-center"
           >
-            <div>
+            <div className="max-w-4xl">
               <div className="mb-8 flex items-center gap-3 text-xs font-semibold tracking-[0.2em] text-accent-orange">
                 <span>{company.hero.index}</span>
                 <span className="h-px w-12 bg-accent-orange" />
@@ -123,27 +147,18 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
             <motion.div {...sectionMotion} className="mx-auto w-full max-w-md lg:max-w-none">
               <LogoWaterEffect src={GWBRLogo} alt={company.name} />
             </motion.div>
           </motion.div>
-
-          <a
-            href="#engenharia"
-            className="absolute bottom-6 left-5 z-10 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.16em] text-neutral-300 transition-colors hover:text-accent-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange sm:left-8 lg:left-12"
-          >
-            <ArrowDown className="h-4 w-4" aria-hidden="true" />
-            {company.capabilities.eyebrow}
-          </a>
         </section>
 
         <div className="overflow-hidden border-y border-white/10 bg-[#121212] py-4">
-          <div className="home-marquee flex min-w-max gap-10 text-sm font-semibold tracking-[0.18em] text-neutral-400 motion-reduce:transform-none">
-            {[...company.specialties.items, ...company.specialties.items].map(
+          <div className="home-marquee home-marquee--technologies flex min-w-max gap-10 text-sm font-semibold tracking-[0.18em] text-neutral-400 motion-reduce:transform-none">
+            {[...home.software.techs, ...home.software.techs].map(
               (technology, index) => (
-                <span key={`${technology}-${index}`} className="inline-flex items-center gap-10">
-                  <span>{technology.toUpperCase()}</span>
+                <span key={`${technology.title}-${index}`} className="inline-flex items-center gap-10">
+                  <span>{technology.title.toUpperCase()}</span>
                   <span className="h-1.5 w-1.5 rounded-full bg-accent-orange" />
                 </span>
               ),
@@ -187,7 +202,7 @@ export default function Home() {
 
         <section
           id="tecnologias"
-          className="px-5 pb-10 pt-24 sm:px-8 lg:px-12 lg:pb-12 lg:pt-36"
+          className="px-5 pb-10 pt-18 sm:px-8 lg:px-12 lg:pb-12 lg:pt-16"
         >
           <div className="mx-auto max-w-7xl">
             <SectionLead
@@ -199,6 +214,7 @@ export default function Home() {
             <div className="grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
               {company.specialties.items.map((technology, index) => {
                 const logo = technologyLogos[technology];
+                const logoStyle = logo?.useGradientMask ? logoFadeStyle : undefined;
 
                 return (
                   <motion.article
@@ -213,18 +229,18 @@ export default function Home() {
                     <span className="relative z-10 text-2xl font-semibold tracking-[-0.05em] text-white">
                       {technology}
                     </span>
-                    {logo ? (
+                    {logo?.source ? (
                       <Image
-                        src={logo}
+                        src={logo.source}
                         alt=""
                         aria-hidden="true"
-                        style={logoFadeStyle}
+                        style={logoStyle}
                         className="pointer-events-none absolute -right-4 bottom-4 h-24 w-24 object-contain grayscale brightness-0 invert contrast-200"
                       />
                     ) : (
                       <Github
                         aria-hidden="true"
-                        style={logoFadeStyle}
+                        style={logoStyle}
                         className="pointer-events-none absolute -right-4 bottom-4 h-24 w-24 text-white"
                       />
                     )}
@@ -235,7 +251,38 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-5 pb-12 pt-6 sm:px-8 lg:px-12 lg:pb-16 lg:pt-8">
+        <section
+          id="ia"
+          className="bg-[#0A0A0A] px-5 pb-10 pt-24 sm:px-8 lg:px-12 lg:pb-12 lg:pt-36"
+        >
+          <div className="mx-auto max-w-7xl">
+            <SectionLead
+              index="04"
+              label={company.aiIntegration.eyebrow}
+              title={company.aiIntegration.title}
+              description={company.aiIntegration.description}
+            />
+            <div className="grid border-l border-t border-white/10 md:grid-cols-3">
+              {company.aiIntegration.items.map((item, index) => (
+                <motion.article
+                  key={item}
+                  {...sectionMotion}
+                  transition={{ duration: 0.55, delay: index * 0.08, ease: "easeOut" }}
+                  className="flex min-h-48 flex-col justify-between border-b border-r border-white/10 p-6 md:p-8"
+                >
+                  <span className="text-xs font-semibold tracking-[0.16em] text-accent-orange">
+                    0{index + 1}
+                  </span>
+                  <h3 className="max-w-xs text-3xl font-semibold tracking-[-0.06em] text-white">
+                    {item}
+                  </h3>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-5 pb-12 pt-2 sm:px-8 lg:px-12 lg:pb-16 lg:pt-4">
           <motion.div
             {...sectionMotion}
             className="mx-auto grid max-w-7xl gap-8 border border-white/10 p-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:p-10"
@@ -264,9 +311,23 @@ export default function Home() {
               <p className="text-xs font-semibold tracking-[0.2em]">
                 {home.finalCta.eyebrow}
               </p>
-              <h2 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.065em] sm:text-6xl md:text-8xl">
+              <motion.h2
+                initial={
+                  shouldReduceMotion
+                    ? false
+                    : { opacity: 0, clipPath: "inset(0 100% 0 0)" }
+                }
+                whileInView={
+                  shouldReduceMotion
+                    ? undefined
+                    : { opacity: 1, clipPath: "inset(0 0% 0 0)" }
+                }
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.065em] sm:text-6xl md:text-8xl"
+              >
                 {home.finalCta.title}
-              </h2>
+              </motion.h2>
             </div>
             <div className="flex flex-col items-start gap-4 lg:items-end">
               <span className="text-xs font-semibold tracking-[0.16em]">
