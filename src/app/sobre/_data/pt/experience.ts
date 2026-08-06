@@ -65,7 +65,7 @@ export const ptExperience: SobreExperience = {
     ]
   },
   "culti": {
-    "role": "Engenheiro de Software",
+    "role": "Estágio em Engenharia de Software",
     "description": "Desenvolvedor integrante do time de uma aplicação Web SaaS para a área da saúde, com público-alvo voltado a profissionais e instituições de saúde. Utilizei tecnologias como Next.js, React, TypeScript, JavaScript, HTML, CSS, Node.js, MySQL e práticas DevOps.",
     "responsibilities": [
       {

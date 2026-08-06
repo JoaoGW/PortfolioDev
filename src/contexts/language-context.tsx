@@ -72,6 +72,9 @@ type LanguageMessages = {
         description: string;
         technologies: string[];
       }>;
+      techs: Array<{
+        title: string;
+      }>;
     };
     experience: {
       description: string;
@@ -100,9 +103,40 @@ type LanguageMessages = {
     };
     faq: Array<{ question: string; answer: string }>;
     finalCta: {
+      eyebrow: string;
       title: string;
       emailLabel: string;
       contact: string;
+    };
+    footer: {
+      copyright: string;
+      location: string;
+    };
+  };
+  company: {
+    name: string;
+    hero: {
+      index: string;
+      title: string;
+      description: string;
+      primaryAction: string;
+      secondaryAction: string;
+    };
+    capabilities: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      items: Array<{ title: string; description: string }>;
+    };
+    specialties: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      items: string[];
+    };
+    closing: {
+      title: string;
+      description: string;
     };
     footer: {
       copyright: string;
@@ -134,7 +168,6 @@ type LanguageMessages = {
       devOps: string;
       after: string;
     };
-    manyOthers: string;
     summaryTitle: string;
     summarySubtitle: string;
     summaryParagraph1: string;
@@ -283,6 +316,50 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
           },
         ],
+        techs: [
+          {
+            title: "Web (React)"
+          },
+          {
+            title: "Mobile (React Native & Expo)"
+          },
+          {
+            title: "Cloud"
+          },
+          {
+            title: "API"
+          },
+          {
+            title: "Node.js"
+          },
+          {
+            title: "Next.js"
+          },
+          {
+            title: "Git"
+          },
+          {
+            title: "Docker"
+          },
+          {
+            title: "AWS"
+          },
+          {
+            title: "Google Cloud Platform"
+          },
+          {
+            title: "MongoDB"
+          },
+          {
+            title: "Jenkins"
+          },
+          {
+            title: "Playwright"
+          },
+          {
+            title: "Jest"
+          }
+        ]
       },
       experience: {
         description:
@@ -362,9 +439,9 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         description: "Escolha por onde continuar a conhecer meu trabalho.",
         items: [
           { index: "001", title: "Projetos", description: "Aplicações e repositórios", href: "/projetos" },
-          { index: "002", title: "Sobre", description: "Trajetória e competências", href: "/sobre" },
-          { index: "003", title: "Contato", description: "Vamos conversar", href: "/contato" },
-          { index: "004", title: "Currículo", description: "Versão em PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
+          { index: "002", title: "GWBR Technologies", description: "Serviços e opção PJ para contratos", href: "/" },
+          { index: "003", title: "Contato", description: "Vamos conversar ?", href: "/contato" },
+          { index: "004", title: "Currículo", description: "Versão para visualização em PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
         ],
       },
       faq: [
@@ -386,7 +463,8 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         },
       ],
       finalCta: {
-        title: "Vamos construir algo relevante?",
+        eyebrow: "10 / CONTATO",
+        title: "Vamos construir algo relevante juntos?",
         emailLabel: "E-mail profissional",
         contact: "Entrar em contato",
       },
@@ -395,8 +473,67 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         location: "São Paulo, Brasil · Disponível para Brasil e Europa",
       },
     },
+    company: {
+      name: "GWBR Technologies",
+      hero: {
+        index: "01 / GWBR TECHNOLOGIES",
+        title: "Engenharia de software para empresas que querem crescer.",
+        description:
+          "Desenvolvimento de aplicações Web, Mobile e integrações Cloud, banco de dados e IA com foco em clareza técnica, manutenção e experiência de uso.",
+        primaryAction: "Entrar em contato",
+        secondaryAction: "Conhecer o portfólio",
+      },
+      capabilities: {
+        eyebrow: "ENGENHARIA APLICADA",
+        title: "Da ambição ao produto: engenharia pronta para escalar.",
+        description:
+          "Tecnologia escolhida para o problema que precisa ser resolvido, com atenção à evolução do software em décadas de transformação e inovação.",
+        items: [
+          {
+            title: "Aplicações Web",
+            description:
+              "Interfaces responsivas e sistemas pensados para fluxos claros de trabalho.",
+          },
+          {
+            title: "Aplicativos Mobile",
+            description:
+              "Experiências multiplataforma para Android e iOS com uma base de código consistente.",
+          },
+          {
+            title: "Integrações e APIs",
+            description:
+              "Serviços, dados e integrações estruturados para acompanhar a operação do produto.",
+          },
+        ],
+      },
+      specialties: {
+        eyebrow: "TECNOLOGIAS ESPECIALIZADAS",
+        title: "Uma stack escolhida para cada camada do produto.",
+        description:
+          "Ferramentas modernas e em tendência usadas de forma complementar para criar interfaces, serviços, integrações e fluxos de entrega confiáveis.",
+        items: [
+          "Next.js",
+          "React",
+          "React Native",
+          "TypeScript",
+          "Node.js",
+          "Docker",
+          "AWS",
+          "GitHub Actions",
+        ],
+      },
+      closing: {
+        title: "Tecnologia construída a partir do contexto.",
+        description:
+          "Conheça os projetos e a trajetória técnica que orientam o trabalho da GWBR Technologies.",
+      },
+      footer: {
+        copyright: "© GWBR Technologies",
+        location: "São Paulo, Brasil",
+      },
+    },
     projects: {
-      pageTitle: "Projetos de João Pedro Ribeiro",
+      pageTitle: "Projetos pessoais",
       hoverText: "PROJETOS",
       filterTitle:
         "Selecione uma Tecnologia que você gostaria de ver presente no projeto...",
@@ -432,14 +569,13 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         beforeWeb:
           "Graduado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP). Tenho experiência profissional com Frameworks Web",
         web: "(Next.js e React)",
-        beforeHybrid: "Desenvolvimento de Apps Híbridos",
+        beforeHybrid: "Desenvolvimento de Apps Mobile Híbridos",
         hybrid: "(Android e iOS)",
         beforeDevOps:
           "além de conhecimento em práticas e ferramentas de DevOps",
         devOps: "(Git, AWS, GCP, entre outros)",
         after: ".",
       },
-      manyOthers: "... dentre muitos outros",
       summaryTitle: "SOBRE",
       summarySubtitle:
         "Desenvolvedor de Software | Desenvolvedor Mobile | Cientista da Computação",
@@ -600,6 +736,19 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
           },
         ],
+        techs: [
+          { title: "Web" },
+          { title: "Mobile" },
+          { title: "Cloud" },
+          { title: "APIs" },
+          { title: "Node.js" },
+          { title: "Next.js" },
+          { title: "Git" },
+          { title: "Docker" },
+          { title: "AWS" },
+          { title: "Google Cloud Platform" },
+          { title: "MongoDB" },
+        ],
       },
       experience: {
         description:
@@ -703,6 +852,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         },
       ],
       finalCta: {
+        eyebrow: "10 / CONTACT",
         title: "Shall we build something meaningful?",
         emailLabel: "Professional e-mail",
         contact: "Get in touch",
@@ -710,6 +860,65 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       footer: {
         copyright: "© João Pedro Ribeiro",
         location: "São Paulo, Brazil · Available for Brazil and Europe",
+      },
+    },
+    company: {
+      name: "GWBR Technologies",
+      hero: {
+        index: "01 / GWBR TECHNOLOGIES",
+        title: "Software engineering for digital products.",
+        description:
+          "Web and Mobile application development and integrations focused on technical clarity, maintainability and user experience.",
+        primaryAction: "Get in touch",
+        secondaryAction: "Explore the portfolio",
+      },
+      capabilities: {
+        eyebrow: "APPLIED ENGINEERING",
+        title: "From ambition to product: engineering built to scale.",
+        description:
+          "Technology selected for the problem at hand, with attention to the software's evolution.",
+        items: [
+          {
+            title: "Web Applications",
+            description:
+              "Responsive interfaces and systems designed around clear work flows.",
+          },
+          {
+            title: "Mobile Products",
+            description:
+              "Cross-platform Android and iOS experiences with a consistent codebase.",
+          },
+          {
+            title: "Integrations and APIs",
+            description:
+              "Services, data and integrations structured to support product operations.",
+          },
+        ],
+      },
+      specialties: {
+        eyebrow: "SPECIALIZED TECHNOLOGIES",
+        title: "A stack selected for every product layer.",
+        description:
+          "Tools used together to build interfaces, services, integrations and dependable delivery flows.",
+        items: [
+          "Next.js",
+          "React",
+          "React Native",
+          "TypeScript",
+          "Node.js",
+          "Docker",
+          "AWS",
+          "GitHub Actions",
+        ],
+      },
+      closing: {
+        title: "Technology built from context.",
+        description:
+          "Explore the projects and technical path that inform GWBR Technologies' work.",
+      },
+      footer: {
+        copyright: "© GWBR Technologies",
+        location: "São Paulo, Brazil",
       },
     },
     projects: {
@@ -755,7 +964,6 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         devOps: "(Git, AWS, GCP, among others)",
         after: ".",
       },
-      manyOthers: "... among many others",
       summaryTitle: "ABOUT",
       summarySubtitle:
         "Software Developer | Mobile Developer | Computer Scientist",
@@ -916,6 +1124,19 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
           },
         ],
+        techs: [
+          { title: "Web" },
+          { title: "Mobile" },
+          { title: "Cloud" },
+          { title: "APIs" },
+          { title: "Node.js" },
+          { title: "Next.js" },
+          { title: "Git" },
+          { title: "Docker" },
+          { title: "AWS" },
+          { title: "Google Cloud Platform" },
+          { title: "MongoDB" },
+        ],
       },
       experience: {
         description:
@@ -1019,6 +1240,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         },
       ],
       finalCta: {
+        eyebrow: "10 / CONTACT",
         title: "Construisons quelque chose d'important ?",
         emailLabel: "E-mail professionnel",
         contact: "Me contacter",
@@ -1026,6 +1248,65 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       footer: {
         copyright: "© João Pedro Ribeiro",
         location: "São Paulo, Brésil · Disponible pour le Brésil et l'Europe",
+      },
+    },
+    company: {
+      name: "GWBR Technologies",
+      hero: {
+        index: "01 / GWBR TECHNOLOGIES",
+        title: "Ingénierie logicielle pour les produits numériques.",
+        description:
+          "Développement d'applications Web et Mobile ainsi que d'intégrations, avec une attention à la clarté technique, à la maintenance et à l'expérience utilisateur.",
+        primaryAction: "Nous contacter",
+        secondaryAction: "Découvrir le portfolio",
+      },
+      capabilities: {
+        eyebrow: "INGÉNIERIE APPLIQUÉE",
+        title: "De l’ambition au produit : une ingénierie pensée pour évoluer.",
+        description:
+          "Une technologie choisie selon le problème à résoudre, en pensant à l'évolution du logiciel.",
+        items: [
+          {
+            title: "Applications Web",
+            description:
+              "Des interfaces responsives et des systèmes conçus pour des flux de travail clairs.",
+          },
+          {
+            title: "Produits Mobile",
+            description:
+              "Des expériences multiplateformes pour Android et iOS avec une base de code cohérente.",
+          },
+          {
+            title: "Intégrations et APIs",
+            description:
+              "Des services, données et intégrations structurés pour soutenir l'activité du produit.",
+          },
+        ],
+      },
+      specialties: {
+        eyebrow: "TECHNOLOGIES SPÉCIALISÉES",
+        title: "Une stack choisie pour chaque couche du produit.",
+        description:
+          "Des outils complémentaires pour concevoir des interfaces, services, intégrations et flux de livraison fiables.",
+        items: [
+          "Next.js",
+          "React",
+          "React Native",
+          "TypeScript",
+          "Node.js",
+          "Docker",
+          "AWS",
+          "GitHub Actions",
+        ],
+      },
+      closing: {
+        title: "Une technologie conçue à partir du contexte.",
+        description:
+          "Découvrez les projets et le parcours technique qui orientent le travail de GWBR Technologies.",
+      },
+      footer: {
+        copyright: "© GWBR Technologies",
+        location: "São Paulo, Brésil",
       },
     },
     projects: {
@@ -1072,7 +1353,6 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         devOps: "(Git, AWS, GCP, entre autres)",
         after: ".",
       },
-      manyOthers: "... parmi beaucoup d'autres",
       summaryTitle: "À PROPOS",
       summarySubtitle:
         "Développeur logiciel | Développeur mobile | Informaticien",

@@ -1,17 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
-import { GlareCard } from "@/components/ui/glare-card";
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
-import { InstitutionCard } from "@/components/institutionCard";
 import { SocialMediaIcons } from "@/components/socialMediaIcons";
 import { PresentationTopics } from "@/components/presentationTopics";
 import { TracingBeam } from "@/components/ui/tracing-beam";
@@ -32,10 +31,20 @@ import FIAPLogo from "../../assets/Instituicoes/fiap_logo.webp";
 import USPLogo from "../../assets/Instituicoes/USP_Logo.png";
 import CultiLogo from "../../assets/Empresas/cultivare_logo.webp";
 import FiverrLogo from "../../assets/Empresas/fiverr_logo.webp";
-import MultscanLogo from "../../assets/Empresas/MultscanLogo.png";
 import MultscanLogoDark from "../../assets/Empresas/MultscanLogoDark.png";
+import EZTripImage from "../../assets/Projetos/plane-6511878_1920.webp";
+import SrGeeImage from "../../assets/Projetos/WB_description.webp";
+import WhatsappImage from "../../assets/Projetos/whatsapp-2.webp";
+import CarSellerImage from "../../assets/Projetos/carseller.webp";
 
-import { FileDown, StepForward } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  FileDown,
+  Github,
+  StepForward,
+} from "lucide-react";
 
 const InstitutionModal = dynamic(
   () =>
@@ -68,8 +77,62 @@ type curriculumFileTypes = {
   fileName: string;
 };
 
+type Project = {
+  id: string;
+  image: StaticImageData;
+  repository: string;
+  technologies: string[];
+  title: string;
+  description: string;
+};
+
+type SectionLeadProps = {
+  index: string;
+  label: string;
+  title: string;
+  description?: string;
+};
+
+const sectionMotion = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.15 },
+  transition: { duration: 0.55, ease: "easeOut" as const },
+};
+
+const tickerTechnologyLogos: Record<string, StaticImageData | undefined> = {
+  "Node.js": NodeLogo,
+  "Next.js": NextjsLogo,
+  Docker: DockerLogo,
+  MongoDB: MongodbLogo,
+};
+
+function SectionLead({ index, label, title, description }: SectionLeadProps) {
+  return (
+    <motion.div {...sectionMotion} className="mb-10 md:mb-14">
+      <div className="mb-4 flex items-center gap-3 text-xs font-semibold tracking-[0.2em] text-accent-orange">
+        <span>{index}</span>
+        <span className="h-px w-10 bg-accent-orange" />
+        <span>{label}</span>
+      </div>
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] lg:items-end lg:gap-16">
+        <h2 className="max-w-4xl text-4xl font-semibold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
+          {title}
+        </h2>
+        {description ? (
+          <p className="max-w-xl text-base leading-7 text-neutral-400 lg:justify-self-end lg:text-right md:text-lg">
+            {description}
+          </p>
+        ) : null}
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Sobre() {
   const { messages, language } = useLanguage();
+  const home = messages.home;
+  const projectCarouselRef = useRef<HTMLDivElement>(null);
   const [openModal, setOpenModal] = useState<"puc" | "fiap" | "usp" | null>(
     null,
   );
@@ -79,6 +142,41 @@ export default function Sobre() {
   const [showTechStackSection, setShowTechStackSection] = useState(false);
   const [showAvailabilitySection, setShowAvailabilitySection] = useState(false);
   const route = useRouter();
+
+  const projects: Project[] = [
+    {
+      id: "guide-ai",
+      image: EZTripImage,
+      repository: "https://github.com/JoaoGW/GuiaTuristico",
+      technologies: ["React Native", "Expo", "OpenAI", "Firebase"],
+      title: messages.projects.cards.guideAI.title,
+      description: messages.projects.cards.guideAI.description,
+    },
+    {
+      id: "sr-gee",
+      image: SrGeeImage,
+      repository: "https://github.com/JoaoGW/SrGee_VirtualAssistant",
+      technologies: ["Next.js", "TypeScript", "OpenAI", "GitHub API"],
+      title: messages.projects.cards.srGee.title,
+      description: messages.projects.cards.srGee.description,
+    },
+    {
+      id: "new-whatsapp",
+      image: WhatsappImage,
+      repository: "https://github.com/JoaoGW/NovoWhatsApp",
+      technologies: ["Python", "Flask", "RabbitMQ", "SocketIO"],
+      title: messages.projects.cards.newWhatsapp.title,
+      description: messages.projects.cards.newWhatsapp.description,
+    },
+    {
+      id: "car-seller",
+      image: CarSellerImage,
+      repository: "https://github.com/JoaoGW/CarSellerVue",
+      technologies: ["Vue.js", "JavaScript", "TypeScript", "Node.js"],
+      title: messages.projects.cards.carSeller.title,
+      description: messages.projects.cards.carSeller.description,
+    },
+  ];
 
   useEffect(() => {
     const techStackTimer = window.setTimeout(() => {
@@ -144,6 +242,19 @@ export default function Sobre() {
     }
   };
 
+  const scrollProjects = (direction: -1 | 1) => {
+    const carousel = projectCarouselRef.current;
+
+    if (!carousel) {
+      return;
+    }
+
+    carousel.scrollBy({
+      left: carousel.clientWidth * direction * 0.8,
+      behavior: "smooth",
+    });
+  };
+
   if (!sobreText) {
     return (
       <div className="relative min-h-screen">
@@ -156,26 +267,81 @@ export default function Sobre() {
     );
   }
 
+  const educationEntries = [
+    {
+      id: "puc" as const,
+      institution: "PUC-SP",
+      program: sobreText.academicCards.pucCourse,
+      status: sobreText.academicCards.pucLevel,
+    },
+    {
+      id: "fiap" as const,
+      institution: "FIAP",
+      program: sobreText.academicCards.fiapCourse,
+      status: sobreText.academicCards.fiapLevel,
+    },
+    {
+      id: "usp" as const,
+      institution: "USP",
+      program: sobreText.academicCards.uspCourse,
+      status: sobreText.academicCards.uspLevel,
+    },
+  ];
+
+  const experienceEntries = [
+    {
+      id: "multscan" as const,
+      company: home.experience.cards[0]?.company,
+      role: sobreText.experience.multscan.role,
+      period: home.experience.cards[0]?.period,
+      description: home.experience.cards[0]?.description,
+      logo: MultscanLogoDark,
+      logoAlt: "Logotipo da Multscan",
+    },
+    {
+      id: "culti" as const,
+      company: home.experience.cards[1]?.company,
+      role: sobreText.experience.culti.role,
+      period: home.experience.cards[1]?.period,
+      description: home.experience.cards[1]?.description,
+      logo: CultiLogo,
+      logoAlt: "Logotipo da Cultivare",
+    },
+    {
+      id: "fiverr" as const,
+      company: home.experience.cards[2]?.company,
+      role: messages.about.fiverrRole,
+      period: home.experience.cards[2]?.period,
+      description: home.experience.cards[2]?.description,
+      logo: FiverrLogo,
+      logoAlt: "Logotipo da Fiverr",
+    },
+  ];
+
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-x-hidden">
       <HeaderTop />
-      <HeroHighlight>
-        <section className="flex flex-row items-center pt-32 pb-16 mx-20">
-          <Image
-            key="sobre-profile-image"
-            src={ProfilePicture}
-            alt="Minha Foto de Perfil"
-            priority
-            sizes="(max-width: 768px) 80vw, 500px"
-            width={500}
-            height={500}
-            className="w-[500px] h-[500px] max-w-none shrink-0"
-            style={{
-              clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
-              objectFit: "cover",
-            }}
-          />
-          <div className="flex flex-col ml-24">
+      <HeroHighlight
+        className="w-full"
+        containerClassName="h-auto min-h-[32rem]"
+      >
+        <section className="mx-auto flex w-full max-w-7xl flex-col items-center gap-10 px-5 pb-8 pt-28 sm:px-8 lg:flex-row lg:px-12 lg:pt-32">
+          <div className="relative mx-auto w-full max-w-[18rem] shrink-0 lg:mx-0 lg:w-[375px] lg:max-w-none">
+            <div className="absolute -inset-3 border border-accent-orange/40" />
+            <Image
+              src={ProfilePicture}
+              alt="Minha Foto de Perfil"
+              priority
+              sizes="(max-width: 1023px) 72vw, 375px"
+              width={375}
+              height={375}
+              className="relative aspect-square h-auto w-full object-cover lg:h-[375px] lg:w-[375px]"
+            />
+            <span className="absolute bottom-4 left-4 bg-[#0A0A0A] px-3 py-2 text-xs font-semibold tracking-[0.16em] text-white">
+              JOÃO PEDRO RIBEIRO
+            </span>
+          </div>
+          <div className="flex w-full min-w-0 flex-1 flex-col text-white lg:ml-24">
             <div className="flex flex-row mb-6 items-center gap-2">
               <span className="text-accent-orange font-bold text-2xl">
                 {"<span>"}
@@ -225,91 +391,41 @@ export default function Sobre() {
                 </span>
               </p>
             </div>
-            <div className="flex flex-row gap-4 mt-6 items-center">
-              <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
-                <Image
-                  src={NodeLogo}
-                  width={70}
-                  height={70}
-                  alt="Logo Node.js"
-                  className="relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10"
-                />
-              </div>
-              <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
-                <Image
-                  src={ReactLogo}
-                  width={70}
-                  height={70}
-                  alt="Logo React"
-                  className="relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10"
-                />
-              </div>
-              <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
-                <Image
-                  src={NextjsLogo}
-                  width={70}
-                  height={70}
-                  alt="Logo Next.js"
-                  className="relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10"
-                />
-              </div>
-              <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
-                <Image
-                  src={DockerLogo}
-                  width={70}
-                  height={70}
-                  alt="Logo Docker"
-                  className="relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10"
-                />
-              </div>
-              <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
-                <Image
-                  src={MongodbLogo}
-                  width={70}
-                  height={70}
-                  alt="Logo MongoDB"
-                  className="relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10"
-                />
-              </div>
-              <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
-                <Image
-                  src={TypeScriptLogo}
-                  width={70}
-                  height={70}
-                  alt="Logo TypeScript"
-                  className="relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10"
-                />
-              </div>
-              <div className="group/icon relative cursor-pointer">
-                <div className="absolute inset-0 bg-accent-orange rounded-xl opacity-0 group-hover/icon:opacity-20 transition-opacity duration-300 blur-xl" />
-                <Image
-                  src={PythonLogo}
-                  width={70}
-                  height={70}
-                  alt="Logo Python"
-                  className="relative transition-all duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-2 rounded-lg p-2 bg-white/5 backdrop-blur-sm group-hover/icon:bg-white/10"
-                />
-              </div>
-              <span className="text-white text-xl font-semibold">
-                {messages.about.manyOthers}
-              </span>
-            </div>
           </div>
         </section>
       </HeroHighlight>
+      <div className="overflow-hidden border-y border-white/10 bg-[#121212] py-4">
+        <div className="home-marquee flex min-w-max gap-10 text-sm font-semibold tracking-[0.18em] text-neutral-400 motion-reduce:transform-none">
+          {[...home.software.techs, ...home.software.techs].map((tech, index) => {
+            const technologyLogo = tickerTechnologyLogos[tech.title];
+
+            return (
+              <span key={`${tech.title}-${index}`} className="inline-flex items-center gap-10">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center border border-white/15 bg-white/5 p-0.5">
+                  {technologyLogo ? (
+                    <Image
+                      src={technologyLogo}
+                      alt=""
+                      className="h-full w-full object-contain"
+                    />
+                  ) : (
+                    <span className="h-1.5 w-1.5 rounded-sm bg-accent-orange/70" />
+                  )}
+                </span>
+                <span>{tech.title.toUpperCase()}</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-orange" />
+              </span>
+            );
+          })}
+        </div>
+      </div>
       <TracingBeam>
-        <section className="bg-slate-900">
+        <section id="perfil" className="bg-slate-900">
           <TextHoverEffect
             text={messages.about.summaryTitle}
             size="xtralarge"
           />
-          <div className="mx-20 mt-[-80] pb-16 text-center">
+          <div className="mx-5 mt-[-80] pb-8 text-center md:mx-20">
             <span className="text-center text-3xl font-bold">
               {messages.about.summarySubtitle}
             </span>
@@ -382,60 +498,135 @@ export default function Sobre() {
             </div>
           </div>
         </section>
+        <section className="bg-[#0A0A0A] px-5 py-12 sm:px-8 lg:px-12 lg:py-[4.5rem]">
+          <div className="mx-auto max-w-7xl">
+            <SectionLead
+              index="03"
+              label={home.sections.projects}
+              title={messages.projects.pageTitle}
+              description={home.projects.description}
+            />
+            <div className="mb-5 flex items-center justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => scrollProjects(-1)}
+                aria-label={home.projects.previous}
+                className="inline-flex h-11 w-11 items-center justify-center border border-white/20 text-white transition-colors hover:border-accent-orange hover:text-accent-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange"
+              >
+                <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollProjects(1)}
+                aria-label={home.projects.next}
+                className="inline-flex h-11 w-11 items-center justify-center border border-white/20 text-white transition-colors hover:border-accent-orange hover:text-accent-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange"
+              >
+                <ChevronRight className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
+            <div
+              ref={projectCarouselRef}
+              className="flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden pb-4 [scrollbar-width:thin]"
+              aria-label={home.sections.projects}
+            >
+              {projects.map((project, index) => (
+                <motion.article
+                  key={project.id}
+                  {...sectionMotion}
+                  transition={{ duration: 0.55, delay: index * 0.08, ease: "easeOut" }}
+                  className="group relative flex min-h-[33rem] min-w-[84%] snap-start flex-col overflow-hidden border border-white/10 bg-[#121212] sm:min-w-[30rem] lg:min-w-[35rem]"
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="flex flex-1 flex-col p-6 md:p-8">
+                    <div className="flex items-start justify-between gap-5">
+                      <span className="text-xs font-semibold tracking-[0.18em] text-accent-orange">
+                        0{index + 1}
+                      </span>
+                      <a
+                        href={project.repository}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${home.projects.repository}: ${project.title}`}
+                        className="inline-flex h-10 w-10 items-center justify-center border border-white/15 text-white transition-colors hover:border-accent-orange hover:text-accent-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange"
+                      >
+                        <Github className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    </div>
+                    <h3 className="mt-8 text-3xl font-semibold tracking-[-0.05em] text-white">
+                      {project.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-6 text-neutral-400">
+                      {project.description}
+                    </p>
+                    <div className="mt-auto flex flex-wrap gap-2 pt-8">
+                      {project.technologies.map((technology) => (
+                        <span
+                          key={`${project.id}-${technology}`}
+                          className="border border-white/15 px-2.5 py-1 text-xs text-neutral-300"
+                        >
+                          {technology}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+            <div className="mt-10 flex justify-end">
+              <Link
+                href="/projetos"
+                className="inline-flex min-h-11 items-center gap-2 border-b border-accent-orange pb-2 text-sm font-semibold text-white transition-colors hover:text-accent-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange"
+              >
+                {home.projects.allProjects}
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </section>
         {showTechStackSection ? (
           <DeferredTechStackSection
             tooltips={sobreText.tooltips}
             hint={messages.about.techStackHint}
           />
         ) : null}
-        <section className="bg-slate-900">
-          <div className="h-[28rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
-            <motion.h4
-              initial={{ opacity: 0.5, y: 80 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
-              viewport={{ once: true, amount: 0.2 }}
-              className="mt-12 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
-              style={{
-                WebkitTextStroke: "2px rgb(var(--color-accent-orange) / 0.3)",
-                textShadow: "0 0 40px rgb(var(--color-accent-orange) / 0.5)",
-              }}
-            >
-              {messages.about.academicTitle}
-            </motion.h4>
-            <div className="w-[40rem] h-40 relative">
-              <div className="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-accent-orange blur-sm" />
-              <div className="absolute inset-x-20 top-0 h-px w-3/4 bg-accent-orange" />
-              <div className="absolute inset-x-60 top-0 h-[5px] w-1/4 bg-accent-orange blur-sm" />
-              <div className="absolute inset-x-60 top-0 h-px w-1/4 bg-accent-orange" />
-              <div className="absolute inset-0 w-full h-full bg-slate-900 [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+        <section id="formacao" className="bg-[#121212] px-5 py-12 sm:px-8 lg:px-12 lg:py-[4.5rem]">
+          <div className="mx-auto max-w-7xl">
+            <SectionLead
+              index="06"
+              label={home.sections.education}
+              title={messages.about.academicTitle}
+              description={home.education.description}
+            />
+            <div className="grid gap-5 md:grid-cols-3">
+              {educationEntries.map((education, index) => (
+                <motion.button
+                  key={education.id}
+                  {...sectionMotion}
+                  transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
+                  type="button"
+                  onClick={() => setOpenModal(education.id)}
+                  aria-label={education.institution}
+                  className="group flex min-h-72 flex-col border border-white/10 p-6 text-left transition-colors hover:border-accent-orange/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange md:p-8"
+                >
+                  <span className="text-sm font-semibold tracking-[0.16em] text-accent-orange">
+                    0{index + 1}
+                  </span>
+                  <h3 className="mt-12 text-3xl font-semibold tracking-[-0.05em] text-white">
+                    {education.institution}
+                  </h3>
+                  <p className="mt-4 text-base leading-7 text-neutral-300">
+                    {education.program}
+                  </p>
+                  <p className="mt-auto pt-8 text-sm text-neutral-500 transition-colors group-hover:text-accent-orange">
+                    {education.status}
+                  </p>
+                </motion.button>
+              ))}
             </div>
-          </div>
-          <div className="flex flex-row justify-center gap-12 mx-24 pb-20">
-            <InstitutionCard
-              institutionLogo={PUCLogo}
-              institutionAltImage="Logo Instituição PUC-SP"
-              institurionName="PUC-SP"
-              institutionCourse={sobreText.academicCards.pucCourse}
-              institutionCourseLevel={sobreText.academicCards.pucLevel}
-              institurionOpenDetails={() => setOpenModal("puc")}
-            />
-            <InstitutionCard
-              institutionLogo={FIAPLogo}
-              institutionAltImage="Logo Instituição FIAP"
-              institurionName="FIAP"
-              institutionCourse={sobreText.academicCards.fiapCourse}
-              institutionCourseLevel={sobreText.academicCards.fiapLevel}
-              institurionOpenDetails={() => setOpenModal("fiap")}
-            />
-            <InstitutionCard
-              institutionLogo={USPLogo}
-              institutionAltImage="Logo Instituição USP"
-              institurionName="USP"
-              institutionCourse={sobreText.academicCards.uspCourse}
-              institutionCourseLevel={sobreText.academicCards.uspLevel}
-              institurionOpenDetails={() => setOpenModal("usp")}
-            />
           </div>
 
           <InstitutionModal
@@ -465,7 +656,7 @@ export default function Sobre() {
             courseType={sobreText.academic.fiap.courseType}
             courseName={sobreText.academic.fiap.courseName}
             modality="EAD"
-            startDate="Fevereiro 2025"
+            startDate="Fevereiro 2026"
             status="Andamento"
             location="São Paulo, SP"
             description={sobreText.academic.fiap.description}
@@ -494,63 +685,50 @@ export default function Sobre() {
             headerBgColor="#7e7e7b"
           />
         </section>
-        <section className="pt-16 pb-16">
-          <motion.h5
-            initial={{ opacity: 0.5, x: -160 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="mt-12 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
-            style={{
-              WebkitTextStroke: "2px rgb(var(--color-accent-orange) / 0.3)",
-              textShadow: "0 0 40px rgb(var(--color-accent-orange) / 0.5)",
-            }}
-          >
-            {messages.about.experienceTitle}
-          </motion.h5>
-          <div className="flex flex-row justify-center gap-4 items-center mt-8">
-            <GlareCard
-              className="w-80 min-h-[32.8125rem] flex flex-col items-center justify-center gap-5"
-              expandCard={() => setExperienceCard("fiverr")}
-            >
-              <Image
-                src={FiverrLogo}
-                width={200}
-                height={200}
-                alt="Logo da Fiverr: Plataforma de Freelancing"
-              />
-              <span className="text-center uppercase font-bold text-2xl min-h-[4rem] flex items-center justify-center">
-                {messages.about.fiverrRole}
-              </span>
-            </GlareCard>
-            <GlareCard
-              className="w-80 min-h-[32.8125rem] flex flex-col items-center justify-center gap-5"
-              expandCard={() => setExperienceCard("culti")}
-            >
-              <Image
-                src={CultiLogo}
-                width={200}
-                height={200}
-                alt="Logo da Cultivare: Prevenção e Promoção de Saúde"
-              />
-              <span className="text-center uppercase font-bold text-2xl min-h-[4rem] flex items-center justify-center">
-                {messages.about.cultiRole}
-              </span>
-            </GlareCard>
-            <GlareCard
-              className="w-80 min-h-[32.8125rem] flex flex-col items-center justify-center gap-5"
-              expandCard={() => setExperienceCard("multscan")}
-            >
-              <Image
-                src={MultscanLogo}
-                width={200}
-                height={200}
-                alt="Logo da Multscan Inteligência Tecnológica"
-              />
-              <span className="text-center uppercase font-bold text-2xl min-h-[4rem] flex items-center justify-center">
-                {messages.about.multscanRole}
-              </span>
-            </GlareCard>
+        <section id="experiencia" className="bg-[#0A0A0A] px-5 py-12 sm:px-8 lg:px-12 lg:py-[4.5rem]">
+          <div className="mx-auto max-w-7xl">
+            <SectionLead
+              index="05"
+              label={home.sections.experience}
+              title={messages.about.experienceTitle}
+              description={home.experience.description}
+            />
+            <div className="divide-y divide-white/10 border-y border-white/10">
+              {experienceEntries.map((experience, index) => (
+                <motion.button
+                  key={experience.id}
+                  {...sectionMotion}
+                  transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
+                  type="button"
+                  onClick={() => setExperienceCard(experience.id)}
+                  aria-label={experience.company}
+                  className="group grid w-full gap-5 py-7 text-left transition-colors hover:bg-white/[0.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange md:grid-cols-[minmax(9rem,0.5fr)_minmax(0,1.1fr)_minmax(12rem,0.7fr)_auto] md:items-start md:gap-8 md:px-4"
+                >
+                  <span className="text-sm font-semibold tracking-[0.16em] text-accent-orange">
+                    {experience.period}
+                  </span>
+                  <div className="flex items-start gap-4">
+                    <Image
+                      src={experience.logo}
+                      alt={experience.logoAlt}
+                      width={44}
+                      height={44}
+                      className="h-11 w-11 shrink-0 object-contain"
+                    />
+                    <div>
+                      <h3 className="text-2xl font-semibold tracking-[-0.05em] text-white">
+                        {experience.company}
+                      </h3>
+                      <p className="mt-2 text-sm text-neutral-400">{experience.role}</p>
+                    </div>
+                  </div>
+                  <p className="max-w-md text-sm leading-6 text-neutral-400">
+                    {experience.description}
+                  </p>
+                  <ArrowUpRight className="h-5 w-5 text-neutral-500 transition-colors group-hover:text-accent-orange" aria-hidden="true" />
+                </motion.button>
+              ))}
+            </div>
 
             <EnterpriseModal
               isOpen={experienceCard === "multscan"}
@@ -647,13 +825,102 @@ export default function Sobre() {
             description={messages.about.availabilityDescription}
           />
         ) : null}
-        <section className="pt-14 pb-8">
+        <section className="bg-[#0A0A0A] px-5 py-12 sm:px-8 lg:px-12 lg:py-[4.5rem]">
+          <div className="mx-auto max-w-7xl">
+            <SectionLead
+              index="07"
+              label={home.sections.trajectory}
+              title={home.sections.trajectory}
+              description={home.trajectory.description}
+            />
+            <div className="grid gap-px bg-white/10 md:grid-cols-2">
+              {home.trajectory.items.map((item, index) => (
+                <motion.article
+                  key={item.year}
+                  {...sectionMotion}
+                  transition={{ duration: 0.55, delay: index * 0.08, ease: "easeOut" }}
+                  className="bg-[#0A0A0A] p-6 md:p-8"
+                >
+                  <span className="text-5xl font-semibold tracking-[-0.07em] text-accent-orange md:text-6xl">
+                    {item.year}
+                  </span>
+                  <h3 className="mt-10 text-2xl font-semibold tracking-[-0.05em] text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 max-w-md text-sm leading-6 text-neutral-400">
+                    {item.description}
+                  </p>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="bg-[#121212] px-5 py-12 sm:px-8 lg:px-12 lg:py-[4.5rem]">
+          <div className="mx-auto max-w-7xl">
+            <SectionLead
+              index="08"
+              label={home.sections.explore}
+              title={home.sections.explore}
+              description={home.explore.description}
+            />
+            <div className="divide-y divide-white/10 border-y border-white/10">
+              {home.explore.items.map((item) => {
+                const isResume = item.href.endsWith(".pdf");
+
+                return (
+                  <Link
+                    key={item.index}
+                    href={item.href}
+                    download={isResume}
+                    className="group grid gap-5 py-7 transition-colors hover:text-accent-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange md:grid-cols-[5rem_minmax(0,1fr)_minmax(12rem,0.5fr)_auto] md:items-center md:py-9"
+                  >
+                    <span className="text-sm font-semibold tracking-[0.14em] text-accent-orange">
+                      {item.index}
+                    </span>
+                    <h3 className="text-3xl font-semibold tracking-[-0.05em] text-white transition-colors group-hover:text-accent-orange">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-neutral-400">{item.description}</p>
+                    <ArrowUpRight
+                      className="h-5 w-5 text-white transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent-orange"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+        <section className="bg-[#0A0A0A] px-5 py-12 sm:px-8 lg:px-12 lg:py-[4.5rem]">
+          <div className="mx-auto max-w-7xl">
+            <SectionLead index="09" label={home.sections.faq} title={home.sections.faq} />
+            <div className="border-y border-white/10">
+              {home.faq.map((item) => (
+                <details key={item.question} className="group border-b border-white/10 last:border-b-0">
+                  <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-5 py-5 text-lg font-medium text-white marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange md:text-xl">
+                    {item.question}
+                    <span
+                      className="text-2xl text-accent-orange transition-transform group-open:rotate-45"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="max-w-3xl pb-6 text-sm leading-7 text-neutral-400 md:text-base">
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="pt-7 pb-4">
           <motion.h6
             initial={{ opacity: 0.5, y: 80 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="mt-12 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
+            className="mt-6 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
             style={{
               WebkitTextStroke: "2px rgb(var(--color-accent-orange) / 0.3)",
               textShadow: "0 0 40px rgb(var(--color-accent-orange) / 0.5)",
@@ -664,9 +931,9 @@ export default function Sobre() {
           <p className="text-center text-2xl font-semibold mt-3">
             {messages.about.interestedSubtitle}
           </p>
-          <div className="flex flex-col items-center justify-center my-8 mx-auto w-[75%]">
+          <div className="mx-auto my-8 flex w-[90%] flex-col items-center justify-center md:w-[75%]">
             <SocialMediaIcons />
-            <div className="flex flex-row my-10 gap-5 w-full">
+            <div className="my-10 flex w-full flex-col gap-5 md:flex-row">
               <PresentationTopics
                 icon={StepForward}
                 title={messages.about.visitPortfolioTitle}

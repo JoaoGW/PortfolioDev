@@ -18,14 +18,14 @@ export default function DeferredAvailabilitySection({
 }: DeferredAvailabilitySectionProps) {
   return (
     <section className="bg-slate-900">
-      <div className=" py-16">
+      <div className="py-8">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h5
             initial={{ opacity: 0.5, x: 160 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="mt-12 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
+            className="mt-6 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
             style={{
               WebkitTextStroke: "2px rgb(var(--color-accent-orange) / 0.3)",
               textShadow: "0 0 40px rgb(var(--color-accent-orange) / 0.5)",
