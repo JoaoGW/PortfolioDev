@@ -86,14 +86,6 @@ export function EnterpriseModal({
     'Não Remunerado': 'bg-gray-500/20 text-gray-400 border-gray-500/30',
   };
 
-  const techCategoryColors = {
-    frontend: 'border-blue-500/40 text-blue-400 bg-blue-500/10',
-    backend: 'border-green-500/40 text-green-400 bg-green-500/10',
-    database: 'border-purple-500/40 text-purple-400 bg-purple-500/10',
-    tools: 'border-orange-500/40 text-orange-400 bg-orange-500/10',
-    other: 'border-slate-500/40 text-slate-400 bg-slate-500/10',
-  };
-
   return (
     <AnimatePresence>
       { isOpen && (
@@ -238,7 +230,7 @@ export function EnterpriseModal({
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 1.0 + index * 0.03 }}
-                          className={`px-3 py-2 rounded-lg text-sm font-medium border ${ techCategoryColors[tech.category] } hover:scale-105 transition-transform`}
+                          className="px-3 py-1.5 bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-700 rounded-full text-sm text-slate-300 hover:border-[#72BF6A]/50 transition-colors"
                         >
                           { tech.name }
                         </motion.span>

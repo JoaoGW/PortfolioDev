@@ -5,12 +5,11 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, Github, Mail } from "lucide-react";
 
-import { LogoWaterEffect } from "@/app/_components/logo-water-effect";
+import { LogoWaterEffect } from "@/components/logo-water-effect";
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
 import { useLanguage } from "@/contexts/language-context";
 
-import GWBRLogo from "@/assets/Logos/GWBR_Logotipo.png";
 import AwsLogo from "@/assets/Logos/aws_logo.webp";
 import DockerLogo from "@/assets/Logos/docker-512.webp";
 import ExpoLogo from "@/assets/Logos/expo_logo.webp";
@@ -148,7 +147,7 @@ export default function Home() {
               </div>
             </div>
             <motion.div {...sectionMotion} className="mx-auto w-full max-w-md lg:max-w-none">
-              <LogoWaterEffect src={GWBRLogo} alt={company.name} />
+              <LogoWaterEffect src="/GWBR_Logotipo.png" alt={company.name} />
             </motion.div>
           </motion.div>
         </section>
@@ -300,6 +299,32 @@ export default function Home() {
               className="inline-flex min-h-11 items-center gap-2 border-b border-accent-orange pb-2 text-sm font-semibold text-white transition-colors hover:text-accent-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange"
             >
               {company.hero.secondaryAction}
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </motion.div>
+        </section>
+
+        <section className="px-5 pb-12 pt-2 sm:px-8 lg:px-12 lg:pb-16 lg:pt-4">
+          <motion.div
+            {...sectionMotion}
+            className="mx-auto grid max-w-7xl gap-8 border border-white/10 bg-[#121212] p-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:p-10"
+          >
+            <div>
+              <p className="text-xs font-semibold tracking-[0.2em] text-accent-orange">
+                {company.personalPortfolio.eyebrow}
+              </p>
+              <h2 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.05em] text-white sm:text-5xl">
+                {company.personalPortfolio.title}
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-neutral-400">
+                {company.personalPortfolio.description}
+              </p>
+            </div>
+            <Link
+              href="/sobre"
+              className="inline-flex min-h-11 items-center gap-2 bg-accent-orange px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-accent-orange/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange"
+            >
+              {company.personalPortfolio.action}
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </motion.div>

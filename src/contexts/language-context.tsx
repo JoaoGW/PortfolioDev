@@ -140,6 +140,12 @@ type LanguageMessages = {
       description: string;
       items: string[];
     };
+    personalPortfolio: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      action: string;
+    };
     closing: {
       title: string;
       description: string;
@@ -485,11 +491,14 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       explore: {
         description: "Escolha por onde continuar a conhecer meu trabalho.",
         items: [
-          { index: "001", title: "Projetos", description: "Aplicações e repositórios", href: "/projetos" },
-          { index: "002", title: "GWBR Technologies", description: "Serviços e opção PJ para contratos", href: "/" },
-          { index: "003", title: "Contato", description: "Vamos conversar?", href: "/contato" },
-          { index: "004", title: "Currículo", description: "Versão para visualização em PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
-          { index: "005", title: "GitHub", description: "Veja minha atividade, contribuições, snippets e organizações", href: "https://github.com/JoaoGW" },
+          { index: "001", title: "Projetos", description: "Projetos de Aplicações (apps) e seus respectivos repositórios GitHub", href: "/projetos" },
+          { index: "002", title: "Artigos", description: "Conheça meus artigos escritos falando sobre tecnologia moderna e seus desafios", href: "/artigos" },
+          { index: "003", title: "A GWBR Technologies", description: "Serviços e opção PJ para contratos com empresas e indivíduos", href: "/" },
+          { index: "004", title: "Contato", description: "Vamos conversar? Entre em contato comigo!", href: "/contato" },
+          { index: "005", title: "Currículo", description: "Versão para visualização em PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
+          { index: "006", title: "GitHub", description: "Veja minha atividade, contribuições, snippets e organizações", href: "https://github.com/JoaoGW" },
+          { index: "007", title: "Escola Tecnologia Nua e Crua", description: "Conheça a minha plataforma para ensinar novos ingressantes na tecnologia a encarar o mercado atual", href: "https://www.escola.gwbrtechnologies.com" },
+          { index: "008", title: "YouTube - Tecnologia Nua e Crua", description: "Canal no YouTube onde eu falo sobre os desafios da tecnologia moderna, dicas e curiosidades sobre a área", href: "https://www.youtube.com" },
         ],
       },
       faq: [
@@ -529,7 +538,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         description:
           "Desenvolvimento de aplicações Web, Mobile e integrações Cloud, banco de dados e IA com foco em clareza técnica, manutenção e experiência de uso.",
         primaryAction: "Entrar em contato",
-        secondaryAction: "Conhecer o portfólio",
+        secondaryAction: "Conhecer projetos",
       },
       capabilities: {
         eyebrow: "ENGENHARIA APLICADA",
@@ -567,6 +576,13 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         description:
           "Ferramentas modernas e em tendência usadas de forma complementar para criar interfaces, serviços, integrações e fluxos de entrega confiáveis.",
         items: [...companySpecialties],
+      },
+      personalPortfolio: {
+        eyebrow: "PORTFÓLIO PESSOAL",
+        title: "Conheça mais sobre João Pedro Ribeiro.",
+        description:
+          "Explore projetos, experiências, formação e a trajetória técnica por trás da GWBR Technologies.",
+        action: "Ver portfólio pessoal",
       },
       closing: {
         title: "Tecnologia construída a partir do contexto.",
@@ -976,6 +992,13 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           "Tools used together to build interfaces, services, integrations and dependable delivery flows.",
         items: [...companySpecialties],
       },
+      personalPortfolio: {
+        eyebrow: "PERSONAL PORTFOLIO",
+        title: "Get to know João Pedro Ribeiro's portfolio.",
+        description:
+          "Explore the projects, experience, education and technical path behind GWBR Technologies.",
+        action: "View personal portfolio",
+      },
       closing: {
         title: "Technology built from context.",
         description:
@@ -1382,6 +1405,13 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         description:
           "Des outils complémentaires pour concevoir des interfaces, services, intégrations et flux de livraison fiables.",
         items: [...companySpecialties],
+      },
+      personalPortfolio: {
+        eyebrow: "PORTFOLIO PERSONNEL",
+        title: "Découvrez le portfolio de João Pedro Ribeiro.",
+        description:
+          "Explorez les projets, l'expérience, la formation et le parcours technique derrière GWBR Technologies.",
+        action: "Voir le portfolio personnel",
       },
       closing: {
         title: "Une technologie conçue à partir du contexte.",

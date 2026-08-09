@@ -11,7 +11,7 @@ type Ripple = {
 
 type LogoWaterEffectProps = {
   alt: string;
-  src: StaticImageData;
+  src: StaticImageData | string;
 };
 
 const RIPPLE_DURATION = 900;
@@ -127,6 +127,8 @@ export function LogoWaterEffect({ alt, src }: LogoWaterEffectProps) {
       <Image
         src={src}
         alt={alt}
+        width={1254}
+        height={1254}
         priority
         className="relative z-10 mx-auto aspect-square w-full max-w-md object-contain"
       />

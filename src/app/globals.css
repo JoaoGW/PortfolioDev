@@ -27,20 +27,34 @@ body {
 
 @keyframes home-marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .home-marquee {
+  width: max-content;
+  flex: none;
+  white-space: nowrap;
+  -webkit-animation: home-marquee 28s linear infinite;
   animation: home-marquee 28s linear infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .home-marquee--technologies {
   animation-duration: 100s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-marquee {
+    -webkit-animation: none;
+    animation: none;
+  }
 }
 
 @layer utilities {
