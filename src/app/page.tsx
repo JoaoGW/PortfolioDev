@@ -4,12 +4,14 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, Github, Mail } from "lucide-react";
+import type { CSSProperties } from "react";
 
 import { LogoWaterEffect } from "@/components/logo-water-effect";
 import { HeaderTop } from "@/components/headerTop";
 import { Navbar } from "@/components/navbar";
 import { useLanguage } from "@/contexts/language-context";
 
+import GWBRLogo from "@/assets/Logos/GWBR_NoBG_Logotipo.png"
 import AwsLogo from "@/assets/Logos/aws_logo.webp";
 import DockerLogo from "@/assets/Logos/docker-512.webp";
 import ExpoLogo from "@/assets/Logos/expo_logo.webp";
@@ -26,6 +28,18 @@ import NextjsLogo from "@/assets/Logos/next-js-logo.webp";
 import PythonLogo from "@/assets/Logos/python_logo.webp";
 import TypeScriptLogo from "@/assets/Logos/typescript-512.webp";
 import VueLogo from "@/assets/Logos/vue-js-512.webp";
+import HTMLLogo from "@/assets/Logos/html.png";
+import CSSLogo from "@/assets/Logos/css.webp";
+import TailwindLogo from "@/assets/Logos/tailwindcss.png";
+import PostgresqlLogo from "@/assets/Logos/PostgreSQL.png";
+import MysqlLogo from "@/assets/Logos/mysql.svg";
+import RedisLogo from "@/assets/Logos/Redis.png";
+import JenkinsLogo from "@/assets/Logos/Jenkins.png";
+import PlaywrightLogo from "@/assets/Logos/playwright.webp";
+import RabbitmqLogo from "@/assets/Logos/rabbitmq.webp";
+import OpenaiLogo from "@/assets/Logos/openai.svg";
+import SQLiteLogo from "@/assets/Logos/sqlite.png";
+import StripeLogo from "@/assets/Logos/stripe.png";
 
 type SectionLeadProps = {
   index: string;
@@ -41,36 +55,64 @@ const sectionMotion = {
   transition: { duration: 0.6, ease: "easeOut" as const },
 };
 
+type LogoTreatment = "transparent" | "light-foreground" | "dark-foreground";
+
 type TechnologyLogo = {
   source?: StaticImageData;
-  useGradientMask: boolean;
+  treatment: LogoTreatment;
 };
 
 const technologyLogos: Record<string, TechnologyLogo> = {
-  "Next.js": { source: NextjsLogo, useGradientMask: false },
-  React: { source: ReactLogo, useGradientMask: true },
-  "React Native": { source: ReactNativeLogo, useGradientMask: false },
-  Expo: { source: ExpoLogo, useGradientMask: false },
-  TypeScript: { source: TypeScriptLogo, useGradientMask: true },
-  JavaScript: { source: JavaScriptLogo, useGradientMask: true },
-  Python: { source: PythonLogo, useGradientMask: true },
-  "Node.js": { source: NodeLogo, useGradientMask: true },
-  "Vue.js": { source: VueLogo, useGradientMask: true },
-  Docker: { source: DockerLogo, useGradientMask: true },
-  AWS: { source: AwsLogo, useGradientMask: true },
-  "Google Cloud Platform": { source: GoogleCloudLogo, useGradientMask: true },
-  Git: { source: GitLogo, useGradientMask: false },
-  "GitHub Actions": { source: GitLogo, useGradientMask: false },
-  Firebase: { source: FirebaseLogo, useGradientMask: true },
-  MongoDB: { source: MongodbLogo, useGradientMask: true },
-  Jest: { source: JestLogo, useGradientMask: true },
+  "Next.js": { source: NextjsLogo, treatment: "dark-foreground" },
+  React: { source: ReactLogo, treatment: "transparent" },
+  "React Native": { source: ReactNativeLogo, treatment: "transparent" },
+  Expo: { source: ExpoLogo, treatment: "transparent" },
+  TypeScript: { source: TypeScriptLogo, treatment: "light-foreground" },
+  JavaScript: { source: JavaScriptLogo, treatment: "dark-foreground" },
+  Python: { source: PythonLogo, treatment: "transparent" },
+  "Node.js": { source: NodeLogo, treatment: "transparent" },
+  "Vue.js": { source: VueLogo, treatment: "transparent" },
+  Docker: { source: DockerLogo, treatment: "transparent" },
+  AWS: { source: AwsLogo, treatment: "transparent" },
+  "Google Cloud Platform": { source: GoogleCloudLogo, treatment: "transparent" },
+  Git: { source: GitLogo, treatment: "transparent" },
+  "GitHub Actions": { source: GitLogo, treatment: "transparent" },
+  Firebase: { source: FirebaseLogo, treatment: "transparent" },
+  MongoDB: { source: MongodbLogo, treatment: "transparent" },
+  Jest: { source: JestLogo, treatment: "transparent" },
+  HTML: { source: HTMLLogo, treatment: "transparent" },
+  CSS: { source: CSSLogo, treatment: "dark-foreground" },
+  "Tailwind CSS": { source: TailwindLogo, treatment: "transparent" },
+  PostgreSQL: { source: PostgresqlLogo, treatment: "dark-foreground" },
+  MySQL: { source: MysqlLogo, treatment: "transparent" },
+  Redis: { source: RedisLogo, treatment: "transparent" },
+  Jenkins: { source: JenkinsLogo, treatment: "light-foreground" },
+  Playwright: { source: PlaywrightLogo, treatment: "transparent" },
+  RabbitMQ: { source: RabbitmqLogo, treatment: "transparent" },
+  OpenAI: { source: OpenaiLogo, treatment: "transparent" },
+  SQLite: { source: SQLiteLogo, treatment: "transparent" },
+  Stripe: { source: StripeLogo, treatment: "transparent" },
 };
 
-const logoFadeStyle = {
+const logoFadeStyle: CSSProperties = {
   WebkitMaskImage:
     "linear-gradient(to right, rgb(0 0 0 / 0.15), rgb(0 0 0 / 1))",
   maskImage:
     "linear-gradient(to right, rgb(0 0 0 / 0.15), rgb(0 0 0 / 1))",
+};
+
+const logoTreatmentStyles: Record<LogoTreatment, CSSProperties> = {
+  transparent: {
+    filter: "grayscale(1) brightness(0) invert(1) contrast(2)",
+  },
+  "light-foreground": {
+    filter: "grayscale(1) contrast(10)",
+    mixBlendMode: "screen",
+  },
+  "dark-foreground": {
+    filter: "grayscale(1) contrast(10) invert(1)",
+    mixBlendMode: "screen",
+  },
 };
 
 function SectionLead({ index, label, title, description }: SectionLeadProps) {
@@ -213,7 +255,10 @@ export default function Home() {
             <div className="grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
               {company.specialties.items.map((technology, index) => {
                 const logo = technologyLogos[technology];
-                const logoStyle = logo?.useGradientMask ? logoFadeStyle : undefined;
+                const logoStyle = {
+                  ...logoFadeStyle,
+                  ...logoTreatmentStyles[logo?.treatment ?? "transparent"],
+                };
 
                 return (
                   <motion.article
@@ -234,13 +279,15 @@ export default function Home() {
                         alt=""
                         aria-hidden="true"
                         style={logoStyle}
-                        className="pointer-events-none absolute -right-4 bottom-4 h-24 w-24 object-contain grayscale brightness-0 invert contrast-200"
+                        className="pointer-events-none absolute -right-4 bottom-4 h-24 w-24 object-contain"
                       />
                     ) : (
-                      <Github
+                      <Image
+                        src={GWBRLogo}
+                        alt=""
                         aria-hidden="true"
                         style={logoStyle}
-                        className="pointer-events-none absolute -right-4 bottom-4 h-24 w-24 text-white"
+                        className="pointer-events-none absolute -right-4 bottom-4 h-24 w-24 object-contain"
                       />
                     )}
                   </motion.article>
