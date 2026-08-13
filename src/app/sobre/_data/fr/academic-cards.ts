@@ -5,6 +5,6 @@ export const frAcademicCards: SobreAcademicCards = {
   "pucLevel": "Licence / Baccalauréat",
   "fiapCourse": "Architecture Logicielle",
   "fiapLevel": "Postgraduate",
-  "harvardCourse": "CS50",
-  "harvardLevel": "Cours Complémentaires"
+  "uspCourse": "MBA en Ingénierie Logicielle",
+  "uspLevel": "MBA"
 };

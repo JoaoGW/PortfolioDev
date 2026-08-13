@@ -51,16 +51,15 @@ export default function DeferredTechStackSection({
 }: DeferredTechStackSectionProps) {
   return (
     <section>
-      <LampContainer className="pt-44 pb-16">
+      <LampContainer className="pt-36 pb-8" tone="soft-yellow">
         <motion.h3
           initial={{ opacity: 0.5, y: 20 }}
           whileInView={{ opacity: 1, y: -100 }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-          className="mt-12 bg-gradient-to-br from-[#72BF6A] via-slate-200 to-[#0096C7] py-4 bg-clip-text text-center text-8xl font-bold tracking-tight text-transparent md:text-8xl"
+          className="mt-6 py-4 text-center text-8xl font-bold tracking-tight text-accent-orange md:text-8xl"
           style={{
-            WebkitTextStroke: "2px rgba(114, 191, 106, 0.3)",
-            textShadow:
-              "0 0 40px rgba(114, 191, 106, 0.5), 0 0 80px rgba(0, 150, 199, 0.3)",
+            WebkitTextStroke: "1px rgb(var(--color-accent-orange) / 0.2)",
+            textShadow: "0 0 18px rgb(var(--color-accent-orange) / 0.2)",
           }}
         >
           TECH STACK
@@ -170,7 +169,7 @@ export default function DeferredTechStackSection({
             </a>
           </>
         </div>
-        <div className="flex flex-row justify-center items-center gap-2 mt-16">
+        <div className="mt-8 flex flex-row items-center justify-center gap-2">
           <CircleAlert color="#FFF" size={35} />
           <PointerHighlight
             rectangleClassName="bg-neutral-200 dark:bg-neutral-700 border-neutral-300 dark:border-neutral-600"

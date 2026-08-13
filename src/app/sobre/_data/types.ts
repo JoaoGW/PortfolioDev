@@ -20,8 +20,8 @@ export type SobreAcademicCards = {
   pucLevel: string;
   fiapCourse: string;
   fiapLevel: string;
-  harvardCourse: string;
-  harvardLevel: string;
+  uspCourse: string;
+  uspLevel: string;
 };
 
 export type SobreAcademic = {
@@ -41,7 +41,7 @@ export type SobreAcademic = {
     certificates: { name: string; issuedDate: string; link: string }[];
     activities: { title: string; description: string; period: string }[];
   };
-  harvard: {
+  usp: {
     courseType: string;
     courseName: string;
     description: string;
@@ -50,6 +50,15 @@ export type SobreAcademic = {
 };
 
 export type SobreExperience = {
+  multscan: {
+    role: string;
+    description: string;
+    responsibilities: {
+      title: string;
+      description: string;
+      achievements: string[];
+    }[];
+  };
   fiverr: {
     description: string;
     responsibilities: {

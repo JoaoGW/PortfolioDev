@@ -1,6 +1,44 @@
 import type { SobreExperience } from "../types";
 
 export const enExperience: SobreExperience = {
+  "multscan": {
+    "role": "Junior Software Engineer",
+    "description": "Responsible for developing and maintaining Web and Mobile applications, building hybrid solutions for Web, Android and iOS while contributing to DevOps practices and continuous delivery.",
+    "responsibilities": [
+      {
+        "title": "Web and Mobile Development",
+        "description": "Developed and maintained Web and Mobile applications with Next.js, React Native, Expo, TypeScript and Node.js.",
+        "achievements": []
+      },
+      {
+        "title": "Online Store Redesign",
+        "description": "Redesigned the online store into a headless architecture using Next.js, Tailwind CSS, Node.js microservices, Prisma, PostgreSQL, Redis and Stripe integration.",
+        "achievements": [
+          "Reduced per-product sales costs by 15%"
+        ]
+      },
+      {
+        "title": "CI/CD and Containerization",
+        "description": "Implemented and maintained CI/CD pipelines with GitHub Actions and Jenkins, as well as container orchestration with Docker for faster deliveries and consistent environments.",
+        "achievements": []
+      },
+      {
+        "title": "AWS Deployment and Monitoring",
+        "description": "Performed application deployments and monitoring in AWS, ensuring the availability and stability of production services.",
+        "achievements": []
+      },
+      {
+        "title": "App Publishing",
+        "description": "Managed the publishing and update lifecycle for Google Play Store and Apple App Store apps, including signing, distribution and versioning.",
+        "achievements": []
+      },
+      {
+        "title": "Agile Collaboration",
+        "description": "Worked in agile teams using Scrum and Jira for planning, tracking and continuously delivering features.",
+        "achievements": []
+      }
+    ]
+  },
   "fiverr": {
     "description": "Worked on Web application development, strategically focused on building high-performance and conversion-oriented landing pages for users across multiple markets worldwide.",
     "responsibilities": [

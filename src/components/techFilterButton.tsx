@@ -17,15 +17,17 @@ export function TechFilterButton({
   return (
     <button
       className={cn(
-        "flex flex-row justify-center items-center gap-2 border-2 p-3 rounded-xl transition-colors duration-200",
+        "inline-flex min-h-11 items-center gap-2 border px-3 py-2 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-orange",
         isActive
-          ? "border-[#72BF6A] bg-[#72BF6A]/15 text-white"
-          : "border-neutral-600 bg-transparent text-neutral-300 hover:border-[#72BF6A]/60 hover:text-white",
+          ? "border-accent-orange bg-accent-orange text-black"
+          : "border-white/15 bg-transparent text-neutral-300 hover:border-accent-orange hover:text-white",
       )}
       onClick={filterAction}
+      type="button"
+      aria-pressed={isActive}
     >
-      <Image src={techLogo} alt={`Logo ${techName}`} width={38} height={38} />
-      <span className="font-bold text-xl">{techName}</span>
+      <Image src={techLogo} alt="" aria-hidden="true" width={24} height={24} />
+      <span>{techName}</span>
     </button>
   );
 }

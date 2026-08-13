@@ -5,6 +5,7 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --color-accent-orange: 255 107 0;
 }
 
 @theme inline {
@@ -22,6 +23,38 @@ body {
 
 .playwrite {
   font-family: var(--font-playwrite-de-sas), cursive;
+}
+
+@keyframes home-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.home-marquee {
+  width: max-content;
+  flex: none;
+  white-space: nowrap;
+  -webkit-animation: home-marquee 28s linear infinite;
+  animation: home-marquee 28s linear infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.home-marquee--technologies {
+  animation-duration: 100s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-marquee {
+    -webkit-animation: none;
+    animation: none;
+  }
 }
 
 @layer utilities {

@@ -95,26 +95,23 @@ export const frAcademic: SobreAcademic = {
       }
     ]
   },
-  "harvard": {
-    "courseType": "Cours Complémentaires",
-    "courseName": "CS50 - Introduction to Computer Science",
-    "description": "Cours introductif en informatique de Harvard, complémentaire à mon parcours principal, avec accent sur la pensée algorithmique et la résolution efficace de problèmes.",
+  "usp": {
+    "courseType": "MBA / Formation de troisième cycle Lato Sensu",
+    "courseName": "MBA en Ingénierie Logicielle",
+    "description": "MBA USP/Esalq en ingénierie logicielle, une formation de troisième cycle lato sensu avec cours en direct, dédiée à l'approfondissement de l'ingénierie, de la qualité et de la gestion logicielle.",
     "skills": [
-      "Pensée Algorithmique",
-      "Résolution de Problèmes",
-      "C Programming",
-      "Python",
-      "SQL",
-      "JavaScript",
-      "HTML et CSS",
-      "Structures de Données",
-      "Algorithmes",
-      "Abstraction",
-      "Encapsulation",
-      "Gestion des Ressources",
-      "Sécurité Logicielle",
-      "Ingénierie Logicielle",
-      "Développement Web"
+      "Ingénierie des Exigences",
+      "Qualité Logicielle",
+      "Gestion de Projet Agile",
+      "DevOps",
+      "Continuous Integration / Continuous Delivery (CI/CD)",
+      "Infrastructure as Code",
+      "Tests Logiciels",
+      "Test-Driven Development (TDD)",
+      "Behavior-Driven Development (BDD)",
+      "Automatisation des Tests",
+      "Gestion d'Équipes de Développement",
+      "Scrum, Kanban et XP"
     ]
   }
 };
