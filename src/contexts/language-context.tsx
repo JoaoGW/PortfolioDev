@@ -492,7 +492,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         description: "Escolha por onde continuar a conhecer meu trabalho.",
         items: [
           { index: "001", title: "Projetos", description: "Projetos de Aplicações (apps) e seus respectivos repositórios GitHub", href: "/projetos" },
-          { index: "002", title: "Artigos", description: "Conheça meus artigos escritos falando sobre tecnologia moderna e seus desafios", href: "/em-breve" },
+          { index: "002", title: "Artigos - Medium", description: "Conheça meus artigos escritos na Medium falando sobre tecnologia moderna e seus desafios", href: "/em-breve" },
           { index: "003", title: "A GWBR Technologies", description: "Serviços e opção PJ para contratos com empresas e indivíduos", href: "/" },
           { index: "004", title: "Contato", description: "Vamos conversar? Entre em contato comigo!", href: "/contato" },
           { index: "005", title: "Currículo", description: "Versão para visualização em PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
