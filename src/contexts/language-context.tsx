@@ -492,13 +492,13 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         description: "Escolha por onde continuar a conhecer meu trabalho.",
         items: [
           { index: "001", title: "Projetos", description: "Projetos de Aplicações (apps) e seus respectivos repositórios GitHub", href: "/projetos" },
-          { index: "002", title: "Artigos", description: "Conheça meus artigos escritos falando sobre tecnologia moderna e seus desafios", href: "/artigos" },
+          { index: "002", title: "Artigos - Medium", description: "Conheça meus artigos escritos na Medium falando sobre tecnologia moderna e seus desafios", href: "/em-breve" },
           { index: "003", title: "A GWBR Technologies", description: "Serviços e opção PJ para contratos com empresas e indivíduos", href: "/" },
           { index: "004", title: "Contato", description: "Vamos conversar? Entre em contato comigo!", href: "/contato" },
           { index: "005", title: "Currículo", description: "Versão para visualização em PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
           { index: "006", title: "GitHub", description: "Veja minha atividade, contribuições, snippets e organizações", href: "https://github.com/JoaoGW" },
-          { index: "007", title: "Escola Tecnologia Nua e Crua", description: "Conheça a minha plataforma para ensinar novos ingressantes na tecnologia a encarar o mercado atual", href: "https://www.escola.gwbrtechnologies.com" },
-          { index: "008", title: "YouTube - Tecnologia Nua e Crua", description: "Canal no YouTube onde eu falo sobre os desafios da tecnologia moderna, dicas e curiosidades sobre a área", href: "https://www.youtube.com" },
+          { index: "007", title: "Escola Tecnologia Nua e Crua", description: "Conheça a minha plataforma para ensinar novos ingressantes na tecnologia a encarar o mercado atual", href: "/em-breve" },
+          { index: "008", title: "YouTube - Tecnologia Nua e Crua", description: "Canal no YouTube onde eu falo sobre os desafios da tecnologia moderna, dicas e curiosidades sobre a área", href: "/em-breve" },
         ],
       },
       faq: [

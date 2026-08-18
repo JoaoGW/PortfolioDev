@@ -45,6 +45,18 @@ import EZTripImage from "../../assets/Projetos/plane-6511878_1920.webp";
 import SrGeeImage from "../../assets/Projetos/WB_description.webp";
 import WhatsappImage from "../../assets/Projetos/whatsapp-2.webp";
 import CarSellerImage from "../../assets/Projetos/carseller.webp";
+import HTMLLogo from "@/assets/Logos/html.png";
+import CSSLogo from "@/assets/Logos/css.webp";
+import TailwindcssLogo from "@/assets/Logos/tailwindcss.png";
+import PostgresqlLogo from "@/assets/Logos/PostgreSQL.png";
+import MysqlLogo from "@/assets/Logos/mysql.svg";
+import RedisLogo from "@/assets/Logos/Redis.png";
+import JenkinsLogo from "@/assets/Logos/Jenkins.png";
+import PlaywrightLogo from "@/assets/Logos/playwright.webp";
+import RabbitmqLogo from "@/assets/Logos/rabbitmq.webp";
+import OpenaiLogo from "@/assets/Logos/openai.svg";
+import SQLiteLogo from "@/assets/Logos/sqlite.png";
+import StripeLogo from "@/assets/Logos/stripe.png";
 
 import {
   ArrowUpRight,
@@ -131,6 +143,18 @@ const tickerTechnologyLogos: Record<string, StaticImageData | undefined> = {
   MongoDB: MongodbLogo,
   "Vue.js": VueLogo,
   Jest: JestLogo,
+  HTML: HTMLLogo,
+  CSS: CSSLogo,
+  "Tailwind CSS": TailwindcssLogo,
+  PostgreSQL: PostgresqlLogo,
+  MySQL: MysqlLogo,
+  Redis: RedisLogo,
+  Jenkins: JenkinsLogo,
+  Playwright: PlaywrightLogo,
+  RabbitMQ: RabbitmqLogo,
+  OpenAI: OpenaiLogo,
+  SQLite: SQLiteLogo,
+  Stripe: StripeLogo,
 };
 
 function SectionLead({ index, label, title, description }: SectionLeadProps) {

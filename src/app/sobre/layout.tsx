@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfólio | João Pedro Ribeiro",
+  title: "Portfólio | João Pedro do Carmo Ribeiro",
   description:
     "Perfil profissional, formação acadêmica, stack técnica e experiências de João Pedro Ribeiro.",
   alternates: {
