@@ -165,6 +165,10 @@ type LanguageMessages = {
       srGee: { title: string; description: string };
       newWhatsapp: { title: string; description: string };
       carSeller: { title: string; description: string };
+      sadm: { title: string; description: string };
+      dtn: { title: string; description: string };
+      cdiprofire: { title: string; description: string };
+      ecupromax: { title: string; description: string };
     };
   };
   about: {
@@ -484,7 +488,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           {
             year: "2028",
             title: "Mestrado ou PhD?",
-            description: "Pretendo fazer um Mestrado ou um Pós-Doutorado em uma faculdade internacional de renome a partir de 2028. Os planos para cursar são no formato EAD.",
+            description: "Pretendo fazer um Mestrado ou Doutorado em uma faculdade internacional de renome a partir de 2028. Os planos para cursar são no formato EAD.",
           },
         ],
       },
@@ -617,9 +621,29 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Clone melhorado do WhatsApp, utilizando tecnologias como Python, Flask, RabbitMQ, bcrypt, SQL Alchemy e SocketIO.",
         },
         carSeller: {
-          title: "Car Seller",
+          title: "Loja de Carros",
           description:
             "Um dos meus primeiros projetos de uma webpage para vendas de automoveis de todos os tipos e custos. Feito em VueJS 3",
+        },
+        sadm: {
+          title: "SADM Cultivare",
+          description:
+            "Banco de conhecimento médico baseado em evidências científicas desenvolvido pela Cultivare, criado para auxiliar médicos, auditorias, operadoras de saúde e instituições de ensino em decisões clínicas e operacionais",
+        },
+        dtn: {
+          title: "DTN",
+          description:
+            "Mapas interativos e dashboards para monitorar a realidade das Doenças Tropicais Negligenciadas (DTNs) no Brasil entre os anos de 2000 e 2023",
+        },
+        cdiprofire: {
+          title: "CDI Profire",
+          description:
+            "Aplicativo mobile criado para o módulo de ignição digital de alta performance e uso universal para motos carburadas, permitindo total personalização de mapas de ponto, limite de giros e cortes de competições oficiais",
+        },
+        ecupromax: {
+          title: "ECU Pro Max",
+          description:
+            "Aplicativo mobile para a central eletrônica esportiva desenvolvida para motocicletas Honda, permitindo o remapeamento de mapas de combustão, ajustes de ponto e corte de giro para uso em competições oficiais",
         },
       },
     },
@@ -1032,9 +1056,29 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Enhanced WhatsApp clone using technologies such as Python, Flask, RabbitMQ, bcrypt, SQLAlchemy and SocketIO.",
         },
         carSeller: {
-          title: "Car Seller",
+          title: "Car Store",
           description:
             "One of my first webpage projects for selling cars of all types and prices. Built with VueJS 3.",
+        },
+        sadm: {
+          title: "SADM Cultivare",
+          description:
+            "Evidence-based medical knowledge base developed by Cultivare to support physicians, audit teams, health insurers, and educational institutions in clinical and operational decisions.",
+        },
+        dtn: {
+          title: "DTN",
+          description:
+            "Interactive maps and dashboards to monitor the situation of Neglected Tropical Diseases (NTDs) in Brazil from 2000 to 2023.",
+        },
+        cdiprofire: {
+          title: "CDI Profire",
+          description:
+            "Mobile app created for the high-performance, universal digital ignition module for carbureted motorcycles, enabling full customization of ignition timing maps, rev limits, and cutoffs for official competition use.",
+        },
+        ecupromax: {
+          title: "ECU Pro Max",
+          description:
+            "Mobile app for the sports electronic control unit developed for Honda motorcycles, enabling fuel-map remapping, timing adjustments, and rev-limit cutoffs for official competition use.",
         },
       },
     },
@@ -1446,9 +1490,29 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Clone amélioré de WhatsApp utilisant des technologies telles que Python, Flask, RabbitMQ, bcrypt, SQLAlchemy et SocketIO.",
         },
         carSeller: {
-          title: "Car Seller",
+          title: "Magasin de voitures",
           description:
             "L'un de mes premiers projets web pour la vente de voitures de tous types et prix. Réalisé avec VueJS 3.",
+        },
+        sadm: {
+          title: "SADM Cultivare",
+          description:
+            "Base de connaissances médicales fondée sur des preuves scientifiques, développée par Cultivare pour aider les médecins, les équipes d'audit, les assureurs santé et les établissements d'enseignement dans leurs décisions cliniques et opérationnelles.",
+        },
+        dtn: {
+          title: "DTN",
+          description:
+            "Cartes interactives et tableaux de bord permettant de suivre la situation des maladies tropicales négligées (MTN) au Brésil entre 2000 et 2023.",
+        },
+        cdiprofire: {
+          title: "CDI Profire",
+          description:
+            "Application mobile créée pour le module d'allumage numérique haute performance et universel destiné aux motos à carburateur, permettant une personnalisation complète des cartographies d'avance à l'allumage, des limites de régime et des coupures pour les compétitions officielles.",
+        },
+        ecupromax: {
+          title: "ECU Pro Max",
+          description:
+            "Application mobile pour le calculateur électronique sportif conçu pour les motos Honda, permettant la reprogrammation des cartographies d'injection, les réglages d'avance à l'allumage et les coupures de régime pour les compétitions officielles.",
         },
       },
     },
