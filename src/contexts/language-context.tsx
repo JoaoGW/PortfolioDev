@@ -508,19 +508,27 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       faq: [
         {
           question: "Em quais áreas você desenvolve?",
-          answer: "Atuo com aplicações Web, Mobile, APIs, arquitetura de software e práticas de cloud e DevOps.",
+          answer: "Atuo com aplicações Web, Mobile, APIs, arquitetura de software e práticas de cloud e DevOps. Sou Desenvolvedor Full-Stack e Full-Stack Mobile.",
         },
         {
           question: "Quais tecnologias você utiliza?",
-          answer: "O portfólio reúne experiências com Next.js, React, React Native, TypeScript, Node.js, bancos de dados, Docker, AWS e outras ferramentas.",
+          answer: "Meu foco se concentra em Next.js, React, React Native, TypeScript, Node.js, bancos de dados, Docker, AWS e outras ferramentas.",
         },
         {
           question: "Você está disponível para oportunidades internacionais?",
-          answer: "Sim. Tenho disponibilidade para trabalhar no Brasil e na Europa.",
+          answer: "Sim. Tenho disponibilidade para trabalhar no Brasil e na Europa. Possuo documentação oficial e autorização legal sem necessidades de grandes burocracias governamentais.",
         },
         {
           question: "Onde posso ver os projetos e repositórios?",
-          answer: "A seção de projetos reúne uma seleção de trabalhos e links para os respectivos repositórios.",
+          answer: "A seção de projetos reúne uma seleção de trabalhos e links para os respectivos repositórios. Você pode encontrar mais projetos ainda clicando no botão com a logo do GitHub.",
+        },
+        {
+          question: "Quando você pode começar?",
+          answer: "Posso começar imediatamente, porém a possibilidade de cumprimento do aviso prévio em minha posição atual é bem-vinda.",
+        },
+        {
+          question: "Li um artigo seu. Onde posso encontrar outros para ler?",
+          answer: "Todos os meus artigos estão disponíveis na seção de Artigos. Você poderá encontrar também uma lista completa na plataforma do Medium.",
         },
       ],
       finalCta: {
