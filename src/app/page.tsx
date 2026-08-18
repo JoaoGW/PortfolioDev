@@ -21,6 +21,7 @@ import GoogleCloudLogo from "@/assets/Logos/googlecloud_logo.webp";
 import JavaScriptLogo from "@/assets/Logos/logo-javascript-512.webp";
 import JestLogo from "@/assets/Logos/jest-logo.webp";
 import NodeLogo from "@/assets/Logos/logo-node-js-512.webp";
+import NestJSLogo from "@/assets/Logos/NestJS.svg";
 import MongodbLogo from "@/assets/Logos/mongodb-512.webp";
 import ReactLogo from "@/assets/Logos/logo-react-512.webp";
 import ReactNativeLogo from "@/assets/Logos/react-native_logo.webp";
@@ -38,6 +39,7 @@ import JenkinsLogo from "@/assets/Logos/Jenkins.png";
 import PlaywrightLogo from "@/assets/Logos/playwright.webp";
 import RabbitmqLogo from "@/assets/Logos/rabbitmq.webp";
 import OpenaiLogo from "@/assets/Logos/openai.svg";
+import ExpressJSLogo from "@/assets/Logos/expressjs.webp";
 import SQLiteLogo from "@/assets/Logos/sqlite.png";
 import StripeLogo from "@/assets/Logos/stripe.png";
 
@@ -71,6 +73,8 @@ const technologyLogos: Record<string, TechnologyLogo> = {
   JavaScript: { source: JavaScriptLogo, treatment: "dark-foreground" },
   Python: { source: PythonLogo, treatment: "transparent" },
   "Node.js": { source: NodeLogo, treatment: "transparent" },
+  NestJS: { source: NestJSLogo, treatment: "transparent" },
+  "Express.js": { source: ExpressJSLogo, treatment: "transparent" },
   "Vue.js": { source: VueLogo, treatment: "transparent" },
   Docker: { source: DockerLogo, treatment: "transparent" },
   AWS: { source: AwsLogo, treatment: "transparent" },

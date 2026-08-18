@@ -10,21 +10,25 @@ import { ProjectCard } from "@/components/projectCard";
 import { TechFilterButton } from "@/components/techFilterButton";
 import { useLanguage } from "@/contexts/language-context";
 
-import ReactLogo from "../../assets/Logos/logo-react-512.webp";
-import ReactNativeLogo from "../../assets/Logos/react-native_logo.webp";
-import PythonLogo from "../../assets/Logos/python_logo.webp";
-import TypeScriptLogo from "../../assets/Logos/typescript-512.webp";
-import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.webp";
-import NextJSLogo from "../../assets/Logos/next-js-logo.webp";
-import VueJSLogo from "../../assets/Logos/vue-js-512.webp";
-import ExpoLogo from "../../assets/Logos/expo_logo.webp";
-import NodeJSLogo from "../../assets/Logos/logo-node-js-512.webp";
-import GCPLogo from "../../assets/Logos/googlecloud_logo.webp";
-import MongoDBLogo from "../../assets/Logos/mongodb-512.webp";
-import EZTripBG from "../../assets/Projetos/plane-6511878_1920.webp";
-import SrGeeBG from "../../assets/Projetos/WB_description.webp";
-import ZapZap2 from "../../assets/Projetos/whatsapp-2.webp";
-import CarSalesman from "../../assets/Projetos/carseller.webp";
+import ReactLogo from "@/assets/Logos/logo-react-512.webp";
+import ReactNativeLogo from "@/assets/Logos/react-native_logo.webp";
+import PythonLogo from "@/assets/Logos/python_logo.webp";
+import TypeScriptLogo from "@/assets/Logos/typescript-512.webp";
+import JavaScriptLogo from "@/assets/Logos/logo-javascript-512.webp";
+import NextJSLogo from "@/assets/Logos/next-js-logo.webp";
+import VueJSLogo from "@/assets/Logos/vue-js-512.webp";
+import ExpoLogo from "@/assets/Logos/expo_logo.webp";
+import NodeJSLogo from "@/assets/Logos/logo-node-js-512.webp";
+import GCPLogo from "@/assets/Logos/googlecloud_logo.webp";
+import MongoDBLogo from "@/assets/Logos/mongodb-512.webp";
+import EZTripBG from "@/assets/Projetos/plane-6511878_1920.webp";
+import SrGeeBG from "@/assets/Projetos/WB_description.webp";
+import ZapZap2 from "@/assets/Projetos/whatsapp-2.webp";
+import CarSalesman from "@/assets/Projetos/carseller.webp";
+import ECUProMax from "@/assets/Projetos/ecupromax.webp";
+import CDIProfire from "@/assets/Projetos/cdiprofire.webp";
+import SADM from "@/assets/Projetos/sadm.png";
+import DTNs from "@/assets/Projetos/dtns.png";
 
 type TechFilter = {
   logo: StaticImageData;
@@ -32,7 +36,7 @@ type TechFilter = {
 };
 
 type Project = {
-  cardTitlte: "guideAI" | "srGee" | "newWhatsapp" | "carSeller";
+  cardTitlte: "guideAI" | "srGee" | "newWhatsapp" | "carSeller" | "sadm" | "dtn" | "cdiprofire" | "ecupromax";
   bgImageUrl: StaticImageData;
   imageCredits: string;
   technologies: string[];
@@ -75,6 +79,58 @@ const projects: Project[] = [
       "Node.js",
     ],
     projectUrl: "https://github.com/JoaoGW/GuiaTuristico",
+  },
+  {
+    cardTitlte: "ecupromax",
+    bgImageUrl: ECUProMax,
+    imageCredits: "Image by Multscan",
+    technologies: [
+      "React Native",
+      "TypeScript",
+      "Expo",
+      "AWS",
+      "Node.js",
+    ],
+    projectUrl: "https://play.google.com/store/apps/details?id=com.multscan.ecupromax&hl=pt_BR",
+  },
+  {
+    cardTitlte: "cdiprofire",
+    bgImageUrl: CDIProfire,
+    imageCredits: "Image by Multscan",
+    technologies: [
+      "React Native",
+      "TypeScript",
+      "JavaScript",
+      "Expo",
+      "Node.js",
+    ],
+    projectUrl: "https://play.google.com/store/apps/details?id=com.multscan.ecupromax&hl=pt_BR",
+  },
+  {
+    cardTitlte: "sadm",
+    bgImageUrl: SADM,
+    imageCredits: "Image by Cultivare: Prevenção e Promoção da Saúde",
+    technologies: [
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Next.js",
+      "Node.js",
+    ],
+    projectUrl: "https://cultivare.org.br/nossas-acoes/sadm-cultivare",
+  },
+  {
+    cardTitlte: "dtn",
+    bgImageUrl: DTNs,
+    imageCredits: "Image by Cultivare: Prevenção e Promoção da Saúde",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Python",
+      "Next.js",
+      "Node.js",
+    ],
+    projectUrl: "https://cultivare.org.br/nossas-acoes/sadm-cultivare",
   },
   {
     cardTitlte: "srGee",

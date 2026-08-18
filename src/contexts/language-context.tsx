@@ -165,6 +165,10 @@ type LanguageMessages = {
       srGee: { title: string; description: string };
       newWhatsapp: { title: string; description: string };
       carSeller: { title: string; description: string };
+      sadm: { title: string; description: string };
+      dtn: { title: string; description: string };
+      cdiprofire: { title: string; description: string };
+      ecupromax: { title: string; description: string };
     };
   };
   about: {
@@ -187,7 +191,20 @@ type LanguageMessages = {
     skills: string[];
     summaryParagraph2: string;
     techStackHint: string;
+    techStackCategories: {
+      languages: string;
+      frameworks: string;
+      dataAndAI: string;
+      cloudAndDevOps: string;
+    };
     academicTitle: string;
+    certifications: {
+      title: string;
+      description: string;
+      currentLabel: string;
+      pursuingLabel: string;
+      items: Array<{ name: string; status: "current" | "pursuing" }>;
+    };
     experienceTitle: string;
     availabilityTitle: string;
     availabilityDescription: string;
@@ -254,6 +271,8 @@ const companySpecialties = [
   "JavaScript",
   "Python",
   "Node.js",
+  "NestJS",
+  "Express.js",
   "Vue.js",
   "HTML",
   "CSS",
@@ -356,7 +375,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             subtitle: "Sistemas escaláveis",
             description:
               "Serviços integrados, dados estruturados e práticas de entrega contínua.",
-            technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
+            technologies: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Docker", "AWS"],
           },
         ],
         techs: [
@@ -372,6 +391,8 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           { title: "JavaScript" },
           { title: "Python" },
           { title: "Node.js" },
+          { title: "NestJS" },
+          { title: "Express.js" },
           { title: "Vue.js" },
           { title: "HTML" },
           { title: "CSS" },
@@ -484,7 +505,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           {
             year: "2028",
             title: "Mestrado ou PhD?",
-            description: "Pretendo fazer um Mestrado ou um Pós-Doutorado em uma faculdade internacional de renome a partir de 2028. Os planos para cursar são no formato EAD.",
+            description: "Pretendo fazer um Mestrado ou Doutorado em uma faculdade internacional de renome a partir de 2028. Os planos para cursar são no formato EAD.",
           },
         ],
       },
@@ -504,19 +525,27 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       faq: [
         {
           question: "Em quais áreas você desenvolve?",
-          answer: "Atuo com aplicações Web, Mobile, APIs, arquitetura de software e práticas de cloud e DevOps.",
+          answer: "Atuo com aplicações Web, Mobile, APIs, arquitetura de software e práticas de cloud e DevOps. Sou Desenvolvedor Full-Stack e Full-Stack Mobile.",
         },
         {
           question: "Quais tecnologias você utiliza?",
-          answer: "O portfólio reúne experiências com Next.js, React, React Native, TypeScript, Node.js, bancos de dados, Docker, AWS e outras ferramentas.",
+          answer: "Meu foco se concentra em Next.js, React, React Native, TypeScript, Node.js, bancos de dados, Docker, AWS e outras ferramentas.",
         },
         {
           question: "Você está disponível para oportunidades internacionais?",
-          answer: "Sim. Tenho disponibilidade para trabalhar no Brasil e na Europa.",
+          answer: "Sim. Tenho disponibilidade para trabalhar no Brasil e na Europa. Possuo documentação oficial e autorização legal sem necessidades de grandes burocracias governamentais.",
         },
         {
           question: "Onde posso ver os projetos e repositórios?",
-          answer: "A seção de projetos reúne uma seleção de trabalhos e links para os respectivos repositórios.",
+          answer: "A seção de projetos reúne uma seleção de trabalhos e links para os respectivos repositórios. Você pode encontrar mais projetos ainda clicando no botão com a logo do GitHub.",
+        },
+        {
+          question: "Quando você pode começar?",
+          answer: "Posso começar imediatamente, porém a possibilidade de cumprimento do aviso prévio em minha posição atual é bem-vinda.",
+        },
+        {
+          question: "Li um artigo seu. Onde posso encontrar outros para ler?",
+          answer: "Todos os meus artigos estão disponíveis na seção de Artigos. Você poderá encontrar também uma lista completa na plataforma do Medium.",
         },
       ],
       finalCta: {
@@ -617,9 +646,29 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Clone melhorado do WhatsApp, utilizando tecnologias como Python, Flask, RabbitMQ, bcrypt, SQL Alchemy e SocketIO.",
         },
         carSeller: {
-          title: "Car Seller",
+          title: "Loja de Carros",
           description:
             "Um dos meus primeiros projetos de uma webpage para vendas de automoveis de todos os tipos e custos. Feito em VueJS 3",
+        },
+        sadm: {
+          title: "SADM Cultivare",
+          description:
+            "Banco de conhecimento médico baseado em evidências científicas desenvolvido pela Cultivare, criado para auxiliar médicos, auditorias, operadoras de saúde e instituições de ensino em decisões clínicas e operacionais",
+        },
+        dtn: {
+          title: "DTN",
+          description:
+            "Mapas interativos e dashboards para monitorar a realidade das Doenças Tropicais Negligenciadas (DTNs) no Brasil entre os anos de 2000 e 2023",
+        },
+        cdiprofire: {
+          title: "CDI Profire-X",
+          description:
+            "Aplicativo mobile criado para o módulo de ignição digital de alta performance e uso universal para motos carburadas, permitindo total personalização de mapas de ponto, limite de giros e cortes de competições oficiais",
+        },
+        ecupromax: {
+          title: "ECU Pro Max",
+          description:
+            "Aplicativo mobile para a central eletrônica esportiva desenvolvida para motocicletas Honda, permitindo o remapeamento de mapas de combustão, ajustes de ponto e corte de giro para uso em competições oficiais",
         },
       },
     },
@@ -656,7 +705,38 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Complementarmente, realizo uma  pós-graduação MBA em Engenharia de Software pela Universidade de São Paulo (USP), reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação e eficiência contribuindo para projetos que unem propósito, impacto e evolução contínua.",
       techStackHint:
         "Passe o mouse por cima das bolhas para conferir os nomes das tecnologias, se necessário.",
+      techStackCategories: {
+        languages: "LINGUAGENS DE PROGRAMAÇÃO",
+        frameworks: "FRAMEWORKS E RUNTIMES BACK-END",
+        dataAndAI: "DADOS E INTEGRAÇÃO IA",
+        cloudAndDevOps: "CLOUD, DEVOPS E QUALIDADE",
+      },
       academicTitle: "ACADÊMICO",
+      certifications: {
+        title: "CERTIFICAÇÕES",
+        description:
+          "Certificações que reforçam a evolução contínua em engenharia de software, cloud e práticas de desenvolvimento.",
+        currentLabel: "Certificação Emitida",
+        pursuingLabel: "Em busca",
+        items: [
+          {
+            name: "Engenharia de Prompt para Engenheiros de Software - USP",
+            status: "current",
+          },
+          {
+            name: "GitHub Foundations Certification",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Certified Cloud Practitioner",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Solutions Architect Associate",
+            status: "pursuing",
+          },
+        ],
+      },
       experienceTitle: "EXPERIÊNCIA",
       availabilityTitle: "BRASIL & EUROPA",
       availabilityDescription:
@@ -795,7 +875,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             subtitle: "Scalable systems",
             description:
               "Integrated services, structured data and continuous delivery practices.",
-            technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
+            technologies: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Docker", "AWS"],
           },
         ],
         techs: [
@@ -811,6 +891,8 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           { title: "JavaScript" },
           { title: "Python" },
           { title: "Node.js" },
+          { title: "NestJS" },
+          { title: "Express.js" },
           { title: "Vue.js" },
           { title: "HTML" },
           { title: "CSS" },
@@ -1032,9 +1114,29 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Enhanced WhatsApp clone using technologies such as Python, Flask, RabbitMQ, bcrypt, SQLAlchemy and SocketIO.",
         },
         carSeller: {
-          title: "Car Seller",
+          title: "Car Store",
           description:
             "One of my first webpage projects for selling cars of all types and prices. Built with VueJS 3.",
+        },
+        sadm: {
+          title: "SADM Cultivare",
+          description:
+            "Evidence-based medical knowledge base developed by Cultivare to support physicians, audit teams, health insurers, and educational institutions in clinical and operational decisions.",
+        },
+        dtn: {
+          title: "DTN",
+          description:
+            "Interactive maps and dashboards to monitor the situation of Neglected Tropical Diseases (NTDs) in Brazil from 2000 to 2023.",
+        },
+        cdiprofire: {
+          title: "CDI Profire-X",
+          description:
+            "Mobile app created for the high-performance, universal digital ignition module for carbureted motorcycles, enabling full customization of ignition timing maps, rev limits, and cutoffs for official competition use.",
+        },
+        ecupromax: {
+          title: "ECU Pro Max",
+          description:
+            "Mobile app for the sports electronic control unit developed for Honda motorcycles, enabling fuel-map remapping, timing adjustments, and rev-limit cutoffs for official competition use.",
         },
       },
     },
@@ -1070,7 +1172,38 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Additionally, I take Computer Science and Software Development courses at USP University, strengthening my technical foundation and global perspective. I am enthusiastic about understanding, designing and improving software that makes people's lives easier, delivering sustainable long-term products. I constantly seek innovation and efficiency, contributing to projects that combine purpose, impact and continuous evolution.",
       techStackHint:
         "Hover over the bubbles to check the technology names, if needed.",
+      techStackCategories: {
+        languages: "LANGUAGES",
+        frameworks: "FRAMEWORKS AND RUNTIMES",
+        dataAndAI: "DATA AND AI",
+        cloudAndDevOps: "CLOUD, DEVOPS AND QUALITY",
+      },
       academicTitle: "ACADEMIC",
+      certifications: {
+        title: "CERTIFICATIONS",
+        description:
+          "Certifications that support continuous growth in software engineering, cloud, and development practices.",
+        currentLabel: "Current",
+        pursuingLabel: "Pursuing",
+        items: [
+          {
+            name: "Prompt Engineering for Software Engineers",
+            status: "current",
+          },
+          {
+            name: "GitHub Foundations Certification",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Certified Cloud Practitioner",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Solutions Architect Associate",
+            status: "pursuing",
+          },
+        ],
+      },
       experienceTitle: "EXPERIENCE",
       availabilityTitle: "BRAZIL & EUROPE",
       availabilityDescription:
@@ -1209,7 +1342,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             subtitle: "Systèmes évolutifs",
             description:
               "Services intégrés, données structurées et pratiques de livraison continue.",
-            technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
+            technologies: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Docker", "AWS"],
           },
         ],
         techs: [
@@ -1225,6 +1358,8 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           { title: "JavaScript" },
           { title: "Python" },
           { title: "Node.js" },
+          { title: "NestJS" },
+          { title: "Express.js" },
           { title: "Vue.js" },
           { title: "HTML" },
           { title: "CSS" },
@@ -1446,9 +1581,29 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Clone amélioré de WhatsApp utilisant des technologies telles que Python, Flask, RabbitMQ, bcrypt, SQLAlchemy et SocketIO.",
         },
         carSeller: {
-          title: "Car Seller",
+          title: "Magasin de voitures",
           description:
             "L'un de mes premiers projets web pour la vente de voitures de tous types et prix. Réalisé avec VueJS 3.",
+        },
+        sadm: {
+          title: "SADM Cultivare",
+          description:
+            "Base de connaissances médicales fondée sur des preuves scientifiques, développée par Cultivare pour aider les médecins, les équipes d'audit, les assureurs santé et les établissements d'enseignement dans leurs décisions cliniques et opérationnelles.",
+        },
+        dtn: {
+          title: "DTN",
+          description:
+            "Cartes interactives et tableaux de bord permettant de suivre la situation des maladies tropicales négligées (MTN) au Brésil entre 2000 et 2023.",
+        },
+        cdiprofire: {
+          title: "CDI Profire-X",
+          description:
+            "Application mobile créée pour le module d'allumage numérique haute performance et universel destiné aux motos à carburateur, permettant une personnalisation complète des cartographies d'avance à l'allumage, des limites de régime et des coupures pour les compétitions officielles.",
+        },
+        ecupromax: {
+          title: "ECU Pro Max",
+          description:
+            "Application mobile pour le calculateur électronique sportif conçu pour les motos Honda, permettant la reprogrammation des cartographies d'injection, les réglages d'avance à l'allumage et les coupures de régime pour les compétitions officielles.",
         },
       },
     },
@@ -1485,7 +1640,38 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "En complément, je suis des cours d'informatique et de développement logiciel à l'Université USP, renforçant ma base technique et ma vision globale du domaine. Je suis passionné par la compréhension, la conception et l'amélioration de logiciels qui facilitent la vie des gens, en livrant des produits durables à long terme. Je recherche constamment l'innovation et l'efficacité, en contribuant à des projets alliant sens, impact et évolution continue.",
       techStackHint:
         "Survolez les bulles pour voir les noms des technologies, si nécessaire.",
+      techStackCategories: {
+        languages: "LANGAGES",
+        frameworks: "FRAMEWORKS ET ENVIRONNEMENTS",
+        dataAndAI: "DONNÉES ET IA",
+        cloudAndDevOps: "CLOUD, DEVOPS ET QUALITÉ",
+      },
       academicTitle: "ACADÉMIQUE",
+      certifications: {
+        title: "CERTIFICATIONS",
+        description:
+          "Des certifications qui renforcent une évolution continue en ingénierie logicielle, cloud et pratiques de développement.",
+        currentLabel: "Actuelle",
+        pursuingLabel: "En recherche",
+        items: [
+          {
+            name: "Ingénierie des prompts pour les ingénieurs logiciels",
+            status: "current",
+          },
+          {
+            name: "GitHub Foundations Certification",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Certified Cloud Practitioner",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Solutions Architect Associate",
+            status: "pursuing",
+          },
+        ],
+      },
       experienceTitle: "EXPÉRIENCE",
       availabilityTitle: "BRÉSIL & EUROPE",
       availabilityDescription:
