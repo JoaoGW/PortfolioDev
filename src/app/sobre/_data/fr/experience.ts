@@ -1,6 +1,44 @@
 import type { SobreExperience } from "../types";
 
 export const frExperience: SobreExperience = {
+  "multscan": {
+    "role": "Ingénieur logiciel junior",
+    "description": "Responsable du développement et de la maintenance d'applications Web et mobiles, avec des solutions hybrides pour le Web, Android et iOS, ainsi que des pratiques DevOps et de livraison continue.",
+    "responsibilities": [
+      {
+        "title": "Développement Web et Mobile",
+        "description": "Développement et maintenance d'applications Web et mobiles avec Next.js, React Native, Expo, TypeScript et Node.js.",
+        "achievements": []
+      },
+      {
+        "title": "Refonte de la Boutique en Ligne",
+        "description": "Refonte de la boutique en ligne vers une architecture headless avec Next.js, Tailwind CSS, des microservices Node.js, Prisma, PostgreSQL, Redis et l'intégration Stripe.",
+        "achievements": [
+          "Réduction de 15 % des coûts de vente par produit"
+        ]
+      },
+      {
+        "title": "CI/CD et Conteneurisation",
+        "description": "Mise en place et maintenance de pipelines CI/CD avec GitHub Actions et Jenkins, ainsi que l'orchestration de conteneurs avec Docker pour des livraisons plus rapides et des environnements cohérents.",
+        "achievements": []
+      },
+      {
+        "title": "Déploiement et Supervision AWS",
+        "description": "Déploiement et supervision d'applications dans AWS, assurant la disponibilité et la stabilité des services en production.",
+        "achievements": []
+      },
+      {
+        "title": "Publication d'Applications",
+        "description": "Gestion du cycle de publication et de mise à jour d'applications sur Google Play Store et Apple App Store, y compris la signature, la distribution et le versioning.",
+        "achievements": []
+      },
+      {
+        "title": "Travail Agile",
+        "description": "Collaboration avec des équipes agiles utilisant Scrum et Jira pour la planification, le suivi et la livraison continue de fonctionnalités.",
+        "achievements": []
+      }
+    ]
+  },
   "fiverr": {
     "description": "Développement d'applications Web avec un focus stratégique sur des landing pages performantes et orientées résultats pour différents marchés internationaux.",
     "responsibilities": [

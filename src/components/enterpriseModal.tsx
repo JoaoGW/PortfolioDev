@@ -23,11 +23,11 @@ type EnterpriseModalProps = {
   companyLogo: StaticImageData;
   companyName: string;
   role: string;
-  employmentType: 'Tempo integral' | 'Meio período' | 'Freelance' | 'Estágio' | 'Contrato';
-  remuneration: 'Remunerado' | 'Não Remunerado';
+  employmentType?: 'Tempo integral' | 'Meio período' | 'Freelance' | 'Estágio' | 'Contrato';
+  remuneration?: 'Remunerado' | 'Não Remunerado';
   startDate: string;
   endDate?: string;
-  duration: string;
+  duration?: string;
   location: string;
   description?: string;
   responsibilities?: Responsibility[];
@@ -84,14 +84,6 @@ export function EnterpriseModal({
   const remunerationColors = {
     'Remunerado': 'bg-green-500/20 text-green-400 border-green-500/30',
     'Não Remunerado': 'bg-gray-500/20 text-gray-400 border-gray-500/30',
-  };
-
-  const techCategoryColors = {
-    frontend: 'border-blue-500/40 text-blue-400 bg-blue-500/10',
-    backend: 'border-green-500/40 text-green-400 bg-green-500/10',
-    database: 'border-purple-500/40 text-purple-400 bg-purple-500/10',
-    tools: 'border-orange-500/40 text-orange-400 bg-orange-500/10',
-    other: 'border-slate-500/40 text-slate-400 bg-slate-500/10',
   };
 
   return (
@@ -159,19 +151,19 @@ export function EnterpriseModal({
                     >
                       { role }
                     </motion.p>
-                    <motion.div
+                    {(employmentType || remuneration) && <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 }}
                       className="flex flex-wrap gap-2"
                     >
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${employmentTypeColors[employmentType]} border backdrop-blur-sm`}>
+                      {employmentType && <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${employmentTypeColors[employmentType]} border backdrop-blur-sm`}>
                         { employmentType }
-                      </span>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${remunerationColors[remuneration]}`}>
+                      </span>}
+                      {remuneration && <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${remunerationColors[remuneration]}`}>
                         { remuneration }
-                      </span>
-                    </motion.div>
+                      </span>}
+                    </motion.div>}
                   </div>
                 </div>
               </div>
@@ -188,7 +180,7 @@ export function EnterpriseModal({
                     <div>
                       <p className="text-xs text-slate-500 mb-1 uppercase tracking-wide">Período</p>
                       <p className="font-semibold text-white text-sm">{startDate} - {endDate || 'Atual'}</p>
-                      <p className="text-xs text-slate-400 mt-1">{duration}</p>
+                      {duration && <p className="text-xs text-slate-400 mt-1">{duration}</p>}
                     </div>
                   </div>
 
@@ -200,13 +192,13 @@ export function EnterpriseModal({
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 p-4 bg-slate-900/50 rounded-lg border border-slate-800">
+                  {employmentType && <div className="flex items-start gap-3 p-4 bg-slate-900/50 rounded-lg border border-slate-800">
                     <Briefcase className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-xs text-slate-500 mb-1 uppercase tracking-wide">Modalidade</p>
                       <p className="font-semibold text-white text-sm">{employmentType}</p>
                     </div>
-                  </div>
+                  </div>}
                 </motion.div>
 
                 { description && (
@@ -238,7 +230,7 @@ export function EnterpriseModal({
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 1.0 + index * 0.03 }}
-                          className={`px-3 py-2 rounded-lg text-sm font-medium border ${ techCategoryColors[tech.category] } hover:scale-105 transition-transform`}
+                          className="px-3 py-1.5 bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-700 rounded-full text-sm text-slate-300 hover:border-[#72BF6A]/50 transition-colors"
                         >
                           { tech.name }
                         </motion.span>

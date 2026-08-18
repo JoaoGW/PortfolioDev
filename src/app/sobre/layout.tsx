@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sobre",
+  title: "Portfólio | João Pedro do Carmo Ribeiro",
   description:
     "Perfil profissional, formação acadêmica, stack técnica e experiências de João Pedro Ribeiro.",
   alternates: {
     canonical: "/sobre",
   },
   openGraph: {
-    title: "Sobre | João Pedro Ribeiro",
+    title: "Portfólio | João Pedro Ribeiro",
     description:
       "Perfil profissional, formação acadêmica, stack técnica e experiências de João Pedro Ribeiro.",
     url: "/sobre",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sobre | João Pedro Ribeiro",
+    title: "Portfólio | João Pedro Ribeiro",
     description:
       "Perfil profissional, formação acadêmica, stack técnica e experiências de João Pedro Ribeiro.",
     images: ["/profile.webp"],

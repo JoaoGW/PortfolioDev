@@ -81,7 +81,7 @@ const FloatingDockMobile = ({
                   className={cn(
                     "flex h-10 w-10 items-center justify-center rounded-full",
                     currentPath === item.href
-                      ? "bg-gradient-to-br from-[#72BF6A] to-[#0096C7] shadow-[0_0_15px_rgba(114,191,106,0.6)]"
+                      ? "bg-accent-orange shadow-[0_0_15px_rgb(255_107_0_/_0.6)]"
                       : "bg-gray-50 dark:bg-neutral-900",
                   )}
                 >
@@ -228,14 +228,14 @@ function IconContainer({
         className={cn(
           "relative flex aspect-square items-center justify-center rounded-full",
           isActive
-            ? "bg-gradient-to-br from-[#72BF6A] to-[#0096C7] shadow-[0_0_20px_rgba(114,191,106,0.6)]"
+            ? "bg-accent-orange shadow-[0_0_20px_rgb(255_107_0_/_0.6)]"
             : "bg-gray-200 dark:bg-neutral-800",
         )}
       >
         {isActive && (
           <motion.div
             layoutId="activeIndicator"
-            className="absolute -bottom-2 h-1 w-8 rounded-full bg-gradient-to-r from-[#72BF6A] to-[#0096C7]"
+            className="absolute -bottom-2 h-1 w-8 rounded-full bg-accent-orange"
             transition={{ type: "spring", stiffness: 380, damping: 30 }}
           />
         )}

@@ -28,6 +28,132 @@ type LanguageMessages = {
     knowProfile: string;
     downloadResume: string;
     downloadError: string;
+    hero: {
+      index: string;
+      title: string;
+      highlight: string;
+      description: string;
+      viewProjects: string;
+      scrollHint: string;
+    };
+    sections: {
+      about: string;
+      projects: string;
+      software: string;
+      experience: string;
+      education: string;
+      trajectory: string;
+      explore: string;
+      faq: string;
+    };
+    about: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      availabilityLabel: string;
+      availabilityValue: string;
+      focusLabel: string;
+      focusValue: string;
+      exploreProfile: string;
+    };
+    projects: {
+      description: string;
+      previous: string;
+      next: string;
+      allProjects: string;
+      repository: string;
+    };
+    software: {
+      description: string;
+      viewAll: string;
+      areas: Array<{
+        title: string;
+        subtitle: string;
+        description: string;
+        technologies: string[];
+      }>;
+      techs: Array<{
+        title: string;
+      }>;
+    };
+    experience: {
+      description: string;
+      cards: Array<{
+        company: string;
+        role: string;
+        period: string;
+        description: string;
+      }>;
+    };
+    education: {
+      description: string;
+      cards: Array<{
+        institution: string;
+        program: string;
+        status: string;
+      }>;
+    };
+    trajectory: {
+      description: string;
+      items: Array<{ year: string; title: string; description: string }>;
+    };
+    explore: {
+      description: string;
+      items: Array<{ index: string; title: string; description: string; href: string }>;
+    };
+    faq: Array<{ question: string; answer: string }>;
+    finalCta: {
+      eyebrow: string;
+      title: string;
+      emailLabel: string;
+      contact: string;
+    };
+    footer: {
+      copyright: string;
+      location: string;
+    };
+  };
+  company: {
+    name: string;
+    hero: {
+      index: string;
+      title: string;
+      description: string;
+      primaryAction: string;
+      secondaryAction: string;
+    };
+    capabilities: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      items: Array<{ title: string; description: string }>;
+    };
+    aiIntegration: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      items: string[];
+    };
+    specialties: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      items: string[];
+    };
+    personalPortfolio: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      action: string;
+    };
+    closing: {
+      title: string;
+      description: string;
+    };
+    footer: {
+      copyright: string;
+      location: string;
+    };
   };
   projects: {
     pageTitle: string;
@@ -39,6 +165,10 @@ type LanguageMessages = {
       srGee: { title: string; description: string };
       newWhatsapp: { title: string; description: string };
       carSeller: { title: string; description: string };
+      sadm: { title: string; description: string };
+      dtn: { title: string; description: string };
+      cdiprofire: { title: string; description: string };
+      ecupromax: { title: string; description: string };
     };
   };
   about: {
@@ -54,7 +184,6 @@ type LanguageMessages = {
       devOps: string;
       after: string;
     };
-    manyOthers: string;
     summaryTitle: string;
     summarySubtitle: string;
     summaryParagraph1: string;
@@ -62,7 +191,20 @@ type LanguageMessages = {
     skills: string[];
     summaryParagraph2: string;
     techStackHint: string;
+    techStackCategories: {
+      languages: string;
+      frameworks: string;
+      dataAndAI: string;
+      cloudAndDevOps: string;
+    };
     academicTitle: string;
+    certifications: {
+      title: string;
+      description: string;
+      currentLabel: string;
+      pursuingLabel: string;
+      items: Array<{ name: string; status: "current" | "pursuing" }>;
+    };
     experienceTitle: string;
     availabilityTitle: string;
     availabilityDescription: string;
@@ -74,6 +216,7 @@ type LanguageMessages = {
     downloadResumeDescription: string;
     fiverrRole: string;
     cultiRole: string;
+    multscanRole: string;
   };
   contact: {
     pageTitle: string;
@@ -119,6 +262,39 @@ type LanguageMessages = {
   };
 };
 
+const companySpecialties = [
+  "Next.js",
+  "React",
+  "React Native",
+  "Expo",
+  "TypeScript",
+  "JavaScript",
+  "Python",
+  "Node.js",
+  "NestJS",
+  "Express.js",
+  "Vue.js",
+  "HTML",
+  "CSS",
+  "Tailwind CSS",
+  "Firebase",
+  "MongoDB",
+  "PostgreSQL",
+  "MySQL",
+  "Redis",
+  "Docker",
+  "AWS",
+  "Google Cloud Platform",
+  "Git",
+  "Jenkins",
+  "Jest",
+  "Playwright",
+  "RabbitMQ",
+  "OpenAI",
+  "SQLite",
+  "Stripe",
+];
+
 export const languageMessages: Record<LanguageCode, LanguageMessages> = {
   pt: {
     languageName: "Português",
@@ -137,9 +313,318 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       knowProfile: "Conhecer Perfil",
       downloadResume: "Baixar Currículo",
       downloadError: "Ocorreu um erro ao baixar o currículo PDF",
+      hero: {
+        index: "01 / PORTFÓLIO",
+        title: "Soluções digitais com",
+        highlight: "intenção e engenharia.",
+        description:
+          "João Pedro Ribeiro desenvolve produtos Web e Mobile que unem arquitetura de software, experiência de uso e entrega contínua.",
+        viewProjects: "Ver projetos",
+        scrollHint: "Role para explorar",
+      },
+      sections: {
+        about: "SOBRE",
+        projects: "PROJETOS",
+        software: "SOFTWARE",
+        experience: "EXPERIÊNCIA",
+        education: "FORMAÇÃO",
+        trajectory: "TRAJETÓRIA",
+        explore: "EXPLORAR",
+        faq: "PERGUNTAS FREQUENTES",
+      },
+      about: {
+        eyebrow: "(Sobre mim)",
+        title: "Tecnologia clara, útil e feita para durar.",
+        description:
+          "Formado em Ciência da Computação e especializado em arquitetura de software, construo aplicações com foco em clareza, qualidade e evolução sustentável.",
+        availabilityLabel: "Disponibilidade",
+        availabilityValue: "Brasil e Europa",
+        focusLabel: "Atuação",
+        focusValue: "Web, Mobile e Cloud",
+        exploreProfile: "Conhecer perfil",
+      },
+      projects: {
+        description:
+          "Uma seleção de aplicações que combina produtos digitais, integrações e experiências centradas em pessoas.",
+        previous: "Projeto anterior",
+        next: "Próximo projeto",
+        allProjects: "Ver todos os projetos",
+        repository: "Abrir repositório",
+      },
+      software: {
+        description:
+          "Tecnologias escolhidas pelo problema que resolvem, com atenção a manutenção, desempenho e experiência de uso.",
+        viewAll: "Ver stack completo",
+        areas: [
+          {
+            title: "Web",
+            subtitle: "Interfaces e produtos digitais",
+            description:
+              "Aplicações responsivas, acessíveis e orientadas a uma navegação clara.",
+            technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+          },
+          {
+            title: "Mobile",
+            subtitle: "Experiências para Android e iOS",
+            description:
+              "Aplicativos híbridos com interfaces consistentes e distribuição multiplataforma.",
+            technologies: ["React Native", "Expo", "TypeScript", "Firebase"],
+          },
+          {
+            title: "Cloud & APIs",
+            subtitle: "Sistemas escaláveis",
+            description:
+              "Serviços integrados, dados estruturados e práticas de entrega contínua.",
+            technologies: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Docker", "AWS"],
+          },
+        ],
+        techs: [
+          { title: "Web (React)" },
+          { title: "Mobile (React Native & Expo)" },
+          { title: "Cloud" },
+          { title: "APIs" },
+          { title: "Next.js" },
+          { title: "React" },
+          { title: "React Native" },
+          { title: "Expo" },
+          { title: "TypeScript" },
+          { title: "JavaScript" },
+          { title: "Python" },
+          { title: "Node.js" },
+          { title: "NestJS" },
+          { title: "Express.js" },
+          { title: "Vue.js" },
+          { title: "HTML" },
+          { title: "CSS" },
+          { title: "Tailwind CSS" },
+          { title: "Firebase" },
+          { title: "MongoDB" },
+          { title: "PostgreSQL" },
+          { title: "MySQL" },
+          { title: "Redis" },
+          { title: "Docker" },
+          { title: "AWS" },
+          { title: "Google Cloud Platform" },
+          { title: "Git" },
+          { title: "Jenkins" },
+          { title: "Jest" },
+          { title: "Playwright" },
+          { title: "RabbitMQ" },
+          { title: "OpenAI" },
+          { title: "SQLite" },
+          { title: "Stripe" },
+        ],
+      },
+      experience: {
+        description:
+          "Experiências profissionais voltadas ao desenvolvimento de produtos, integrações e operações de software.",
+        cards: [
+          {
+            company: "Multscan",
+            role: "Engenheiro de Software Júnior",
+            period: "2026 — atual",
+            description:
+              "Desenvolvimento e manutenção de aplicações Web e Mobile, com entregas contínuas e arquitetura headless.",
+          },
+          {
+            company: "Cultivare",
+            role: "Desenvolvedor Full Stack",
+            period: "2024 — 2025",
+            description:
+              "Construção de funcionalidades para uma aplicação SaaS na área da saúde, incluindo APIs e persistência de dados.",
+          },
+          {
+            company: "Fiverr",
+            role: "Desenvolvedor Web Freelancer",
+            period: "2021 — 2024",
+            description:
+              "Desenvolvimento de aplicações e landing pages para diferentes mercados e necessidades de produto.",
+          },
+        ],
+      },
+      education: {
+        description:
+          "Formação contínua em computação, engenharia e arquitetura de software.",
+        cards: [
+          {
+            institution: "PUC-SP",
+            program: "Bacharelado em Ciência da Computação",
+            status: "Concluído em 2025",
+          },
+          {
+            institution: "FIAP",
+            program: "Pós-graduação em Arquitetura de Software",
+            status: "Em andamento",
+          },
+          {
+            institution: "USP/Esalq",
+            program: "MBA em Engenharia de Software",
+            status: "Em andamento",
+          },
+        ],
+      },
+      trajectory: {
+        description:
+          "Uma trajetória construída entre estudo, projetos práticos e evolução profissional.",
+        items: [
+          {
+            year: "2021",
+            title: "Início de tudo com Projetos Web sob demanda (Freelance)",
+            description: "Início da atuação freelance e de entregas para diferentes contextos de mercado e clientes nacionais e internacionais.",
+          },
+          {
+            year: "2022",
+            title: "Início da graduação",
+            description: "Graduação em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP)",
+          },
+          {
+            year: "2024",
+            title: "Desenvolvimento Full Stack",
+            description: "Primeira experiência de estágio, com foco em produto SaaS, APIs e banco de dados para a área da saúde.",
+          },
+          {
+            year: "2025",
+            title: "Bacharel em Ciência da Computação",
+            description: "Conclusão da graduação na mesma instituição que iniciei, cumprindo o prazo de 4 anos previstos.",
+          },
+          {
+            year: "2026",
+            title: "Início da primeira Pós-Graduação",
+            description: "Iníciados os estudos em Arquitetura de Software na Faculdade de Informática e Administração Paulista (FIAP). Formato pós-graduação.",
+          },
+          {
+            year: "2026",
+            title: "Início do primeiro MBA",
+            description: "Iníciados os estudos para o MBA em Engenharia de Software na Universidade de São Paulo (USP).",
+          },
+          {
+            year: "2026",
+            title: "Engenharia de Software",
+            description: "Entrada na empresa Multscan formato CLT em tempo integral. Atuação com produtos Web e principalmente desenvolvimento Mobile. Há também aplicações Cloud, Databases e práticas de entrega contínua em grandes plataformas.",
+          },
+          {
+            year: "2028",
+            title: "Mestrado ou PhD?",
+            description: "Pretendo fazer um Mestrado ou Doutorado em uma faculdade internacional de renome a partir de 2028. Os planos para cursar são no formato EAD.",
+          },
+        ],
+      },
+      explore: {
+        description: "Escolha por onde continuar a conhecer meu trabalho.",
+        items: [
+          { index: "001", title: "Projetos", description: "Projetos de Aplicações (apps) e seus respectivos repositórios GitHub", href: "/projetos" },
+          { index: "002", title: "Artigos - Medium", description: "Conheça meus artigos escritos na Medium falando sobre tecnologia moderna e seus desafios", href: "/em-breve" },
+          { index: "003", title: "A GWBR Technologies", description: "Serviços e opção PJ para contratos com empresas e indivíduos", href: "/" },
+          { index: "004", title: "Contato", description: "Vamos conversar? Entre em contato comigo!", href: "/contato" },
+          { index: "005", title: "Currículo", description: "Versão para visualização em PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
+          { index: "006", title: "GitHub", description: "Veja minha atividade, contribuições, snippets e organizações", href: "https://github.com/JoaoGW" },
+          { index: "007", title: "Escola Tecnologia Nua e Crua", description: "Conheça a minha plataforma para ensinar novos ingressantes na tecnologia a encarar o mercado atual", href: "/em-breve" },
+          { index: "008", title: "YouTube - Tecnologia Nua e Crua", description: "Canal no YouTube onde eu falo sobre os desafios da tecnologia moderna, dicas e curiosidades sobre a área", href: "/em-breve" },
+        ],
+      },
+      faq: [
+        {
+          question: "Em quais áreas você desenvolve?",
+          answer: "Atuo com aplicações Web, Mobile, APIs, arquitetura de software e práticas de cloud e DevOps. Sou Desenvolvedor Full-Stack e Full-Stack Mobile.",
+        },
+        {
+          question: "Quais tecnologias você utiliza?",
+          answer: "Meu foco se concentra em Next.js, React, React Native, TypeScript, Node.js, bancos de dados, Docker, AWS e outras ferramentas.",
+        },
+        {
+          question: "Você está disponível para oportunidades internacionais?",
+          answer: "Sim. Tenho disponibilidade para trabalhar no Brasil e na Europa. Possuo documentação oficial e autorização legal sem necessidades de grandes burocracias governamentais.",
+        },
+        {
+          question: "Onde posso ver os projetos e repositórios?",
+          answer: "A seção de projetos reúne uma seleção de trabalhos e links para os respectivos repositórios. Você pode encontrar mais projetos ainda clicando no botão com a logo do GitHub.",
+        },
+        {
+          question: "Quando você pode começar?",
+          answer: "Posso começar imediatamente, porém a possibilidade de cumprimento do aviso prévio em minha posição atual é bem-vinda.",
+        },
+        {
+          question: "Li um artigo seu. Onde posso encontrar outros para ler?",
+          answer: "Todos os meus artigos estão disponíveis na seção de Artigos. Você poderá encontrar também uma lista completa na plataforma do Medium.",
+        },
+      ],
+      finalCta: {
+        eyebrow: "CONTATO",
+        title: "Vamos construir algo relevante juntos?",
+        emailLabel: "E-mail profissional",
+        contact: "Entrar em contato",
+      },
+      footer: {
+        copyright: "© João Pedro Ribeiro",
+        location: "São Paulo, Brasil · Disponível para Brasil e Europa",
+      },
+    },
+    company: {
+      name: "GWBR Technologies",
+      hero: {
+        index: "01 / GWBR TECHNOLOGIES",
+        title: "Engenharia de software para empresas que querem crescer.",
+        description:
+          "Desenvolvimento de aplicações Web, Mobile e integrações Cloud, banco de dados e IA com foco em clareza técnica, manutenção e experiência de uso.",
+        primaryAction: "Entrar em contato",
+        secondaryAction: "Conhecer projetos",
+      },
+      capabilities: {
+        eyebrow: "ENGENHARIA APLICADA",
+        title: "Da ambição ao produto: engenharia pronta para escalar.",
+        description:
+          "Tecnologia escolhida para o problema que precisa ser resolvido, com atenção à evolução do software em décadas de transformação e inovação.",
+        items: [
+          {
+            title: "Aplicações Web",
+            description:
+              "Interfaces responsivas e sistemas pensados para fluxos claros de trabalho.",
+          },
+          {
+            title: "Aplicativos Mobile",
+            description:
+              "Experiências multiplataforma para Android e iOS com uma base de código consistente.",
+          },
+          {
+            title: "Integrações e APIs",
+            description:
+              "Serviços, dados e integrações estruturados para acompanhar a operação do produto.",
+          },
+        ],
+      },
+      aiIntegration: {
+        eyebrow: "INTEGRAÇÃO DE IA",
+        title: "Implementação de IA que entra no produto sem quebrar o que já funciona.",
+        description:
+          "Integro modelos de IA a aplicações Web e Mobile, novas ou legadas, com APIs, fluxos e dados preparados para uso real.",
+        items: ["Sistemas modernos", "Sistemas legados", "Web e Mobile"],
+      },
+      specialties: {
+        eyebrow: "TECNOLOGIAS ESPECIALIZADAS",
+        title: "Uma stack escolhida para cada camada do produto.",
+        description:
+          "Ferramentas modernas e em tendência usadas de forma complementar para criar interfaces, serviços, integrações e fluxos de entrega confiáveis.",
+        items: [...companySpecialties],
+      },
+      personalPortfolio: {
+        eyebrow: "PORTFÓLIO PESSOAL",
+        title: "Conheça mais sobre João Pedro Ribeiro.",
+        description:
+          "Explore projetos, experiências, formação e a trajetória técnica por trás da GWBR Technologies.",
+        action: "Ver portfólio pessoal",
+      },
+      closing: {
+        title: "Tecnologia construída a partir do contexto.",
+        description:
+          "Conheça os projetos e a trajetória técnica que orientam o trabalho da GWBR Technologies.",
+      },
+      footer: {
+        copyright: "© GWBR Technologies",
+        location: "São Paulo, Brasil",
+      },
     },
     projects: {
-      pageTitle: "Projetos de João Pedro Ribeiro",
+      pageTitle: "Projetos com participação",
       hoverText: "PROJETOS",
       filterTitle:
         "Selecione uma Tecnologia que você gostaria de ver presente no projeto...",
@@ -161,9 +646,29 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Clone melhorado do WhatsApp, utilizando tecnologias como Python, Flask, RabbitMQ, bcrypt, SQL Alchemy e SocketIO.",
         },
         carSeller: {
-          title: "Car Seller",
+          title: "Loja de Carros",
           description:
             "Um dos meus primeiros projetos de uma webpage para vendas de automoveis de todos os tipos e custos. Feito em VueJS 3",
+        },
+        sadm: {
+          title: "SADM Cultivare",
+          description:
+            "Banco de conhecimento médico baseado em evidências científicas desenvolvido pela Cultivare, criado para auxiliar médicos, auditorias, operadoras de saúde e instituições de ensino em decisões clínicas e operacionais",
+        },
+        dtn: {
+          title: "DTN",
+          description:
+            "Mapas interativos e dashboards para monitorar a realidade das Doenças Tropicais Negligenciadas (DTNs) no Brasil entre os anos de 2000 e 2023",
+        },
+        cdiprofire: {
+          title: "CDI Profire-X",
+          description:
+            "Aplicativo mobile criado para o módulo de ignição digital de alta performance e uso universal para motos carburadas, permitindo total personalização de mapas de ponto, limite de giros e cortes de competições oficiais",
+        },
+        ecupromax: {
+          title: "ECU Pro Max",
+          description:
+            "Aplicativo mobile para a central eletrônica esportiva desenvolvida para motocicletas Honda, permitindo o remapeamento de mapas de combustão, ajustes de ponto e corte de giro para uso em competições oficiais",
         },
       },
     },
@@ -175,14 +680,13 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         beforeWeb:
           "Graduado em Ciência da Computação pela Pontifícia Universidade Católica de São Paulo (PUC-SP). Tenho experiência profissional com Frameworks Web",
         web: "(Next.js e React)",
-        beforeHybrid: "Desenvolvimento de Apps Híbridos",
+        beforeHybrid: "Desenvolvimento de Apps Mobile Híbridos",
         hybrid: "(Android e iOS)",
         beforeDevOps:
           "além de conhecimento em práticas e ferramentas de DevOps",
         devOps: "(Git, AWS, GCP, entre outros)",
         after: ".",
       },
-      manyOthers: "... dentre muitos outros",
       summaryTitle: "SOBRE",
       summarySubtitle:
         "Desenvolvedor de Software | Desenvolvedor Mobile | Cientista da Computação",
@@ -198,10 +702,41 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Foco em qualidade, manutenibilidade e escalabilidade",
       ],
       summaryParagraph2:
-        "Complementarmente, realizo cursos de Ciência da Computação e Desenvolvimento de Software pela Universidade de Harvard, reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação e eficiência contribuindo para projetos que unem propósito, impacto e evolução contínua.",
+        "Complementarmente, realizo uma  pós-graduação MBA em Engenharia de Software pela Universidade de São Paulo (USP), reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação e eficiência contribuindo para projetos que unem propósito, impacto e evolução contínua.",
       techStackHint:
         "Passe o mouse por cima das bolhas para conferir os nomes das tecnologias, se necessário.",
+      techStackCategories: {
+        languages: "LINGUAGENS DE PROGRAMAÇÃO",
+        frameworks: "FRAMEWORKS E RUNTIMES BACK-END",
+        dataAndAI: "DADOS E INTEGRAÇÃO IA",
+        cloudAndDevOps: "CLOUD, DEVOPS E QUALIDADE",
+      },
       academicTitle: "ACADÊMICO",
+      certifications: {
+        title: "CERTIFICAÇÕES",
+        description:
+          "Certificações que reforçam a evolução contínua em engenharia de software, cloud e práticas de desenvolvimento.",
+        currentLabel: "Certificação Emitida",
+        pursuingLabel: "Em busca",
+        items: [
+          {
+            name: "Engenharia de Prompt para Engenheiros de Software - USP",
+            status: "current",
+          },
+          {
+            name: "GitHub Foundations Certification",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Certified Cloud Practitioner",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Solutions Architect Associate",
+            status: "pursuing",
+          },
+        ],
+      },
       experienceTitle: "EXPERIÊNCIA",
       availabilityTitle: "BRASIL & EUROPA",
       availabilityDescription:
@@ -214,8 +749,9 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       downloadResumeTitle: "Baixar meu Currículo",
       downloadResumeDescription:
         "Gostaria de baixar o meu currículo no formato clássico? (PDF)",
-      fiverrRole: "Desenvolvedor Web",
-      cultiRole: "Estagiário",
+      fiverrRole: "Desenvolvedor Web - Freelancer",
+      cultiRole: "Estagiário - Desenvolvimento Full Stack",
+      multscanRole: "Engenheiro de Software Júnior",
     },
     contact: {
       pageTitle: "Contato com João Pedro Ribeiro",
@@ -277,6 +813,283 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       knowProfile: "View Profile",
       downloadResume: "Download Resume",
       downloadError: "An error occurred while downloading the PDF resume",
+      hero: {
+        index: "01 / PORTFOLIO",
+        title: "Digital solutions with",
+        highlight: "intention and engineering.",
+        description:
+          "João Pedro Ribeiro builds Web and Mobile products that bring together software architecture, user experience and continuous delivery.",
+        viewProjects: "View projects",
+        scrollHint: "Scroll to explore",
+      },
+      sections: {
+        about: "ABOUT",
+        projects: "PROJECTS",
+        software: "SOFTWARE",
+        experience: "EXPERIENCE",
+        education: "EDUCATION",
+        trajectory: "TRAJECTORY",
+        explore: "EXPLORE",
+        faq: "FREQUENTLY ASKED QUESTIONS",
+      },
+      about: {
+        eyebrow: "(About me)",
+        title: "Clear, useful technology made to last.",
+        description:
+          "With a Computer Science degree and a focus on software architecture, I build applications around clarity, quality and sustainable evolution.",
+        availabilityLabel: "Availability",
+        availabilityValue: "Brazil and Europe",
+        focusLabel: "Focus",
+        focusValue: "Web, Mobile and Cloud",
+        exploreProfile: "View profile",
+      },
+      projects: {
+        description:
+          "A selection of applications combining digital products, integrations and people-centered experiences.",
+        previous: "Previous project",
+        next: "Next project",
+        allProjects: "View all projects",
+        repository: "Open repository",
+      },
+      software: {
+        description:
+          "Technologies selected for the problems they solve, with attention to maintainability, performance and user experience.",
+        viewAll: "View full stack",
+        areas: [
+          {
+            title: "Web",
+            subtitle: "Interfaces and digital products",
+            description:
+              "Responsive, accessible applications built around clear navigation.",
+            technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+          },
+          {
+            title: "Mobile",
+            subtitle: "Experiences for Android and iOS",
+            description:
+              "Hybrid apps with consistent interfaces and cross-platform distribution.",
+            technologies: ["React Native", "Expo", "TypeScript", "Firebase"],
+          },
+          {
+            title: "Cloud & APIs",
+            subtitle: "Scalable systems",
+            description:
+              "Integrated services, structured data and continuous delivery practices.",
+            technologies: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Docker", "AWS"],
+          },
+        ],
+        techs: [
+          { title: "Web (React)" },
+          { title: "Mobile (React Native & Expo)" },
+          { title: "Cloud" },
+          { title: "APIs" },
+          { title: "Next.js" },
+          { title: "React" },
+          { title: "React Native" },
+          { title: "Expo" },
+          { title: "TypeScript" },
+          { title: "JavaScript" },
+          { title: "Python" },
+          { title: "Node.js" },
+          { title: "NestJS" },
+          { title: "Express.js" },
+          { title: "Vue.js" },
+          { title: "HTML" },
+          { title: "CSS" },
+          { title: "Tailwind CSS" },
+          { title: "Firebase" },
+          { title: "MongoDB" },
+          { title: "PostgreSQL" },
+          { title: "MySQL" },
+          { title: "Redis" },
+          { title: "Docker" },
+          { title: "AWS" },
+          { title: "Google Cloud Platform" },
+          { title: "Git" },
+          { title: "Jenkins" },
+          { title: "Jest" },
+          { title: "Playwright" },
+          { title: "RabbitMQ" },
+          { title: "OpenAI" },
+          { title: "SQLite" },
+          { title: "Stripe" },
+        ],
+      },
+      experience: {
+        description:
+          "Professional experiences focused on product development, integrations and software operations.",
+        cards: [
+          {
+            company: "Multscan",
+            role: "Junior Software Engineer",
+            period: "2026 — present",
+            description:
+              "Web and Mobile application development and maintenance, with continuous delivery and headless architecture.",
+          },
+          {
+            company: "Cultivare",
+            role: "Full Stack Developer",
+            period: "2024 — 2025",
+            description:
+              "Feature delivery for a healthcare SaaS application, including APIs and data persistence.",
+          },
+          {
+            company: "Fiverr",
+            role: "Freelance Web Developer",
+            period: "2021 — 2024",
+            description:
+              "Web applications and landing pages for different markets and product needs.",
+          },
+        ],
+      },
+      education: {
+        description:
+          "Continuous education in computing, engineering and software architecture.",
+        cards: [
+          {
+            institution: "PUC-SP",
+            program: "Bachelor's degree in Computer Science",
+            status: "Completed in 2025",
+          },
+          {
+            institution: "FIAP",
+            program: "Postgraduate degree in Software Architecture",
+            status: "In progress",
+          },
+          {
+            institution: "USP/Esalq",
+            program: "MBA in Software Engineering",
+            status: "In progress",
+          },
+        ],
+      },
+      trajectory: {
+        description:
+          "A path built through study, practical projects and professional growth.",
+        items: [
+          {
+            year: "2021",
+            title: "On-demand Web projects",
+            description: "Started freelance work and deliveries for different markets.",
+          },
+          {
+            year: "2024",
+            title: "Full Stack Development",
+            description: "SaaS product, API and database experience in healthcare.",
+          },
+          {
+            year: "2025",
+            title: "Computer Science",
+            description: "Completed the degree and deepened software architecture studies.",
+          },
+          {
+            year: "2026",
+            title: "Software Engineering",
+            description: "Working with Web and Mobile products, cloud and continuous delivery.",
+          },
+        ],
+      },
+      explore: {
+        description: "Choose where to continue exploring my work.",
+        items: [
+          { index: "001", title: "Projects", description: "Applications and repositories", href: "/projetos" },
+          { index: "002", title: "About", description: "Path and skills", href: "/sobre" },
+          { index: "003", title: "Contact", description: "Let's talk", href: "/contato" },
+          { index: "004", title: "Resume", description: "PDF version", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
+        ],
+      },
+      faq: [
+        {
+          question: "Which areas do you work in?",
+          answer: "I work with Web and Mobile applications, APIs, software architecture, cloud and DevOps practices.",
+        },
+        {
+          question: "Which technologies do you use?",
+          answer: "The portfolio includes experience with Next.js, React, React Native, TypeScript, Node.js, databases, Docker, AWS and other tools.",
+        },
+        {
+          question: "Are you available for international opportunities?",
+          answer: "Yes. I am available to work in Brazil and Europe.",
+        },
+        {
+          question: "Where can I see projects and repositories?",
+          answer: "The projects section includes a selected set of work and links to their repositories.",
+        },
+      ],
+      finalCta: {
+        eyebrow: "10 / CONTACT",
+        title: "Shall we build something meaningful?",
+        emailLabel: "Professional e-mail",
+        contact: "Get in touch",
+      },
+      footer: {
+        copyright: "© João Pedro Ribeiro",
+        location: "São Paulo, Brazil · Available for Brazil and Europe",
+      },
+    },
+    company: {
+      name: "GWBR Technologies",
+      hero: {
+        index: "01 / GWBR TECHNOLOGIES",
+        title: "Software engineering for digital products.",
+        description:
+          "Web and Mobile application development and integrations focused on technical clarity, maintainability and user experience.",
+        primaryAction: "Get in touch",
+        secondaryAction: "Explore the portfolio",
+      },
+      capabilities: {
+        eyebrow: "APPLIED ENGINEERING",
+        title: "From ambition to product: engineering built to scale.",
+        description:
+          "Technology selected for the problem at hand, with attention to the software's evolution.",
+        items: [
+          {
+            title: "Web Applications",
+            description:
+              "Responsive interfaces and systems designed around clear work flows.",
+          },
+          {
+            title: "Mobile Products",
+            description:
+              "Cross-platform Android and iOS experiences with a consistent codebase.",
+          },
+          {
+            title: "Integrations and APIs",
+            description:
+              "Services, data and integrations structured to support product operations.",
+          },
+        ],
+      },
+      aiIntegration: {
+        eyebrow: "AI INTEGRATION",
+        title: "AI added to the product without breaking what already works.",
+        description:
+          "I integrate AI models into Web and Mobile applications—new or legacy—with APIs, flows and data prepared for real use.",
+        items: ["New systems", "Legacy systems", "Web and Mobile"],
+      },
+      specialties: {
+        eyebrow: "SPECIALIZED TECHNOLOGIES",
+        title: "A stack selected for every product layer.",
+        description:
+          "Tools used together to build interfaces, services, integrations and dependable delivery flows.",
+        items: [...companySpecialties],
+      },
+      personalPortfolio: {
+        eyebrow: "PERSONAL PORTFOLIO",
+        title: "Get to know João Pedro Ribeiro's portfolio.",
+        description:
+          "Explore the projects, experience, education and technical path behind GWBR Technologies.",
+        action: "View personal portfolio",
+      },
+      closing: {
+        title: "Technology built from context.",
+        description:
+          "Explore the projects and technical path that inform GWBR Technologies' work.",
+      },
+      footer: {
+        copyright: "© GWBR Technologies",
+        location: "São Paulo, Brazil",
+      },
     },
     projects: {
       pageTitle: "João Pedro Ribeiro Projects",
@@ -301,9 +1114,29 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Enhanced WhatsApp clone using technologies such as Python, Flask, RabbitMQ, bcrypt, SQLAlchemy and SocketIO.",
         },
         carSeller: {
-          title: "Car Seller",
+          title: "Car Store",
           description:
             "One of my first webpage projects for selling cars of all types and prices. Built with VueJS 3.",
+        },
+        sadm: {
+          title: "SADM Cultivare",
+          description:
+            "Evidence-based medical knowledge base developed by Cultivare to support physicians, audit teams, health insurers, and educational institutions in clinical and operational decisions.",
+        },
+        dtn: {
+          title: "DTN",
+          description:
+            "Interactive maps and dashboards to monitor the situation of Neglected Tropical Diseases (NTDs) in Brazil from 2000 to 2023.",
+        },
+        cdiprofire: {
+          title: "CDI Profire-X",
+          description:
+            "Mobile app created for the high-performance, universal digital ignition module for carbureted motorcycles, enabling full customization of ignition timing maps, rev limits, and cutoffs for official competition use.",
+        },
+        ecupromax: {
+          title: "ECU Pro Max",
+          description:
+            "Mobile app for the sports electronic control unit developed for Honda motorcycles, enabling fuel-map remapping, timing adjustments, and rev-limit cutoffs for official competition use.",
         },
       },
     },
@@ -321,7 +1154,6 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         devOps: "(Git, AWS, GCP, among others)",
         after: ".",
       },
-      manyOthers: "... among many others",
       summaryTitle: "ABOUT",
       summarySubtitle:
         "Software Developer | Mobile Developer | Computer Scientist",
@@ -337,10 +1169,41 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Focus on quality, maintainability and scalability",
       ],
       summaryParagraph2:
-        "Additionally, I take Computer Science and Software Development courses at Harvard University, strengthening my technical foundation and global perspective. I am enthusiastic about understanding, designing and improving software that makes people's lives easier, delivering sustainable long-term products. I constantly seek innovation and efficiency, contributing to projects that combine purpose, impact and continuous evolution.",
+        "Additionally, I take Computer Science and Software Development courses at USP University, strengthening my technical foundation and global perspective. I am enthusiastic about understanding, designing and improving software that makes people's lives easier, delivering sustainable long-term products. I constantly seek innovation and efficiency, contributing to projects that combine purpose, impact and continuous evolution.",
       techStackHint:
         "Hover over the bubbles to check the technology names, if needed.",
+      techStackCategories: {
+        languages: "LANGUAGES",
+        frameworks: "FRAMEWORKS AND RUNTIMES",
+        dataAndAI: "DATA AND AI",
+        cloudAndDevOps: "CLOUD, DEVOPS AND QUALITY",
+      },
       academicTitle: "ACADEMIC",
+      certifications: {
+        title: "CERTIFICATIONS",
+        description:
+          "Certifications that support continuous growth in software engineering, cloud, and development practices.",
+        currentLabel: "Current",
+        pursuingLabel: "Pursuing",
+        items: [
+          {
+            name: "Prompt Engineering for Software Engineers",
+            status: "current",
+          },
+          {
+            name: "GitHub Foundations Certification",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Certified Cloud Practitioner",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Solutions Architect Associate",
+            status: "pursuing",
+          },
+        ],
+      },
       experienceTitle: "EXPERIENCE",
       availabilityTitle: "BRAZIL & EUROPE",
       availabilityDescription:
@@ -355,6 +1218,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Would you like to download my resume in classic format? (PDF)",
       fiverrRole: "Web Developer",
       cultiRole: "Intern",
+      multscanRole: "Junior Software Engineer",
     },
     contact: {
       pageTitle: "Contact João Pedro Ribeiro",
@@ -416,6 +1280,283 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
       knowProfile: "Voir Profil",
       downloadResume: "Télécharger CV",
       downloadError: "Une erreur est survenue lors du téléchargement du CV PDF",
+      hero: {
+        index: "01 / PORTFOLIO",
+        title: "Des solutions numériques avec",
+        highlight: "intention et ingénierie.",
+        description:
+          "João Pedro Ribeiro développe des produits Web et Mobile qui réunissent architecture logicielle, expérience utilisateur et livraison continue.",
+        viewProjects: "Voir les projets",
+        scrollHint: "Faites défiler pour explorer",
+      },
+      sections: {
+        about: "À PROPOS",
+        projects: "PROJETS",
+        software: "LOGICIEL",
+        experience: "EXPÉRIENCE",
+        education: "FORMATION",
+        trajectory: "PARCOURS",
+        explore: "EXPLORER",
+        faq: "QUESTIONS FRÉQUENTES",
+      },
+      about: {
+        eyebrow: "(À propos de moi)",
+        title: "Une technologie claire, utile et conçue pour durer.",
+        description:
+          "Diplômé en informatique et spécialisé en architecture logicielle, je développe des applications axées sur la clarté, la qualité et une évolution durable.",
+        availabilityLabel: "Disponibilité",
+        availabilityValue: "Brésil et Europe",
+        focusLabel: "Spécialités",
+        focusValue: "Web, Mobile et Cloud",
+        exploreProfile: "Voir le profil",
+      },
+      projects: {
+        description:
+          "Une sélection d'applications qui associent produits numériques, intégrations et expériences centrées sur les personnes.",
+        previous: "Projet précédent",
+        next: "Projet suivant",
+        allProjects: "Voir tous les projets",
+        repository: "Ouvrir le dépôt",
+      },
+      software: {
+        description:
+          "Des technologies choisies pour les problèmes qu'elles résolvent, avec attention à la maintenance, aux performances et à l'expérience utilisateur.",
+        viewAll: "Voir le stack complet",
+        areas: [
+          {
+            title: "Web",
+            subtitle: "Interfaces et produits numériques",
+            description:
+              "Des applications responsives et accessibles, conçues autour d'une navigation claire.",
+            technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+          },
+          {
+            title: "Mobile",
+            subtitle: "Expériences pour Android et iOS",
+            description:
+              "Des applications hybrides aux interfaces cohérentes et à la distribution multiplateforme.",
+            technologies: ["React Native", "Expo", "TypeScript", "Firebase"],
+          },
+          {
+            title: "Cloud et APIs",
+            subtitle: "Systèmes évolutifs",
+            description:
+              "Services intégrés, données structurées et pratiques de livraison continue.",
+            technologies: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Docker", "AWS"],
+          },
+        ],
+        techs: [
+          { title: "Web (React)" },
+          { title: "Mobile (React Native & Expo)" },
+          { title: "Cloud" },
+          { title: "APIs" },
+          { title: "Next.js" },
+          { title: "React" },
+          { title: "React Native" },
+          { title: "Expo" },
+          { title: "TypeScript" },
+          { title: "JavaScript" },
+          { title: "Python" },
+          { title: "Node.js" },
+          { title: "NestJS" },
+          { title: "Express.js" },
+          { title: "Vue.js" },
+          { title: "HTML" },
+          { title: "CSS" },
+          { title: "Tailwind CSS" },
+          { title: "Firebase" },
+          { title: "MongoDB" },
+          { title: "PostgreSQL" },
+          { title: "MySQL" },
+          { title: "Redis" },
+          { title: "Docker" },
+          { title: "AWS" },
+          { title: "Google Cloud Platform" },
+          { title: "Git" },
+          { title: "Jenkins" },
+          { title: "Jest" },
+          { title: "Playwright" },
+          { title: "RabbitMQ" },
+          { title: "OpenAI" },
+          { title: "SQLite" },
+          { title: "Stripe" },
+        ],
+      },
+      experience: {
+        description:
+          "Expériences professionnelles dédiées au développement de produits, aux intégrations et aux opérations logicielles.",
+        cards: [
+          {
+            company: "Multscan",
+            role: "Ingénieur logiciel junior",
+            period: "2026 — aujourd'hui",
+            description:
+              "Développement et maintenance d'applications Web et Mobile, avec livraison continue et architecture headless.",
+          },
+          {
+            company: "Cultivare",
+            role: "Développeur Full Stack",
+            period: "2024 — 2025",
+            description:
+              "Développement de fonctionnalités pour une application SaaS de santé, incluant APIs et persistance des données.",
+          },
+          {
+            company: "Fiverr",
+            role: "Développeur Web freelance",
+            period: "2021 — 2024",
+            description:
+              "Applications Web et landing pages pour différents marchés et besoins produits.",
+          },
+        ],
+      },
+      education: {
+        description:
+          "Formation continue en informatique, ingénierie et architecture logicielle.",
+        cards: [
+          {
+            institution: "PUC-SP",
+            program: "Licence en informatique",
+            status: "Terminée en 2025",
+          },
+          {
+            institution: "FIAP",
+            program: "Postgraduate en architecture logicielle",
+            status: "En cours",
+          },
+          {
+            institution: "USP/Esalq",
+            program: "MBA en ingénierie logicielle",
+            status: "En cours",
+          },
+        ],
+      },
+      trajectory: {
+        description:
+          "Un parcours construit entre étude, projets pratiques et évolution professionnelle.",
+        items: [
+          {
+            year: "2021",
+            title: "Projets Web à la demande",
+            description: "Début du travail freelance et de livraisons pour différents marchés.",
+          },
+          {
+            year: "2024",
+            title: "Développement Full Stack",
+            description: "Expérience de produit SaaS, APIs et base de données dans la santé.",
+          },
+          {
+            year: "2025",
+            title: "Informatique",
+            description: "Obtention du diplôme et approfondissement de l'architecture logicielle.",
+          },
+          {
+            year: "2026",
+            title: "Ingénierie logicielle",
+            description: "Produits Web et Mobile, cloud et livraison continue.",
+          },
+        ],
+      },
+      explore: {
+        description: "Choisissez comment poursuivre la découverte de mon travail.",
+        items: [
+          { index: "001", title: "Projets", description: "Applications et dépôts", href: "/projetos" },
+          { index: "002", title: "À propos", description: "Parcours et compétences", href: "/sobre" },
+          { index: "003", title: "Contact", description: "Parlons-en", href: "/contato" },
+          { index: "004", title: "CV", description: "Version PDF", href: "/Desenvolvedor_Full-Stack_João_Pedro_do_Carmo_Ribeiro.pdf" },
+        ],
+      },
+      faq: [
+        {
+          question: "Dans quels domaines travaillez-vous ?",
+          answer: "Je travaille avec des applications Web et Mobile, des APIs, l'architecture logicielle, le cloud et les pratiques DevOps.",
+        },
+        {
+          question: "Quelles technologies utilisez-vous ?",
+          answer: "Le portfolio réunit des expériences avec Next.js, React, React Native, TypeScript, Node.js, les bases de données, Docker, AWS et d'autres outils.",
+        },
+        {
+          question: "Êtes-vous disponible pour des opportunités internationales ?",
+          answer: "Oui. Je suis disponible pour travailler au Brésil et en Europe.",
+        },
+        {
+          question: "Où puis-je voir les projets et les dépôts ?",
+          answer: "La section projets rassemble une sélection de réalisations et des liens vers leurs dépôts.",
+        },
+      ],
+      finalCta: {
+        eyebrow: "10 / CONTACT",
+        title: "Construisons quelque chose d'important ?",
+        emailLabel: "E-mail professionnel",
+        contact: "Me contacter",
+      },
+      footer: {
+        copyright: "© João Pedro Ribeiro",
+        location: "São Paulo, Brésil · Disponible pour le Brésil et l'Europe",
+      },
+    },
+    company: {
+      name: "GWBR Technologies",
+      hero: {
+        index: "01 / GWBR TECHNOLOGIES",
+        title: "Ingénierie logicielle pour les produits numériques.",
+        description:
+          "Développement d'applications Web et Mobile ainsi que d'intégrations, avec une attention à la clarté technique, à la maintenance et à l'expérience utilisateur.",
+        primaryAction: "Nous contacter",
+        secondaryAction: "Découvrir le portfolio",
+      },
+      capabilities: {
+        eyebrow: "INGÉNIERIE APPLIQUÉE",
+        title: "De l’ambition au produit : une ingénierie pensée pour évoluer.",
+        description:
+          "Une technologie choisie selon le problème à résoudre, en pensant à l'évolution du logiciel.",
+        items: [
+          {
+            title: "Applications Web",
+            description:
+              "Des interfaces responsives et des systèmes conçus pour des flux de travail clairs.",
+          },
+          {
+            title: "Produits Mobile",
+            description:
+              "Des expériences multiplateformes pour Android et iOS avec une base de code cohérente.",
+          },
+          {
+            title: "Intégrations et APIs",
+            description:
+              "Des services, données et intégrations structurés pour soutenir l'activité du produit.",
+          },
+        ],
+      },
+      aiIntegration: {
+        eyebrow: "INTÉGRATION IA",
+        title: "L’IA intégrée au produit sans casser ce qui fonctionne déjà.",
+        description:
+          "J’intègre des modèles d’IA aux applications Web et Mobile, nouvelles ou existantes, avec des APIs, flux et données prêts pour un usage réel.",
+        items: ["Nouveaux systèmes", "Systèmes existants", "Web et Mobile"],
+      },
+      specialties: {
+        eyebrow: "TECHNOLOGIES SPÉCIALISÉES",
+        title: "Une stack choisie pour chaque couche du produit.",
+        description:
+          "Des outils complémentaires pour concevoir des interfaces, services, intégrations et flux de livraison fiables.",
+        items: [...companySpecialties],
+      },
+      personalPortfolio: {
+        eyebrow: "PORTFOLIO PERSONNEL",
+        title: "Découvrez le portfolio de João Pedro Ribeiro.",
+        description:
+          "Explorez les projets, l'expérience, la formation et le parcours technique derrière GWBR Technologies.",
+        action: "Voir le portfolio personnel",
+      },
+      closing: {
+        title: "Une technologie conçue à partir du contexte.",
+        description:
+          "Découvrez les projets et le parcours technique qui orientent le travail de GWBR Technologies.",
+      },
+      footer: {
+        copyright: "© GWBR Technologies",
+        location: "São Paulo, Brésil",
+      },
     },
     projects: {
       pageTitle: "Projets de João Pedro Ribeiro",
@@ -440,9 +1581,29 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Clone amélioré de WhatsApp utilisant des technologies telles que Python, Flask, RabbitMQ, bcrypt, SQLAlchemy et SocketIO.",
         },
         carSeller: {
-          title: "Car Seller",
+          title: "Magasin de voitures",
           description:
             "L'un de mes premiers projets web pour la vente de voitures de tous types et prix. Réalisé avec VueJS 3.",
+        },
+        sadm: {
+          title: "SADM Cultivare",
+          description:
+            "Base de connaissances médicales fondée sur des preuves scientifiques, développée par Cultivare pour aider les médecins, les équipes d'audit, les assureurs santé et les établissements d'enseignement dans leurs décisions cliniques et opérationnelles.",
+        },
+        dtn: {
+          title: "DTN",
+          description:
+            "Cartes interactives et tableaux de bord permettant de suivre la situation des maladies tropicales négligées (MTN) au Brésil entre 2000 et 2023.",
+        },
+        cdiprofire: {
+          title: "CDI Profire-X",
+          description:
+            "Application mobile créée pour le module d'allumage numérique haute performance et universel destiné aux motos à carburateur, permettant une personnalisation complète des cartographies d'avance à l'allumage, des limites de régime et des coupures pour les compétitions officielles.",
+        },
+        ecupromax: {
+          title: "ECU Pro Max",
+          description:
+            "Application mobile pour le calculateur électronique sportif conçu pour les motos Honda, permettant la reprogrammation des cartographies d'injection, les réglages d'avance à l'allumage et les coupures de régime pour les compétitions officielles.",
         },
       },
     },
@@ -461,7 +1622,6 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         devOps: "(Git, AWS, GCP, entre autres)",
         after: ".",
       },
-      manyOthers: "... parmi beaucoup d'autres",
       summaryTitle: "À PROPOS",
       summarySubtitle:
         "Développeur logiciel | Développeur mobile | Informaticien",
@@ -477,10 +1637,41 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Accent sur la qualité, la maintenabilité et la scalabilité",
       ],
       summaryParagraph2:
-        "En complément, je suis des cours d'informatique et de développement logiciel à l'Université Harvard, renforçant ma base technique et ma vision globale du domaine. Je suis passionné par la compréhension, la conception et l'amélioration de logiciels qui facilitent la vie des gens, en livrant des produits durables à long terme. Je recherche constamment l'innovation et l'efficacité, en contribuant à des projets alliant sens, impact et évolution continue.",
+        "En complément, je suis des cours d'informatique et de développement logiciel à l'Université USP, renforçant ma base technique et ma vision globale du domaine. Je suis passionné par la compréhension, la conception et l'amélioration de logiciels qui facilitent la vie des gens, en livrant des produits durables à long terme. Je recherche constamment l'innovation et l'efficacité, en contribuant à des projets alliant sens, impact et évolution continue.",
       techStackHint:
         "Survolez les bulles pour voir les noms des technologies, si nécessaire.",
+      techStackCategories: {
+        languages: "LANGAGES",
+        frameworks: "FRAMEWORKS ET ENVIRONNEMENTS",
+        dataAndAI: "DONNÉES ET IA",
+        cloudAndDevOps: "CLOUD, DEVOPS ET QUALITÉ",
+      },
       academicTitle: "ACADÉMIQUE",
+      certifications: {
+        title: "CERTIFICATIONS",
+        description:
+          "Des certifications qui renforcent une évolution continue en ingénierie logicielle, cloud et pratiques de développement.",
+        currentLabel: "Actuelle",
+        pursuingLabel: "En recherche",
+        items: [
+          {
+            name: "Ingénierie des prompts pour les ingénieurs logiciels",
+            status: "current",
+          },
+          {
+            name: "GitHub Foundations Certification",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Certified Cloud Practitioner",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Solutions Architect Associate",
+            status: "pursuing",
+          },
+        ],
+      },
       experienceTitle: "EXPÉRIENCE",
       availabilityTitle: "BRÉSIL & EUROPE",
       availabilityDescription:
@@ -495,6 +1686,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Souhaitez-vous télécharger mon CV au format classique ? (PDF)",
       fiverrRole: "Développeur Web",
       cultiRole: "Stagiaire",
+      multscanRole: "Ingénieur logiciel junior"
     },
     contact: {
       pageTitle: "Contact João Pedro Ribeiro",

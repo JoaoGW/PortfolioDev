@@ -1,3 +1,5 @@
+import { PageLoading } from "@/components/page-loading";
+
 export default function Loading() {
-  return null;
+  return <PageLoading />;
 }

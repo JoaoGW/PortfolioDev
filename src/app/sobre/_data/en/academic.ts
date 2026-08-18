@@ -95,26 +95,23 @@ export const enAcademic: SobreAcademic = {
       }
     ]
   },
-  "harvard": {
-    "courseType": "Complementary Courses",
-    "courseName": "CS50 - Introduction to Computer Science",
-    "description": "Harvard's introductory CS course, complementing my undergraduate degree and reinforcing algorithmic thinking and efficient problem solving.",
+  "usp": {
+    "courseType": "MBA / Lato Sensu Postgraduate Program",
+    "courseName": "MBA in Software Engineering",
+    "description": "USP/Esalq's MBA in Software Engineering, a lato sensu postgraduate program with live classes focused on deepening software engineering, quality and management practices.",
     "skills": [
-      "Algorithmic Thinking",
-      "Problem Solving",
-      "C Programming",
-      "Python",
-      "SQL",
-      "JavaScript",
-      "HTML and CSS",
-      "Data Structures",
-      "Algorithms",
-      "Abstraction",
-      "Encapsulation",
-      "Resource Management",
-      "Software Security",
-      "Software Engineering",
-      "Web Development"
+      "Requirements Engineering",
+      "Software Quality",
+      "Agile Project Management",
+      "DevOps",
+      "Continuous Integration / Continuous Delivery (CI/CD)",
+      "Infrastructure as Code",
+      "Software Testing",
+      "Test-Driven Development (TDD)",
+      "Behavior-Driven Development (BDD)",
+      "Test Automation",
+      "Development Team Management",
+      "Scrum, Kanban and XP"
     ]
   }
 };
