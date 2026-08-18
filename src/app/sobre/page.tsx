@@ -28,6 +28,7 @@ import GoogleCloudLogo from "../../assets/Logos/googlecloud_logo.webp";
 import JavaScriptLogo from "../../assets/Logos/logo-javascript-512.webp";
 import JestLogo from "../../assets/Logos/jest-logo.webp";
 import NodeLogo from "../../assets/Logos/logo-node-js-512.webp";
+import NestJSLogo from "@/assets/Logos/NestJS.svg";
 import ReactLogo from "../../assets/Logos/logo-react-512.webp";
 import ReactNativeLogo from "../../assets/Logos/react-native_logo.webp";
 import NextjsLogo from "../../assets/Logos/next-js-logo.webp";
@@ -55,11 +56,13 @@ import JenkinsLogo from "@/assets/Logos/Jenkins.png";
 import PlaywrightLogo from "@/assets/Logos/playwright.webp";
 import RabbitmqLogo from "@/assets/Logos/rabbitmq.webp";
 import OpenaiLogo from "@/assets/Logos/openai.svg";
+import ExpressJSLogo from "@/assets/Logos/expressjs.webp";
 import SQLiteLogo from "@/assets/Logos/sqlite.png";
 import StripeLogo from "@/assets/Logos/stripe.png";
 
 import {
   ArrowUpRight,
+  Award,
   ChevronLeft,
   ChevronRight,
   FileDown,
@@ -133,6 +136,8 @@ const tickerTechnologyLogos: Record<string, StaticImageData | undefined> = {
   JavaScript: JavaScriptLogo,
   Python: PythonLogo,
   "Node.js": NodeLogo,
+  NestJS: NestJSLogo,
+  "Express.js": ExpressJSLogo,
   "Next.js": NextjsLogo,
   Docker: DockerLogo,
   AWS: AwsLogo,
@@ -640,6 +645,7 @@ export default function Sobre() {
         {showTechStackSection ? (
           <DeferredTechStackSection
             tooltips={sobreText.tooltips}
+            categories={messages.about.techStackCategories}
             hint={messages.about.techStackHint}
           />
         ) : null}
@@ -734,6 +740,48 @@ export default function Sobre() {
             activities={[]}
             headerBgColor="#7e7e7b"
           />
+        </section>
+        <section id="certificacoes" className="bg-[#0A0A0A] px-5 py-12 sm:px-8 lg:px-12 lg:py-[4.5rem]">
+          <div className="mx-auto max-w-7xl">
+            <SectionLead
+              index="07"
+              label={messages.about.certifications.title}
+              title={messages.about.certifications.title}
+              description={messages.about.certifications.description}
+            />
+            <div className="grid gap-5 md:grid-cols-2">
+              {messages.about.certifications.items.map((certification, index) => {
+                const isPursuing = certification.status === "pursuing";
+
+                return (
+                  <motion.article
+                    key={certification.name}
+                    {...sectionMotion}
+                    transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
+                    className="flex min-h-48 flex-col border border-white/10 p-6 md:p-8"
+                  >
+                    <div className="flex items-start justify-between gap-5">
+                      <Award className="h-6 w-6 shrink-0 text-accent-orange" aria-hidden="true" />
+                      <span
+                        className={
+                          isPursuing
+                            ? "border border-white/15 px-2.5 py-1 text-xs font-semibold text-neutral-300"
+                            : "border border-accent-orange/60 px-2.5 py-1 text-xs font-semibold text-accent-orange"
+                        }
+                      >
+                        {isPursuing
+                          ? messages.about.certifications.pursuingLabel
+                          : messages.about.certifications.currentLabel}
+                      </span>
+                    </div>
+                    <h3 className="mt-auto pt-10 text-2xl font-semibold tracking-[-0.05em] text-white">
+                      {certification.name}
+                    </h3>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </div>
         </section>
         <section id="experiencia" className="bg-[#0A0A0A] px-5 py-12 sm:px-8 lg:px-12 lg:py-[4.5rem]">
           <div className="mx-auto max-w-7xl">

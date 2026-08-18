@@ -191,7 +191,20 @@ type LanguageMessages = {
     skills: string[];
     summaryParagraph2: string;
     techStackHint: string;
+    techStackCategories: {
+      languages: string;
+      frameworks: string;
+      dataAndAI: string;
+      cloudAndDevOps: string;
+    };
     academicTitle: string;
+    certifications: {
+      title: string;
+      description: string;
+      currentLabel: string;
+      pursuingLabel: string;
+      items: Array<{ name: string; status: "current" | "pursuing" }>;
+    };
     experienceTitle: string;
     availabilityTitle: string;
     availabilityDescription: string;
@@ -258,6 +271,8 @@ const companySpecialties = [
   "JavaScript",
   "Python",
   "Node.js",
+  "NestJS",
+  "Express.js",
   "Vue.js",
   "HTML",
   "CSS",
@@ -360,7 +375,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             subtitle: "Sistemas escaláveis",
             description:
               "Serviços integrados, dados estruturados e práticas de entrega contínua.",
-            technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
+            technologies: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Docker", "AWS"],
           },
         ],
         techs: [
@@ -376,6 +391,8 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           { title: "JavaScript" },
           { title: "Python" },
           { title: "Node.js" },
+          { title: "NestJS" },
+          { title: "Express.js" },
           { title: "Vue.js" },
           { title: "HTML" },
           { title: "CSS" },
@@ -644,7 +661,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Mapas interativos e dashboards para monitorar a realidade das Doenças Tropicais Negligenciadas (DTNs) no Brasil entre os anos de 2000 e 2023",
         },
         cdiprofire: {
-          title: "CDI Profire",
+          title: "CDI Profire-X",
           description:
             "Aplicativo mobile criado para o módulo de ignição digital de alta performance e uso universal para motos carburadas, permitindo total personalização de mapas de ponto, limite de giros e cortes de competições oficiais",
         },
@@ -688,7 +705,38 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Complementarmente, realizo uma  pós-graduação MBA em Engenharia de Software pela Universidade de São Paulo (USP), reforçando minha base técnica e visão global da área. Sou entusiasta em entender, projetar e aprimorar softwares que facilitem a vida das pessoas, entregando produtos sustentáveis e de longo prazo. Busco constantemente inovação e eficiência contribuindo para projetos que unem propósito, impacto e evolução contínua.",
       techStackHint:
         "Passe o mouse por cima das bolhas para conferir os nomes das tecnologias, se necessário.",
+      techStackCategories: {
+        languages: "LINGUAGENS DE PROGRAMAÇÃO",
+        frameworks: "FRAMEWORKS E RUNTIMES BACK-END",
+        dataAndAI: "DADOS E INTEGRAÇÃO IA",
+        cloudAndDevOps: "CLOUD, DEVOPS E QUALIDADE",
+      },
       academicTitle: "ACADÊMICO",
+      certifications: {
+        title: "CERTIFICAÇÕES",
+        description:
+          "Certificações que reforçam a evolução contínua em engenharia de software, cloud e práticas de desenvolvimento.",
+        currentLabel: "Certificação Emitida",
+        pursuingLabel: "Em busca",
+        items: [
+          {
+            name: "Engenharia de Prompt para Engenheiros de Software - USP",
+            status: "current",
+          },
+          {
+            name: "GitHub Foundations Certification",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Certified Cloud Practitioner",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Solutions Architect Associate",
+            status: "pursuing",
+          },
+        ],
+      },
       experienceTitle: "EXPERIÊNCIA",
       availabilityTitle: "BRASIL & EUROPA",
       availabilityDescription:
@@ -827,7 +875,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             subtitle: "Scalable systems",
             description:
               "Integrated services, structured data and continuous delivery practices.",
-            technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
+            technologies: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Docker", "AWS"],
           },
         ],
         techs: [
@@ -843,6 +891,8 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           { title: "JavaScript" },
           { title: "Python" },
           { title: "Node.js" },
+          { title: "NestJS" },
+          { title: "Express.js" },
           { title: "Vue.js" },
           { title: "HTML" },
           { title: "CSS" },
@@ -1079,7 +1129,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Interactive maps and dashboards to monitor the situation of Neglected Tropical Diseases (NTDs) in Brazil from 2000 to 2023.",
         },
         cdiprofire: {
-          title: "CDI Profire",
+          title: "CDI Profire-X",
           description:
             "Mobile app created for the high-performance, universal digital ignition module for carbureted motorcycles, enabling full customization of ignition timing maps, rev limits, and cutoffs for official competition use.",
         },
@@ -1122,7 +1172,38 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "Additionally, I take Computer Science and Software Development courses at USP University, strengthening my technical foundation and global perspective. I am enthusiastic about understanding, designing and improving software that makes people's lives easier, delivering sustainable long-term products. I constantly seek innovation and efficiency, contributing to projects that combine purpose, impact and continuous evolution.",
       techStackHint:
         "Hover over the bubbles to check the technology names, if needed.",
+      techStackCategories: {
+        languages: "LANGUAGES",
+        frameworks: "FRAMEWORKS AND RUNTIMES",
+        dataAndAI: "DATA AND AI",
+        cloudAndDevOps: "CLOUD, DEVOPS AND QUALITY",
+      },
       academicTitle: "ACADEMIC",
+      certifications: {
+        title: "CERTIFICATIONS",
+        description:
+          "Certifications that support continuous growth in software engineering, cloud, and development practices.",
+        currentLabel: "Current",
+        pursuingLabel: "Pursuing",
+        items: [
+          {
+            name: "Prompt Engineering for Software Engineers",
+            status: "current",
+          },
+          {
+            name: "GitHub Foundations Certification",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Certified Cloud Practitioner",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Solutions Architect Associate",
+            status: "pursuing",
+          },
+        ],
+      },
       experienceTitle: "EXPERIENCE",
       availabilityTitle: "BRAZIL & EUROPE",
       availabilityDescription:
@@ -1261,7 +1342,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             subtitle: "Systèmes évolutifs",
             description:
               "Services intégrés, données structurées et pratiques de livraison continue.",
-            technologies: ["Node.js", "PostgreSQL", "Docker", "AWS"],
+            technologies: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Docker", "AWS"],
           },
         ],
         techs: [
@@ -1277,6 +1358,8 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
           { title: "JavaScript" },
           { title: "Python" },
           { title: "Node.js" },
+          { title: "NestJS" },
+          { title: "Express.js" },
           { title: "Vue.js" },
           { title: "HTML" },
           { title: "CSS" },
@@ -1513,7 +1596,7 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
             "Cartes interactives et tableaux de bord permettant de suivre la situation des maladies tropicales négligées (MTN) au Brésil entre 2000 et 2023.",
         },
         cdiprofire: {
-          title: "CDI Profire",
+          title: "CDI Profire-X",
           description:
             "Application mobile créée pour le module d'allumage numérique haute performance et universel destiné aux motos à carburateur, permettant une personnalisation complète des cartographies d'avance à l'allumage, des limites de régime et des coupures pour les compétitions officielles.",
         },
@@ -1557,7 +1640,38 @@ export const languageMessages: Record<LanguageCode, LanguageMessages> = {
         "En complément, je suis des cours d'informatique et de développement logiciel à l'Université USP, renforçant ma base technique et ma vision globale du domaine. Je suis passionné par la compréhension, la conception et l'amélioration de logiciels qui facilitent la vie des gens, en livrant des produits durables à long terme. Je recherche constamment l'innovation et l'efficacité, en contribuant à des projets alliant sens, impact et évolution continue.",
       techStackHint:
         "Survolez les bulles pour voir les noms des technologies, si nécessaire.",
+      techStackCategories: {
+        languages: "LANGAGES",
+        frameworks: "FRAMEWORKS ET ENVIRONNEMENTS",
+        dataAndAI: "DONNÉES ET IA",
+        cloudAndDevOps: "CLOUD, DEVOPS ET QUALITÉ",
+      },
       academicTitle: "ACADÉMIQUE",
+      certifications: {
+        title: "CERTIFICATIONS",
+        description:
+          "Des certifications qui renforcent une évolution continue en ingénierie logicielle, cloud et pratiques de développement.",
+        currentLabel: "Actuelle",
+        pursuingLabel: "En recherche",
+        items: [
+          {
+            name: "Ingénierie des prompts pour les ingénieurs logiciels",
+            status: "current",
+          },
+          {
+            name: "GitHub Foundations Certification",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Certified Cloud Practitioner",
+            status: "pursuing",
+          },
+          {
+            name: "AWS Solutions Architect Associate",
+            status: "pursuing",
+          },
+        ],
+      },
       experienceTitle: "EXPÉRIENCE",
       availabilityTitle: "BRÉSIL & EUROPE",
       availabilityDescription:

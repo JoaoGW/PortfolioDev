@@ -5,14 +5,21 @@ export type SobreTooltips = {
   nodejs: string;
   react: string;
   mongodb: string;
+  postgresql: string;
+  sqlite: string;
+  redis: string;
   nextjs: string;
   docker: string;
   firebase: string;
   git: string;
   jest: string;
+  jenkins: string;
   vue: string;
   aws: string;
   googlecloud: string;
+  openai: string;
+  nestjs: string;
+  expressjs: string;
 };
 
 export type SobreAcademicCards = {
